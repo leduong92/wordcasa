@@ -1,23 +1,41 @@
 'use client';
-import { ItemDto } from '@/modals/itemDto';
-import { useMemo, useState } from 'react';
+import { apiClient } from '@/lib/apiClient';
+import { ItemCategoryDto, ItemDto } from '@/modals/itemDto';
+import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
+import ItemCarousel from './ItemCarousel';
 
-export default function ShopByCategory({ products }: { products: ItemDto[] }) {
-    const [selectedCategory, setSelectedCategory] = useState<'Living' | 'Dining' | 'Bed'>('Living');
+const tabs = [
+    { id: 1, label: 'Living' },
+    { id: 2, label: 'Dining' },
+    { id: 3, label: 'Bed' },
+];
 
-    const categoryMap: { [key: string]: string } = {
-        '1': 'Living',
-        '2': 'Dining',
-        '3': 'Beds',
+export default function ShopByCategory() {
+    const [activeTab, setActiveTab] = useState<number>(1);
+    const [data, setData] = useState<any[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const loadData = async (roomId: number) => {
+        try {
+            setLoading(true);
+            const response = await apiClient.get<ItemCategoryDto[]>(
+                `/api/item/categories/us/${roomId}`
+            );
+            setData(response.data ?? []);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const filteredProducts = useMemo(
-        () => products.filter((product) => categoryMap[product.roomId ?? 0] === selectedCategory),
-        [products, selectedCategory]
-    );
+    useEffect(() => {
+        loadData(activeTab); // load khi tab thay đổi
+    }, [activeTab]);
 
     return (
-        <section aria-label="Shop by Category" className="bg-white py-16 px-4">
+        <section aria-label="Shop by Category" className="py-16 px-4">
             <div className="mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8">
                     Shop by Categories
@@ -25,50 +43,37 @@ export default function ShopByCategory({ products }: { products: ItemDto[] }) {
 
                 {/* Category Tabs */}
                 <div className="flex justify-center space-x-6 mb-12 text-sm md:text-base uppercase font-medium">
-                    {['Living', 'Dining', 'Bed'].map((category) => (
+                    {tabs.map((tab) => (
                         <button
-                            key={category}
-                            aria-label={category}
-                            onClick={() =>
-                                setSelectedCategory(category as 'Living' | 'Dining' | 'Bed')
-                            }
-                            className={`pb-1 border-b-2 ${
-                                selectedCategory === category
-                                    ? 'text-yellow-600 border-yellow-600'
-                                    : 'text-gray-500 border-transparent hover:text-yellow-600'
-                            } transition`}
+                            key={tab.id}
+                            className={`px-4 py-2 cursor-pointer font-medium ${
+                                activeTab === tab.id ? 'border-b-2 border-black' : 'text-gray-500'
+                            }`}
+                            onClick={() => setActiveTab(tab.id)}
+                            aria-label={tab.label}
                         >
-                            {category}
+                            {tab.label}
                         </button>
                     ))}
                 </div>
 
                 {/* Product Grid */}
-                <div className="grid grid-cols-2 gap-6 md:grid-cols-3 xl:grid-cols-4">
-                    {filteredProducts.length > 0 ? (
-                        filteredProducts.slice(0, 7).map((product) => (
-                            <div className="group flex flex-col gap-2.5">
-                                <div
-                                    className="
-                    aspect-square overflow-hidden rounded-md bg-gray-200/50
-                    relative before:absolute before:inset-0
-                    before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent
-                    before:translate-x-[-50%] before:opacity-0
-                    before:animate-shimmer
-                "
-                                />
-
-                                <div className="flex flex-col gap-2">
-                                    <div className="h-2 w-4/5 rounded-full bg-gray-200" />
-                                    <div className="h-2 w-1/3 rounded-full bg-gray-200" />
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="text-gray-500">{`Oops. There're no data in ${selectedCategory} category.`}</p>
-                    )}
+                <div className="">
+                    {loading ? <div>Loading...</div> : <ItemList items={data} />}
                 </div>
             </div>
         </section>
+    );
+}
+
+export function ItemList({ items }: { items: ItemCategoryDto[] }) {
+    if (!items || items.length === 0) {
+        return <div>No items found</div>;
+    }
+
+    return (
+        <div className="">
+            <ItemCarousel items={items} />
+        </div>
     );
 }

@@ -1,5 +1,4 @@
 // lib/apiClient.ts
-import { cookies } from 'next/headers';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -23,14 +22,6 @@ const buildUrl = (path: string, query?: RequestOptions['query']) => {
     return url.toString();
 };
 
-const getTokenFromCookie = async (): Promise<string | undefined> => {
-    try {
-        return (await cookies()).get('auth_token')?.value;
-    } catch {
-        return undefined;
-    }
-};
-
 const apiFetch = async <T>(
     method: Method,
     path: string,
@@ -45,7 +36,7 @@ const apiFetch = async <T>(
         ...(options.headers || {}),
     };
 
-    const token = options.token || (options.withAuth ? getTokenFromCookie() : undefined);
+    const token = options.token;
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }

@@ -38,6 +38,15 @@ const CartModal = () => {
 
     return (
         <>
+            <div className="relative cursor-pointer">
+                <div
+                    ref={toggleRef}
+                    onClick={() => setIsOpen((prev) => !prev)}
+                    className="cursor-pointer"
+                >
+                    <ShoppingCart />
+                </div>
+            </div>
             {/* <div className="relative cursor-pointer">
                 <div
                     ref={toggleRef}
