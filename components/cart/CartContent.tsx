@@ -1,16 +1,16 @@
 'use client';
-import { useCartStore } from '@/store/useCartStore';
+// import { useCartStore } from '@/store/useCartStore';
 import { Cart } from '@/modals/cart';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const CartContent = () => {
-    const { cart, updateQuantity, removeFromCart } = useCartStore();
+    // const { cart, updateQuantity, removeFromCart } = useCartStore();
 
     return (
         <div className="flex-1 overflow-y-auto scrollbar-hide">
-            {cart.map((item: Cart) => (
+            {/* {cart.map((item: Cart) => (
                 <div key={item.product.id} className="flex py-2 justify-between border mb-4 p-4">
                     <div className="flex items-center justify-center w-[150px]">
                         <Link
@@ -38,7 +38,7 @@ const CartContent = () => {
                             </span>
                             <div>
                                 <button
-                                    onClick={() => removeFromCart(item.product.id)}
+                                    onClick={() => removeFromCart(item.product.id ?? 0)}
                                     className="flex gap-1 hover:text-gray-600"
                                     aria-label="Remove cart"
                                 >
@@ -121,7 +121,7 @@ const CartContent = () => {
                         </div>
                     </div>
                 </div>
-            ))}
+            ))} */}
         </div>
     );
 };

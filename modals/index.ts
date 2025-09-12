@@ -14,4 +14,4 @@ export type { VariantOptionValueDto } from './variantOptionValueDto';
 export type { LanguageDto } from './languageDto';
 export type { FabricLeatherDto } from './fabricDto';
 export type { WarehouseDto } from './warehouseDto';
-export type { BannerDetailDto, BannerDto, BannerDetailCreateRequest } from './bannerDto';
+export type { BannerDetailDto, BannerDto, BannerDetailRequest } from './bannerDto';

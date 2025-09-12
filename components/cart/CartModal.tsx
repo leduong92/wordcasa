@@ -1,5 +1,5 @@
 'use client';
-import { useCartStore } from '@/store/useCartStore';
+// import { useCartStore } from '@/store/useCartStore';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import CartContent from './CartContent';
@@ -10,7 +10,7 @@ import { ShoppingCart } from 'lucide-react';
 const CartModal = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const { cart } = useCartStore();
+    // const { cart } = useCartStore();
     const modalRef = useRef<HTMLDivElement>(null);
     const toggleRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +38,7 @@ const CartModal = () => {
 
     return (
         <>
-            <div className="relative cursor-pointer">
+            {/* <div className="relative cursor-pointer">
                 <div
                     ref={toggleRef}
                     onClick={() => setIsOpen((prev) => !prev)}
@@ -120,7 +120,7 @@ const CartModal = () => {
                         )}
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     );
 };

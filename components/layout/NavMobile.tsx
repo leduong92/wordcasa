@@ -1,5 +1,5 @@
 'use client';
-import { useCartStore } from '@/store/useCartStore';
+// import { useCartStore } from '@/store/useCartStore';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
@@ -17,7 +17,7 @@ import SearchBar from '../SearchBar';
 const NavMobile = (params: { color: string }) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const { cart } = useCartStore();
+    // const { cart } = useCartStore();
     const [collectionsOpen, setCollectionsOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
 
@@ -98,14 +98,14 @@ const NavMobile = (params: { color: string }) => {
                         />
                     </svg>
                 </div>
-                {cart.length > 0 && (
+                {/* {cart.length > 0 && (
                     <div
                         className="absolute -top-3 -right-3 w-5 h-5 bg-cartNumber 
                     rounded-full text-white text-sm flex items-center justify-center"
                     >
                         {cart.length}
                     </div>
-                )}
+                )} */}
             </Link>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger>
