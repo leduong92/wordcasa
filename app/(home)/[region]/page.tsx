@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import HomeLayout from '../../../components/layout/HomeLayout';
-import { apiClient } from '@/lib/apiClient';
+import { apiClient, PagedResult } from '@/lib/apiClient';
 import { ItemDto } from '@/modals/itemDto';
 import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest';
 
@@ -12,11 +12,9 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
         pageSize: 10,
     };
 
-    const products = await apiClient.post<ItemDto[]>(`/api/item/paging`, {
+    const products = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, {
         body: JSON.stringify(request),
     });
-
-    console.log(products);
 
     return (
         <HomeLayout region={region}>
@@ -120,7 +118,11 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
                     </div>
                 </div>
             </section>
-
+            <div>
+                {products.data?.items.map((itm) => (
+                    <div>{itm.productName}</div>
+                ))}
+            </div>
             <section className="h-screen flex items-center justify-center bg-gray-300">
                 <p className="text-xl">Next section 3 content...</p>
             </section>
