@@ -1,17 +1,19 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import NavIcons from '../../NavIcons';
-import NavMobile from '../NavMobile';
-import Image from 'next/image';
 
-const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
+import Image from 'next/image';
+import NavMobile from './NavMobile';
+import NavIcons from '../NavIcons';
+import LanguageSwitcher from '../LanguageSwitcher';
+
+const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 300) {
                 setVisible(false);
             } else {
                 setVisible(true);
@@ -24,30 +26,34 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
 
     return (
         <div
-            className={`fixed top-0 w-full z-50 bg-transparent transition-all duration-300 ${
+            className={`sticky top-0 w-full z-50  transition-all duration-300 ${
                 visible ? 'translate-y-0' : '-translate-y-full'
             }`}
         >
             {/* MOBILE */}
             <div className="h-[70px] px-4 flex items-center justify-between md:hidden">
                 <Link href="/">
-                    <div className="text-xl text-white md:text-2xl tracking-wide">WORLD CASA</div>
+                    <div className="text-xl  md:text-2xl tracking-wide">WORLD CASA</div>
                 </Link>
-                <NavMobile color="white" />
+                <div>
+                    <LanguageSwitcher currentLang={lang} />
+                    <NavMobile color="white" />
+                </div>
             </div>
             {/* BIGGER Screen */}
-            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-32 xl:px-64 transition-colors duration-300 relative group/nav bg-transparent hover:bg-white py-4">
+            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-32 xl:px-64 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
                         {/* Logo */}
-                        <div className="w-1/2 text-xl text-white group-hover/nav:text-black transition-colors duration-300">
+                        <div className="w-1/2 text-xl  group-hover/nav:text-black transition-colors duration-300">
                             <Link href={'/'}>WORLD CASA</Link>
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center text-white group-hover/nav:text-black transition-colors duration-300 gap-8">
+                        <div className="w-1/2 flex justify-end items-center  group-hover/nav:text-black transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
+
                             <NavIcons lang={lang} />
                         </div>
                     </div>
@@ -67,7 +73,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                             className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full text-white group-hover/nav:text-black text-lg transition-colors duration-300"
+                                                group-hover:after:w-full group-hover/nav:text-black text-lg transition-colors duration-300"
                                             aria-label={item}
                                         >
                                             {item}
@@ -175,7 +181,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             href="#"
                                                             className="block hover:text-[#e5ae49] transition-colors duration-200 w-100 py-3"
                                                         >
-                                                            All Sofas
+                                                            All Dinings
                                                         </Link>
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
@@ -260,7 +266,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             href="#"
                                                             className="block hover:text-[#e5ae49] transition-colors duration-200 py-3"
                                                         >
-                                                            All Tables
+                                                            All Beds
                                                         </Link>
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
@@ -268,19 +274,19 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                     href="#"
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200"
                                                                 >
-                                                                    Dining Tables
+                                                                    Beds
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200"
                                                                 >
-                                                                    Coffee Tables
+                                                                    Dressers & Chests
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200"
                                                                 >
-                                                                    Side Tables
+                                                                    Nightstands
                                                                 </Link>
                                                             </div>
                                                         </div>
@@ -326,13 +332,13 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {item === 'Chairs' && (
+                                        {item === 'Collections' && (
                                             <div
                                                 className={`
                                                     absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
-                                                        openMenu === 'Chairs'
+                                                        openMenu === 'Collections'
                                                             ? 'opacity-100 translate-y-0 visible'
                                                             : 'opacity-0 -translate-y-2 invisible'
                                                     }
@@ -345,7 +351,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             href="#"
                                                             className="block hover:text-[#e5ae49] transition-colors duration-200 py-3"
                                                         >
-                                                            All Chairs
+                                                            All Collections
                                                         </Link>
 
                                                         <div className="grid grid-cols-2 gap-2">
@@ -354,7 +360,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                     href="#"
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200"
                                                                 >
-                                                                    Dining Chairs
+                                                                    Kyoto
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
@@ -516,4 +522,4 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
     );
 };
 
-export default NavHomeMenu;
+export default NavMainMenu;

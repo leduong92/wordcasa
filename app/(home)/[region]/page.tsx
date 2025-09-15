@@ -1,24 +1,20 @@
 import Image from 'next/image';
 import HomeLayout from '../../../components/layout/home/HomeLayout';
-import { apiClient, PagedResult } from '@/lib/apiClient';
-import { ItemDto } from '@/modals/itemDto';
-import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest';
 import ShopByCategory from '@/components/layout/home/ShopByCategory';
+import { cookies } from 'next/headers';
+import { languages } from '@/i18n';
 
-export default async function RegionHome({ params }: { params: Promise<{ region: string }> }) {
+export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
 
-    // const request: GetManageItemPagingRequest = {
-    //     pageIndex: 1,
-    //     pageSize: 10,
-    // };
-
-    // const products = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, {
-    //     body: JSON.stringify(request),
-    // });
+    const cookieStore = await cookies();
+    let lang = cookieStore.get('lang')?.value || 'en';
+    if (!languages.includes(lang as any)) {
+        lang = 'en';
+    }
 
     return (
-        <HomeLayout region={region}>
+        <HomeLayout region={region} lang={lang}>
             <section className="relative w-full">
                 <div className="aspect-video w-full">
                     <video

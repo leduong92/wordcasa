@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CartModal from './cart/CartModal';
 import { UserRound } from 'lucide-react';
+import LanguageSwitcher from './LanguageSwitcher';
 
-const NavIcons = () => {
+const NavIcons = ({ lang }: { lang: string }) => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const isLoggedIn = false;
     const handleProfile = () => {
@@ -12,9 +13,10 @@ const NavIcons = () => {
     };
 
     return (
-        <div className="flex items-center gap-4 xl:gap-6 relative">
+        <div className="flex items-center gap-3 xl:gap-4 relative">
+            <LanguageSwitcher currentLang={lang} />
             <button onClick={handleProfile} aria-label="Profile" className="cursor-pointer">
-                <UserRound />
+                <UserRound size={22} />
             </button>
 
             {isProfileOpen && (
@@ -26,7 +28,7 @@ const NavIcons = () => {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-4 w-1/3"
+                            className="size-3 w-1/3"
                         >
                             <path
                                 strokeLinecap="round"
@@ -47,7 +49,7 @@ const NavIcons = () => {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-4 w-1/3"
+                            className="size-3 w-1/3"
                         >
                             <path
                                 strokeLinecap="round"

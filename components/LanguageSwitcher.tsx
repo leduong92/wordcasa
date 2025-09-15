@@ -15,7 +15,7 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
         <select
             value={currentLang}
             onChange={handleChange}
-            className="p-1 rounded border text-black"
+            className="p-1 rounded border text-black focus-visible:outline-none cursor-pointer border-0"
         >
             <option value="en">English</option>
             <option value="id">Bahasa</option>

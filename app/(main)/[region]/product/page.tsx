@@ -1,5 +1,8 @@
 import { cookies } from 'next/headers';
 import { translations } from '@/i18n';
+import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest';
+import { apiClient, PagedResult } from '@/lib/apiClient';
+import { ItemDto } from '@/modals';
 
 type Product = { id: number; title: string; price: number };
 
@@ -9,10 +12,16 @@ export default async function ProductsPage({ params }: { params: Promise<{ regio
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
     const t = translations[lang];
 
-    const res = await fetch('https://fakestoreapi.com/products?limit=5', {
-        cache: 'no-store',
+    const request: GetManageItemPagingRequest = {
+        pageIndex: 1,
+        pageSize: 10,
+    };
+
+    const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, {
+        body: JSON.stringify(request),
     });
-    const products: Product[] = await res.json();
+
+    const products = response.data?.items;
 
     return (
         <div>
@@ -21,13 +30,13 @@ export default async function ProductsPage({ params }: { params: Promise<{ regio
                 {t.products} - {region.toUpperCase()}
             </h2>
             <ul className="space-y-2">
-                {products.map((p) => (
+                {products?.map((p) => (
                     <li
                         key={p.id}
                         className="p-4 border rounded bg-white shadow-sm flex justify-between"
                     >
-                        <span>{p.title}</span>
-                        <span className="font-semibold">${p.price}</span>
+                        <span>{p.productName}</span>
+                        <span className="font-semibold">{p.parentCode}</span>
                     </li>
                 ))}
             </ul>
