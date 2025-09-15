@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import HomeLayout from '../../../components/layout/HomeLayout';
+import HomeLayout from '../../../components/layout/home/HomeLayout';
 import { apiClient, PagedResult } from '@/lib/apiClient';
 import { ItemDto } from '@/modals/itemDto';
 import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest';
-import ShopByCategory from '@/components/ShopByCategory';
+import ShopByCategory from '@/components/layout/home/ShopByCategory';
 
 export default async function RegionHome({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -41,11 +41,11 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
             </section>
 
             <section className="px-8 py-8">
-                <div className="flex flex-col md:flex-row w-full h-full">
+                <div className="flex flex-col md:flex-row gap-5 w-full h-full">
                     {/* Text content */}
-                    <div className="w-full md:w-1/2 flex flex-col justify-center p-16">
-                        <span className="text-2xl font-bold">Paris</span>
-                        <p className="mt-4 text-gray-700">
+                    <div className="w-full md:w-1/2 flex flex-col justify-center lg:px-16">
+                        <span className="text-4xl font-bold text-center">Paris</span>
+                        <p className="mt-4 text-gray-700 leading-8">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -55,7 +55,7 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
 
                     {/* Image with fill */}
                     <div className="w-full md:w-1/2 flex items-center justify-center ">
-                        <div className="w-full aspect-video relative overflow-hidden">
+                        <div className="w-full aspect-video relative overflow-hidden rounded-md">
                             <Image
                                 src="/bed_1.jpg"
                                 alt="Paris"
@@ -67,11 +67,11 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row-reverse w-full h-full pt-8">
+                <div className="flex flex-col md:flex-row-reverse gap-5 w-full h-full pt-8">
                     {/* Text content */}
-                    <div className="w-full md:w-1/2 flex flex-col justify-center p-16">
-                        <span className="text-2xl font-bold">Seoul</span>
-                        <p className="mt-4 text-gray-700">
+                    <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16">
+                        <span className="text-4xl font-bold text-center">Seoul</span>
+                        <p className="mt-4 text-gray-700 leading-8">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -81,7 +81,7 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
 
                     {/* Image with fill */}
                     <div className="w-full md:w-1/2 flex items-center justify-center ">
-                        <div className="w-full aspect-video relative overflow-hidden">
+                        <div className="w-full aspect-video relative overflow-hidden rounded-md">
                             <Image
                                 src="/bed_2.jpg"
                                 alt="Seoul"
@@ -93,11 +93,11 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row w-full h-full pt-8">
+                <div className="flex flex-col md:flex-row gap-5 w-full h-full pt-8">
                     {/* Text content */}
-                    <div className="w-full md:w-1/2 flex flex-col justify-center p-16 ">
-                        <span className="text-2xl font-bold">Madrid</span>
-                        <p className="mt-4 text-gray-700">
+                    <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16 ">
+                        <span className="text-4xl font-bold text-center">Madrid</span>
+                        <p className="mt-4 text-gray-700 leading-8">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -107,7 +107,7 @@ export default async function RegionHome({ params }: { params: Promise<{ region:
 
                     {/* Image with fill */}
                     <div className="w-full md:w-1/2 flex items-center justify-center">
-                        <div className="w-full aspect-video relative overflow-hidden">
+                        <div className="w-full aspect-video relative overflow-hidden rounded-md">
                             <Image
                                 src="/bed_3.jpg"
                                 alt="Madrid"

@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import NavIcons from '../NavIcons';
-import NavMobile from './NavMobile';
+import NavIcons from '../../NavIcons';
+import NavMobile from '../NavMobile';
 import Image from 'next/image';
 
 const NavHomeMenu = () => {
@@ -46,7 +46,7 @@ const NavHomeMenu = () => {
 
                     {/* Menu Items */}
                     <ul className="flex gap-10 w-1/3 justify-center h-full">
-                        {['Living', 'Dining', 'Beds', 'Collections'].map((item) => (
+                        {['Living', 'Dining', 'Bedroom', 'Collections'].map((item) => (
                             <li
                                 key={item}
                                 className="h-full flex group "
@@ -227,13 +227,13 @@ const NavHomeMenu = () => {
                                         </div>
                                     </div>
                                 )}
-                                {item === 'Beds' && (
+                                {item === 'Bedroom' && (
                                     <div
                                         className={`
                                                     absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
-                                                        openMenu === 'Beds'
+                                                        openMenu === 'Bedroom'
                                                             ? 'opacity-100 translate-y-0 visible'
                                                             : 'opacity-0 -translate-y-2 invisible'
                                                     }
