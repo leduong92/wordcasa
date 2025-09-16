@@ -17,7 +17,7 @@ export default function MainLayout({
     return (
         <div className="min-h-screen ">
             <NavMainMenu region={region} lang={lang} />
-            <main className="px-4 md:px-8 lg:px-32 xl:px-64">{children}</main>
+            <main className="px-4 md:px-8 lg:px-24">{children}</main>
         </div>
     );
 }

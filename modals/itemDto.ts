@@ -26,6 +26,7 @@ export interface ItemDto {
     collection: CollectionDto | null;
     type: TypeDto | null;
     room: RoomDto | null;
+    itemVariantDtos: ItemVariantDto[] | [];
 }
 
 export interface InventoryItemDto {
@@ -117,7 +118,7 @@ export interface ItemCategoryDto {
     productName: string;
     slug: string;
     sku: string;
-    itemVariantDto: ItemVariantDto[];
+    itemVariantDtos: ItemVariantDto[];
 }
 
 export interface VariantOptionDto {

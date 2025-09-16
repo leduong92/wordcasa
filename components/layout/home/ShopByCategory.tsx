@@ -18,11 +18,11 @@ async function getCategories(roomId: number) {
 export default async function ShopByCategory() {
     const initialRoomId = 1;
     const initialData = await getCategories(initialRoomId);
-
+    console.log(initialData);
     return (
         <section aria-label="Shop by Category" className="py-16 px-4">
             <div className="mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-8">
+                <h2 className="text-3xl md:text-4xl font-semibold text-neutral-700 mb-8">
                     Shop by Categories
                 </h2>
 

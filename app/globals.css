@@ -140,6 +140,6 @@ body {
     }
 
     .backGround {
-        background: rgba(255, 255, 255, 0.8);
+        background: var(--color-neutral-50);
     }
 }

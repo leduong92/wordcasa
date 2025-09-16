@@ -4,8 +4,9 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ItemCategoryDto } from '@/modals';
 
-export default function ItemCarousel({ items }: { items: any[] }) {
+export default function ItemCarousel({ items }: { items: ItemCategoryDto[] }) {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 5,
@@ -23,7 +24,7 @@ export default function ItemCarousel({ items }: { items: any[] }) {
             },
         },
     });
-
+    console.log(items[0]);
     return (
         <div className="relative">
             {/* Slider */}
@@ -33,15 +34,17 @@ export default function ItemCarousel({ items }: { items: any[] }) {
                         <div className="relative w-full h-[200px]">
                             <Image
                                 src={`${
-                                    item.itemVariantDto?.[0]?.itemImageDtos?.[0]?.imageUrl ?? ''
+                                    item.itemVariantDtos?.[0]?.itemImageDtos?.[0]?.imageUrl ?? ''
                                 }?profile=basic&w=400`}
                                 alt={item.productName}
                                 fill
                                 className="object-contain rounded p-5"
                             />
                         </div>
-                        <h3 className="font-semibold text-center mt-4">{item.productName}</h3>
-                        <p className="text-sm text-gray-500 text-center">{item.sku}</p>
+                        <h3 className="font-semibold text-center text-neutral-700 mt-4">
+                            {item.productName}
+                        </h3>
+                        <p className="text-sm text-neutral-700 text-center">{item.sku}</p>
                     </div>
                 ))}
             </div>

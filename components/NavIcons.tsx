@@ -20,7 +20,7 @@ const NavIcons = ({ lang }: { lang: string }) => {
             </button>
 
             {isProfileOpen && (
-                <div className="absolute p-5 rounded-md top-8 -left-5 text-sm bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
+                <div className="absolute p-5 rounded-md top-8 -left-5 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
                     <Link href="#" prefetch={true} className="flex justify-between items-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

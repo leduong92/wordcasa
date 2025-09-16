@@ -13,7 +13,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 200) {
                 setVisible(false);
             } else {
                 setVisible(true);
@@ -33,7 +33,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
             {/* MOBILE */}
             <div className="h-[70px] px-4 flex items-center justify-between md:hidden">
                 <Link href="/">
-                    <div className="text-xl  md:text-2xl tracking-wide">WORLD CASA</div>
+                    <div className="text-xl  md:text-2xl tracking-widest uppercase">WORLDCASA</div>
                 </Link>
                 <div>
                     <LanguageSwitcher currentLang={lang} />
@@ -41,24 +41,26 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                 </div>
             </div>
             {/* BIGGER Screen */}
-            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-32 xl:px-64 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
+            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 shadow-sm bg-neutral-50 relative group/nav py-4">
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
                         {/* Logo */}
-                        <div className="w-1/2 text-xl  group-hover/nav:text-black transition-colors duration-300">
-                            <Link href={'/'}>WORLD CASA</Link>
+                        <div className="w-1/2 text-2xl  group-hover/nav:text-neutral-700 tracking-wide transition-colors duration-300">
+                            <Link href={'/'} className="tracking-widest uppercase">
+                                Worldcasa
+                            </Link>
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center  group-hover/nav:text-black transition-colors duration-300 gap-3">
+                        <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide group-hover/nav:text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
 
                             <NavIcons lang={lang} />
                         </div>
                     </div>
 
-                    <div className="w-full h-full pt-3">
+                    <div className="w-full h-full pt-5">
                         {/* Menu Items */}
                         <ul className="flex gap-10 h-full">
                             {['New', 'Sofas', 'Tables', 'Chairs', 'Beds', 'Tools', 'About'].map(
@@ -73,7 +75,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                             className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full group-hover/nav:text-black text-lg transition-colors duration-300"
+                                                group-hover:after:w-full group-hover/nav:text-neutral-700 tracking-wide transition-colors duration-300 text-xl tracking-wide"
                                             aria-label={item}
                                         >
                                             {item}
@@ -83,7 +85,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                         {item === 'New' && (
                                             <div
                                                 className={`
-                                                absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
+                                                absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
                                                 transition-all duration-300 ease-in-out origin-top
                                                 ${
                                                     openMenu === 'New'
@@ -92,28 +94,24 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-32 xl:px-64">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
-                                                        <Link
-                                                            href={`/${region}/product`}
-                                                            className="block w-full py-3 hover:text-[#e5ae49] transition-colors duration-200 text-xl"
-                                                            aria-label="All Livings"
-                                                        >
+                                                        <span className="block w-full py-3 select-none">
                                                             New
-                                                        </Link>
+                                                        </span>
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
                                                                 <Link
-                                                                    href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    href={`/${region}/product`}
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
                                                                     New Arrivals
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide tracking-wide"
                                                                     aria-label="Cocktail Tables"
                                                                 >
                                                                     Cocktail Tables
@@ -132,7 +130,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">New In</p>
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
+                                                                New In
+                                                            </p>
                                                         </div>
                                                         <div className="">
                                                             <Image
@@ -142,7 +142,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Sectional Sofas
                                                             </p>
                                                         </div>
@@ -154,7 +154,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Spill Resistant Sofas
                                                             </p>
                                                         </div>
@@ -165,7 +165,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                         {item === 'Sofas' && (
                                             <div
                                                 className={`
-                                                    absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Sofas'
@@ -174,12 +174,12 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-32 xl:px-64">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
                                                             href="#"
-                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 w-100 py-3"
+                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide w-100 py-3"
                                                         >
                                                             All Dinings
                                                         </Link>
@@ -187,19 +187,19 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             <div className="space-y-3">
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Round Dining Tables
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Rectangular & Oval Dining Table
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Sideboards & Buffets
                                                                 </Link>
@@ -217,7 +217,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">New In</p>
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
+                                                                New In
+                                                            </p>
                                                         </div>
                                                         <div className="">
                                                             <Image
@@ -227,7 +229,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Sectional Sofas
                                                             </p>
                                                         </div>
@@ -239,7 +241,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Spill Resistant Sofas
                                                             </p>
                                                         </div>
@@ -250,7 +252,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                         {item === 'Tables' && (
                                             <div
                                                 className={`
-                                                    absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Tables'
@@ -259,12 +261,12 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-32 xl:px-64">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
                                                             href="#"
-                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 py-3"
+                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide py-3"
                                                         >
                                                             All Beds
                                                         </Link>
@@ -272,19 +274,19 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             <div className="space-y-3">
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Beds
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Dressers & Chests
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Nightstands
                                                                 </Link>
@@ -302,7 +304,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">New In</p>
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
+                                                                New In
+                                                            </p>
                                                         </div>
                                                         <div className="">
                                                             <Image
@@ -312,7 +316,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Sectional Sofas
                                                             </p>
                                                         </div>
@@ -324,7 +328,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Spill Resistant Sofas
                                                             </p>
                                                         </div>
@@ -335,7 +339,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                         {item === 'Collections' && (
                                             <div
                                                 className={`
-                                                    absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Collections'
@@ -344,12 +348,12 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-32 xl:px-64">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
                                                             href="#"
-                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 py-3"
+                                                            className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide py-3"
                                                         >
                                                             All Collections
                                                         </Link>
@@ -358,25 +362,25 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             <div className="space-y-2">
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Kyoto
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Vienna
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Seoul
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Lisbon
                                                                 </Link>
@@ -384,19 +388,19 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             <div className="space-y-2">
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Madrid
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Denver
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                 >
                                                                     Paris
                                                                 </Link>
@@ -414,7 +418,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">New In</p>
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
+                                                                New In
+                                                            </p>
                                                         </div>
                                                         <div className="">
                                                             <Image
@@ -424,7 +430,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Sectional Sofas
                                                             </p>
                                                         </div>
@@ -436,7 +442,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Spill Resistant Sofas
                                                             </p>
                                                         </div>
@@ -447,7 +453,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                         {item === 'About' && (
                                             <div
                                                 className={`
-                                                absolute left-0 top-full w-full bg-white shadow-lg border-t z-50 
+                                                absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
                                                 transition-all duration-300 ease-in-out origin-top
                                                 ${
                                                     openMenu === 'About'
@@ -456,7 +462,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-32 xl:px-64">
+                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-24">
                                                     <div className="flex items-center space-x-6 w-2/3">
                                                         <Link
                                                             href={`/${region}/about`}
@@ -469,7 +475,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">About Us</p>
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
+                                                                About Us
+                                                            </p>
                                                         </Link>
                                                         <div className="">
                                                             <Image
@@ -479,7 +487,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Contact Us
                                                             </p>
                                                         </div>
@@ -491,7 +499,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Privacy Policy
                                                             </p>
                                                         </div>
@@ -503,7 +511,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 height={350}
                                                                 className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
-                                                            <p className="text-sm mt-2">
+                                                            <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Terms of use
                                                             </p>
                                                         </div>
