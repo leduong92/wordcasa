@@ -23,13 +23,12 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
     };
     return (
         <div className="flex flex-col h-full overflow-hidden">
-            {/* Link bao quanh hình + tên, nhưng không bao quanh SKU */}
             <Link
                 href={`/${region}/product/${product.slug}`}
                 className="block flex-shrink-0 relative"
                 aria-label={product.productName ?? 'Product link'}
             >
-                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center p-10">
+                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center p-6 xl:p-10">
                     {activeImage ? (
                         <>
                             {isLoading && (
@@ -46,7 +45,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}
-                                onLoadingComplete={() => setIsLoading(false)}
+                                onLoad={() => setIsLoading(false)}
                             />
                         </>
                     ) : (
@@ -66,9 +65,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 </Link>
 
                 {/* SKU */}
-                <div className="text-sm text-neutral-500 select-text mt-1">
-                    {product.parentCode}
-                </div>
+                <div className="text-neutral-500 select-text mt-1">{product.parentCode}</div>
 
                 {/* Variants */}
                 {product.itemVariantDtos.length > 1 && (
@@ -82,15 +79,19 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                     key={idx}
                                     type="button"
                                     onClick={() => handleVariantClick(imgUrl)}
-                                    className={`w-10 h-10 border rounded-full cursor-pointer overflow-hidden flex items-center justify-center 
-                  ${activeImage === imgUrl ? 'border-neutral-500' : 'border-neutral-50'}`}
+                                    className={`w-12 h-12 border rounded-full cursor-pointer overflow-hidden flex items-center justify-center 
+                                    ${
+                                        activeImage === imgUrl
+                                            ? 'border-neutral-500'
+                                            : 'border-neutral-50'
+                                    }`}
                                 >
                                     <Image
                                         src={`${imgUrl}?profile=basic&w=80`}
                                         alt={`variant ${idx}`}
-                                        width={60}
-                                        height={60}
-                                        className="object-contain w-full h-full p-2"
+                                        width={80}
+                                        height={80}
+                                        className="object-contain w-full h-full p-1"
                                     />
                                 </button>
                             );

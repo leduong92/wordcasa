@@ -4,35 +4,71 @@ import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest'
 import { apiClient, PagedResult } from '@/lib/apiClient';
 import { ItemDto } from '@/modals';
 import Image from 'next/image';
-import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
+import FilterMenu from '@/components/product/FilterMenu';
+import Link from 'next/link';
+import { Metadata } from 'next';
 
-type Product = { id: number; title: string; price: number };
+interface ProductsPageProps {
+    params: Promise<{ region: string }>;
+    searchParams: Promise<{ page?: string }>;
+}
 
-export default async function ProductsPage({ params }: { params: Promise<{ region: string }> }) {
+export async function generateMetadata({
+    params,
+    searchParams,
+}: ProductsPageProps): Promise<Metadata> {
+    const { page } = await searchParams;
     const { region } = await params;
+    const pageIndex = Number(page) > 0 ? Number(page) : 1;
+
+    return {
+        title: `Buy Products Online | Page ${pageIndex} | Worldcasa`,
+        description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
+        alternates: {
+            canonical: `/${region}/product?page=${pageIndex}`,
+        },
+        openGraph: {
+            title: `Worldcasa Products - Page ${pageIndex}`,
+            description: `Browse furniture collection - Page ${pageIndex}.`,
+            url: `/${region}/product?page=${pageIndex}`,
+            siteName: 'Worldcasa',
+            type: 'website',
+        },
+    };
+}
+
+export default async function ProductsPage({ params, searchParams }: ProductsPageProps) {
+    const { region } = await params;
+    const { page } = await searchParams;
+
     const cookieStore = await cookies();
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
     const t = translations[lang];
 
+    const pageIndex = Number(page) > 0 ? Number(page) : 1;
+    const pageSize = 15;
+
     const request: GetManageItemPagingRequest = {
-        pageIndex: 1,
-        pageSize: 10,
+        pageIndex: pageIndex,
+        pageSize: pageSize,
     };
 
-    const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, {
-        body: JSON.stringify(request),
-    });
+    const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, request);
 
     const products = response.data?.items;
-    console.log(products?.[0]?.itemVariantDtos);
+
+    const totalRecords = response.data?.totalRecords ?? 0;
+    const totalPages = Math.ceil(totalRecords / pageSize);
     return (
         <div>
+            {/* Breadcrumb */}
             <div className="flex py-5 gap-3">
-                <span>Home</span>
+                <Link href={`/${region}`}>Home</Link>
                 <span>/</span>
                 <span>Products</span>
             </div>
+            {/* Banner */}
             <div>
                 <div className="w-full relative h-[350px] mb-10">
                     <Image src={'/bed_1.jpg'} fill alt="" className="object-cover rounded-md" />
@@ -47,13 +83,65 @@ export default async function ProductsPage({ params }: { params: Promise<{ regio
                 </div>
             </div>
 
-            <div className="pt-3">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {products?.map((p) => (
-                        <div key={p.id} className="">
-                            <ProductCard region={region} product={p} />
+            {/* Layout */}
+            <div className="pt-3 flex flex-col md:flex-row">
+                {/* Sticky Filter Menu */}
+                <FilterMenu />
+
+                {/* Products */}
+                <div className="flex-1">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {products?.map((p) => (
+                            <div key={p.id} className="">
+                                <ProductCard region={region} product={p} />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Pagination */}
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="flex justify-center items-center mt-10 space-x-2">
+                            {/* Prev */}
+                            {pageIndex > 1 && (
+                                <Link
+                                    href={`/${region}/product?page=${pageIndex - 1}`}
+                                    className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
+                                >
+                                    Prev
+                                </Link>
+                            )}
+
+                            {/* Page numbers */}
+                            {Array.from({ length: totalPages }).map((_, i) => {
+                                const pageNum = i + 1;
+                                const isActive = pageNum === pageIndex;
+                                return (
+                                    <Link
+                                        key={pageNum}
+                                        href={`/${region}/product?page=${pageNum}`}
+                                        className={`px-3 py-2 border rounded ${
+                                            isActive
+                                                ? 'bg-black text-white border-black'
+                                                : 'bg-white text-gray-700 hover:bg-gray-100'
+                                        }`}
+                                    >
+                                        {pageNum}
+                                    </Link>
+                                );
+                            })}
+
+                            {/* Next */}
+                            {pageIndex < totalPages && (
+                                <Link
+                                    href={`/${region}/product?page=${pageIndex + 1}`}
+                                    className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
+                                >
+                                    Next
+                                </Link>
+                            )}
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
         </div>

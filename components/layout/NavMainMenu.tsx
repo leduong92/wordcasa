@@ -31,7 +31,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
             }`}
         >
             {/* MOBILE */}
-            <div className="h-[70px] px-4 flex items-center justify-between md:hidden">
+            <div className="h-[70px] px-4 flex items-center bg-white justify-between md:hidden">
                 <Link href="/">
                     <div className="text-xl  md:text-2xl tracking-widest uppercase">WORLDCASA</div>
                 </Link>
@@ -41,7 +41,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                 </div>
             </div>
             {/* BIGGER Screen */}
-            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 shadow-sm bg-neutral-50 relative group/nav py-4">
+            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
@@ -53,7 +53,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide group-hover/nav:text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
+                        <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
 
                             <NavIcons lang={lang} />

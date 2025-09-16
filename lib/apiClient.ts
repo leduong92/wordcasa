@@ -40,7 +40,7 @@ const apiFetch = async <T>(
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }
-    console.log(url);
+
     const res = await fetch(url, {
         method,
         headers,
