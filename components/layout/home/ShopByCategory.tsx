@@ -15,10 +15,10 @@ async function getCategories(roomId: number) {
     }
 }
 
-export default async function ShopByCategory() {
+export default async function ShopByCategory({ region }: { region: string }) {
     const initialRoomId = 1;
     const initialData = await getCategories(initialRoomId);
-    console.log(initialData);
+
     return (
         <section aria-label="Shop by Category" className="py-16 px-4">
             <div className="mx-auto text-center">
@@ -26,7 +26,11 @@ export default async function ShopByCategory() {
                     Shop by Categories
                 </h2>
 
-                <CategoryTabs initialRoomId={initialRoomId} initialData={initialData} />
+                <CategoryTabs
+                    initialRoomId={initialRoomId}
+                    initialData={initialData}
+                    region={region}
+                />
             </div>
         </section>
     );

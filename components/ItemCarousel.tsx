@@ -5,8 +5,15 @@ import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ItemCategoryDto } from '@/modals';
+import Link from 'next/link';
 
-export default function ItemCarousel({ items }: { items: ItemCategoryDto[] }) {
+export default function ItemCarousel({
+    region,
+    items,
+}: {
+    region: string;
+    items: ItemCategoryDto[];
+}) {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 5,
@@ -24,28 +31,31 @@ export default function ItemCarousel({ items }: { items: ItemCategoryDto[] }) {
             },
         },
     });
-    console.log(items[0]);
+
     return (
         <div className="relative">
             {/* Slider */}
             <div ref={sliderRef} className="keen-slider">
                 {items.map((item) => (
-                    <div key={item.id} className="keen-slider__slide rounded-xl ">
-                        <div className="relative w-full h-[200px]">
-                            <Image
-                                src={`${
-                                    item.itemVariantDtos?.[0]?.itemImageDtos?.[0]?.imageUrl ?? ''
-                                }?profile=basic&w=400`}
-                                alt={item.productName}
-                                fill
-                                className="object-contain rounded p-5"
-                            />
+                    <Link key={item.id} href={`/${region}/product/${item.slug}`}>
+                        <div className="keen-slider__slide rounded-xl ">
+                            <div className="relative w-full h-[200px]">
+                                <Image
+                                    src={`${
+                                        item.itemVariantDtos?.[0]?.itemImageDtos?.[0]?.imageUrl ??
+                                        ''
+                                    }?profile=basic&w=400`}
+                                    alt={item.productName}
+                                    fill
+                                    className="object-contain rounded p-5"
+                                />
+                            </div>
+                            <h3 className="font-semibold text-center text-neutral-700 mt-4">
+                                {item.productName}
+                            </h3>
+                            <p className="text-sm text-neutral-700 text-center">{item.sku}</p>
                         </div>
-                        <h3 className="font-semibold text-center text-neutral-700 mt-4">
-                            {item.productName}
-                        </h3>
-                        <p className="text-sm text-neutral-700 text-center">{item.sku}</p>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

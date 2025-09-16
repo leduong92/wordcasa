@@ -13,9 +13,11 @@ const tabs = [
 const CategoryTabs = ({
     initialRoomId,
     initialData,
+    region,
 }: {
     initialRoomId: number;
     initialData: ItemCategoryDto[];
+    region: string;
 }) => {
     const [activeTab, setActiveTab] = useState<number>(initialRoomId);
     const [data, setData] = useState<ItemCategoryDto[]>(initialData);
@@ -59,21 +61,23 @@ const CategoryTabs = ({
             </div>
 
             {/* Product Grid */}
-            <div className="">{loading ? <div>Loading...</div> : <ItemList items={data} />}</div>
+            <div className="">
+                {loading ? <div>Loading...</div> : <ItemList region={region} items={data} />}
+            </div>
         </>
     );
 };
 
 export default CategoryTabs;
 
-export function ItemList({ items }: { items: ItemCategoryDto[] }) {
+export function ItemList({ region, items }: { region: string; items: ItemCategoryDto[] }) {
     if (!items || items.length === 0) {
         return <div>No items found</div>;
     }
 
     return (
         <div className="">
-            <ItemCarousel items={items} />
+            <ItemCarousel region={region} items={items} />
         </div>
     );
 }

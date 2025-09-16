@@ -117,7 +117,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
             </section>
 
             <section className="px-8 py-8">
-                <ShopByCategory />
+                <ShopByCategory region={region} />
             </section>
         </HomeLayout>
     );

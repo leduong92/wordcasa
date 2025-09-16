@@ -13,6 +13,8 @@ export interface ItemDto {
     depthInch: string | null;
     widthInch: string | null;
     heightInch: string | null;
+    dimensions: string | null;
+    dimensionsCM: string | null;
     netWeightKg: number | null;
     grossWeightKg: number | null;
     netWeightLbs: number | null;
@@ -85,6 +87,11 @@ export interface ItemVariantDto {
     depth: number | null;
     width: number | null;
     height: number | null;
+    depthInch: string | null;
+    widthInch: string | null;
+    heightInch: string | null;
+    dimensions: string | null;
+    dimensionsCM: string | null;
     itemImageDtos: ItemImageDto[] | null;
     itemPriceDtos: ItemPriceDto[] | null;
     inventoryItemDtos: InventoryItemDto[] | null;

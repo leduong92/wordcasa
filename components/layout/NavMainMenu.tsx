@@ -75,7 +75,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                             className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full group-hover/nav:text-neutral-700 tracking-wide transition-colors duration-300 text-xl tracking-wide"
+                                                group-hover:after:w-full group-hover/nav:text-neutral-700 transition-colors duration-300 text-xl tracking-wide"
                                             aria-label={item}
                                         >
                                             {item}
@@ -104,14 +104,14 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                             <div className="space-y-3">
                                                                 <Link
                                                                     href={`/${region}/product`}
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide tracking-wide"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
                                                                     New Arrivals
                                                                 </Link>
                                                                 <Link
                                                                     href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide tracking-wide"
+                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                     aria-label="Cocktail Tables"
                                                                 >
                                                                     Cocktail Tables

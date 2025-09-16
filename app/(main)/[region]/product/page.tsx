@@ -61,9 +61,9 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
     const totalRecords = response.data?.totalRecords ?? 0;
     const totalPages = Math.ceil(totalRecords / pageSize);
     return (
-        <div>
+        <div className="pt-5">
             {/* Breadcrumb */}
-            <div className="flex py-5 gap-3">
+            <div className="flex mb-5 gap-3">
                 <Link href={`/${region}`}>Home</Link>
                 <span>/</span>
                 <span>Products</span>

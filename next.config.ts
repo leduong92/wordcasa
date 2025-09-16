@@ -4,7 +4,7 @@ const nextConfig = {
         typedRoutes: true,
     },
     images: {
-        formats: ['image/avif'],
+        formats: ['image/avif', 'image/webp'],
         minimumCacheTTL: 60,
         remotePatterns: [
             {
@@ -13,7 +13,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'theodorealexander.sirv.com',
+                hostname: '**.sirv.com',
             },
         ],
     },
