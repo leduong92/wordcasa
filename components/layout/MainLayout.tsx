@@ -14,7 +14,7 @@ export default function MainLayout({
     return (
         <div className="">
             <NavMainMenu region={region} lang={lang} />
-            <main className="px-4 md:px-8 lg:px-24">{children}</main>
+            <main className="px-4 md:px-8 lg:px-12">{children}</main>
         </div>
     );
 }

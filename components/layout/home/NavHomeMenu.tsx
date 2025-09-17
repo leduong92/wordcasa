@@ -35,7 +35,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
             </div>
             {/* BIGGER Screen */}
             <nav
-                className={`hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-50 py-4
+                className={`hidden md:flex h-full px-4 md:px-8 lg:px-12 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-50 py-4
                 ${
                     visible
                         ? 'translate-y-0 text-neutral-50'
@@ -100,13 +100,13 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24 ">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12 ">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
                                                                 <Link
-                                                                    href={`/${region}/product?featured=new-arrival&value=true`}
+                                                                    href={`/${region}/product`}
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
@@ -170,7 +170,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24 ">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12 ">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -257,7 +257,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24 ">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12 ">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -344,7 +344,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24 ">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12 ">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -458,7 +458,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-24 ">
+                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-12 ">
                                                     <div className="flex items-center space-x-6 w-2/3">
                                                         <Link
                                                             href={`/${region}/about`}

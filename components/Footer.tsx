@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = ({ lang }: { lang: string }) => {
     return (
-        <footer className="mt-24 px-4 md:px-8 lg:px-24">
+        <footer className="mt-24 px-4 md:px-8 lg:px-12">
             {/* Top section */}
             <div className="flex">
                 <div className="hidden md:block w-1/3 border-b h-32"></div>
@@ -31,7 +31,7 @@ const Footer = ({ lang }: { lang: string }) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 lg:px-20 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8  py-10">
                 {/* Left links */}
                 <div className="space-y-2 text-base text-gray-700">
                     <p>Customer Service</p>
@@ -62,23 +62,19 @@ const Footer = ({ lang }: { lang: string }) => {
             </div>
 
             {/* Bottom bar */}
-            <div className="border-t px-6 lg:px-20 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-                {/* Left text */}
+            <div className="border-t px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
                 <p className="text-center md:text-left">
                     {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT. */}
                     © 2025 World Casa
                 </p>
 
-                {/* Middle links */}
                 <div className="flex gap-6">
                     <a href="#">Cookie information</a>
                     <a href="#">Terms &amp; conditions</a>
                     <a href="#">Privacy policy</a>
                 </div>
 
-                {/* Right side: payment + language */}
                 <div className="flex items-center gap-6">
-                    {/* Payment icons */}
                     <div className="flex items-center gap-2">
                         <img src="/paypal.png" alt="Apple Pay" className="h-6" />
                         <img src="/mastercard.png" alt="Mastercard" className="h-6" />

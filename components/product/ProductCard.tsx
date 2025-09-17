@@ -22,13 +22,13 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
         setActiveImage(img);
     };
     return (
-        <div className="flex flex-col h-full overflow-hidden">
+        <div className="flex flex-col h-full overflow-hidden ">
             <Link
                 href={`/${region}/product/${product.slug}`}
                 className="block flex-shrink-0 relative"
                 aria-label={product.productName ?? 'Product link'}
             >
-                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center p-6 xl:p-10">
+                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center p-2">
                     {activeImage ? (
                         <>
                             {isLoading && (
@@ -41,7 +41,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                 alt={product.productName ?? ''}
                                 width={420}
                                 height={260}
-                                className={`object-contain max-h-full transition-opacity duration-300 ${
+                                className={`object-contain max-h-full transition-opacity duration-300 p-5 ${
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}

@@ -7,9 +7,20 @@
 
 body {
     margin: 0;
-    @apply font-sans text-base;
 }
 
+:root {
+    --baskerville: 'Baskerville', Arial, sans-serif;
+    --helvetica-neue: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.font-basker {
+    font-family: var(--baskerville);
+}
+
+.font-helve {
+    font-family: var(--helvetica-neue);
+}
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);

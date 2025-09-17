@@ -35,7 +35,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                 <NavMobile color="black" />
             </div>
             {/* BIGGER Screen */}
-            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
+            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-12 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
@@ -90,13 +90,13 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
                                                                 <Link
-                                                                    href={`/${region}/product?category=new&value=true`}
+                                                                    href={`/${region}/product`}
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
@@ -160,7 +160,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -247,7 +247,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -334,7 +334,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                     }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
+                                                <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-12">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
                                                         <Link
@@ -448,7 +448,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 }
                                                 `}
                                             >
-                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-24">
+                                                <div className="max-w-screen w-full  py-6 flex px-4 md:px-8 lg:px-12">
                                                     <div className="flex items-center space-x-6 w-2/3">
                                                         <Link
                                                             href={`/${region}/about`}

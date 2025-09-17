@@ -4,7 +4,8 @@ const config: Config = {
     theme: {
         extend: {
             fontFamily: {
-                hurme: ['var(--font-hurme)', 'sans-serif'],
+                basker: ['var(--font-baskerville)'],
+                helve: ['var(--font-helvetica-neue)'],
             },
         },
     },
