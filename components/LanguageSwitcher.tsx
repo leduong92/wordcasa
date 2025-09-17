@@ -17,7 +17,7 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
             <select
                 value={currentLang}
                 onChange={handleChange}
-                className="md:hidden rounded focus-visible:outline-none cursor-pointer border-0 bg-black"
+                className="md:hidden rounded focus-visible:outline-none cursor-pointer border-0"
             >
                 <option value="en">En</option>
                 <option value="id">Id</option>

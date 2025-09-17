@@ -90,18 +90,30 @@ export default function FilterMenu({ initialSearchParams }: FilterMenuProps) {
             // This is safe and avoids the `window` error.
             const newSearchParams = new URLSearchParams(searchParams.toString());
 
-            // Luôn set category dựa trên group.name (ví dụ: 'sofas' từ 'Sofas')
-            newSearchParams.set(group.name, group.value);
-
-            let currentValues = newSearchParams.getAll('value');
-            if (currentValues.includes(optionValue)) {
-                currentValues = currentValues.filter((v) => v !== optionValue);
+            // 1. Xử lý bộ lọc độc lập (ví dụ: 'sale' hoặc 'new')
+            if (group.name === 'featured') {
+                const currentValue = newSearchParams.get('featured');
+                if (currentValue === group.value) {
+                    newSearchParams.delete('featured'); // Tắt nếu đã chọn
+                } else {
+                    newSearchParams.set('featured', group.value); // Bật
+                }
             } else {
-                currentValues.push(optionValue);
-            }
+                // Luôn set category dựa trên group.name (ví dụ: 'sofas' từ 'Sofas')
+                newSearchParams.set(group.name, group.value);
 
-            newSearchParams.delete('value');
-            currentValues.forEach((v) => newSearchParams.append('value', v));
+                // Xử lý các giá trị con trong nhóm
+                let currentValues = newSearchParams.getAll('value');
+                if (currentValues.includes(optionValue)) {
+                    currentValues = currentValues.filter((v) => v !== optionValue);
+                } else {
+                    currentValues.push(optionValue);
+                }
+                newSearchParams.delete('value');
+                if (currentValues.length > 0) {
+                    currentValues.forEach((v) => newSearchParams.append('value', v));
+                }
+            }
 
             newSearchParams.set('page', '1'); // Thêm dòng này để reset trang
             router.push(`/${pathname.replace('/', '')}?${newSearchParams.toString()}`);
@@ -111,10 +123,15 @@ export default function FilterMenu({ initialSearchParams }: FilterMenuProps) {
 
     const isFilterActive = useCallback(
         (group: { name: string; value: string }, optionValue: string) => {
-            const category = searchParams.get(group.name);
-            const values = searchParams.getAll('value');
+            const params = new URLSearchParams(searchParams.toString());
 
-            return category === group.value && values.includes(optionValue);
+            if (group.name === 'featured') {
+                return params.get('featured') === group.value;
+            } else {
+                const category = params.get(group.name);
+                const values = params.getAll('value');
+                return category === group.value && values.includes(optionValue);
+            }
         },
         [searchParams]
     );
@@ -179,9 +196,9 @@ export default function FilterMenu({ initialSearchParams }: FilterMenuProps) {
                         <input
                             type="checkbox"
                             className="accent-black"
-                            checked={isFilterActive({ name: 'category', value: 'sale' }, 'true')}
+                            checked={isFilterActive({ name: 'featured', value: 'sale' }, 'sale')}
                             onChange={() =>
-                                handleFilterClick({ name: 'category', value: 'sale' }, 'true')
+                                handleFilterClick({ name: 'featured', value: 'sale' }, 'sale')
                             }
                         />{' '}
                         Sale
@@ -190,9 +207,15 @@ export default function FilterMenu({ initialSearchParams }: FilterMenuProps) {
                         <input
                             type="checkbox"
                             className="accent-black"
-                            checked={isFilterActive({ name: 'category', value: 'new' }, 'true')}
+                            checked={isFilterActive(
+                                { name: 'featured', value: 'new-arrival' },
+                                'new-arrival'
+                            )}
                             onChange={() =>
-                                handleFilterClick({ name: 'category', value: 'new' }, 'true')
+                                handleFilterClick(
+                                    { name: 'featured', value: 'new-arrival' },
+                                    'new-arrival'
+                                )
                             }
                         />{' '}
                         New Arrival

@@ -5,6 +5,8 @@ import './globals.css';
 import localFont from 'next/font/local';
 import GoToTopButton from '@/components/GoToTopButton';
 import Footer from '@/components/Footer';
+import { cookies } from 'next/headers';
+import { languages, translations } from '@/i18n';
 
 const hurme = localFont({
     src: [
@@ -21,13 +23,17 @@ export const metadata: Metadata = {
     description: 'Next.js app with region-based layouts',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const cookieStore = await cookies();
+    const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
+    const t = translations[lang];
+
     return (
         <html lang="en" className={hurme.variable}>
             <body>
                 {children}
                 <GoToTopButton />
-                <Footer />
+                <Footer lang={lang} />
             </body>
         </html>
     );

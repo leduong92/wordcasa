@@ -2,19 +2,12 @@
 // import { useCartStore } from '@/store/useCartStore';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 import CartQtyLoadingSkeleton from '../cart/CartQtyLoadingSkeleton';
-import SearchBar from '../SearchBar';
 import { Search, ShoppingCart, TextAlignJustify, UserRound } from 'lucide-react';
 import LanguageSwitcher from '../LanguageSwitcher';
+import SearchInput from '../SearchInput';
 
 const NavMobile = (params: { color: string }) => {
     const [isMounted, setIsMounted] = useState(false);
@@ -57,7 +50,7 @@ const NavMobile = (params: { color: string }) => {
     };
 
     return (
-        <div className={`flex md:hidden items-center justify-between w-full text-${color}`}>
+        <div className={`flex md:hidden items-center justify-between w-full  text-${color}`}>
             {/* Left */}
             <div className="flex items-center gap-3 w-1/3">
                 {/* Menu Hambeger */}
@@ -379,9 +372,9 @@ const NavMobile = (params: { color: string }) => {
                     </SheetTrigger>
                     <SheetContent side={'left'}>
                         <SheetHeader>
-                            <SheetTitle>Search products</SheetTitle>
-                            <div>
-                                <SearchBar onSearch={() => setSearchOpen(false)} />
+                            <SheetTitle className="mb-6">Search products</SheetTitle>
+                            <div className="w-full border-b">
+                                <SearchInput />
                             </div>
                         </SheetHeader>
                     </SheetContent>
@@ -391,7 +384,7 @@ const NavMobile = (params: { color: string }) => {
             </div>
 
             {/* Middle */}
-            <div className="w-1/3 flex-1    ">
+            <div className="w-1/3 flex justify-center">
                 <Link href="/">
                     <div className={`text-xl text-${color} tracking-widest uppercase`}>
                         WORLDCASA
@@ -400,7 +393,7 @@ const NavMobile = (params: { color: string }) => {
             </div>
 
             {/* Right */}
-            <div className="flex items-center gap-3 w-1/3">
+            <div className="flex items-center justify-end gap-3 w-1/3">
                 <UserRound size={17} />
                 <Link href="/cart" prefetch={true} className="relative cursor-pointer">
                     <div className="cursor-pointer">

@@ -47,7 +47,7 @@ export default function SearchInput() {
                         handleSearch();
                     }
                 }}
-                className="border rounded px-4 py-2  focus:outline-none focus-visible:outline-none focus:ring-1 focus:ring-neutral-300"
+                className="px-4 placeholder-gray-300 focus:outline-none focus-visible:outline-none "
             />
             <button onClick={handleSearch} className="absolute right-4 cursor-pointer ">
                 <Search size={16} />

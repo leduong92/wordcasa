@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import NavIcons from '../../NavIcons';
 import NavMobile from '../NavMobile';
 import Image from 'next/image';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import SearchInput from '@/components/SearchInput';
 
 const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -12,7 +12,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 200) {
                 setVisible(false);
             } else {
                 setVisible(true);
@@ -24,22 +24,30 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
     }, []);
 
     return (
-        <div
-            className={`fixed top-0 w-full z-50 bg-transparent transition-all duration-300 ${
-                visible ? 'translate-y-0' : '-translate-y-full'
-            }`}
-        >
+        <div className={`fixed top-0 w-full z-50 bg-transparent transition-all duration-300`}>
             {/* MOBILE */}
-            <div className="h-[50px] px-4 flex items-center justify-between md:hidden">
-                <NavMobile color="white" />
+            <div
+                className={`h-[50px] px-4 flex items-center justify-between md:hidden
+                ${visible ? 'translate-y-0 text-white' : 'boxShadown backDropFilter backGround'}
+                `}
+            >
+                <NavMobile color="black" />
             </div>
             {/* BIGGER Screen */}
-            <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-50 py-4">
+            <nav
+                className={`hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-50 py-4
+                ${
+                    visible
+                        ? 'translate-y-0 text-neutral-50'
+                        : 'boxShadown backDropFilter backGround'
+                }
+                `}
+            >
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
                         {/* Logo */}
-                        <div className="w-1/2 text-2xl text-neutral-50 group-hover/nav:text-neutral-700 transition-colors duration-300">
+                        <div className="w-1/2 text-2xl  group-hover/nav:text-neutral-700 transition-colors duration-300">
                             <Link
                                 href={'/'}
                                 className="focus-visible:outline-none tracking-widest uppercase"
@@ -49,8 +57,11 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center text-neutral-50 group-hover/nav:text-neutral-700 transition-colors duration-300 gap-8">
+                        <div className="w-1/2 flex justify-end items-center  group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
+                            <div className="w-max border-b">
+                                <SearchInput />
+                            </div>
                             <NavIcons lang={lang} />
                         </div>
                     </div>
@@ -70,7 +81,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                             className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full text-neutral-50 group-hover/nav:text-neutral-700 transition-colors duration-300 text-xl tracking-wide"
+                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300 text-xl tracking-wide"
                                             aria-label={item}
                                         >
                                             {item}
@@ -92,24 +103,14 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24 ">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
-                                                        <span className="block w-full py-3 select-none">
-                                                            New
-                                                        </span>
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
                                                                 <Link
-                                                                    href={`/${region}/product`}
+                                                                    href={`/${region}/product?featured=new-arrival&value=true`}
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
                                                                     New Arrivals
-                                                                </Link>
-                                                                <Link
-                                                                    href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
-                                                                    aria-label="Cocktail Tables"
-                                                                >
-                                                                    Cocktail Tables
                                                                 </Link>
                                                             </div>
                                                         </div>

@@ -5,9 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import NavMobile from './NavMobile';
 import NavIcons from '../NavIcons';
-import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
-import { Search } from 'lucide-react';
 
 const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -51,7 +49,9 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                         {/* RIGHT */}
                         <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
-                            <SearchInput />
+                            <div className="w-max border-b">
+                                <SearchInput />
+                            </div>
                             <NavIcons lang={lang} />
                         </div>
                     </div>
@@ -93,24 +93,14 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                 <div className="max-w-screen w-full justify-center py-6 flex px-4 md:px-8 lg:px-24">
                                                     {/* Left links */}
                                                     <div className="w-1/3">
-                                                        <span className="block w-full py-3 select-none">
-                                                            New
-                                                        </span>
                                                         <div className="flex gap-20 w-100">
                                                             <div className="space-y-3">
                                                                 <Link
-                                                                    href={`/${region}/product`}
+                                                                    href={`/${region}/product?category=new&value=true`}
                                                                     className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
                                                                     aria-label="Side Tables"
                                                                 >
                                                                     New Arrivals
-                                                                </Link>
-                                                                <Link
-                                                                    href="#"
-                                                                    className="block hover:text-[#e5ae49] transition-colors duration-200 tracking-wide"
-                                                                    aria-label="Cocktail Tables"
-                                                                >
-                                                                    Cocktail Tables
                                                                 </Link>
                                                             </div>
                                                         </div>
@@ -118,13 +108,13 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
 
                                                     {/* Right images */}
                                                     <div className="flex items-center space-x-6 w-2/3">
-                                                        <div className="">
+                                                        <div className="w-[350px] aspect-[16/9]">
                                                             <Image
                                                                 src="/bed_1.jpg"
                                                                 alt="New In"
                                                                 width={350}
                                                                 height={350}
-                                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                                className="rounded-md object-cover transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
                                                             <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 New In
@@ -136,7 +126,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 alt="Sectional Sofas"
                                                                 width={350}
                                                                 height={350}
-                                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                                className="rounded-md object-cover transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
                                                             <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Sectional Sofas
@@ -148,7 +138,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                                                                 alt="Spill Resistant Sofas"
                                                                 width={350}
                                                                 height={350}
-                                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                                className="rounded-md object-cover transform transition duration-300 ease-in-out hover:scale-105"
                                                             />
                                                             <p className="text-sm mt-2 text-neutral-700 tracking-wide">
                                                                 Spill Resistant Sofas

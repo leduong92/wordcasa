@@ -37,6 +37,13 @@ const ProductDetailPage = async ({ params }: { params: { region: string; slug: s
             <ProductVariantClient product={product} />
 
             <section className="px-8 py-8">
+                <div>
+                    <h1>We also recommend</h1>
+                </div>
+                <div></div>
+            </section>
+
+            <section className="px-8 py-8">
                 <ShopByCategory region={region} />
             </section>
 

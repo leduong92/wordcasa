@@ -1,107 +1,92 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ lang }: { lang: string }) => {
     return (
-        <div className="py-24 px-4 md:px-8 lg:px-24 mt-24 bg-neutral-600">
-            {/* TOP */}
-            <div className="flex flex-col md:flex-row justify-between gap-24">
-                {/* LEFT */}
-                <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8 text-neutral-50">
-                    <Link href="/">
-                        <div className="text-2xl tracking-wide">WORLD CASA</div>
-                    </Link>
-                    <p className="">
-                        3252 Winding Way, Central Plaza, Willowbrook, CA 90210, United States
-                    </p>
-                    <span className=" font-semibold">hello@ecom.dev</span>
-                    <span className=" font-semibold">+1 234 567 890</span>
-                    <div className="flex gap-6 ">
-                        <Image src="/facebook.png" alt="" width={18} height={18} />
-                        <Image src="/instagram.png" alt="" width={18} height={18} />
-                        <Image src="/youtube.png" alt="" width={18} height={18} />
-                        <Image src="/pinterest.png" alt="" width={18} height={18} />
-                        <Image src="/x.png" alt="" width={18} height={18} />
-                    </div>
-                </div>
-                {/* CENTER */}
-                <div className="hidden lg:flex justify-between w-1/2 text-neutral-50">
-                    <div className="flex flex-col justify-between">
-                        <h1 className="font-medium text-lg">COMPANY</h1>
-                        <div className="flex flex-col gap-6">
-                            <Link href="#">About Us</Link>
-                            <Link href="#">Careers</Link>
-                            <Link href="#">Affiliates</Link>
-                            <Link href="#">Blog</Link>
-                            <Link href="#">Contact Us</Link>
-                        </div>
-                    </div>
-                    <div className="flex flex-col justify-between">
-                        <h1 className="font-medium text-lg">SHOP</h1>
-                        <div className="flex flex-col gap-6">
-                            <Link href="#">New Arrivals</Link>
-                            <Link href="#">Accessories</Link>
-                            <Link href="#">Men</Link>
-                            <Link href="#">Women</Link>
-                            <Link href="#">All Products</Link>
-                        </div>
-                    </div>
-                    <div className="flex flex-col justify-between">
-                        <h1 className="font-medium text-lg">HELP</h1>
-                        <div className="flex flex-col gap-6">
-                            <Link href="#">Customer Service</Link>
-                            <Link href="#">My Account</Link>
-                            <Link href="#">Find a Store</Link>
-                            <Link href="#">Legal & Privacy</Link>
-                            <Link href="#">Terms of use</Link>
-                        </div>
-                    </div>
-                </div>
-                {/* RIGHT */}
-                <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8 text-neutral-50">
-                    <h1 className="font-medium text-xl">SUBSCRIBE</h1>
-                    <p className="">
-                        Be the first to get the latest news about trends, promotions, and much more!
-                    </p>
-                    <div className="flex gap-1">
-                        <input
-                            type="text"
-                            placeholder="Email address"
-                            className="p-4 w-3/4 outline-none border rounded-l-md text-neutral-50"
+        <footer className="mt-24 px-4 md:px-8 lg:px-24">
+            {/* Top section */}
+            <div className="flex">
+                <div className="hidden md:block w-1/3 border-b h-32"></div>
+                <div className="md:col-span-2 flex gap-6 p-4 md:p-12 bg-neutral-200 rounded-xl w-full md:w-2/3">
+                    <div className="flex-1 rounded-md overflow-hidden">
+                        <Image
+                            src="/bed_3.jpg"
+                            alt="Get free fabric samples"
+                            width={300}
+                            height={150}
+                            className="w-full h-36 md:h-52 object-cover"
                         />
-                        <button
-                            className="w-1/4 bg-black text-white hover:bg-gray-800 text-lg rounded-r-md cursor-pointer"
-                            aria-label="Join us"
-                        >
-                            JOIN
-                        </button>
+                        <p className="p-2 font-medium text-base">Get free fabric samples</p>
                     </div>
-                    <span className="font-semibold">Secure Payments</span>
-                    <div className="flex justify-between">
-                        {/* <Image src="/discover.png" alt="" width={40} height={20} />
-                        <Image src="/skrill.png" alt="" width={40} height={20} />
-                        <Image src="/paypal.png" alt="" width={40} height={20} />
-                        <Image src="/mastercard.png" alt="" width={40} height={20} />
-                        <Image src="/visa.png" alt="" width={40} height={20} /> */}
+                    <div className="flex-1 rounded-md overflow-hidden">
+                        <Image
+                            src="/bed_4.jpg"
+                            alt="Need help? Let's talk"
+                            width={300}
+                            height={150}
+                            className="w-full h-36 md:h-52 object-cover"
+                        />
+                        <p className="p-2 font-medium text-base">Need help? Let&apos;s talk</p>
                     </div>
                 </div>
             </div>
-            {/* BOTTOM */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-16 text-neutral-50">
-                <div className="">© 2025 World Casa</div>
-                <div className="flex flex-col gap-8 md:flex-row">
-                    <div className="">
-                        <span className="text-gray-800 mr-4">Language</span>
-                        <span className="font-medium">United States | English</span>
-                    </div>
-                    <div className="">
-                        <span className="text-gray-800 mr-4">Currency</span>
-                        <span className="font-medium">$ USD</span>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 lg:px-20 py-10">
+                {/* Left links */}
+                <div className="space-y-2 text-base text-gray-700">
+                    <p>Customer Service</p>
+                    <p>Find store</p>
+                    <p>About Worldcasa</p>
+                    <p>Delivery Policy</p>
+                    <p>Sale & Return Policy</p>
+                </div>
+                <div></div>
+                {/* Social icons */}
+                <div className="flex items-center justify-center gap-6 py-6">
+                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                        <Image src="/facebook.png" alt="" width={25} height={25} />
+                    </a>
+                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                        <Image src="/instagram.png" alt="" width={25} height={25} />
+                    </a>
+                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                        <Image src="/pinterest.png" alt="" width={25} height={25} />
+                    </a>
+                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                        <Image src="/youtube.png" alt="" width={25} height={25} />
+                    </a>
+                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                        <Image src="/x.png" alt="" width={25} height={25} />
+                    </a>
+                </div>
+            </div>
+
+            {/* Bottom bar */}
+            <div className="border-t px-6 lg:px-20 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+                {/* Left text */}
+                <p className="text-center md:text-left">
+                    {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT. */}
+                    © 2025 World Casa
+                </p>
+
+                {/* Middle links */}
+                <div className="flex gap-6">
+                    <a href="#">Cookie information</a>
+                    <a href="#">Terms &amp; conditions</a>
+                    <a href="#">Privacy policy</a>
+                </div>
+
+                {/* Right side: payment + language */}
+                <div className="flex items-center gap-6">
+                    {/* Payment icons */}
+                    <div className="flex items-center gap-2">
+                        <img src="/paypal.png" alt="Apple Pay" className="h-6" />
+                        <img src="/mastercard.png" alt="Mastercard" className="h-6" />
+                        <img src="/visa.png" alt="Visa" className="h-6" />
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 

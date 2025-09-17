@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import { languages } from '@/i18n';
 import MainLayout from '@/components/layout/MainLayout';
 
 export default async function RegionLayout({
@@ -12,10 +11,7 @@ export default async function RegionLayout({
     const { region } = await params;
 
     const cookieStore = await cookies();
-    let lang = cookieStore.get('lang')?.value || 'en';
-    if (!languages.includes(lang as any)) {
-        lang = 'en';
-    }
+    const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
 
     return (
         <MainLayout region={region} lang={lang}>
