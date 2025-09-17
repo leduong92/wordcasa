@@ -20,8 +20,8 @@ export default async function ShopByCategory({ region }: { region: string }) {
     const initialData = await getCategories(initialRoomId);
 
     return (
-        <section aria-label="Shop by Category" className="py-16 px-4">
-            <div className="mx-auto text-center">
+        <section aria-label="Shop by Category" className="py-4">
+            <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-neutral-700 mb-8">
                     Shop by Categories
                 </h2>

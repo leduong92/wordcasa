@@ -1,6 +1,5 @@
 'use client';
 
-import { Layout } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function LanguageSwitcher({ currentLang }: { currentLang: string }) {
@@ -13,13 +12,26 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
     };
 
     return (
-        <select
-            value={currentLang}
-            onChange={handleChange}
-            className={`p-1 rounded focus-visible:outline-none cursor-pointer border-0`}
-        >
-            <option value="en">English</option>
-            <option value="id">Bahasa</option>
-        </select>
+        <div className="">
+            {/* Mobile */}
+            <select
+                value={currentLang}
+                onChange={handleChange}
+                className="md:hidden rounded focus-visible:outline-none cursor-pointer border-0 bg-black"
+            >
+                <option value="en">En</option>
+                <option value="id">Id</option>
+            </select>
+
+            {/* Desktop */}
+            <select
+                value={currentLang}
+                onChange={handleChange}
+                className="hidden md:block rounded focus-visible:outline-none cursor-pointer border-0"
+            >
+                <option value="en">English</option>
+                <option value="id">Bahasa</option>
+            </select>
+        </div>
     );
 }

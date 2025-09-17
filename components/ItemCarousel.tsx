@@ -50,7 +50,7 @@ export default function ItemCarousel({
                                     className="object-contain rounded p-5"
                                 />
                             </div>
-                            <h3 className="font-semibold text-center text-neutral-700 mt-4">
+                            <h3 className="font-semibold text-center text-neutral-700 my-4">
                                 {item.productName}
                             </h3>
                             <p className="text-sm text-neutral-700 text-center">{item.sku}</p>

@@ -6,6 +6,8 @@ import Image from 'next/image';
 import NavMobile from './NavMobile';
 import NavIcons from '../NavIcons';
 import LanguageSwitcher from '../LanguageSwitcher';
+import SearchInput from '../SearchInput';
+import { Search } from 'lucide-react';
 
 const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -31,14 +33,8 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
             }`}
         >
             {/* MOBILE */}
-            <div className="h-[70px] px-4 flex items-center bg-white justify-between md:hidden">
-                <Link href="/">
-                    <div className="text-xl  md:text-2xl tracking-widest uppercase">WORLDCASA</div>
-                </Link>
-                <div>
-                    <LanguageSwitcher currentLang={lang} />
-                    <NavMobile color="white" />
-                </div>
+            <div className="h-[50px] px-4 flex items-center bg-white justify-between md:hidden">
+                <NavMobile color="black" />
             </div>
             {/* BIGGER Screen */}
             <nav className="hidden md:flex h-full px-4 md:px-8 lg:px-24 transition-colors duration-300 shadow-sm bg-white relative group/nav py-4">
@@ -55,7 +51,7 @@ const NavMainMenu = ({ region, lang }: { region: string; lang: string }) => {
                         {/* RIGHT */}
                         <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
-
+                            <SearchInput />
                             <NavIcons lang={lang} />
                         </div>
                     </div>

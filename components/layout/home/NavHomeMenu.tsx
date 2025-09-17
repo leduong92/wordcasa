@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import NavIcons from '../../NavIcons';
 import NavMobile from '../NavMobile';
 import Image from 'next/image';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -29,12 +30,7 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
             }`}
         >
             {/* MOBILE */}
-            <div className="h-[70px] px-4 flex items-center justify-between md:hidden">
-                <Link href="/">
-                    <div className="text-xl text-neutral-50 tracking-widest uppercase">
-                        WORLD CASA
-                    </div>
-                </Link>
+            <div className="h-[50px] px-4 flex items-center justify-between md:hidden">
                 <NavMobile color="white" />
             </div>
             {/* BIGGER Screen */}
@@ -55,7 +51,6 @@ const NavHomeMenu = ({ region, lang }: { region: string; lang: string }) => {
                         {/* RIGHT */}
                         <div className="w-1/2 flex justify-end items-center text-neutral-50 group-hover/nav:text-neutral-700 transition-colors duration-300 gap-8">
                             {/* <SearchBar /> */}
-
                             <NavIcons lang={lang} />
                         </div>
                     </div>

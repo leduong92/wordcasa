@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }: { onSearch?: () => void }) => {
         onSearch?.();
     };
     return (
-        <form className="flex justify-between gap-4 p-2 flex-1  border " onSubmit={handleSearch}>
+        <div className="flex justify-between gap-4 p-2 flex-1  border ">
             <input
                 autoComplete="off"
                 type="text"
@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch }: { onSearch?: () => void }) => {
                 defaultValue={''}
             />
             <button className="cursor-pointer" aria-label="Search"></button>
-        </form>
+        </div>
     );
 };
 

@@ -16,26 +16,13 @@ const NavIcons = ({ lang }: { lang: string }) => {
         <div className="flex items-center gap-3 xl:gap-4 relative">
             <LanguageSwitcher currentLang={lang} />
             <button onClick={handleProfile} aria-label="Profile" className="cursor-pointer">
-                <UserRound size={22} />
+                <UserRound size={18} />
             </button>
 
             {isProfileOpen && (
                 <div className="absolute p-5 rounded-md top-8 -left-5 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
                     <Link href="#" prefetch={true} className="flex justify-between items-center">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="size-3 w-1/3"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                            />
-                        </svg>
+                        <UserRound size={18} />
                         <span className="w-2/3 px-2">Profile</span>
                     </Link>
                     <Link

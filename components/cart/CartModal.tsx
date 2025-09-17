@@ -44,7 +44,7 @@ const CartModal = () => {
                     onClick={() => setIsOpen((prev) => !prev)}
                     className="cursor-pointer"
                 >
-                    <ShoppingCart size={22} />
+                    <ShoppingCart size={18} />
                 </div>
             </div>
             {/* <div className="relative cursor-pointer">

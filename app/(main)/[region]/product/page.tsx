@@ -8,11 +8,8 @@ import ProductCard from '@/components/product/ProductCard';
 import FilterMenu from '@/components/product/FilterMenu';
 import Link from 'next/link';
 import { Metadata } from 'next';
-
-interface ProductsPageProps {
-    params: Promise<{ region: string }>;
-    searchParams: Promise<{ page?: string }>;
-}
+import SortMenu from '@/components/product/SortMenu';
+import SearchInput from '@/components/SearchInput';
 
 export async function generateMetadata({
     params,
@@ -38,9 +35,20 @@ export async function generateMetadata({
     };
 }
 
+interface ProductsPageProps {
+    params: Promise<{ region: string }>;
+    searchParams: Promise<{
+        page?: string;
+        category?: string | string[];
+        value?: string | string[];
+        sortKey?: string;
+        searchKey?: string;
+    }>;
+}
+
 export default async function ProductsPage({ params, searchParams }: ProductsPageProps) {
     const { region } = await params;
-    const { page } = await searchParams;
+    const { page, category, value, sortKey, searchKey } = await searchParams;
 
     const cookieStore = await cookies();
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
@@ -52,8 +60,20 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
     const request: GetManageItemPagingRequest = {
         pageIndex: pageIndex,
         pageSize: pageSize,
+        sortKey: sortKey,
+        searchKey: searchKey,
+        obj: {
+            category: category
+                ? Array.isArray(category)
+                    ? category.join(',')
+                    : category
+                : undefined,
+            value: value ? (Array.isArray(value) ? value.join(',') : value) : undefined,
+        },
     };
 
+    var filterParams = await searchParams;
+    console.log(request);
     const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, request);
 
     const products = response.data?.items;
@@ -86,10 +106,13 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
             {/* Layout */}
             <div className="pt-3 flex flex-col md:flex-row">
                 {/* Sticky Filter Menu */}
-                <FilterMenu />
+                <FilterMenu initialSearchParams={filterParams} />
 
                 {/* Products */}
                 <div className="flex-1">
+                    <div className="hidden md:flex w-full items-center justify-end">
+                        <SortMenu />
+                    </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {products?.map((p) => (
                             <div key={p.id} className="">
@@ -105,7 +128,13 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
                             {/* Prev */}
                             {pageIndex > 1 && (
                                 <Link
-                                    href={`/${region}/product?page=${pageIndex - 1}`}
+                                    href={{
+                                        pathname: `/${region}/product`,
+                                        query: {
+                                            ...filterParams,
+                                            page: String(pageIndex - 1),
+                                        },
+                                    }}
                                     className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
                                 >
                                     Prev
@@ -119,7 +148,13 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
                                 return (
                                     <Link
                                         key={pageNum}
-                                        href={`/${region}/product?page=${pageNum}`}
+                                        href={{
+                                            pathname: `/${region}/product`,
+                                            query: {
+                                                ...filterParams,
+                                                page: String(pageNum),
+                                            },
+                                        }}
                                         className={`px-3 py-2 border rounded ${
                                             isActive
                                                 ? 'bg-black text-white border-black'
@@ -134,7 +169,13 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
                             {/* Next */}
                             {pageIndex < totalPages && (
                                 <Link
-                                    href={`/${region}/product?page=${pageIndex + 1}`}
+                                    href={{
+                                        pathname: `/${region}/product`,
+                                        query: {
+                                            ...filterParams,
+                                            page: String(pageIndex + 1),
+                                        },
+                                    }}
                                     className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
                                 >
                                     Next

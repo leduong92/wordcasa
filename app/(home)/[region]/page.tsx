@@ -33,15 +33,15 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 </div>
 
                 {/* Overlay content */}
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center px-4 text-center"></div>
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center text-center"></div>
             </section>
 
-            <section className="px-8 py-8">
+            <section className="px-4 md:px-8 py-8">
                 <div className="flex flex-col md:flex-row gap-5 w-full h-full">
                     {/* Text content */}
                     <div className="w-full md:w-1/2 flex flex-col justify-center lg:px-16">
                         <span className="text-4xl font-bold text-center">Paris</span>
-                        <p className="mt-4 text-gray-700 leading-8">
+                        <p className="mt-4 text-gray-700 leading-8 text-justify">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -67,7 +67,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                     {/* Text content */}
                     <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16">
                         <span className="text-4xl font-bold text-center">Seoul</span>
-                        <p className="mt-4 text-gray-700 leading-8">
+                        <p className="mt-4 text-gray-700 leading-8 text-justify">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -93,7 +93,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                     {/* Text content */}
                     <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16 ">
                         <span className="text-4xl font-bold text-center">Madrid</span>
-                        <p className="mt-4 text-gray-700 leading-8">
+                        <p className="mt-4 text-gray-700 leading-8 text-justify">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
                             odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
                             consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
@@ -116,7 +116,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 </div>
             </section>
 
-            <section className="px-8 py-8">
+            <section className="px-4 md:px-8 py-8">
                 <ShopByCategory region={region} />
             </section>
         </HomeLayout>
