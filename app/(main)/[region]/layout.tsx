@@ -12,7 +12,6 @@ export default async function RegionLayout({
 
     const cookieStore = await cookies();
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
-
     return (
         <MainLayout region={region} lang={lang}>
             {children}

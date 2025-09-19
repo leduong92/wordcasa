@@ -7,7 +7,7 @@ type FilterContentProps = {
 
 export default function FilterContent({ isSelected, toggleFilter }: FilterContentProps) {
     return (
-        <div>
+        <div className="px-4">
             {/* Category */}
             <h3 className="font-semibold mb-2">Category</h3>
             <div className="space-y-2 mb-6">

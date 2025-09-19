@@ -6,6 +6,7 @@ import AccordionItem from './AccordionItem';
 import { Funnel, X } from 'lucide-react';
 import SortMenu from '../SortMenu';
 import FilterContent from './FilterContent';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 export default function FilterMenu() {
     const router = useRouter();
@@ -78,28 +79,39 @@ export default function FilterMenu() {
     return (
         <div className="flex">
             {/* Nút Filter cho Mobile */}
-            <div className="md:hidden flex justify-between items-center w-full">
-                <button className="flex items-center gap-2" onClick={() => setOpen(true)}>
+            <div className="flex justify-between items-center w-full">
+                <button
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={() => setOpen(true)}
+                >
                     <Funnel size={18} />
                     <span>Filters</span>
                 </button>
-                <div className="md:hidden items-center justify-end">
+                <div className="items-center justify-end">
                     <SortMenu />
                 </div>
             </div>
 
-            <aside className="hidden md:block md:w-52 lg:w-64 sticky top-4 h-fit pr-2">
+            <Sheet open={open} onOpenChange={setOpen}>
+                <SheetContent side="left" className="w-72">
+                    <SheetHeader>
+                        <SheetTitle>Filters</SheetTitle>
+                    </SheetHeader>
+                    <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
+                </SheetContent>
+            </Sheet>
+
+            {/* <aside className="hidden md:block md:w-52 lg:w-64 sticky top-4 h-fit pr-2">
                 <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
-            </aside>
+            </aside> */}
 
             {/* Overlay + Sidebar Mobile */}
-            <div
+            {/* <div
                 className={`fixed inset-0 bg-black/40 z-50 transition-opacity duration-300 ${
                     open ? 'opacity-100 visible' : 'opacity-0 invisible'
                 } lg:hidden`}
                 onClick={() => setOpen(false)}
             >
-                {/* Sidebar panel */}
                 <div
                     className={`fixed top-0 left-0 w-72 h-full bg-white p-4 shadow-lg transform transition-transform duration-300 ${
                         open ? 'translate-x-0' : '-translate-x-full'
@@ -115,7 +127,7 @@ export default function FilterMenu() {
 
                     <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

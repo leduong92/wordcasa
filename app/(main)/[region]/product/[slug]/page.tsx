@@ -19,7 +19,7 @@ const ProductDetailPage = async ({ params }: { params: { region: string; slug: s
     const product = await getProductDetail(region, slug);
 
     if (!product) {
-        return <div>Sản phẩm không tồn tại.</div>;
+        return <div>Product not found.</div>;
     }
 
     return (

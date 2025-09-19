@@ -73,16 +73,31 @@ export interface RoomDto {
     metaDescription: string | null;
     imageUrl: string | null;
     isActive: boolean | null;
-    typeDtos: TypeDto[] | null;
+    CategoryDtos: CategoryDto[] | null;
 }
 
-export interface TypeDto {
+export interface CategoryDto {
     id: number;
     roomId: number;
     roomDto: RoomDto;
+    categoryDetailDtos: CategoryDetailDto[];
     name: string | null;
     displayName: string | null;
-    sortOrder: number | 0;
+    sortOrder: number | null;
+    slug: string | null;
+    description: string | null;
+    metaKeyword: string | null;
+    metaDescription: string | null;
+    imageUrl: string | null;
+    isActive: boolean | null;
+}
+
+export interface CategoryDetailDto {
+    id: number;
+    categoryId: number;
+    name: string | null;
+    displayName: string | null;
+    sortOrder: number | null;
     slug: string | null;
     description: string | null;
     metaKeyword: string | null;

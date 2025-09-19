@@ -1,6 +1,7 @@
 import NavHomeMenu from './NavHomeMenu';
+import { getMenus } from '@/lib/apiService';
 
-export default function HomeLayout({
+export default async function HomeLayout({
     children,
     lang,
     region,
@@ -9,11 +10,13 @@ export default function HomeLayout({
     lang: string;
     region: string;
 }) {
+    const menus = await getMenus();
+
     return (
         <div className=" ">
-            <NavHomeMenu region={region} lang={lang} />
+            <NavHomeMenu region={region} lang={lang} categoryDtos={menus} />
 
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 font-helve">{children}</main>
         </div>
     );
 }

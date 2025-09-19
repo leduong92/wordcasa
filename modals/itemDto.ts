@@ -1,4 +1,11 @@
-import { CollectionDto, RegionDto, RoomDto, TypeDto, WarehouseDto } from './systemDto';
+import {
+    CollectionDto,
+    RegionDto,
+    RoomDto,
+    CategoryDto,
+    CategoryDetailDto,
+    WarehouseDto,
+} from './systemDto';
 
 export interface ItemDto {
     id: number;
@@ -23,10 +30,10 @@ export interface ItemDto {
     isActive: boolean;
     materials: string | null;
     collectionId: number | null;
-    typeId: number | null;
+    categoryId: number | null;
     roomId: number | null;
     collection: CollectionDto | null;
-    type: TypeDto | null;
+    category: CategoryDto | null;
     room: RoomDto | null;
     itemVariantDtos: ItemVariantDto[] | [];
 }

@@ -13,25 +13,37 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
 
     return (
         <HomeLayout region={region} lang={lang}>
-            <section className="relative w-full">
-                <div className="aspect-video w-full">
-                    <video
-                        // autoPlay
-                        loop
-                        muted
-                        playsInline
-                        controls
-                        className="w-full h-full object-cover"
-                    >
-                        <source
-                            src="https://theodorealexander.sirv.com/Videos/Home_Videos/TA_introduction_041_2.mp4"
-                            type="video/mp4"
-                        />
-                    </video>
-                </div>
+            <section className="relative h-screen w-full">
+                <video
+                    // autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                >
+                    <source
+                        src="https://theodorealexander.sirv.com/Videos/Home_Videos/TA_introduction_041_2.mp4"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
 
-                {/* Overlay content */}
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center text-center"></div>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center px-4 text-center">
+                    {/* <div>
+                        <h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
+                            Welcome to Worldcasa
+                        </h1>
+                        <p className="mt-4 text-white text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                            Luxury furniture & timeless designs for your living space.
+                        </p>
+                        <div className="mt-6  gap-4">
+                            <button className="px-6 py-3 bg-[#e5ae49] text-white font-medium rounded-md hover:bg-[#d19a3f] transition">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div> */}
+                </div>
             </section>
 
             <section className="px-4 md:px-8 py-8">
@@ -139,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
 
             <section className="px-4 md:px-8 py-8">
                 <div className="text-center">
-                    <h3 className="text-base md:text-2xl">The Art of Living Danishly</h3>
+                    <h3 className="text-base md:text-3xl">The Art of Living </h3>
                     <h1 className="text-2xl md:text-4xl font-bold">
                         Introducing our new bed collections
                     </h1>

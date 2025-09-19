@@ -52,16 +52,16 @@ export default function ActiveFilters() {
         <div className="flex flex-wrap items-center gap-2">
             <button
                 onClick={clearAll}
-                className="px-3 py-1 cursor-pointer flex items-center gap-2 bg-neutral-800 hover:bg-neutral-500 text-neutral-50 rounded text-sm"
+                className="px-3 py-1 cursor-pointer flex items-center gap-2 bg-neutral-800 hover:bg-neutral-500 text-neutral-50 rounded-xl text-sm"
             >
-                All filters ({totalCount}) <X size={16} />
+                Filters ({totalCount}) <X size={16} />
             </button>
 
             {Object.entries(parsed).map(([field, values]) =>
                 values.map((value) => (
                     <span
                         key={`${field}-${value}`}
-                        className="flex items-center gap-1 border capitalize px-2 py-1 cursor-pointer rounded text-sm bg-neutral-100"
+                        className="flex items-center gap-1 border capitalize px-2 py-1 cursor-pointer rounded-xl text-sm bg-neutral-100"
                     >
                         {field}: {value}
                         <button
