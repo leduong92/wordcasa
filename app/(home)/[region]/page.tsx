@@ -4,6 +4,7 @@ import ShopByCategory from '@/components/layout/home/ShopByCategory';
 import { cookies } from 'next/headers';
 import { translations } from '@/i18n';
 import ShopTheLook from '@/components/ShopTheLook';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -14,36 +15,10 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
     return (
         <HomeLayout region={region} lang={lang}>
             <section className="relative h-screen w-full">
-                <video
-                    // autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                >
-                    <source
-                        src="https://theodorealexander.sirv.com/Videos/Home_Videos/TA_introduction_041_2.mp4"
-                        type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                </video>
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center px-4 text-center">
-                    {/* <div>
-                        <h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
-                            Welcome to Worldcasa
-                        </h1>
-                        <p className="mt-4 text-white text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
-                            Luxury furniture & timeless designs for your living space.
-                        </p>
-                        <div className="mt-6  gap-4">
-                            <button className="px-6 py-3 bg-[#e5ae49] text-white font-medium rounded-md hover:bg-[#d19a3f] transition">
-                                Shop Now
-                            </button>
-                        </div>
-                    </div> */}
-                </div>
+                <VideoPlayer
+                    videoClass="absolute top-0 left-0 w-full h-full object-cover"
+                    src="/videos/home_01.mp4"
+                />
             </section>
 
             <section className="px-4 md:px-8 py-8">
@@ -98,30 +73,6 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                         </div>
                     </div>
                 </div>
-
-                {/* <div className="flex flex-col md:flex-row gap-5 w-full h-full pt-8">
-                    <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16 ">
-                        <span className="text-4xl font-bold text-center">Madrid</span>
-                        <p className="mt-4 text-gray-700 leading-8 text-justify">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde
-                            odio quaerat corrupti modi eveniet aspernatur, ratione tenetur dicta
-                            consequuntur reiciendis, ullam atque cupiditate, aliquam non molestias.
-                            Voluptatum, maxime qui?
-                        </p>
-                    </div>
-
-                    <div className="w-full md:w-1/2 flex items-center justify-center">
-                        <div className="w-full aspect-video relative overflow-hidden rounded-md">
-                            <Image
-                                src="/bed_3.jpg"
-                                alt="Madrid"
-                                fill
-                                priority
-                                className="object-cover"
-                            />
-                        </div>
-                    </div>
-                </div> */}
             </section>
 
             <section className="px-4 md:px-8 py-8">
@@ -178,9 +129,9 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 </div>
             </section>
 
-            <section className="px-4 md:px-8 py-8">
+            {/* <section className="px-4 md:px-8 py-8">
                 <ShopTheLook />
-            </section>
+            </section> */}
         </HomeLayout>
     );
 }

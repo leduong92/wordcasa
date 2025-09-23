@@ -11,8 +11,8 @@ type AccordionItemProps = {
 
 export default function AccordionItem({
     title,
-    options,
     field,
+    options,
     isSelected,
     toggleFilter,
 }: AccordionItemProps) {

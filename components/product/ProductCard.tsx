@@ -50,7 +50,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                         </>
                     ) : (
                         <div className="w-full h-full bg-gray-50 flex items-center justify-center">
-                            <span className="text-sm text-neutral-400">No image</span>
+                            <span className="text-sm">No image</span>
                         </div>
                     )}
                 </div>
@@ -59,13 +59,15 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
             <div className="px-6 pb-6 flex-1 flex flex-col text-center">
                 {/* Tên */}
                 <Link href={`/${region}/product/${product.slug}`} className="">
-                    <h3 className="text-lg font-medium text-neutral-800 tracking-wide hover:text-neutral-600">
+                    <h3 className="text-lg font-medium tracking-wide hover:text-neutral-500">
                         {product.productName}
                     </h3>
                 </Link>
 
                 {/* SKU */}
-                <div className="text-neutral-500 select-text mt-1">{product.parentCode}</div>
+                <div className="text-neutral-500 select-text tracking-wider mt-1">
+                    {product.parentCode}
+                </div>
 
                 {/* Variants */}
                 {product.itemVariantDtos.length > 1 && (

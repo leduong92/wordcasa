@@ -135,6 +135,20 @@ export interface ItemCategoryDto {
     itemVariantDtos: ItemVariantDto[];
 }
 
+export interface CategoryLandingPageDto {
+    id: number;
+    name: string | null;
+    displayName: string | null;
+    sortOrder: number | null;
+    slug: string | null;
+    description: string | null;
+    metaKeyword: string | null;
+    metaDescription: string | null;
+    imageUrl: string | null;
+    isActive: boolean | null;
+    collectionDtos: CollectionDto[];
+}
+
 export interface VariantOptionDto {
     id: number;
     variantName: string;

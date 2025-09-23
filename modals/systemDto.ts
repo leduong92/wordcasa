@@ -41,6 +41,7 @@ export interface CollectionDto {
     metaKeyword: string | null;
     metaDescription: string | null;
     imageUrl: string | null;
+    videoUrl: string | null;
     isActive: boolean | null;
 }
 export interface FabricLeatherDto {
@@ -72,6 +73,7 @@ export interface RoomDto {
     metaKeyword: string | null;
     metaDescription: string | null;
     imageUrl: string | null;
+    videoUrl: string | null;
     isActive: boolean | null;
     CategoryDtos: CategoryDto[] | null;
 }
@@ -89,6 +91,7 @@ export interface CategoryDto {
     metaKeyword: string | null;
     metaDescription: string | null;
     imageUrl: string | null;
+    videoUrl: string | null;
     isActive: boolean | null;
 }
 
@@ -103,6 +106,7 @@ export interface CategoryDetailDto {
     metaKeyword: string | null;
     metaDescription: string | null;
     imageUrl: string | null;
+    videoUrl: string | null;
     isActive: boolean | null;
 }
 

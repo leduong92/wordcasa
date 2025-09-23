@@ -24,8 +24,14 @@ export function parseQ(q?: string): ItemRequest {
             case 'price':
                 filters.price = filters.price ? `${filters.price},${value}` : value;
                 break;
+            case 'room':
+                filters.room = filters.room ? `${filters.room},${value}` : value;
+                break;
+            case 'collection':
+                filters.collection = filters.collection ? `${filters.collection},${value}` : value;
+                break;
             default:
-                filters.value = filters.value ? `${filters.value},${value}` : value;
+                filters.slug = filters.slug ? `${filters.slug},${value}` : value;
                 break;
         }
     });

@@ -100,34 +100,6 @@ export default function FilterMenu() {
                     <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
                 </SheetContent>
             </Sheet>
-
-            {/* <aside className="hidden md:block md:w-52 lg:w-64 sticky top-4 h-fit pr-2">
-                <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
-            </aside> */}
-
-            {/* Overlay + Sidebar Mobile */}
-            {/* <div
-                className={`fixed inset-0 bg-black/40 z-50 transition-opacity duration-300 ${
-                    open ? 'opacity-100 visible' : 'opacity-0 invisible'
-                } lg:hidden`}
-                onClick={() => setOpen(false)}
-            >
-                <div
-                    className={`fixed top-0 left-0 w-72 h-full bg-white p-4 shadow-lg transform transition-transform duration-300 ${
-                        open ? 'translate-x-0' : '-translate-x-full'
-                    }`}
-                    onClick={(e) => e.stopPropagation()} // tránh click overlay đóng panel khi click trong menu
-                >
-                    <div className="flex justify-between items-center mb-6">
-                        <h2 className="font-bold text-lg">Filters</h2>
-                        <button onClick={() => setOpen(false)}>
-                            <X className="w-6 h-6" />
-                        </button>
-                    </div>
-
-                    <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
-                </div>
-            </div> */}
         </div>
     );
 }

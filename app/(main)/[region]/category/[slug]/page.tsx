@@ -58,30 +58,28 @@ export default async function CategoryPage({ params, searchParams }: ProductsPag
 
     const { products, totalRecords, totalPages, pageIndex, pageSize } = await loadProducts(
         slug,
+        undefined,
+        undefined,
         sp
     );
 
     return (
         <div className="pt-5">
-            {/* Breadcrumb */}
-            <div className="flex mb-5 gap-3 text-sm">
-                <Link href={`/${region}`}>Home</Link>
-                <span>/</span>
-                <span>Products</span>
-            </div>
             {/* Banner */}
             <div className="flex border-b">
-                <div className="flex-1 pt-14">
-                    <h1 className="text-7xl font-serif font-basker mb-4">New arrivals</h1>
+                <div className="flex-1 py-8 lg:py-14">
+                    <h1 className="text-7xl font-serif font-basker mb-4 capitalize">
+                        {slug.replace('-', ' ').replace(' -', ' ').replace('-', ' ')}
+                    </h1>
                     <p className="text-xl text-gray-600 basker mt-8">
-                        Explore our latest designs – crafted for modern living.
+                        {/* Explore our latest designs – crafted for modern living. */}
                     </p>
                 </div>
 
                 {/* Categories */}
                 <div className="flex-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-                        {categories.map((cat) => (
+                        {/* {categories.map((cat) => (
                             <div key={cat.name} className="cursor-pointer group">
                                 <div className="relative w-full h-40 overflow-hidden rounded-lg">
                                     <Image
@@ -93,7 +91,7 @@ export default async function CategoryPage({ params, searchParams }: ProductsPag
                                 </div>
                                 <p className="mt-2 text-center">{cat.name}</p>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>

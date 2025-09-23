@@ -7,6 +7,12 @@ import Image from 'next/image';
 import SearchInput from '@/components/SearchInput';
 import { CategoryDto } from '@/modals';
 
+const categories = [
+    { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
+    { name: 'Dining rooms', slug: 'dining-room', image: '/bed_2.jpg' },
+    { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
+];
+
 const NavHomeMenu = ({
     region,
     lang,
@@ -131,42 +137,26 @@ const NavHomeMenu = ({
 
                                                 {/* Right images */}
                                                 <div className="flex items-center space-x-6 w-2/3">
-                                                    <div className="">
-                                                        <Image
-                                                            src="/bed_1.jpg"
-                                                            alt="New In"
-                                                            width={350}
-                                                            height={350}
-                                                            className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
-                                                        />
-                                                        <p className="text-sm mt-2 text-neutral-700">
-                                                            New In
-                                                        </p>
-                                                    </div>
-                                                    <div className="">
-                                                        <Image
-                                                            src="/bed_2.jpg"
-                                                            alt="Sectional Sofas"
-                                                            width={350}
-                                                            height={350}
-                                                            className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
-                                                        />
-                                                        <p className="text-sm mt-2 text-neutral-700">
-                                                            Sectional Sofas
-                                                        </p>
-                                                    </div>
-                                                    <div className="">
-                                                        <Image
-                                                            src="/bed_3.jpg"
-                                                            alt="Spill Resistant Sofas"
-                                                            width={350}
-                                                            height={350}
-                                                            className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
-                                                        />
-                                                        <p className="text-sm mt-2 text-neutral-700">
-                                                            Spill Resistant Sofas
-                                                        </p>
-                                                    </div>
+                                                    {categories.map((cat) => (
+                                                        <Link
+                                                            href={`/${region}/room/${cat.slug}`}
+                                                            key={cat.name}
+                                                            className="cursor-pointer group"
+                                                        >
+                                                            <div className="">
+                                                                <Image
+                                                                    src={cat.image}
+                                                                    alt="New In"
+                                                                    width={350}
+                                                                    height={350}
+                                                                    className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                                />
+                                                                <p className="text-sm mt-2 text-neutral-700">
+                                                                    {cat.name}
+                                                                </p>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
                                                 </div>
                                             </div>
                                         </div>
@@ -206,7 +196,7 @@ const NavHomeMenu = ({
                                                 {/* Left links */}
                                                 <div className="w-1/3">
                                                     <Link
-                                                        href="#"
+                                                        href={`/${region}/discover/${item.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
                                                     >
                                                         All Tables
@@ -284,7 +274,7 @@ const NavHomeMenu = ({
                                                 {/* Left links */}
                                                 <div className="w-1/3">
                                                     <Link
-                                                        href="#"
+                                                        href={`/${region}/discover/${item.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
                                                     >
                                                         All Beds
@@ -363,7 +353,7 @@ const NavHomeMenu = ({
                                                 {/* Left links */}
                                                 <div className="w-1/3">
                                                     <Link
-                                                        href="#"
+                                                        href={`/${region}/discover/${item.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
                                                     >
                                                         All Storages

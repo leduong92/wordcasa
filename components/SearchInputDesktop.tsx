@@ -56,7 +56,22 @@ export default function SearchInputDesktop() {
 
     return (
         <div>
-            <Dialog>
+            <div className="flex items-center space-x-2 relative">
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleSearch();
+                        }
+                    }}
+                    onFocus={() => setOpen(true)}
+                    className="px-4 placeholder-gray-300 focus:outline-none focus-visible:outline-none "
+                />
+            </div>
+            {/* <Dialog>
                 <DialogTrigger>
                     <div className="flex items-center space-x-2 relative">
                         <input
@@ -99,9 +114,8 @@ export default function SearchInputDesktop() {
                             </button>
                         </div>
 
-                        {/* Content */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 py-8">
-                            {/* Popular terms */}
+    
                             <div>
                                 <h2 className="text-base font-semibold mb-4">
                                     Popular search terms
@@ -119,7 +133,6 @@ export default function SearchInputDesktop() {
                                 </ul>
                             </div>
 
-                            {/* Categories grid */}
                             <div className="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-6">
                                 {categories.map((cat, i) => (
                                     <div key={i} className="flex flex-col">
@@ -140,7 +153,7 @@ export default function SearchInputDesktop() {
                         </div>
                     </DialogHeader>
                 </DialogContent>
-            </Dialog>
+            </Dialog> */}
 
             {/* <div className="block md:hidden">
                 <div className="px-2 py-6 border-b">

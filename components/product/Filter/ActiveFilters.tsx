@@ -49,12 +49,16 @@ export default function ActiveFilters() {
     if (totalCount === 0) return null;
 
     return (
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 py-4">
             <button
                 onClick={clearAll}
-                className="px-3 py-1 cursor-pointer flex items-center gap-2 bg-neutral-800 hover:bg-neutral-500 text-neutral-50 rounded-xl text-sm"
+                className="px-3 py-1 cursor-pointer flex items-center gap-2  bg-neutral-100 rounded-xl text-sm"
             >
-                Filters ({totalCount}) <X size={16} />
+                Filters{' '}
+                <span className="bg-slate-300 rounded-full w-6 h-6 flex items-center justify-center">
+                    {totalCount}
+                </span>{' '}
+                <X size={16} />
             </button>
 
             {Object.entries(parsed).map(([field, values]) =>

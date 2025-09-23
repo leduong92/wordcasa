@@ -8,7 +8,9 @@ export type GetManageItemPagingRequest = {
 
 export type ItemRequest = {
     category?: string;
-    value?: string;
+    slug?: string;
     flags?: string;
     price?: string;
+    room?: string;
+    collection?: string;
 };

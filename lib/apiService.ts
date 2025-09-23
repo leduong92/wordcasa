@@ -11,6 +11,8 @@ export async function getMenus() {
 
 export async function loadProducts(
     slug: string | undefined,
+    roomSlug: string | undefined,
+    collectionSlug: string | undefined,
     sp: Record<string, string | string[] | undefined>
 ) {
     const pageIndex = Number(sp.page) > 0 ? Number(sp.page) : 1;
@@ -19,8 +21,7 @@ export async function loadProducts(
     const q = sp.q as string | undefined;
     const parsedFilters = parseQ(q);
 
-    // Nếu có slug thì truyền vào obj.category = slug
-    const obj = { ...parsedFilters, category: slug };
+    const obj = { ...parsedFilters, slug: slug, room: roomSlug, collection: collectionSlug };
 
     const request: GetManageItemPagingRequest = {
         pageIndex,

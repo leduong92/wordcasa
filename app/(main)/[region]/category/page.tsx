@@ -1,15 +1,10 @@
 import { cookies } from 'next/headers';
 import { translations } from '@/i18n';
-import { GetManageItemPagingRequest, ItemRequest } from '@/modals/getManageItemPagingRequest';
-import { apiClient, PagedResult } from '@/lib/apiClient';
-import { ItemDto } from '@/modals';
 import Image from 'next/image';
-import ProductCard from '@/components/product/ProductCard';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
-import { parseQ } from '@/lib/utils';
 import { loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
 
@@ -38,9 +33,9 @@ export async function generateMetadata({
 }
 
 const categories = [
-    { name: 'Living rooms', image: '/bed_1.jpg' },
-    { name: 'Bedrooms', image: '/bed_1.jpg' },
-    { name: 'Dining rooms', image: '/bed_1.jpg' },
+    { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
+    { name: 'Dining rooms', slug: 'bedroom', image: '/bed_2.jpg' },
+    { name: 'Bedrooms', slug: 'dining-room', image: '/bed_3.jpg' },
 ];
 
 interface ProductsPageProps {
@@ -57,6 +52,8 @@ export default async function CategoryNoSlugPage({ params, searchParams }: Produ
     const t = translations[lang];
 
     const { products, totalRecords, totalPages, pageIndex, pageSize } = await loadProducts(
+        undefined,
+        undefined,
         undefined,
         sp
     );
@@ -82,7 +79,11 @@ export default async function CategoryNoSlugPage({ params, searchParams }: Produ
                 <div className="flex-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
                         {categories.map((cat) => (
-                            <div key={cat.name} className="cursor-pointer group">
+                            <Link
+                                href={`/${region}/room/${cat.slug}`}
+                                key={cat.name}
+                                className="cursor-pointer group"
+                            >
                                 <div className="relative w-full h-40 overflow-hidden rounded-lg">
                                     <Image
                                         src={cat.image}
@@ -92,7 +93,7 @@ export default async function CategoryNoSlugPage({ params, searchParams }: Produ
                                     />
                                 </div>
                                 <p className="mt-2 text-center">{cat.name}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
