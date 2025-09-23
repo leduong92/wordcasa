@@ -1,22 +1,12 @@
 import { cookies } from 'next/headers';
 import { translations } from '@/i18n';
-import { GetManageItemPagingRequest, ItemRequest } from '@/modals/getManageItemPagingRequest';
-import { apiClient, PagedResult } from '@/lib/apiClient';
-import { ItemDto } from '@/modals';
-import Image from 'next/image';
-import ProductCard from '@/components/product/ProductCard';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
-import { parseQ } from '@/lib/utils';
 import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
 
-export async function generateMetadata({
-    params,
-    searchParams,
-}: ProductsPageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { page } = await searchParams;
     const { region } = await params;
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
@@ -37,18 +27,12 @@ export async function generateMetadata({
     };
 }
 
-const categories = [
-    { name: 'Living rooms', image: '/bed_1.jpg' },
-    { name: 'Bedrooms', image: '/bed_1.jpg' },
-    { name: 'Dining rooms', image: '/bed_1.jpg' },
-];
-
-interface ProductsPageProps {
+interface PageProps {
     params: Promise<{ region: string; slug: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function CategoryPage({ params, searchParams }: ProductsPageProps) {
+export default async function CategoryPage({ params, searchParams }: PageProps) {
     const { region, slug } = await params;
     const sp = await searchParams;
 
@@ -80,21 +64,7 @@ export default async function CategoryPage({ params, searchParams }: ProductsPag
 
                 {/* Categories */}
                 <div className="flex-1">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-                        {/* {categories.map((cat) => (
-                            <div key={cat.name} className="cursor-pointer group">
-                                <div className="relative w-full h-40 overflow-hidden rounded-lg">
-                                    <Image
-                                        src={cat.image}
-                                        alt={cat.name}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform"
-                                    />
-                                </div>
-                                <p className="mt-2 text-center">{cat.name}</p>
-                            </div>
-                        ))} */}
-                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12"></div>
                 </div>
             </div>
 

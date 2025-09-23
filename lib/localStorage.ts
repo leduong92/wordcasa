@@ -14,7 +14,6 @@ export const getCartFromStorage = (): CartStorage => {
 
 export const saveCartToStorage = (cart: Cart[], voucher: Voucher | null, currency: string) => {
     if (typeof window !== 'undefined') {
-        console.log(cart);
         localStorage.setItem('cart', JSON.stringify({ cart, voucher, currency }));
     }
 };

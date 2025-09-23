@@ -7,12 +7,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-interface RoomsPageProps {
+interface PageProps {
     params: Promise<{ region: string; slug: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-const RoomPage = async ({ params, searchParams }: RoomsPageProps) => {
+const RoomPage = async ({ params, searchParams }: PageProps) => {
     const { region, slug } = await params;
 
     const sp = await searchParams;

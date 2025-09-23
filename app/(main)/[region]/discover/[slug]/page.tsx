@@ -6,10 +6,29 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 interface CollectionPageProps {
     params: Promise<{ region: string; slug: string }>;
     searchParams: Promise<Record<string, string[] | undefined>>;
+}
+
+export async function generateMetadata(
+    { params, searchParams }: CollectionPageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { slug, region } = await params;
+
+    const response = await apiClient.get<CategoryLandingPageDto>(
+        `/api/item/category/${region}/${slug}`
+    );
+
+    const item = response.data;
+
+    return {
+        title: item?.metaDescription + ' | Worldcasa',
+        description: item?.description,
+    };
 }
 
 const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => {
@@ -19,7 +38,6 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
     const cookieStore = await cookies();
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
     const t = translations[lang];
-    console.log(slug);
 
     const response = await apiClient.get<CategoryLandingPageDto>(
         `/api/item/category/${region}/${slug}`

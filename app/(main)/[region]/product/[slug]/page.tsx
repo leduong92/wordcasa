@@ -2,9 +2,31 @@ import ShopByCategory from '@/components/layout/home/ShopByCategory';
 import ProductVariantClient from '@/components/product/ProductDetailClient';
 import { apiClient } from '@/lib/apiClient';
 import { ItemDto } from '@/modals';
-import Image from 'next/image';
 import Script from 'next/script';
 import React from 'react';
+
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type PageProps = {
+    params: Promise<{ region: string; slug: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+    { params, searchParams }: PageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { slug, region } = await params;
+
+    const response = await apiClient.get<ItemDto>(`/api/item/${region}/${slug}`, {
+        next: { revalidate: 60 },
+    });
+
+    return {
+        title: response.data?.productName + ' | Worldcasa',
+        description: response.data?.description,
+    };
+}
 
 async function getProductDetail(region: string, slug: string) {
     const response = await apiClient.get<ItemDto>(`/api/item/${region}/${slug}`, {
@@ -24,15 +46,6 @@ const ProductDetailPage = async ({ params }: { params: { region: string; slug: s
 
     return (
         <div className="pt-5">
-            {/* Breadcrumb */}
-            <div className="flex mb-5 gap-3">
-                <span>Home</span>
-                <span>/</span>
-                <span>Products</span>
-                <span>/</span>
-                <span>{product?.productName}</span>
-            </div>
-
             {/* Main content, passing product data to the Client Component */}
             <ProductVariantClient product={product} />
 

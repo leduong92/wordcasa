@@ -8,10 +8,7 @@ import ActiveFilters from '@/components/product/Filter/ActiveFilters';
 import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
 
-export async function generateMetadata({
-    params,
-    searchParams,
-}: ProductsPageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { page } = await searchParams;
     const { region } = await params;
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
@@ -38,12 +35,12 @@ const categories = [
     { name: 'Bedrooms', slug: 'dining-room', image: '/bed_3.jpg' },
 ];
 
-interface ProductsPageProps {
+interface PageProps {
     params: Promise<{ region: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function CategoryNoSlugPage({ params, searchParams }: ProductsPageProps) {
+export default async function CategoryNoSlugPage({ params, searchParams }: PageProps) {
     const { region } = await params;
     const sp = await searchParams;
 

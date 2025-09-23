@@ -5,6 +5,13 @@ import Image from 'next/image';
 import { ItemDto, ItemVariantDto } from '@/modals';
 import { ShoppingBag } from 'lucide-react';
 
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
+
 declare var Sirv: any;
 
 export default function ProductVariantClient({ product }: { product: ItemDto }) {
@@ -26,10 +33,10 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
     };
 
     return (
-        <div className="grid grid-cols-1 md:lg:grid-cols-10 gap-12 pt-5">
+        <div className="grid grid-cols-1 md:lg:grid-cols-10 gap-12 pt-8">
             {/* Left: Sticky Images */}
             <div className="relative lg:col-span-7">
-                <div className="sticky top-24">
+                <div className="sticky top-28">
                     <div className="flex flex-col gap-4">
                         <div
                             key={selectedVariant.id}
@@ -39,7 +46,7 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                             {selectedVariant?.itemImageDtos?.map((item, idx) => (
                                 <div
                                     key={item.id || idx}
-                                    className="p-3"
+                                    className="p-8"
                                     data-src={`${item.imageUrl}?profile=basic`}
                                     data-alt={`Product image ${idx + 1} of ${product.productName}`}
                                     aria-label={`${product.parentCode}_Image_${idx}`}
@@ -63,24 +70,21 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
             </div>
 
             {/* Right: Product Info & Variants */}
-            <div className="space-y-8 lg:col-span-3">
+            <div className="space-y-6 lg:col-span-3">
                 <div>
                     <h1 className="text-3xl font-semibold">{product.productName}</h1>
-                    <p className="pt-2 text-neutral-800">{selectedVariant.sku}</p>
-                    <p className="text-lg text-gray-700 mt-3">
-                        ${selectedVariant.itemPriceDtos?.[0].price}
-                    </p>
+                    <p className="pt-2 text-neutral-600 tracking-wide">{selectedVariant.sku}</p>
                 </div>
 
                 {/* Display Dimensions based on selected variant */}
                 <div>
                     <p
-                        className="text-lg text-gray-700 mt-2"
+                        className=" text-gray-700 text-sm"
                         dangerouslySetInnerHTML={{
                             __html: `${selectedVariant.dimensions ?? 0} in`,
                         }}
                     ></p>
-                    <p className="text-lg text-gray-700 mt-2">{selectedVariant.dimensionsCM} cm</p>
+                    <p className="text-sm text-gray-700">{selectedVariant.dimensionsCM} cm</p>
                 </div>
 
                 {/* Variant Selector */}
@@ -118,11 +122,69 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                     </div>
                 )}
 
+                <div>
+                    <p className="text-sm">Retail price </p>
+                    <p className="text-lg text-gray-700 font-medium font-helve tracking-wide">
+                        ${selectedVariant.itemPriceDtos?.[0].price}
+                    </p>
+                </div>
                 {/* Add to Cart button and other interactive elements can go here */}
-                <button className="w-full bg-black text-white py-3 rounded-md text-lg flex gap-3">
-                    <ShoppingBag />
-                    <span>Add to Cart</span>
+                <button className="w-full bg-neutral-800 hover:bg-neutral-600 text-neutral-100 py-3 rounded-md text-lg flex justify-center items-center cursor-pointer gap-3">
+                    <ShoppingBag size={18} />
+                    <span className="text-sm">Add to Cart</span>
                 </button>
+
+                <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger className="cursor-pointer">
+                            Product Information
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance">
+                            <p>
+                                Our flagship product combines cutting-edge technology with sleek
+                                design. Built with premium materials, it offers unparalleled
+                                performance and reliability.
+                            </p>
+                            <p>
+                                Key features include advanced processing capabilities, and an
+                                intuitive user interface designed for both beginners and experts.
+                            </p>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger className="cursor-pointer">
+                            Shipping Details
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance">
+                            <p>
+                                We offer worldwide shipping through trusted courier partners.
+                                Standard delivery takes 3-5 business days, while express shipping
+                                ensures delivery within 1-2 business days.
+                            </p>
+                            <p>
+                                All orders are carefully packaged and fully insured. Track your
+                                shipment in real-time through our dedicated tracking portal.
+                            </p>
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger className="cursor-pointer">
+                            Return Policy
+                        </AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance">
+                            <p>
+                                We stand behind our products with a comprehensive 30-day return
+                                policy. If you&apos;re not completely satisfied, simply return the
+                                item in its original condition.
+                            </p>
+                            <p>
+                                Our hassle-free return process includes free return shipping and
+                                full refunds processed within 48 hours of receiving the returned
+                                item.
+                            </p>
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
             </div>
         </div>
     );

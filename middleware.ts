@@ -34,8 +34,9 @@ export async function middleware(req: NextRequest) {
             region = 'us';
         }
     }
-
+    console.log(region);
     const firstPart = pathname.split('/')[1];
+
     if (!regions.includes(firstPart as any)) {
         const redirectUrl = new URL(`/${region}${pathname}`, req.url);
         const res = NextResponse.redirect(redirectUrl);

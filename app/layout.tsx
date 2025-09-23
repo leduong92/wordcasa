@@ -49,7 +49,8 @@ export const helveticaNeue = localFont({
 
 export const metadata: Metadata = {
     title: 'Official Website | WorldCasa',
-    description: 'Next.js app with region-based layouts',
+    description:
+        'Luxury design furniture by Worldcasa. Shop designer furniture from a worldwide brand. Worldcasa provides interior solutions for living, dining, bedroom, home office and commercial spaces no matter the type or size of space you’re workingwith.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

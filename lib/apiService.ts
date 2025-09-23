@@ -30,7 +30,6 @@ export async function loadProducts(
         searchKey: sp.searchKey as string,
         obj,
     };
-    console.log(request);
     const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, request);
 
     return {

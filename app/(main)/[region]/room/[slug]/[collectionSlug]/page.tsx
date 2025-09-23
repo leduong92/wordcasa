@@ -6,12 +6,12 @@ import { apiClient } from '@/lib/apiClient';
 import { loadProducts } from '@/lib/apiService';
 import { cookies } from 'next/headers';
 
-interface RoomsPageProps {
+interface PageProps {
     params: Promise<{ region: string; slug: string; collectionSlug: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function CollectionDetail({ params, searchParams }: RoomsPageProps) {
+export default async function CollectionDetail({ params, searchParams }: PageProps) {
     const { region, slug, collectionSlug } = await params;
 
     const sp = await searchParams;
