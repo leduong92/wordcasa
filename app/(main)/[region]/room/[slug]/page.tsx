@@ -1,3 +1,4 @@
+import VideoPlayer from '@/components/VideoPlayer';
 import { translations } from '@/i18n';
 import { apiClient } from '@/lib/apiClient';
 import { CategoryLandingPageDto, CollectionDto, ItemCategoryDto } from '@/modals';
@@ -25,17 +26,28 @@ const RoomPage = async ({ params, searchParams }: RoomsPageProps) => {
     );
 
     const item = response.data;
-
+    const text = item?.displayName?.split('');
     return (
         <div className="pt-5">
             {/* Banner */}
             <div>
-                <div className="w-full relative h-[550px] mb-10">
-                    <Image src={'/bed_1.jpg'} fill alt="" className="object-cover rounded-md" />
+                <div className="w-full relative h-[600px] mb-10">
+                    <VideoPlayer
+                        src="/videos/home_01.mp4"
+                        videoClass="w-full h-[600px] object-cover"
+                    />
                     <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center text-neutral-50 px-6 rounded-md">
-                        <h2 className="text-3xl md:text-5xl font-semibold mb-4">
-                            {item?.displayName}
-                        </h2>
+                        <h1 className="text-5xl font-semibold mb-4 flex tracking-wide">
+                            {text?.map((char, i) => (
+                                <span
+                                    key={i}
+                                    className="opacity-0 animate-fadeInChar"
+                                    style={{ animationDelay: `${i * 0.1}s` }} // delay từng ký tự
+                                >
+                                    {char === ' ' ? '\u00A0' : char}
+                                </span>
+                            ))}
+                        </h1>
                         <p className="max-w-2xl">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nam
                             eligendi quam quidem, saepe aut culpa nulla non cum similique

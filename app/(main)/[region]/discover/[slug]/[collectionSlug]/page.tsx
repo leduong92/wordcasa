@@ -21,8 +21,8 @@ export default async function CollectionDetail({ params, searchParams }: RoomsPa
     const t = translations[lang];
 
     const { products, totalRecords, totalPages, pageIndex, pageSize } = await loadProducts(
-        undefined,
         slug,
+        undefined,
         collectionSlug,
         sp
     );

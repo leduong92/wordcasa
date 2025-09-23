@@ -4,6 +4,7 @@ import { apiClient } from '@/lib/apiClient';
 import { CategoryLandingPageDto, CollectionDto } from '@/modals';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 interface CollectionPageProps {
@@ -29,7 +30,7 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
     return (
         <div>
             <div>
-                <div className="w-full mx-auto py-8 lg:py-16">
+                <div className="w-full px-16 lg:px-32 py-8 lg:py-16">
                     <h1 className="text-4xl lg:text-6xl font-bold">{item?.metaDescription}</h1>
                     <p className="pt-2">{item?.description}</p>
                 </div>
@@ -42,11 +43,15 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
                 </div>
             </div>
             <div className="pt-8">
-                <h1 className="text-3xl py-5">Discover our table designs</h1>
+                <h1 className="text-3xl px-16 py-8">Discover our table designs</h1>
                 <div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {item?.collectionDtos.map((c) => (
-                            <div key={c.name} className="group">
+                            <Link
+                                href={`/${region}/discover/${item.slug}/${c.slug}`}
+                                key={c.name}
+                                className="group"
+                            >
                                 {/* Image */}
                                 <div className="relative w-full h-80 overflow-hidden">
                                     <Image
@@ -58,15 +63,12 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
                                 </div>
 
                                 {/* Content */}
-                                <h3 className="mt-4 text-lg font-semibold">{c.name}</h3>
-                                <a
-                                    href={`/${region}/collection/${c.slug}`}
-                                    className="flex items-center gap-2 text-sm text-gray-600 hover:text-black"
-                                >
-                                    <span>Meet {c.name}</span>
-                                    <span>→</span>
-                                </a>
-                            </div>
+
+                                <div className="flex items-center gap-2 text-sm text-gray-600 hover:text-black py-2">
+                                    <span>Explore {c.name}</span>
+                                    <span>↗</span>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

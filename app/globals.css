@@ -21,6 +21,24 @@ body {
 .font-helve {
     font-family: var(--helvetica-neue);
 }
+
+@layer utilities {
+    @keyframes fadeInChar {
+        from {
+            opacity: 0;
+            transform: translateY(0.25em);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeInChar {
+        animation: fadeInChar 0.4s forwards;
+    }
+}
+
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
