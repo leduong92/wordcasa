@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ItemDto, ItemVariantDto } from '@/modals';
+import { ShoppingBag } from 'lucide-react';
 
 declare var Sirv: any;
 
@@ -118,8 +119,9 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                 )}
 
                 {/* Add to Cart button and other interactive elements can go here */}
-                <button className="w-full bg-black text-white py-3 rounded-lg text-lg">
-                    Add to Cart
+                <button className="w-full bg-black text-white py-3 rounded-md text-lg flex gap-3">
+                    <ShoppingBag />
+                    <span>Add to Cart</span>
                 </button>
             </div>
         </div>

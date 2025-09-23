@@ -1,47 +1,40 @@
+import { CategoryDto } from '@/modals';
 import AccordionItem from './AccordionItem';
 
 type FilterContentProps = {
     isSelected: (field: string, value: string) => boolean;
     toggleFilter: (field: string, value: string) => void;
+    categoryDtos: CategoryDto[] | undefined;
 };
 
-export default function FilterContent({ isSelected, toggleFilter }: FilterContentProps) {
+export default function FilterContent({
+    isSelected,
+    toggleFilter,
+    categoryDtos,
+}: FilterContentProps) {
     return (
         <div className="px-4">
             {/* Category */}
             <h3 className="font-semibold mb-2">Category</h3>
             <div className="space-y-2 mb-6">
                 <AccordionItem
-                    title="Sofas"
-                    field="category"
-                    options={[
-                        'All Sofas',
-                        'Sectional Sofas',
-                        'Loveseats',
-                        '3 Seater Sofas',
-                        'Modular Sofas',
-                    ]}
-                    isSelected={isSelected}
-                    toggleFilter={toggleFilter}
-                />
-                <AccordionItem
                     title="Tables"
                     field="category"
-                    options={['Dining Tables', 'Coffee Tables', 'Side Tables']}
-                    isSelected={isSelected}
-                    toggleFilter={toggleFilter}
-                />
-                <AccordionItem
-                    title="Chairs"
-                    field="category"
-                    options={['Armchairs', 'Dining Chairs', 'Office Chairs']}
+                    options={categoryDtos?.[0].categoryDetailDtos}
                     isSelected={isSelected}
                     toggleFilter={toggleFilter}
                 />
                 <AccordionItem
                     title="Beds"
                     field="category"
-                    options={['King Size', 'Queen Size', 'Single']}
+                    options={categoryDtos?.[1].categoryDetailDtos}
+                    isSelected={isSelected}
+                    toggleFilter={toggleFilter}
+                />
+                <AccordionItem
+                    title="Storage"
+                    field="category"
+                    options={categoryDtos?.[2].categoryDetailDtos}
                     isSelected={isSelected}
                     toggleFilter={toggleFilter}
                 />

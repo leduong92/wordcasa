@@ -10,7 +10,7 @@ import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
 import { parseQ } from '@/lib/utils';
-import { loadProducts } from '@/lib/apiService';
+import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
 
 export async function generateMetadata({
@@ -63,6 +63,8 @@ export default async function CategoryPage({ params, searchParams }: ProductsPag
         sp
     );
 
+    const menus = await getMenus();
+
     return (
         <div className="pt-5">
             {/* Banner */}
@@ -98,7 +100,7 @@ export default async function CategoryPage({ params, searchParams }: ProductsPag
 
             <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
-                    <FilterMenu />
+                    <FilterMenu categoryDtos={menus} />
                     <ActiveFilters />
                 </div>
             </div>

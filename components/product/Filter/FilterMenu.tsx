@@ -7,8 +7,9 @@ import { Funnel, X } from 'lucide-react';
 import SortMenu from '../SortMenu';
 import FilterContent from './FilterContent';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { CategoryDto } from '@/modals';
 
-export default function FilterMenu() {
+export default function FilterMenu({ categoryDtos }: { categoryDtos: CategoryDto[] | undefined }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -93,11 +94,15 @@ export default function FilterMenu() {
             </div>
 
             <Sheet open={open} onOpenChange={setOpen}>
-                <SheetContent side="left" className="w-72">
+                <SheetContent side="left" className="w-80">
                     <SheetHeader>
                         <SheetTitle>Filters</SheetTitle>
                     </SheetHeader>
-                    <FilterContent isSelected={isSelected} toggleFilter={toggleFilter} />
+                    <FilterContent
+                        isSelected={isSelected}
+                        toggleFilter={toggleFilter}
+                        categoryDtos={categoryDtos}
+                    />
                 </SheetContent>
             </Sheet>
         </div>

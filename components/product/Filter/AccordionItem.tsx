@@ -1,9 +1,10 @@
 'use client';
+import { CategoryDetailDto, CategoryDto } from '@/modals';
 import { useState } from 'react';
 
 type AccordionItemProps = {
     title: string;
-    options: string[];
+    options: CategoryDetailDto[] | undefined;
     field: string;
     isSelected: (field: string, value: string) => boolean;
     toggleFilter: (field: string, value: string) => void;
@@ -33,15 +34,15 @@ export default function AccordionItem({
                 ${isOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}
                 `}
             >
-                {options.map((opt) => (
-                    <label key={opt} className="flex items-center gap-2 cursor-pointer">
+                {options?.map((opt) => (
+                    <label key={opt.id} className="flex items-center gap-2 cursor-pointer">
                         <input
                             type="checkbox"
-                            checked={isSelected(field, opt)}
-                            onChange={() => toggleFilter(field, opt)}
+                            checked={isSelected(field, opt.displayName ?? '')}
+                            onChange={() => toggleFilter(field, opt.displayName ?? '')}
                             className="accent-black"
                         />
-                        {opt}
+                        {opt.displayName}
                     </label>
                 ))}
             </div>

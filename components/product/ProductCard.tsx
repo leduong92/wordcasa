@@ -41,7 +41,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                 alt={product.productName ?? ''}
                                 width={420}
                                 height={260}
-                                className={`object-contain max-h-full transition-opacity duration-300 p-5 ${
+                                className={`object-contain max-h-full transition-opacity duration-300 p-8 ${
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}

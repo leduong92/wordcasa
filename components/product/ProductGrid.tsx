@@ -32,7 +32,7 @@ export default function ProductGrid({
                     {pageIndex > 1 && (
                         <Link
                             href={{
-                                pathname: `/${region}/product`,
+                                pathname: `/${region}/category`,
                                 query: { ...sp, page: String(pageIndex - 1) },
                             }}
                             className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
@@ -48,7 +48,7 @@ export default function ProductGrid({
                             <Link
                                 key={pageNum}
                                 href={{
-                                    pathname: `/${region}/product`,
+                                    pathname: `/${region}/category`,
                                     query: { ...sp, page: String(pageNum) },
                                 }}
                                 className={`px-3 py-2 border rounded ${
@@ -65,7 +65,7 @@ export default function ProductGrid({
                     {pageIndex < totalPages && (
                         <Link
                             href={{
-                                pathname: `/${region}/product`,
+                                pathname: `/${region}/category`,
                                 query: { ...sp, page: String(pageIndex + 1) },
                             }}
                             className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
