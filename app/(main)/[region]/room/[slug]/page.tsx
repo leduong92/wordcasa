@@ -36,7 +36,7 @@ const RoomPage = async ({ params, searchParams }: PageProps) => {
                         src="/videos/home_01.mp4"
                         videoClass="w-full h-[600px] object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center text-neutral-50 px-6 rounded-md">
+                    <div className="absolute inset-0 bg-neutral-900/30 flex flex-col justify-center items-center text-center text-neutral-200 px-6 rounded-md">
                         <h1 className="text-5xl font-semibold mb-4 flex tracking-wide">
                             {text?.map((char, i) => (
                                 <span
@@ -48,7 +48,7 @@ const RoomPage = async ({ params, searchParams }: PageProps) => {
                                 </span>
                             ))}
                         </h1>
-                        <p className="max-w-2xl">
+                        <p className="max-w-2xl text-justify ">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nam
                             eligendi quam quidem, saepe aut culpa nulla non cum similique
                             consequuntur voluptates. Officiis voluptatem officia sed ipsam, pariatur
@@ -58,7 +58,7 @@ const RoomPage = async ({ params, searchParams }: PageProps) => {
                 </div>
             </div>
 
-            <div className="px-16 md:px-32 py-16">
+            <div className="px-8 md:px-32 py-16">
                 <h1 className="font-bold text-4xl capitalize">Inspiring {item?.displayName}</h1>
                 <p className="text-gray-600 mt-2">
                     Get inspiration from {item?.displayName} styled by our skilled Interior

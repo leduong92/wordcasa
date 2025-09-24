@@ -1,6 +1,6 @@
 import { apiClient } from '@/lib/apiClient';
 import { ItemCategoryDto } from '@/modals/itemDto';
-import CategoryTabs from './CategoryTabs';
+import CategoryTabs from './layout/home/CategoryTabs';
 
 async function getCategories(roomId: number) {
     try {

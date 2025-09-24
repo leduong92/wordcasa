@@ -1,4 +1,4 @@
-import ShopByCategory from '@/components/layout/home/ShopByCategory';
+import ShopByCategory from '@/components/ShopByCategory';
 import ProductVariantClient from '@/components/product/ProductDetailClient';
 import { apiClient } from '@/lib/apiClient';
 import { ItemDto } from '@/modals';

@@ -28,7 +28,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 className="block flex-shrink-0 relative"
                 aria-label={product.productName ?? 'Product link'}
             >
-                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center p-2">
+                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center bg-neutral-50/20">
                     {activeImage ? (
                         <>
                             {isLoading && (
@@ -41,7 +41,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                 alt={product.productName ?? ''}
                                 width={420}
                                 height={260}
-                                className={`object-contain max-h-full transition-opacity duration-300 p-8 ${
+                                className={`object-contain max-h-full transition-opacity duration-300 p-4 md:p-10 ${
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}
@@ -56,22 +56,22 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 </div>
             </Link>
 
-            <div className="px-6 pb-6 flex-1 flex flex-col text-center">
+            <div className="flex-1 flex flex-col ">
                 {/* Tên */}
                 <Link href={`/${region}/product/${product.slug}`} className="">
-                    <h3 className="text-lg font-medium tracking-wide hover:text-neutral-500">
+                    <h3 className="text-sm font-medium tracking-wide hover:text-neutral-500">
                         {product.productName}
                     </h3>
                 </Link>
 
                 {/* SKU */}
-                <div className="text-neutral-500 select-text tracking-wider mt-1">
+                <div className="text-neutral-500 select-text tracking-wider mt-2 text-sm">
                     {product.parentCode}
                 </div>
 
                 {/* Variants */}
                 {product.itemVariantDtos.length > 1 && (
-                    <div className="flex items-center justify-center gap-1 mt-3">
+                    <div className="flex items-center gap-1 mt-3">
                         {product.itemVariantDtos.map((variant, idx) => {
                             const imgUrl = variant.itemImageDtos?.[0]?.imageUrl;
                             if (!imgUrl) return null;
@@ -81,7 +81,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                     key={idx}
                                     type="button"
                                     onClick={() => handleVariantClick(imgUrl)}
-                                    className={`w-12 h-12 border rounded-full cursor-pointer overflow-hidden flex items-center justify-center 
+                                    className={`w-10 h-10 border rounded-full cursor-pointer overflow-hidden flex items-center justify-center 
                                     ${
                                         activeImage === imgUrl
                                             ? 'border-neutral-500'

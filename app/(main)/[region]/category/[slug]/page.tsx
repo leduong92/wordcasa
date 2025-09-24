@@ -5,14 +5,15 @@ import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
 import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
+import { capitalizeWords } from '@/lib/utils';
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { page } = await searchParams;
-    const { region } = await params;
+    const { slug, region } = await params;
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
 
     return {
-        title: `Buy Products Online | Page ${pageIndex} | Worldcasa`,
+        title: `${capitalizeWords(slug)} | Page ${pageIndex} | Worldcasa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
             canonical: `/${region}/product?page=${pageIndex}`,
@@ -54,10 +55,10 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
             {/* Banner */}
             <div className="flex border-b">
                 <div className="flex-1 py-8 lg:py-14">
-                    <h1 className="text-7xl font-serif font-basker mb-4 capitalize">
-                        {slug.replace('-', ' ').replace(' -', ' ').replace('-', ' ')}
+                    <h1 className="text-5xl font-basker font-basker text-neutral-700">
+                        {capitalizeWords(slug)}
                     </h1>
-                    <p className="text-xl text-gray-600 basker mt-8">
+                    <p className="text-xl text-neutral-700 basker mt-8">
                         {/* Explore our latest designs – crafted for modern living. */}
                     </p>
                 </div>

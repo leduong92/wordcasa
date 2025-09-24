@@ -5,7 +5,7 @@ import CartQtyLoadingSkeleton from './CartQtyLoadingSkeleton';
 import { ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/hook/useCartStore';
 
-const CartModal = () => {
+const MiniCart = () => {
     const [isMounted, setIsMounted] = useState(false);
     const { cart } = useCartStore();
 
@@ -24,7 +24,7 @@ const CartModal = () => {
                 </Link>
                 {cart.length > 0 && (
                     <div
-                        className="absolute -top-4 -right-4 w-6 h-6 bg-neutral-800
+                        className="absolute -top-4 -right-4 w-6 h-6 bg-neutral-900
                     rounded-full text-neutral-100  text-sm flex items-center justify-center"
                     >
                         {totalQuantity}
@@ -35,4 +35,4 @@ const CartModal = () => {
     );
 };
 
-export default CartModal;
+export default MiniCart;

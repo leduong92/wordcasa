@@ -9,14 +9,14 @@ import { Search, ShoppingCart, TextAlignJustify, UserRound } from 'lucide-react'
 import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
 
-const NavMobile = (params: { color: string }) => {
+const NavMobile = (params: { color: string; region: string }) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     // const { cart } = useCartStore();
     const [collectionsOpen, setCollectionsOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
 
-    const { color } = params;
+    const { color, region } = params;
 
     useEffect(() => {
         setIsMounted(true);
@@ -50,7 +50,7 @@ const NavMobile = (params: { color: string }) => {
     };
 
     return (
-        <div className={`flex md:hidden items-center justify-between w-full  text-${color}`}>
+        <div className={`flex md:hidden items-center justify-between w-full text-${color}`}>
             {/* Left */}
             <div className="flex items-center gap-3 w-1/3">
                 {/* Menu Hambeger */}
@@ -374,7 +374,7 @@ const NavMobile = (params: { color: string }) => {
                         <SheetHeader>
                             <SheetTitle className="mb-6">Search products</SheetTitle>
                             <div className="w-full border-b">
-                                <SearchInput />
+                                <SearchInput isShowDialog={false} region={region} />
                             </div>
                         </SheetHeader>
                     </SheetContent>

@@ -1,7 +1,5 @@
 import { cookies } from 'next/headers';
 import { translations } from '@/i18n';
-import Image from 'next/image';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
@@ -14,7 +12,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
 
     return {
-        title: `Buy Products Online | Page ${pageIndex} | Worldcasa`,
+        title: `Search | Page ${pageIndex} | Worldcasa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
             canonical: `/${region}/product?page=${pageIndex}`,
@@ -29,18 +27,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     };
 }
 
-const categories = [
-    { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
-    { name: 'Dining rooms', slug: 'bedroom', image: '/bed_2.jpg' },
-    { name: 'Bedrooms', slug: 'dining-room', image: '/bed_3.jpg' },
-];
-
 interface PageProps {
     params: Promise<{ region: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function CategoryNoSlugPage({ params, searchParams }: PageProps) {
+export default async function SearchPage({ params, searchParams }: PageProps) {
     const { region } = await params;
     const sp = await searchParams;
 
@@ -56,30 +48,24 @@ export default async function CategoryNoSlugPage({ params, searchParams }: PageP
     );
 
     const menus = await getMenus();
-
     return (
-        <div className="pt-5">
-            {/* Breadcrumb */}
-            <div className="flex mb-5 gap-3 text-sm">
-                <Link href={`/${region}`}>Home</Link>
-                <span>/</span>
-                <span>Products</span>
-            </div>
+        <div className="">
             {/* Banner */}
             <div className="flex flex-col md:flex-row border-b">
-                <div className="flex-1 py-6 md:py-14">
-                    <h1 className="text-6xl md:text-7xl font-serif font-basker mb-4">
+                <div className="flex-1 py-6 md:py-8">
+                    {/* <h1 className="text-6xl md:text-7xl font-serif font-basker mb-4">
                         New arrivals
-                    </h1>
-                    <p className="text-xl text-gray-600 basker mt-4 md:mt-8">
-                        Explore our latest designs – crafted for modern living.
+                    </h1> */}
+                    <p className="text-xl text-neutral-500 basker mt-4 md:mt-8 tracking-wide">
+                        Showing {totalRecords} results for{' '}
+                        <strong className="text-neutral-800">“{sp.searchKey}”</strong>
                     </p>
                 </div>
 
                 {/* Categories */}
                 <div className="flex-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-                        {categories.map((cat) => (
+                        {/* {categories.map((cat) => (
                             <Link
                                 href={`/${region}/room/${cat.slug}`}
                                 key={cat.name}
@@ -95,7 +81,7 @@ export default async function CategoryNoSlugPage({ params, searchParams }: PageP
                                 </div>
                                 <p className="mt-2 text-center">{cat.name}</p>
                             </Link>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>

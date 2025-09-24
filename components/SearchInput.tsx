@@ -1,10 +1,11 @@
 // components/SearchInput.tsx
 'use client';
 
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Dialog, DialogContent, DialogTitle } from './ui/dialog';
 
 const popularTerms = [
     'marid',
@@ -21,15 +22,22 @@ const popularTerms = [
 
 const categories = [
     { name: 'Sofas', image: '/bed_1.jpg' },
-    { name: 'Chairs', image: '/bed_2.jpg' },
+    { name: 'Beds', image: '/bed_2.jpg' },
     { name: 'Dining', image: '/bed_3.jpg' },
     { name: 'Storage', image: '/bed_4.jpg' },
 ];
 
-export default function SearchInput() {
+export default function SearchInput({
+    isShowDialog,
+    region,
+}: {
+    isShowDialog: boolean;
+    region: string;
+}) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const [open, setOpen] = useState(false);
 
     // Lấy giá trị tìm kiếm ban đầu từ URL
     const initialSearchKey = searchParams.get('searchKey') || '';
@@ -43,64 +51,156 @@ export default function SearchInput() {
         setSearchQuery(e.target.value);
     };
 
+    useEffect(() => {
+        setSearchQuery('');
+    }, [pathname]);
+
     // Hàm xử lý khi người dùng nhấn Enter hoặc nút tìm kiếm
     const handleSearch = () => {
         // Cập nhật tham số tìm kiếm và reset trang về 1
         currentParams.set('searchKey', searchQuery);
         currentParams.set('page', '1');
 
-        router.push(`/${pathname.replace('/', '')}?${currentParams.toString()}`);
+        // router.push(`/${pathname.replace('/', '')}/search?${currentParams.toString()}`);
+
+        if (!searchQuery.trim()) return;
+        router.push(`/${region}/search?${currentParams.toString()}`);
+
+        setOpen(false);
     };
+
+    if (!isShowDialog) {
+        return (
+            <div>
+                <SearchBox value={searchQuery} onChange={setSearchQuery} onSearch={handleSearch} />
+                <PopularTermsList />
+                <CategoryGrid />
+            </div>
+        );
+    }
 
     return (
         <div>
-            <div className="flex items-center space-x-2 relative">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={handleInputChange}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            handleSearch();
-                        }
-                    }}
-                    className="px-4 placeholder-gray-300 focus:outline-none focus-visible:outline-none "
-                />
-                <button onClick={handleSearch} className="absolute right-4 cursor-pointer ">
-                    <Search size={16} />
-                </button>
-            </div>
+            {/* Thanh search nhỏ */}
+            <SearchBox
+                value={searchQuery}
+                onChange={setSearchQuery}
+                onSearch={handleSearch}
+                onFocus={() => setOpen(true)}
+                readonly={true}
+                className="border-b"
+            />
 
-            <div className="block md:hidden">
-                <div className="px-2 py-6 border-b">
-                    <h2 className="text-base font-medium mb-4">Popular search terms</h2>
-                    <ul className="space-y-3 text-sm text-gray-700">
-                        {popularTerms.map((term, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                <Search size={14} className="text-gray-500" />
-                                <span>{term}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 px-2">
-                    {categories.map((cat, i) => (
-                        <div key={i} className="flex flex-col">
-                            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-md">
-                                <Image
-                                    src={cat.image}
-                                    alt={cat.name}
-                                    fill
-                                    className="object-cover"
+            {/* Dialog */}
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="sm:max-w-[95%] max-w-3xl h-[90vh]">
+                    <DialogTitle style={{ display: 'none' }}></DialogTitle>
+                    <div className="w-full h-full flex flex-col">
+                        <div className="flex px-4 md:px-14 py-4 gap-6 h-full">
+                            {/* Left side */}
+                            <div className="w-1/2 flex flex-col">
+                                <SearchBox
+                                    value={searchQuery}
+                                    onChange={setSearchQuery}
+                                    onSearch={handleSearch}
+                                    autoFocus
+                                    readonly={false}
+                                    className="border-b mb-4"
                                 />
+                                <PopularTermsList />
                             </div>
-                            <span className="text-sm text-gray-700 mt-2">{cat.name}</span>
+
+                            {/* Right side */}
+                            <div className="w-1/2">
+                                <CategoryGrid />
+                            </div>
                         </div>
-                    ))}
+                    </div>
+                </DialogContent>
+            </Dialog>
+        </div>
+    );
+}
+
+/* ------------------ Sub Components ------------------ */
+function SearchBox({
+    value,
+    onChange,
+    onSearch,
+    onFocus,
+    autoFocus = false,
+    readonly = false,
+    className = '',
+}: {
+    value: string;
+    onChange: (v: string) => void;
+    onSearch: () => void;
+    onFocus?: () => void;
+    autoFocus?: boolean;
+    readonly?: boolean;
+    className?: string;
+}) {
+    return (
+        <div className={`flex items-center space-x-2 relative ${className}`}>
+            <input
+                type="text"
+                placeholder="Search..."
+                value={value}
+                autoFocus={autoFocus}
+                onChange={(e) => onChange(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && onSearch()}
+                onFocus={onFocus}
+                readOnly={readonly}
+                className="w-full px-4 py-2 focus:outline-none text-base"
+            />
+            {/* Clear button hiển thị khi có text */}
+            {value && (
+                <button
+                    type="button"
+                    onClick={() => onChange('')}
+                    className="absolute right-10 text-gray-400 hover:text-gray-600 cursor-pointer"
+                >
+                    <X size={16} />
+                </button>
+            )}
+            <button onClick={onSearch} className="absolute right-4 cursor-pointer">
+                <Search size={18} />
+            </button>
+        </div>
+    );
+}
+
+function PopularTermsList() {
+    return (
+        <div className="px-2 py-6 border-b">
+            <h2 className="text-base font-medium mb-4">Popular search terms</h2>
+            <ul className="space-y-3 text-sm text-gray-700">
+                {popularTerms.map((term, i) => (
+                    <li
+                        key={i}
+                        style={{ animationDelay: `${i * 60}ms` }}
+                        className="flex items-center gap-2 opacity-0 animate-fadeInUp"
+                    >
+                        <Search size={14} className="text-gray-500" />
+                        <span>{term}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+function CategoryGrid() {
+    return (
+        <div className="grid grid-cols-2 gap-4 px-2">
+            {categories.map((cat, i) => (
+                <div key={i} className="flex flex-col">
+                    <div className="relative w-full h-[100px] md:h-[250px] overflow-hidden rounded-md">
+                        <Image src={cat.image} alt={cat.name} fill className="object-cover" />
+                    </div>
+                    <span className="text-sm text-gray-700 mt-2">{cat.name}</span>
                 </div>
-            </div>
+            ))}
         </div>
     );
 }

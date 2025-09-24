@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import HomeLayout from '../../../components/layout/home/HomeLayout';
-import ShopByCategory from '@/components/layout/home/ShopByCategory';
+import ShopByCategory from '@/components/ShopByCategory';
 import { cookies } from 'next/headers';
-import { translations } from '@/i18n';
-import ShopTheLook from '@/components/ShopTheLook';
 import VideoPlayer from '@/components/VideoPlayer';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {

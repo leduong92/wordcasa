@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import NavIcons from '../../NavIcons';
 import NavMobile from '../NavMobile';
 import Image from 'next/image';
-import SearchInput from '@/components/SearchInput';
 import { CategoryDto } from '@/modals';
+import SearchInput from '@/components/SearchInput';
+import { usePathname } from 'next/navigation';
 
 const categories = [
     { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
@@ -25,6 +26,12 @@ const NavHomeMenu = ({
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [visible, setVisible] = useState(true);
 
+    const pathname = usePathname();
+
+    useEffect(() => {
+        setOpenMenu(null);
+    }, [pathname]);
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 200) {
@@ -42,41 +49,54 @@ const NavHomeMenu = ({
         <div className={`fixed top-0 w-full z-50 bg-transparent transition-all duration-300`}>
             {/* MOBILE */}
             <div
-                className={`h-[50px] px-4 flex items-center justify-between md:hidden
-                ${visible ? 'translate-y-0 text-white' : 'boxShadown backDropFilter backGround'}
+                className={`h-[60px] px-4 flex items-center justify-between md:hidden
+                ${
+                    visible
+                        ? 'translate-y-0 text-neutral-200'
+                        : 'boxShadown backDropFilter backGround text-neutral-700'
+                }
                 `}
             >
-                <NavMobile color="black" />
+                <NavMobile color="black" region={region} />
             </div>
             {/* BIGGER Screen */}
             <nav
-                className={`hidden md:flex h-full px-4 md:px-8 lg:px-12 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-50 py-4
+                className={`hidden md:flex h-full px-4 md:px-8 lg:px-12 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-100 py-4
                 ${
                     visible
-                        ? 'translate-y-0 text-neutral-50'
-                        : 'boxShadown backDropFilter backGround'
+                        ? 'translate-y-0 text-neutral-200'
+                        : 'boxShadown backDropFilter backGround text-neutral-700'
                 }
                 `}
             >
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
+                        <div
+                            className={`w-1/3 group-hover/nav:text-neutral-700  ${
+                                visible
+                                    ? 'text-neutral-50 placeholder-neutral-50'
+                                    : 'text-neutral-900 placeholder-neutral-900'
+                            } `}
+                        >
+                            <div className="w-max border-b">
+                                <SearchInput isShowDialog={true} region={region} />
+                            </div>
+                        </div>
                         {/* Logo */}
-                        <div className="w-1/2 text-2xl  group-hover/nav:text-neutral-700 transition-colors duration-300">
+                        <div className="w-1/3 text-2xl flex justify-center group-hover/nav:text-neutral-700 transition-colors duration-300">
                             <Link
                                 href={'/'}
-                                className="focus-visible:outline-none tracking-widest uppercase"
+                                className="focus-visible:outline-none tracking-widest uppercase font-semibold font-basker"
                             >
                                 WORLDCASA
                             </Link>
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center  group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
+                        <div className="w-1/3 flex justify-end items-center  group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
-                            <div className="w-max border-b">
-                                <SearchInput />
-                            </div>
+
                             <NavIcons lang={lang} />
                         </div>
                     </div>
@@ -95,7 +115,7 @@ const NavHomeMenu = ({
                                         className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300 text-xl tracking-wide"
+                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300 tracking-wide font-helve"
                                         aria-label={item}
                                     >
                                         {item}
@@ -105,7 +125,7 @@ const NavHomeMenu = ({
                                     {item === 'New' && (
                                         <div
                                             className={`
-                                                absolute left-0 top-full w-full bg-neutral-50 shadow-lg border-t z-50 
+                                                absolute left-0 top-full w-full bg-neutral-100 shadow-lg border-t z-50 
                                                 transition-all duration-300 ease-in-out origin-top
                                                 ${
                                                     openMenu === 'New'
@@ -174,7 +194,7 @@ const NavHomeMenu = ({
                                         className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
-                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300 text-xl tracking-wide"
+                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300tracking-wide font-helve"
                                     >
                                         {item.displayName}
                                     </button>
@@ -183,7 +203,7 @@ const NavHomeMenu = ({
                                     {item.displayName === 'Tables' && (
                                         <div
                                             className={`
-                                                    absolute left-0 top-full w-full bg-neutral-50  shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-100  shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Tables'
@@ -261,7 +281,7 @@ const NavHomeMenu = ({
                                     {item.displayName === 'Beds' && (
                                         <div
                                             className={`
-                                                    absolute left-0 top-full w-full bg-neutral-50  shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-100  shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Beds'
@@ -340,7 +360,7 @@ const NavHomeMenu = ({
                                     {item.displayName === 'Storage' && (
                                         <div
                                             className={`
-                                                    absolute left-0 top-full w-full bg-neutral-50  shadow-lg border-t z-50 
+                                                    absolute left-0 top-full w-full bg-neutral-100  shadow-lg border-t z-50 
                                                     transition-all duration-300 ease-in-out origin-top
                                                     ${
                                                         openMenu === 'Storage'

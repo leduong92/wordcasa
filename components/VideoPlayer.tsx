@@ -46,7 +46,7 @@ const VideoPlayer = ({ src, videoClass }: VidepPlayerProps) => {
                 )}
             </button>
 
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center px-4 text-center">
+            <div className="absolute inset-0 bg-neutral-900/30 flex items-center justify-center px-4 text-center">
                 {/* <div>
                     <h1 className="text-white bg-transparent font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
                         Welcome to Worldcasa

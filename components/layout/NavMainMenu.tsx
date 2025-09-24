@@ -6,8 +6,8 @@ import Image from 'next/image';
 import NavMobile from './NavMobile';
 import NavIcons from '../NavIcons';
 import SearchInput from '../SearchInput';
-import SearchInputDesktop from '../SearchInputDesktop';
 import { CategoryDto } from '@/modals';
+import { usePathname } from 'next/navigation';
 
 const categories = [
     { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
@@ -26,6 +26,11 @@ const NavMainMenu = ({
 }) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [visible, setVisible] = useState(true);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        setOpenMenu(null);
+    }, [pathname]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,31 +52,39 @@ const NavMainMenu = ({
                 `}
         >
             {/* MOBILE */}
-            <div className="h-[50px] px-4 flex items-center  justify-between md:hidden">
-                <NavMobile color="black" />
+            <div
+                className={`h-[60px] px-4 flex items-center backDropFilter backGround justify-between md:hidden ${
+                    visible ? '' : 'boxShadown'
+                }`}
+            >
+                <NavMobile color="black" region={region} />
             </div>
             {/* BIGGER Screen */}
             <nav
                 className={`hidden md:flex h-full px-4 md:px-8 lg:px-12  backDropFilter backGround relative group/nav py-4 ${
-                    !visible ? 'boxShadown ' : ''
+                    visible ? ' ' : 'boxShadown'
                 }`}
             >
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
+                        <div className={`w-1/3 text-neutral-700`}>
+                            <div className="w-max border-b">
+                                <SearchInput isShowDialog={true} region={region} />
+                            </div>
+                        </div>
                         {/* Logo */}
-                        <div className="w-1/2 text-2xl tracking-wide transition-colors duration-300">
-                            <Link href={'/'} className="tracking-widest uppercase">
+                        <div className="w-1/3 text-2xl flex justify-center transition-colors duration-300">
+                            <Link
+                                href={'/'}
+                                className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
+                            >
                                 Worldcasa
                             </Link>
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/2 flex justify-end items-center text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
-                            {/* <SearchBar /> */}
-                            <div className="w-max border-b">
-                                <SearchInputDesktop />
-                            </div>
+                        <div className="w-1/3 flex justify-end items-center text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
                             <NavIcons lang={lang} />
                         </div>
                     </div>
