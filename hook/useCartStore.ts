@@ -1,8 +1,3 @@
-// import { getCartFromStorage, saveCartToStorage } from '@/lib/localStorage';
-// import { Cart, Voucher } from '@/modals/cart';
-// import { ItemDto } from "@/modals/itemDto";
-// import { create } from 'zustand';
-
 import { ItemDto, ItemVariantDto } from '@/modals';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -142,6 +137,8 @@ interface CartState {
     removeFromCart: (variantId: number) => void;
     updateQuantity: (variantId: number, quantity: number) => void;
     clearCart: () => void;
+    totalItems: () => number;
+    totalQuantity: () => number;
 }
 
 export const useCartStore = create(
@@ -180,6 +177,8 @@ export const useCartStore = create(
             clearCart: () => {
                 set({ cart: [] });
             },
+            totalItems: () => get().cart.length,
+            totalQuantity: () => get().cart.reduce((sum, ci) => sum + ci.quantity, 0),
         }),
         {
             name: 'cart-storage',

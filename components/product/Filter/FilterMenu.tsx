@@ -4,7 +4,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import AccordionItem from './AccordionItem';
 import { Funnel, X } from 'lucide-react';
-import SortMenu from '../SortMenu';
+import SortMenu from './SortMenu';
 import FilterContent from './FilterContent';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { CategoryDto } from '@/modals';

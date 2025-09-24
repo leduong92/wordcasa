@@ -14,7 +14,7 @@ const Footer = ({ lang }: { lang: string }) => {
                             alt="Get free fabric samples"
                             width={300}
                             height={150}
-                            className="w-full h-36 md:h-52 object-cover"
+                            className="w-full h-32 md:h-48 object-cover"
                         />
                         <p className="p-2 font-medium text-base">Get free fabric samples</p>
                     </div>
@@ -24,7 +24,7 @@ const Footer = ({ lang }: { lang: string }) => {
                             alt="Need help? Let's talk"
                             width={300}
                             height={150}
-                            className="w-full h-36 md:h-52 object-cover"
+                            className="w-full h-32 md:h-48 object-cover"
                         />
                         <p className="p-2 font-medium text-base">Need help? Let&apos;s talk</p>
                     </div>

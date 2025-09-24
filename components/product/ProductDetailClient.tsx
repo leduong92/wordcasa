@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ItemDto, ItemVariantDto } from '@/modals';
-import { ShoppingBag } from 'lucide-react';
 
 import {
     Accordion,
@@ -11,7 +10,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
-import { useCartStore } from '@/hook/useCartStore';
+import AddToCartButton from '../cart/AddToCartButton';
+import { formatCurrency } from '@/lib/utils';
 
 declare var Sirv: any;
 
@@ -30,10 +30,6 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
         }
     }, []);
 
-    const addToCart = useCartStore((state) => state.addToCart);
-    const [quantity, setQuantity] = useState<number>(1);
-    const [isAdding, setIsAdding] = useState(false);
-
     useEffect(() => {
         if (typeof Sirv !== 'undefined' && Sirv.start) {
             // Re-run Sirv.start() on the updated container
@@ -45,17 +41,6 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
 
     const handleVariantClick = (variant: ItemVariantDto) => {
         setSelectedVariant(variant);
-    };
-
-    const handleAddToCart = () => {
-        if (selectedVariant) {
-            setIsAdding(true);
-            addToCart(product, selectedVariant, quantity);
-            setTimeout(() => {
-                setIsAdding(false);
-            }, 1000);
-        } else {
-        }
     };
 
     return (
@@ -149,21 +134,16 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                 )}
 
                 <div>
-                    <p className="text-sm">Retail price </p>
+                    <p className="text-sm text-neutral-600 py-1">Retail price </p>
                     <p className="text-lg text-gray-700 font-medium font-helve tracking-wide">
-                        ${selectedVariant.itemPriceDtos?.[0].price}
+                        {formatCurrency(selectedVariant.itemPriceDtos?.[0].price ?? 0)}
                     </p>
                 </div>
-                {/* Add to Cart button and other interactive elements can go here */}
-                <button
-                    className="w-full bg-neutral-800 hover:bg-neutral-600 text-neutral-100 py-3 rounded-md text-lg flex justify-center items-center cursor-pointer gap-3"
-                    onClick={handleAddToCart}
-                    disabled={isAdding}
-                >
-                    <ShoppingBag size={18} />
-                    <span className="text-sm">{isAdding ? 'Processing...' : 'Add to Cart'}</span>
-                </button>
 
+                {/* Add to Cart button and other interactive elements can go here */}
+                <AddToCartButton item={product} variant={selectedVariant} />
+
+                {/* Product information */}
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
                     <AccordionItem value="item-1">
                         <AccordionTrigger className="cursor-pointer">

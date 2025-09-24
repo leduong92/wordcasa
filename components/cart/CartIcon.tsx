@@ -1,21 +1,30 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
-import CartQtyLoadingSkeleton from './CartQtyLoadingSkeleton';
+import React, { useEffect, useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/hook/useCartStore';
+import { Skeleton } from '../ui/skeleton';
 
-const MiniCart = () => {
+const CartIcon = () => {
     const [isMounted, setIsMounted] = useState(false);
     const { cart } = useCartStore();
+
+    const totalQuantity = useCartStore((s) => s.totalQuantity());
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
-    if (!isMounted) return <CartQtyLoadingSkeleton />;
+    if (!isMounted)
+        return (
+            <div className="relative cursor-pointer">
+                <div className="cursor-pointer">
+                    <ShoppingCart size={18} />
+                </div>
+                <Skeleton className="absolute -top-4 -right-3 w-6 h-6 rounded-full flex items-center justify-center z-10" />
+            </div>
+        );
 
-    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
     return (
         <>
             <div className="relative cursor-pointer">
@@ -35,4 +44,4 @@ const MiniCart = () => {
     );
 };
 
-export default MiniCart;
+export default CartIcon;

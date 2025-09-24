@@ -3,10 +3,6 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
-interface SortMenuProps {
-    initialSearchParams: { [key: string]: string | string[] | undefined };
-}
-
 export default function SortMenu() {
     const router = useRouter();
     const pathname = usePathname();
@@ -18,8 +14,6 @@ export default function SortMenu() {
         newSearchParams.set('page', '1'); // Luôn reset về trang 1 khi sắp xếp
         router.push(`/${pathname.replace('/', '')}?${newSearchParams.toString()}`);
     };
-
-    const isSortActive = (key: string) => searchParams.get('sortKey') === key;
 
     return (
         <div className="">

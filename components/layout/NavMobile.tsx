@@ -4,11 +4,11 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
-import CartQtyLoadingSkeleton from '../cart/CartQtyLoadingSkeleton';
 import { Search, ShoppingCart, TextAlignJustify, UserRound } from 'lucide-react';
 import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
 import { useCartStore } from '@/hook/useCartStore';
+import CartIcon from '../cart/CartIcon';
 
 const NavMobile = (params: { color: string; region: string }) => {
     const [isMounted, setIsMounted] = useState(false);
@@ -23,28 +23,7 @@ const NavMobile = (params: { color: string; region: string }) => {
         setIsMounted(true);
     }, []);
 
-    if (!isMounted)
-        return (
-            <div className="flex gap-4 items-center ">
-                <CartQtyLoadingSkeleton />
-                <div className="">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                        />
-                    </svg>
-                </div>
-            </div>
-        );
+    if (!isMounted) return <div></div>;
 
     const toggleCollections = () => {
         setCollectionsOpen((prev) => !prev);
@@ -398,19 +377,7 @@ const NavMobile = (params: { color: string; region: string }) => {
             {/* Right */}
             <div className="flex items-center justify-end gap-3 w-1/3">
                 <UserRound size={17} />
-                <Link href="/cart" prefetch={true} className="relative cursor-pointer">
-                    <div className="cursor-pointer">
-                        <ShoppingCart size={17} />
-                        {cart.length > 0 && (
-                            <div
-                                className="absolute -top-4 -right-3 w-6 h-6 bg-neutral-900
-                    rounded-full text-neutral-100  text-sm flex items-center justify-center"
-                            >
-                                {totalQuantity}
-                            </div>
-                        )}
-                    </div>
-                </Link>
+                <CartIcon />
             </div>
         </div>
     );

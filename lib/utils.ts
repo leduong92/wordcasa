@@ -6,6 +6,14 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+export const formatCurrency = (value: number, locale = 'en-US', currency = 'USD') => {
+    return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency,
+        minimumFractionDigits: 0,
+    }).format(value);
+};
+
 export function capitalizeWords(str: string) {
     return str
         .split('-')

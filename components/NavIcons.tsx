@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import MiniCart from './cart/MiniCart';
+import CartIcon from './cart/CartIcon';
 import { UserRound } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -50,7 +50,7 @@ const NavIcons = ({ lang }: { lang: string }) => {
                 </div>
             )}
 
-            <MiniCart />
+            <CartIcon />
         </div>
     );
 };
