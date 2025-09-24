@@ -43,7 +43,7 @@ const CartPage = async ({ params, searchParams }: PageProps) => {
                         {/* RIGHT: Order summary */}
                         <div className="lg:col-span-1 space-y-6">
                             <div className="sticky top-28">
-                                <CartSummary />
+                                <CartSummary region={region} />
                             </div>
                         </div>
                     </div>

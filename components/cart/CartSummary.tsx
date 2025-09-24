@@ -2,8 +2,9 @@
 
 import { useCartStore } from '@/hook/useCartStore';
 import { formatCurrency } from '@/lib/utils';
+import CheckoutButton from '../checkout/CheckoutButton';
 
-export default function CartSummary() {
+export default function CartSummary({ region }: { region: string }) {
     const items = useCartStore((state) => state.cart);
     const totalQuantity = useCartStore((state) => state.totalQuantity());
 
@@ -49,7 +50,10 @@ export default function CartSummary() {
                         )}
                     </span>
                 </div>
-                <button className="w-full bg-black text-white py-3 mt-4 rounded">Check out</button>
+                {/* <button className="w-full bg-black text-white py-3 mt-4 rounded">Check out</button> */}
+                <div className="py-4">
+                    <CheckoutButton region={region} />
+                </div>
             </div>
 
             {/* <div className="bg-neutral-100 p-6 rounded shadow-sm">

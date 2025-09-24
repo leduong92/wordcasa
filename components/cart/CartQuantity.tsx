@@ -1,9 +1,16 @@
 'use client';
 import { useCartStore } from '@/hook/useCartStore';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CartQuantity = () => {
+    const [isMounted, setIsMounted] = useState(false);
     const totalQuantity = useCartStore((state) => state.totalQuantity());
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return;
     return (
         <h1 className="text-6xl font-serif mb-6 font-basker">
             Cart{' '}

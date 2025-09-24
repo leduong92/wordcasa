@@ -97,7 +97,7 @@ const NavHomeMenu = ({
                         <div className="w-1/3 flex justify-end items-center  group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
                             {/* <SearchBar /> */}
 
-                            <NavIcons lang={lang} />
+                            <NavIcons lang={lang} region={region} />
                         </div>
                     </div>
 

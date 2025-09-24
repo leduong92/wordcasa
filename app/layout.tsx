@@ -7,6 +7,7 @@ import GoToTopButton from '@/components/GoToTopButton';
 import Footer from '@/components/Footer';
 import { cookies } from 'next/headers';
 import { languages, translations } from '@/i18n';
+import NextAuthProvider from '@/components/NextAuthProvider';
 
 export const baskerville = localFont({
     src: [
@@ -61,7 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang="en" className={`${baskerville.variable} ${helveticaNeue.variable}`}>
             <body>
-                {children}
+                <NextAuthProvider>{children}</NextAuthProvider>
                 <GoToTopButton />
                 <Footer lang={lang} />
             </body>

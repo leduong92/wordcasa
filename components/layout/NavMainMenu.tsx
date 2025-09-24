@@ -85,7 +85,7 @@ const NavMainMenu = ({
 
                         {/* RIGHT */}
                         <div className="w-1/3 flex justify-end items-center text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
-                            <NavIcons lang={lang} />
+                            <NavIcons lang={lang} region={region} />
                         </div>
                     </div>
 
