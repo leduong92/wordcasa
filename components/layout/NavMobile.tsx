@@ -8,11 +8,12 @@ import CartQtyLoadingSkeleton from '../cart/CartQtyLoadingSkeleton';
 import { Search, ShoppingCart, TextAlignJustify, UserRound } from 'lucide-react';
 import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
+import { useCartStore } from '@/hook/useCartStore';
 
 const NavMobile = (params: { color: string; region: string }) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    // const { cart } = useCartStore();
+    const { cart } = useCartStore();
     const [collectionsOpen, setCollectionsOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
 
@@ -48,6 +49,8 @@ const NavMobile = (params: { color: string; region: string }) => {
     const toggleCollections = () => {
         setCollectionsOpen((prev) => !prev);
     };
+
+    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <div className={`flex md:hidden items-center justify-between w-full text-${color}`}>
@@ -398,15 +401,15 @@ const NavMobile = (params: { color: string; region: string }) => {
                 <Link href="/cart" prefetch={true} className="relative cursor-pointer">
                     <div className="cursor-pointer">
                         <ShoppingCart size={17} />
+                        {cart.length > 0 && (
+                            <div
+                                className="absolute -top-4 -right-3 w-6 h-6 bg-neutral-900
+                    rounded-full text-neutral-100  text-sm flex items-center justify-center"
+                            >
+                                {totalQuantity}
+                            </div>
+                        )}
                     </div>
-                    {/* {cart.length > 0 && (
-                    <div
-                        className="absolute -top-3 -right-3 w-5 h-5 bg-cartNumber 
-                    rounded-full text-white text-sm flex items-center justify-center"
-                    >
-                        {cart.length}
-                    </div>
-                )} */}
                 </Link>
             </div>
         </div>

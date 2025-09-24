@@ -68,7 +68,7 @@ export default async function CategoryNoSlugPage({ params, searchParams }: PageP
             {/* Banner */}
             <div className="flex flex-col md:flex-row border-b">
                 <div className="flex-1 py-6 md:py-14">
-                    <h1 className="text-6xl md:text-7xl font-serif font-basker mb-4">
+                    <h1 className="text-5xl md:text-7xl font-serif font-basker mb-4">
                         New arrivals
                     </h1>
                     <p className="text-xl text-gray-600 basker mt-4 md:mt-8">
@@ -108,7 +108,7 @@ export default async function CategoryNoSlugPage({ params, searchParams }: PageP
             </div>
 
             {/* Layout */}
-            <div className="pt-3 flex flex-col md:flex-row">
+            <div className="pt-3 flex flex-col md:flex-row w-full">
                 <ProductGrid
                     products={products}
                     totalRecords={totalRecords}

@@ -4,6 +4,7 @@ import ProductGrid from '@/components/product/ProductGrid';
 import { translations } from '@/i18n';
 import { apiClient } from '@/lib/apiClient';
 import { loadProducts } from '@/lib/apiService';
+import { capitalizeWords } from '@/lib/utils';
 import { Metadata, ResolvingMetadata } from 'next';
 import { cookies } from 'next/headers';
 
@@ -31,9 +32,8 @@ export default async function CollectionDetail({ params, searchParams }: PagePro
         <div className="pt-5">
             <div className="flex border-b">
                 <div className="flex-1 py-8 lg:py-14">
-                    <h1 className="text-7xl font-serif font-basker mb-4 capitalize animate-slideIn">
-                        <span className="capitalize">{collectionSlug}</span>{' '}
-                        {slug.replace('-', ' ')}
+                    <h1 className="text-5xl md:text-7xl font-basker mb-4 ">
+                        <span> {capitalizeWords(collectionSlug)}</span> {capitalizeWords(slug)}
                     </h1>
 
                     <p className="text-xl text-gray-600 basker mt-8">

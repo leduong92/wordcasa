@@ -20,6 +20,16 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
         product.itemVariantDtos[0]
     );
 
+    const [options, setOptions] = useState(
+        'zoom.hint.enable:false; thumbnails.position:left; thumbnails.align:start; thumbnails.size:110; viewer.fit:contain'
+    );
+
+    useEffect(() => {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            setOptions('zoom.hint.enable:false; viewer.fit:contain');
+        }
+    }, []);
+
     const addToCart = useCartStore((state) => state.addToCart);
     const [quantity, setQuantity] = useState<number>(1);
     const [isAdding, setIsAdding] = useState(false);
@@ -49,20 +59,20 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
     };
 
     return (
-        <div className="grid grid-cols-1 md:lg:grid-cols-10 gap-12 pt-8">
+        <div className="grid grid-cols-1 md:lg:grid-cols-10 gap-8 md:gap-12 pt-4">
             {/* Left: Sticky Images */}
             <div className="relative lg:col-span-7">
                 <div className="sticky top-28">
                     <div className="flex flex-col gap-4">
                         <div
                             key={selectedVariant.id}
-                            className="Sirv w-full object-contain aspect-video"
-                            data-options="zoom.hint.enable:false; thumbnails.position:left; thumbnails.align:start; thumbnails.size:120; viewer.fit:contain"
+                            className="Sirv w-full object-contain"
+                            data-options={options}
                         >
                             {selectedVariant?.itemImageDtos?.map((item, idx) => (
                                 <div
                                     key={item.id || idx}
-                                    className="p-8"
+                                    className="p-8 md:p-32"
                                     data-src={`${item.imageUrl}?profile=basic`}
                                     data-alt={`Product image ${idx + 1} of ${product.productName}`}
                                     aria-label={`${product.parentCode}_Image_${idx}`}
@@ -75,7 +85,7 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                                             alt={`Product ${idx}`}
                                             width={600}
                                             height={600}
-                                            className="rounded-lg object-cover w-full"
+                                            className="rounded-lg object-cover w-full p-8"
                                         />
                                     </noscript>
                                 </div>
@@ -117,7 +127,7 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                                         key={variant.id || idx}
                                         type="button"
                                         onClick={() => handleVariantClick(variant)}
-                                        className={`w-32 h-32 border cursor-pointer overflow-hidden flex items-center justify-center 
+                                        className={`w-24 h-24 border cursor-pointer overflow-hidden flex items-center justify-center 
                                         ${
                                             selectedVariant.id === variant.id
                                                 ? 'border-neutral-500'

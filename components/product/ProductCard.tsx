@@ -28,7 +28,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 className="block flex-shrink-0 relative"
                 aria-label={product.productName ?? 'Product link'}
             >
-                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center bg-neutral-50/20">
+                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center bg-neutral-200/20">
                     {activeImage ? (
                         <>
                             {isLoading && (
@@ -41,7 +41,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                 alt={product.productName ?? ''}
                                 width={420}
                                 height={260}
-                                className={`object-contain max-h-full transition-opacity duration-300 p-4 md:p-10 ${
+                                className={`object-contain max-h-full transition-opacity duration-300 p-4 md:p-8 lg:p-12 ${
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}
@@ -56,7 +56,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 </div>
             </Link>
 
-            <div className="flex-1 flex flex-col ">
+            <div className="flex-1 flex flex-col pt-2">
                 {/* Tên */}
                 <Link href={`/${region}/product/${product.slug}`} className="">
                     <h3 className="text-sm font-medium tracking-wide hover:text-neutral-500">

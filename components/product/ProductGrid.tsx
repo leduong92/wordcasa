@@ -19,7 +19,7 @@ export default function ProductGrid({
     const totalPages = Math.ceil(totalRecords / pageSize);
 
     return (
-        <div>
+        <div className="w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products.map((p) => (
                     <ProductCard key={p.id} product={p} region={region} />
