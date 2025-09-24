@@ -11,6 +11,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useCartStore } from '@/hook/useCartStore';
 
 declare var Sirv: any;
 
@@ -18,6 +19,10 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
     const [selectedVariant, setSelectedVariant] = useState<ItemVariantDto>(
         product.itemVariantDtos[0]
     );
+
+    const addToCart = useCartStore((state) => state.addToCart);
+    const [quantity, setQuantity] = useState<number>(1);
+    const [isAdding, setIsAdding] = useState(false);
 
     useEffect(() => {
         if (typeof Sirv !== 'undefined' && Sirv.start) {
@@ -30,6 +35,17 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
 
     const handleVariantClick = (variant: ItemVariantDto) => {
         setSelectedVariant(variant);
+    };
+
+    const handleAddToCart = () => {
+        if (selectedVariant) {
+            setIsAdding(true);
+            addToCart(product, selectedVariant, quantity);
+            setTimeout(() => {
+                setIsAdding(false);
+            }, 1000);
+        } else {
+        }
     };
 
     return (
@@ -129,9 +145,13 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                     </p>
                 </div>
                 {/* Add to Cart button and other interactive elements can go here */}
-                <button className="w-full bg-neutral-800 hover:bg-neutral-600 text-neutral-100 py-3 rounded-md text-lg flex justify-center items-center cursor-pointer gap-3">
+                <button
+                    className="w-full bg-neutral-800 hover:bg-neutral-600 text-neutral-100 py-3 rounded-md text-lg flex justify-center items-center cursor-pointer gap-3"
+                    onClick={handleAddToCart}
+                    disabled={isAdding}
+                >
                     <ShoppingBag size={18} />
-                    <span className="text-sm">Add to Cart</span>
+                    <span className="text-sm">{isAdding ? 'Processing...' : 'Add to Cart'}</span>
                 </button>
 
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">

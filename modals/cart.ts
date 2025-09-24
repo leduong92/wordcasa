@@ -1,9 +1,10 @@
-import { ItemDto } from './itemDto';
+import { ItemDto, ItemVariantDto } from './itemDto';
 
-export interface Cart {
-    product: ItemDto;
-    quantity: number;
-}
+// export interface CartItem {
+//     item: ItemDto;
+//     variant: ItemVariantDto;
+//     quantity: number;
+// }
 
 export interface Voucher {
     code: string;

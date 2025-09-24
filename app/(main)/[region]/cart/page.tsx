@@ -1,11 +1,24 @@
 import { Trash } from 'lucide-react';
+import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-interface CartPageProps {
-    params: Promise<{ region: string }>;
+interface PageProps {
+    params: Promise<{ region: string; slug: string }>;
     searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export async function generateMetadata(
+    { params, searchParams }: PageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { slug, region } = await params;
+
+    return {
+        title: 'Cart | Worldcasa',
+        description: 'Cart',
+    };
 }
 
 const cartItems = [
@@ -37,7 +50,7 @@ const cartItems = [
 
 const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-const CartPage = async ({ params, searchParams }: CartPageProps) => {
+const CartPage = async ({ params, searchParams }: PageProps) => {
     const { region } = await params;
     const isCart = false;
     return (

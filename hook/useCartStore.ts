@@ -3,6 +3,10 @@
 // import { ItemDto } from "@/modals/itemDto";
 // import { create } from 'zustand';
 
+import { ItemDto, ItemVariantDto } from '@/modals';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
 // interface CartState {
 //     cart: Cart[];
 //     voucher: Voucher | null;
@@ -125,3 +129,60 @@
 //             }),
 //     };
 // });
+
+export interface CartItem {
+    item: ItemDto;
+    variant: ItemVariantDto;
+    quantity: number;
+}
+
+interface CartState {
+    cart: CartItem[];
+    addToCart: (item: ItemDto, variant: ItemVariantDto, quantity: number) => void;
+    removeFromCart: (variantId: number) => void;
+    updateQuantity: (variantId: number, quantity: number) => void;
+    clearCart: () => void;
+}
+
+export const useCartStore = create(
+    persist<CartState>(
+        (set, get) => ({
+            cart: [],
+            addToCart: (item, variant, quantity) => {
+                set((state) => {
+                    const existingItem = state.cart.find(
+                        (cartItem) => cartItem.variant.id == variant.id
+                    );
+                    if (existingItem) {
+                        const updatedCart = state.cart.map((cartItem) =>
+                            cartItem.variant.id === variant.id
+                                ? { ...cartItem, quantity: cartItem.quantity + quantity }
+                                : cartItem
+                        );
+                        return { cart: updatedCart };
+                    } else {
+                        return { cart: [...state.cart, { item, variant, quantity }] };
+                    }
+                });
+            },
+            removeFromCart: (variantId) => {
+                set((state) => ({
+                    cart: state.cart.filter((item) => item.variant.id !== variantId),
+                }));
+            },
+            updateQuantity: (variantId, quantity) => {
+                set((state) => ({
+                    cart: state.cart.map((item) =>
+                        item.variant.id === variantId ? { ...item, quantity } : item
+                    ),
+                }));
+            },
+            clearCart: () => {
+                set({ cart: [] });
+            },
+        }),
+        {
+            name: 'cart-storage',
+        }
+    )
+);
