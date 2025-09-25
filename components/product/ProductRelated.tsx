@@ -1,19 +1,13 @@
 'use client';
 
+import { ItemRelatedDto } from '@/modals';
+import React from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ItemCategoryDto } from '@/modals';
 import Link from 'next/link';
 
-export default function ItemCarousel({
-    region,
-    items,
-}: {
-    region: string;
-    items: ItemCategoryDto[];
-}) {
+const ProductRelated = ({ region, items }: { region: string; items: ItemRelatedDto[] }) => {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 5,
@@ -33,7 +27,7 @@ export default function ItemCarousel({
     });
 
     return (
-        <div className="relative ">
+        <div className="relative">
             {/* Slider */}
             <div ref={sliderRef} className="keen-slider">
                 {items.map((item) => (
@@ -45,11 +39,8 @@ export default function ItemCarousel({
                             <div>
                                 <div className="relative w-full h-[200px] bg-neutral-500/5">
                                     <Image
-                                        src={`${
-                                            item.itemVariantDtos?.[0]?.itemImageDtos?.[0]
-                                                ?.imageUrl ?? ''
-                                        }?profile=basic&w=400`}
-                                        alt={item.productName}
+                                        src={`${item.imageUrl ?? ''}?profile=basic&w=400`}
+                                        alt={item.productName ?? ''}
                                         fill
                                         className="object-contain rounded p-5"
                                     />
@@ -60,19 +51,19 @@ export default function ItemCarousel({
                             <h3 className="text-sm font-semibold text-left text-neutral-800 my-2">
                                 {item.productName}
                             </h3>
-                            <p className="text-sm text-left text-neutral-600 ">{item.sku}</p>
+                            <p className="text-sm text-left text-neutral-600 ">{item.parentCode}</p>
 
-                            {item.itemVariantDtos.length > 1 && (
-                                <div className="flex items-center gap-2 mt-3">
-                                    {item.itemVariantDtos.map((variant, idx) => {
-                                        const imgUrl = variant.itemImageDtos?.[0]?.imageUrl;
+                            {item.variants.length > 1 && (
+                                <div className="flex items-center gap-2 pt-1">
+                                    {item.variants.map((variant, idx) => {
+                                        const imgUrl = variant.images?.[0];
                                         if (!imgUrl) return null;
 
                                         return (
                                             <Link
                                                 href={`/${region}/product/${item.slug}`}
                                                 key={idx}
-                                                className={`w-6 h-6 cursor-pointer overflow-hidden flex items-center justify-center`}
+                                                className={`w-8 h-8 cursor-pointer overflow-hidden flex items-center justify-center`}
                                             >
                                                 <Image
                                                     src={`${imgUrl}?profile=basic&w=80`}
@@ -90,22 +81,8 @@ export default function ItemCarousel({
                     </div>
                 ))}
             </div>
-
-            {/* Prev Button */}
-            <button
-                onClick={() => instanceRef.current?.prev()}
-                className="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 cursor-pointer"
-            >
-                <ChevronLeft className="w-6 h-6 text-gray-700" />
-            </button>
-
-            {/* Next Button */}
-            <button
-                onClick={() => instanceRef.current?.next()}
-                className="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 cursor-pointer"
-            >
-                <ChevronRight className="w-6 h-6 text-gray-700" />
-            </button>
         </div>
     );
-}
+};
+
+export default ProductRelated;

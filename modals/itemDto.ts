@@ -36,6 +36,24 @@ export interface ItemDto {
     category: CategoryDto | null;
     room: RoomDto | null;
     itemVariantDtos: ItemVariantDto[] | [];
+    relatedItems: ItemRelatedDto[] | [];
+}
+
+export interface ItemRelatedDto {
+    id: number;
+    parentCode: string;
+    slug: string;
+    productName: string | null;
+    imageUrl: string | null;
+    price: number | null;
+    variants: RelatedVariantDto[];
+}
+
+export interface RelatedVariantDto {
+    id: number;
+    sku: string | null;
+    name: string | null;
+    images: string[];
 }
 
 export interface InventoryItemDto {

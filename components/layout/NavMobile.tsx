@@ -122,9 +122,11 @@ const NavMobile = (params: {
             </div>
 
             {/* Middle */}
-            <div className="w-1/3 flex justify-center">
+            <div className="w-1/3 text-2xl flex justify-center transition-colors duration-300">
                 <Link href="/">
-                    <div className={`text-xl text-${color} tracking-widest uppercase`}>
+                    <div
+                        className={`text-${color} tracking-widest uppercase font-semibold font-basker`}
+                    >
                         WORLDCASA
                     </div>
                 </Link>
