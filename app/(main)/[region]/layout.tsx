@@ -5,11 +5,9 @@ import Footer from '@/components/Footer';
 export default async function RegionLayout({
     children,
     params,
-    auth,
 }: {
     children: React.ReactNode;
     params: Promise<{ region: string }>;
-    auth: React.ReactNode;
 }) {
     const { region } = await params;
 
@@ -21,7 +19,6 @@ export default async function RegionLayout({
                 {children}
             </MainLayout>
             <Footer region={region} lang={lang} />
-            {auth}
         </>
     );
 }
