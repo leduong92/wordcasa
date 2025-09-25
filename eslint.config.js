@@ -1,34 +1,53 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import { globalIgnores } from 'eslint/config';
+// eslint.config.js
 
-export default tseslint.config([
-    globalIgnores(['dist']),
+import eslint from '@eslint/js';
+
+import globals from 'globals';
+
+import _nextPlugin from '@next/eslint-plugin-next';
+
+export default [
+    // 1. ESLint's recommended rules for general JavaScript
+
+    eslint.configs.recommended, // 2. Configuration for specific files (e.g., .js)
+
     {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            js.configs.recommended,
-            tseslint.configs.recommended,
-            reactHooks.configs['recommended-latest'],
-            reactRefresh.configs.vite,
-            {
-                rules: {
-                    '@typescript-eslint/no-unused-vars': [
-                        'warn',
-                        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-                    ],
-                    '@typescript-eslint/no-explicit-any': 'off',
-                    '@typescript-eslint/no-unsafe-argument': 'off',
-                    // Nếu muốn tắt hẳn rule này thì dùng:
-                    // "@typescript-eslint/no-unused-vars": "off"
+        files: ['**/*.js', '**/*.jsx'],
+
+        languageOptions: {
+            // Define environments, e.g., browser and Node.js
+
+            globals: {
+                ...globals.browser,
+
+                ...globals.node, // Add other global variables your code uses (e.g., 'process')
+            },
+
+            parserOptions: {
+                ecmaVersion: 2022,
+
+                sourceType: 'module',
+
+                ecmaFeatures: {
+                    jsx: true, // If using React
                 },
             },
-        ],
-        languageOptions: {
-            ecmaVersion: 2020,
-            globals: globals.browser,
+        },
+
+        plugins: {
+            '@next/next': _nextPlugin, // Use the new name here
+        },
+
+        rules: {
+            // Add any custom rules here, e.g.:
+
+            semi: ['error', 'always'],
+
+            indent: ['error', 4],
+
+            ..._nextPlugin.configs.recommended.rules,
+            ..._nextPlugin.configs['core-web-vitals'].rules,
+            '@next/next/google-font-display': 'warn',
         },
     },
-]);
+];
