@@ -48,7 +48,7 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
             {/* Left: Sticky Images */}
             <div className="relative lg:col-span-7">
                 <div className="sticky top-28">
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 h-[600px]">
                         <div
                             key={selectedVariant.id}
                             className="Sirv w-full object-contain"
@@ -57,7 +57,7 @@ export default function ProductVariantClient({ product }: { product: ItemDto }) 
                             {selectedVariant?.itemImageDtos?.map((item, idx) => (
                                 <div
                                     key={item.id || idx}
-                                    className="p-8 md:p-32"
+                                    className="p-8 md:p-16 h-full"
                                     data-src={`${item.imageUrl}?profile=basic`}
                                     data-alt={`Product image ${idx + 1} of ${product.productName}`}
                                     aria-label={`${product.parentCode}_Image_${idx}`}
