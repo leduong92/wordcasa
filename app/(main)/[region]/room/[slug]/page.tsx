@@ -33,7 +33,7 @@ const RoomPage = async ({ params, searchParams }: PageProps) => {
             <div>
                 <div className="w-full relative h-[600px] mb-10">
                     <VideoPlayer
-                        src="/videos/home_01.mp4"
+                        src="/videos/living_room.mp4"
                         videoClass="w-full h-[600px] object-cover"
                     />
                     <div className="absolute inset-0 bg-neutral-900/30 flex flex-col justify-center items-center text-center text-neutral-200 px-6 rounded-md">

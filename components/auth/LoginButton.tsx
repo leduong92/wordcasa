@@ -3,19 +3,19 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { UserRound } from 'lucide-react';
-import { useUserModal } from '@/hook/useUserModal';
+import { useAuthModal } from '@/hook/useAuthModal';
 
 const LoginButton = ({ region }: { region: string }) => {
     const pathname = usePathname();
     const callbackUrl = encodeURIComponent(pathname);
 
-    const { setOpen } = useUserModal();
+    const { setView } = useAuthModal();
 
     return (
         // <Link href={`/${region}/login?callbackUrl=${callbackUrl}`} className="p-2">
         //     <UserRound size={18} />
         // </Link>
-        <button onClick={() => setOpen('login')} className="cursor-pointer">
+        <button onClick={() => setView('login')} className="cursor-pointer">
             <UserRound size={18} />
         </button>
     );

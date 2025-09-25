@@ -9,7 +9,7 @@ import SearchInput from '@/components/SearchInput';
 import { usePathname } from 'next/navigation';
 
 const categories = [
-    { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
+    { name: 'Living rooms', slug: 'living-room', image: '/denver_cocktail_table.jpg' },
     { name: 'Dining rooms', slug: 'dining-room', image: '/bed_2.jpg' },
     { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
 ];
