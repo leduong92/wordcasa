@@ -28,7 +28,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                 className="block flex-shrink-0 relative"
                 aria-label={product.productName ?? 'Product link'}
             >
-                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center bg-neutral-200/20">
+                <div className="h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center bg-neutral-200/10">
                     {activeImage ? (
                         <>
                             {isLoading && (

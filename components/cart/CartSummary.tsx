@@ -10,7 +10,7 @@ export default function CartSummary({ region }: { region: string }) {
 
     return (
         <div className="flex flex-col gap-6">
-            <div className="bg-neutral-100/30 p-6 md:p-8 rounded shadow-sm">
+            <div className="bg-neutral-200/10 p-6 md:p-8 rounded-lg shadow-sm">
                 <h2 className="text-xl font-bold mb-4 ">
                     <p>Cart summary</p>
                 </h2>

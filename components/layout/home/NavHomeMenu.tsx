@@ -57,7 +57,7 @@ const NavHomeMenu = ({
                 }
                 `}
             >
-                <NavMobile color="black" region={region} />
+                <NavMobile color="black" region={region} categoryDtos={categoryDtos} />
             </div>
             {/* BIGGER Screen */}
             <nav
@@ -80,7 +80,11 @@ const NavHomeMenu = ({
                             } `}
                         >
                             <div className="w-max border-b">
-                                <SearchInput isShowDialog={true} region={region} />
+                                <SearchInput
+                                    isShowDialog={true}
+                                    region={region}
+                                    isSidebar={false}
+                                />
                             </div>
                         </div>
                         {/* Logo */}

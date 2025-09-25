@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
-const Footer = ({ lang }: { lang: string }) => {
+const Footer = ({ lang, region }: { lang: string; region: string }) => {
     return (
         <footer className="mt-24 px-4 md:px-8 lg:px-12">
             {/* Top section */}
@@ -9,24 +10,28 @@ const Footer = ({ lang }: { lang: string }) => {
                 <div className="hidden md:block w-1/3 border-b h-32"></div>
                 <div className="md:col-span-2 flex gap-6 p-4 md:p-12 bg-neutral-200 rounded-xl w-full md:w-2/3">
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Image
-                            src="/bed_3.jpg"
-                            alt="Get free fabric samples"
-                            width={300}
-                            height={150}
-                            className="w-full h-32 md:h-48 object-cover"
-                        />
-                        <p className="p-2 font-medium text-base">Get free fabric samples</p>
+                        <Link href={`/${region}/help`}>
+                            <Image
+                                src="/bed_3.jpg"
+                                alt="Get free fabric samples"
+                                width={300}
+                                height={150}
+                                className="w-full h-32 md:h-48 object-cover"
+                            />
+                            <p className="p-2 font-medium text-base">Get free fabric samples</p>
+                        </Link>
                     </div>
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Image
-                            src="/bed_4.jpg"
-                            alt="Need help? Let's talk"
-                            width={300}
-                            height={150}
-                            className="w-full h-32 md:h-48 object-cover"
-                        />
-                        <p className="p-2 font-medium text-base">Need help? Let&apos;s talk</p>
+                        <Link href={`/${region}/fabric`}>
+                            <Image
+                                src="/bed_4.jpg"
+                                alt="Need help? Let's talk"
+                                width={300}
+                                height={150}
+                                className="w-full h-32 md:h-48 object-cover"
+                            />
+                            <p className="p-2 font-medium text-base">Need help? Let&apos;s talk</p>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -34,11 +39,31 @@ const Footer = ({ lang }: { lang: string }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8  py-10">
                 {/* Left links */}
                 <div className="space-y-2 text-base text-gray-700">
-                    <p>Customer Service</p>
-                    <p>Find store</p>
-                    <p>About Worldcasa</p>
-                    <p>Delivery Policy</p>
-                    <p>Sale & Return Policy</p>
+                    <div>
+                        <Link href={'#'}>
+                            <p>Customer Service</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={'#'}>
+                            <p>Find store</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={'#'}>
+                            <p>About Worldcasa</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={'#'}>
+                            <p>Delivery Policy</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={'#'}>
+                            <p>Sale & Return Policy</p>
+                        </Link>
+                    </div>
                 </div>
                 <div></div>
                 {/* Social icons */}
@@ -63,10 +88,12 @@ const Footer = ({ lang }: { lang: string }) => {
 
             {/* Bottom bar */}
             <div className="border-t px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-                <p className="text-center md:text-left">
-                    {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT. */}
-                    © 2025 World Casa
-                </p>
+                <Link href={'/'}>
+                    <p className="text-center md:text-left">
+                        {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT. */}
+                        © 2025 World Casa
+                    </p>
+                </Link>
 
                 <div className="flex gap-6">
                     <a href="#">Cookie information</a>

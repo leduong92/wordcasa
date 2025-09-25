@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { cookies } from 'next/headers';
 import { languages, translations } from '@/i18n';
 import NextAuthProvider from '@/components/NextAuthProvider';
+import UserModal from '@/components/auth/AuthModal';
 
 export const baskerville = localFont({
     src: [
@@ -64,7 +65,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <body>
                 <NextAuthProvider>{children}</NextAuthProvider>
                 <GoToTopButton />
-                <Footer lang={lang} />
+                <UserModal />
             </body>
         </html>
     );

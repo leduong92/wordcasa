@@ -1,4 +1,5 @@
 'use client';
+import { useUserModal } from '@/hook/useUserModal';
 import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { redirect, useRouter } from 'next/navigation';
@@ -9,9 +10,13 @@ const CheckoutButton = ({ region }: { region: string }) => {
     const { data: session, status } = useSession();
     const router = useRouter();
 
+    const { setOpen } = useUserModal();
+
     const handleCheckout = () => {
         if (status === 'unauthenticated') {
-            router.push(`/${region}/auth/login?callbackUrl=/${region}/checkout`);
+            // router.push(`/${region}/auth/login?callbackUrl=/${region}/checkout`);
+            setOpen('login');
+            return;
         } else {
             router.push(`/${region}/checkout`);
         }

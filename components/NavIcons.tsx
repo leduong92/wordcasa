@@ -5,8 +5,9 @@ import CartIcon from './cart/CartIcon';
 import { UserRound } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useSession } from 'next-auth/react';
-import LogoutButton from './LogoutButton.';
+import LogoutButton from './auth/LogoutButton.';
 import CheckoutButton from './checkout/CheckoutButton';
+import LoginButton from './auth/LoginButton';
 
 const NavIcons = ({ lang, region }: { lang: string; region: string }) => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -29,13 +30,14 @@ const NavIcons = ({ lang, region }: { lang: string; region: string }) => {
                     </button>
                 </>
             ) : (
-                <Link href={`/${region}/auth/login`} className="cursor-pointer">
-                    <UserRound size={18} />
-                </Link>
+                // <Link href={`/${region}/auth/login`} className="cursor-pointer">
+                //     <UserRound size={18} />
+                // </Link>
+                <LoginButton region={region} />
             )}
 
             {isProfileOpen && (
-                <div className="absolute bg-neutral-100 text-neutral-800 p-5 rounded-md top-8 -left-5 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
+                <div className="absolute bg-neutral-100 text-neutral-800 p-6 rounded-md top-8 -left-5 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
                     <Link href="#" prefetch={true} className="flex justify-between items-center">
                         <UserRound size={16} />
                         <span className="w-2/3 px-2">Profile</span>

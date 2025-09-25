@@ -57,7 +57,7 @@ const NavMainMenu = ({
                     visible ? '' : 'boxShadown'
                 }`}
             >
-                <NavMobile color="black" region={region} />
+                <NavMobile color="black" region={region} categoryDtos={categoryDtos} />
             </div>
             {/* BIGGER Screen */}
             <nav
@@ -70,7 +70,11 @@ const NavMainMenu = ({
                     <div className="w-full flex ">
                         <div className={`w-1/3 text-neutral-700`}>
                             <div className="w-max border-b">
-                                <SearchInput isShowDialog={true} region={region} />
+                                <SearchInput
+                                    isShowDialog={true}
+                                    region={region}
+                                    isSidebar={false}
+                                />
                             </div>
                         </div>
                         {/* Logo */}

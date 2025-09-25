@@ -25,7 +25,7 @@ export default function LoginPage({ region }: { region: string }) {
             const redirectUrl = callbackUrl ? decodeURIComponent(callbackUrl as string) : '/';
             router.push(`/${redirectUrl.slice(1)}`);
         } else {
-            alert('Invalid credentials');
+            console.log('Invalid credentials');
         }
     };
 

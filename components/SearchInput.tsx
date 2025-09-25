@@ -30,9 +30,11 @@ const categories = [
 export default function SearchInput({
     isShowDialog,
     region,
+    isSidebar,
 }: {
     isShowDialog: boolean;
     region: string;
+    isSidebar: boolean;
 }) {
     const router = useRouter();
     const pathname = usePathname();
@@ -68,6 +70,14 @@ export default function SearchInput({
 
         setOpen(false);
     };
+
+    if (isSidebar) {
+        return (
+            <div>
+                <SearchBox value={searchQuery} onChange={setSearchQuery} onSearch={handleSearch} />
+            </div>
+        );
+    }
 
     if (!isShowDialog) {
         return (

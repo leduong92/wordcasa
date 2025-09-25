@@ -7,7 +7,7 @@ export default function LogoutButton() {
     return (
         <button
             onClick={() => signOut({ callbackUrl: '/' })}
-            className="mt-2 flex justify-between items-center cursor-pointer"
+            className="pt-4 flex justify-between items-center cursor-pointer"
         >
             <LogOut size={16} />
             <span className="w-2/3 px-2">Logout</span>

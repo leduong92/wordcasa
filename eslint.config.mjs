@@ -27,7 +27,9 @@ const compat = new FlatCompat({
 const eslintConfig = [
     // 1. Tích hợp cấu hình mặc định của Next.js: 'next'
 
-    ...compat.config({ extends: ['eslint:recommended', 'next', 'next/core-web-vitals'] }), // 2. Cấu hình cho TypeScript (nếu sử dụng) // Bạn có thể thêm 'next/typescript' và các cấu hình TypeScript khác // ...compat.config({ extends: ['next/typescript'] }), // 3. Tùy chọn: Thêm các quy tắc Core Web Vitals (rất khuyến khích cho hiệu suất) // ...compat.config({ extends: ['next/core-web-vitals'] }), // 4. Tùy chọn: Thêm Prettier (nếu sử dụng) // ...compat.config({ extends: ['prettier'] }), // 5. Thêm các quy tắc tùy chỉnh (ví dụ)
+    ...compat.config({
+        extends: ['eslint:recommended', 'next', 'next/core-web-vitals', 'next/typescript'],
+    }), // 2. Cấu hình cho TypeScript (nếu sử dụng) // Bạn có thể thêm 'next/typescript' và các cấu hình TypeScript khác // ...compat.config({ extends: ['next/typescript'] }), // 3. Tùy chọn: Thêm các quy tắc Core Web Vitals (rất khuyến khích cho hiệu suất) // ...compat.config({ extends: ['next/core-web-vitals'] }), // 4. Tùy chọn: Thêm Prettier (nếu sử dụng) // ...compat.config({ extends: ['prettier'] }), // 5. Thêm các quy tắc tùy chỉnh (ví dụ)
 
     {
         plugins: {

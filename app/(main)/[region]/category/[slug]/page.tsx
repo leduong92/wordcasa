@@ -69,12 +69,12 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                 </div>
             </div>
 
-            <div className="flex w-full items-center justify-between py-4">
+            {/* <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
                     <FilterMenu categoryDtos={menus} />
                     <ActiveFilters />
                 </div>
-            </div>
+            </div> */}
 
             {/* Layout */}
             <div className="pt-3 flex flex-col md:flex-row">

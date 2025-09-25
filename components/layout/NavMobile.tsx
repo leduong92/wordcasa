@@ -9,25 +9,26 @@ import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
 import { useCartStore } from '@/hook/useCartStore';
 import CartIcon from '../cart/CartIcon';
+import { CategoryDto } from '@/modals';
+import LoginButton from '../auth/LoginButton';
 
-const NavMobile = (params: { color: string; region: string }) => {
+const NavMobile = (params: {
+    color: string;
+    region: string;
+    categoryDtos: CategoryDto[] | undefined;
+}) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const { cart } = useCartStore();
-    const [collectionsOpen, setCollectionsOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
 
-    const { color, region } = params;
+    const { color, region, categoryDtos } = params;
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
     if (!isMounted) return <div></div>;
-
-    const toggleCollections = () => {
-        setCollectionsOpen((prev) => !prev);
-    };
 
     const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -43,303 +44,73 @@ const NavMobile = (params: { color: string; region: string }) => {
                         </div>
                     </SheetTrigger>
                     <SheetContent side={'left'}>
-                        <SheetTitle></SheetTitle>
+                        <SheetTitle className="py-4 w-full text-center boxShadown">
+                            <Link
+                                href={'/'}
+                                className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
+                            >
+                                Worldcasa
+                            </Link>
+                        </SheetTitle>
                         <div>
-                            <ul className=" flex flex-col gap-4 text-lg z-10 p-5">
+                            <div className="border-b pt-2">
+                                <SearchInput
+                                    isShowDialog={false}
+                                    region={region}
+                                    isSidebar={true}
+                                />
+                            </div>
+                            <ul className="flex flex-col gap-4 text-lg z-10 p-5">
                                 <li>
-                                    <Link href="/" prefetch={true}>
+                                    <Link
+                                        href={{
+                                            pathname: `/${region}/category`,
+                                            query: {
+                                                q: 'flag--Newcategory',
+                                            },
+                                        }}
+                                        prefetch={true}
+                                    >
                                         <span
                                             onClick={() => setIsOpen(false)}
-                                            className="underline-hover"
+                                            className="text-neutral-700 tracking-wide"
                                         >
-                                            Home
+                                            New Arrivals
                                         </span>
                                     </Link>
                                 </li>
 
-                                <li className="relative group">
-                                    <span
-                                        className="underline-hover cursor-pointer "
-                                        onClick={toggleCollections}
-                                    >
-                                        Collections
-                                    </span>
-
-                                    {collectionsOpen && (
-                                        <>
-                                            {/* Level 1 Dropdown */}
-                                            <div className="absolute top-full left-0 bg-white shadow-lg  z-30">
-                                                <ul className="min-w-[200px] py-2">
-                                                    {/* Sofa Collection (Has Submenu) */}
-                                                    <li className="relative group/living">
+                                {categoryDtos?.map((item, idx) => (
+                                    <li key={item.id || idx}>
+                                        <div>
+                                            <div className="">
+                                                <div>{item.displayName}</div>
+                                                {item.categoryDetailDtos.map((itm, idx) => (
+                                                    <div key={itm.id || idx} className="px-5">
                                                         <Link
-                                                            href="#"
-                                                            prefetch={true}
-                                                            className="block px-4 py-2"
+                                                            href={`/${region}/category/${itm.slug}`}
+                                                            className="text-neutral-700 text-sm tracking-wide"
                                                         >
-                                                            <span
-                                                                onClick={() => setIsOpen(false)}
-                                                                className="underline-hover"
-                                                            >
-                                                                Living Collection
-                                                            </span>
+                                                            {itm.displayName}
                                                         </Link>
-
-                                                        {/* Level 2 Dropdown */}
-                                                        <div className="absolute top-0 left-full bg-white shadow-lg  duration-200">
-                                                            <ul className="min-w-[200px] py-2">
-                                                                <li>
-                                                                    <Link
-                                                                        href="#/sofa"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Sofas
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#living/side-table"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Side Tables
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#living/console-table"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Console Tables
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#living/arm-chair"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Arm Chairs
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                    {/* Other level 1 items */}
-                                                    <li className="relative group/dining">
-                                                        <Link
-                                                            href="#dining"
-                                                            prefetch={true}
-                                                            className="block px-4 py-2 cursor-pointer"
-                                                        >
-                                                            <span
-                                                                onClick={() => setIsOpen(false)}
-                                                                className="underline-hover "
-                                                            >
-                                                                Dining Collection
-                                                            </span>
-                                                        </Link>
-
-                                                        {/* Level 2 Dropdown */}
-                                                        <div className="absolute top-0 left-full bg-white shadow-lg invisible opacity-0 group-hover/dining:visible group-hover/dining:opacity-100 transition-opacity duration-200">
-                                                            <ul className="min-w-[220px] py-2">
-                                                                <li>
-                                                                    <Link
-                                                                        href="#dining/dining-chair"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 h"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Dining Chairs
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#dining/dining-table"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 h"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Dining Tables
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#dining/side-boards"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 h"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Side Boards
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#living/coffee-table"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2"
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Coffe Tables
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li className="relative group/bed">
-                                                        <Link
-                                                            href="#bed"
-                                                            prefetch={true}
-                                                            className="block px-4 py-2 cursor-pointer"
-                                                        >
-                                                            <span
-                                                                onClick={() => setIsOpen(false)}
-                                                                className="underline-hover "
-                                                            >
-                                                                Bed Collection
-                                                            </span>
-                                                        </Link>
-                                                        {/* Level 2 Dropdown */}
-                                                        <div className="absolute top-0 left-full bg-white shadow-lg invisible opacity-0 group-hover/bed:visible group-hover/bed:opacity-100 transition-opacity duration-200">
-                                                            <ul className="min-w-[220px] py-2">
-                                                                <li>
-                                                                    <Link
-                                                                        href="#bed/bed"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 "
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Beds
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#bed/night-stand"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 "
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 NightStands
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                                <li>
-                                                                    <Link
-                                                                        href="#bed/dresser"
-                                                                        prefetch={true}
-                                                                        className="block px-4 py-2 "
-                                                                    >
-                                                                        <span
-                                                                            onClick={() =>
-                                                                                setIsOpen(false)
-                                                                            }
-                                                                            className="underline-hover"
-                                                                        >
-                                                                            6 Dresser
-                                                                        </span>
-                                                                    </Link>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        </>
-                                    )}
-                                </li>
-                                <li>
+                                        </div>
+                                    </li>
+                                ))}
+
+                                <li className="border-t pt-5 text-sm">
                                     <Link href="/about" prefetch={true}>
-                                        <span
-                                            onClick={() => setIsOpen(false)}
-                                            className="underline-hover"
-                                        >
+                                        <span onClick={() => setIsOpen(false)} className="">
                                             About
                                         </span>
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="text-sm">
                                     <Link href="/contact" prefetch={true}>
-                                        <span
-                                            onClick={() => setIsOpen(false)}
-                                            className="underline-hover"
-                                        >
+                                        <span onClick={() => setIsOpen(false)} className="">
                                             Contact
-                                        </span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/" prefetch={true}>
-                                        <span
-                                            onClick={() => setIsOpen(false)}
-                                            className="underline-hover"
-                                        >
-                                            Logout
                                         </span>
                                     </Link>
                                 </li>
@@ -347,21 +118,6 @@ const NavMobile = (params: { color: string; region: string }) => {
                         </div>
                     </SheetContent>
                 </Sheet>
-                {/* Search */}
-                <Sheet open={searchOpen} onOpenChange={setSearchOpen}>
-                    <SheetTrigger>
-                        <Search size={17} />
-                    </SheetTrigger>
-                    <SheetContent side={'left'}>
-                        <SheetHeader>
-                            <SheetTitle className="mb-6">Search products</SheetTitle>
-                            <div className="w-full border-b">
-                                <SearchInput isShowDialog={false} region={region} />
-                            </div>
-                        </SheetHeader>
-                    </SheetContent>
-                </Sheet>
-
                 <LanguageSwitcher currentLang={'en'} />
             </div>
 
@@ -376,7 +132,7 @@ const NavMobile = (params: { color: string; region: string }) => {
 
             {/* Right */}
             <div className="flex items-center justify-end gap-3 w-1/3">
-                <UserRound size={17} />
+                <LoginButton region={region} />
                 <CartIcon />
             </div>
         </div>

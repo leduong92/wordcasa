@@ -25,7 +25,7 @@ const CartItems = ({ region }: { region: string }) => {
                 return (
                     <div
                         key={ci.variant.id}
-                        className="bg-neutral-100/30 border-b p-4 md:p-6 rounded flex flex-col items-center md:flex-row gap-4"
+                        className="bg-neutral-200/10 border-b p-4 md:p-6 rounded-lg flex flex-col items-center md:flex-row gap-4"
                     >
                         <div className="relative w-full md:w-60 h-48 md:h-60 flex-shrink-0">
                             <Image
@@ -82,7 +82,7 @@ const CartItems = ({ region }: { region: string }) => {
                                             <div className="flex justify-between text-neutral-600 mb-2">
                                                 <span className="w-1/3">Size </span>
                                                 <span className="font-medium">
-                                                    <p className="text-sm text-neutral-600 w-max px-3">
+                                                    <p className="text-neutral-600 w-max px-3">
                                                         {ci.variant.dimensionsCM} cm
                                                     </p>
                                                 </span>
