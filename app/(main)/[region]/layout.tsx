@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import MainLayout from '@/components/layout/MainLayout';
+import MainLayout from '@/components/layout/main/MainLayout';
 import Footer from '@/components/Footer';
 
 export default async function RegionLayout({

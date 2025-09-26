@@ -7,6 +7,7 @@ import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
 import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
+import ShopLeftBanner from '@/components/ShopLeftBanner';
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { page } = await searchParams;
@@ -14,13 +15,13 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
 
     return {
-        title: `Buy Products Online | Page ${pageIndex} | Worldcasa`,
+        title: `New Arrivals | Page ${pageIndex} | Worldcasa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
             canonical: `/${region}/product?page=${pageIndex}`,
         },
         openGraph: {
-            title: `Worldcasa Products - Page ${pageIndex}`,
+            title: `Worldcasa New Products - Page ${pageIndex}`,
             description: `Browse furniture collection - Page ${pageIndex}.`,
             url: `/${region}/product?page=${pageIndex}`,
             siteName: 'Worldcasa',
@@ -31,8 +32,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
 const categories = [
     { name: 'Living rooms', slug: 'living-room', image: '/bed_1.jpg' },
-    { name: 'Dining rooms', slug: 'bedroom', image: '/bed_2.jpg' },
-    { name: 'Bedrooms', slug: 'dining-room', image: '/bed_3.jpg' },
+    { name: 'Dining rooms', slug: 'dining-room', image: '/bed_2.jpg' },
+    { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
 ];
 
 interface PageProps {
@@ -40,7 +41,7 @@ interface PageProps {
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function CategoryNoSlugPage({ params, searchParams }: PageProps) {
+export default async function NewArrivalsPage({ params, searchParams }: PageProps) {
     const { region } = await params;
     const sp = await searchParams;
 
@@ -60,32 +61,21 @@ export default async function CategoryNoSlugPage({ params, searchParams }: PageP
     return (
         <div className="pt-5">
             {/* Breadcrumb */}
-            <div className="flex mb-5 gap-3 text-sm">
-                <Link href={`/${region}`}>Home</Link>
-                <span>/</span>
-                <span>Products</span>
-            </div>
+            <div className="flex mb-5 gap-3 text-sm"></div>
             {/* Banner */}
             <div className="flex flex-col md:flex-row border-b">
-                <div className="flex-1 py-6 md:py-14">
-                    <h1 className="text-5xl md:text-7xl font-serif font-basker mb-4">
-                        New arrivals
-                    </h1>
-                    <p className="text-xl text-gray-600 basker mt-4 md:mt-8">
-                        Explore our latest designs – crafted for modern living.
-                    </p>
-                </div>
+                <ShopLeftBanner region={region} title={'New arrivals'} />
 
                 {/* Categories */}
                 <div className="flex-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
                         {categories.map((cat) => (
                             <Link
-                                href={`/${region}/room/${cat.slug}`}
+                                href={`/${region}/shop/rooms/${cat.slug}`}
                                 key={cat.name}
                                 className="cursor-pointer group"
                             >
-                                <div className="relative w-full h-40 overflow-hidden rounded-lg">
+                                <div className="relative w-full h-40 overflow-hidden">
                                     <Image
                                         src={cat.image}
                                         alt={cat.name}

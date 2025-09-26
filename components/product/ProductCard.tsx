@@ -2,7 +2,7 @@
 import { ItemDto } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface ProductCardProps {
     region: string;
@@ -14,13 +14,20 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
         product?.itemVariantDtos[0]?.itemImageDtos?.[0]?.imageUrl ?? null
     );
 
+    const [isMounted, setIsMounted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const handleVariantClick = (img: string) => {
         if (img === activeImage) return;
         setIsLoading(true);
         setActiveImage(img);
     };
+
+    if (!isMounted) return;
     return (
         <div className="flex flex-col h-full overflow-hidden ">
             <Link
@@ -41,7 +48,7 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
                                 alt={product.productName ?? ''}
                                 width={420}
                                 height={260}
-                                className={`object-contain max-h-full transition-opacity duration-300 p-4 md:p-8 lg:p-12 ${
+                                className={`object-contain max-h-full transition-opacity duration-300 p-4 md:p-8 lg:p-14 ${
                                     isLoading ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 priority={false}

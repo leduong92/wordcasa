@@ -13,9 +13,8 @@ export default async function HomeLayout({
     const menus = await getMenus();
 
     return (
-        <div className=" ">
+        <div className="">
             <NavHomeMenu region={region} lang={lang} categoryDtos={menus} />
-
             <main className="flex-1 font-helve">{children}</main>
         </div>
     );

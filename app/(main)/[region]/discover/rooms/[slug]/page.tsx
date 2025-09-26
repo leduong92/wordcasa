@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
+import { capitalizeWords } from '@/lib/utils';
 
 interface CollectionPageProps {
     params: Promise<{ region: string; slug: string }>;
@@ -20,18 +21,18 @@ export async function generateMetadata(
     const { slug, region } = await params;
 
     const response = await apiClient.get<CategoryLandingPageDto>(
-        `/api/item/category/${region}/${slug}`
+        `/api/item/room/${region}/${slug}`
     );
 
     const item = response.data;
 
     return {
-        title: item?.metaDescription + ' | Worldcasa',
+        title: item?.displayName + ' | Worldcasa',
         description: item?.description,
     };
 }
 
-const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => {
+const DiscoverRoomsPage = async ({ params, searchParams }: CollectionPageProps) => {
     const { region, slug } = await params;
     const sp = await searchParams;
 
@@ -40,33 +41,55 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
     const t = translations[lang];
 
     const response = await apiClient.get<CategoryLandingPageDto>(
-        `/api/item/category/${region}/${slug}`
+        `/api/item/room/${region}/${slug}`
     );
 
     const item = response.data;
+    const text = item?.displayName?.split('');
 
     return (
-        <div>
-            <div>
-                <div className="w-full px-16 lg:px-32 py-8 lg:py-16">
-                    <h1 className="text-4xl lg:text-6xl font-bold">{item?.metaDescription}</h1>
-                    <p className="pt-2">{item?.description}</p>
-                </div>
-
-                <div className="relative w-full mx-auto">
-                    <VideoPlayer
-                        videoClass="w-full h-auto object-cover"
-                        src="/videos/home_01.mp4"
-                    />
+        <div className="py-8 md:py-12">
+            <div className="w-full relative h-[550px] mb-10">
+                <VideoPlayer
+                    src="/videos/living_room.mp4"
+                    videoClass="w-full h-[550px] object-cover"
+                />
+                <div className="absolute inset-0 bg-neutral-900/30 flex flex-col justify-center items-center text-center text-neutral-200 px-6 rounded-md">
+                    <h1 className="text-5xl font-semibold mb-4 flex tracking-wide">
+                        {text?.map((char, i) => (
+                            <span
+                                key={i}
+                                className="opacity-0 animate-fadeInChar"
+                                style={{ animationDelay: `${i * 0.1}s` }} // delay từng ký tự
+                            >
+                                {char === ' ' ? '\u00A0' : char}
+                            </span>
+                        ))}
+                    </h1>
+                    <p className="max-w-2xl text-justify ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nam
+                        eligendi quam quidem, saepe aut culpa nulla non cum similique consequuntur
+                        voluptates. Officiis voluptatem officia sed ipsam, pariatur magni quasi.
+                    </p>
                 </div>
             </div>
             <div className="pt-8">
-                <h1 className="text-3xl px-16 py-8">Discover our table designs</h1>
+                <div className="py-8 md:py-12">
+                    <h1 className="text-3xl font-semibold">
+                        Discover our <span className="lowercase">{capitalizeWords(slug)}</span>{' '}
+                        designs
+                    </h1>
+                    <p className="text-neutral-600">
+                        Get inspiration from{' '}
+                        <span className="lowercase">{capitalizeWords(slug)}</span> styled by our
+                        skilled Interior Designers
+                    </p>
+                </div>
                 <div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {item?.collectionDtos.map((c) => (
                             <Link
-                                href={`/${region}/discover/${item.slug}/${c.slug}`}
+                                href={`/${region}/discover/rooms/${item.slug}/${c.slug}`}
                                 key={c.name}
                                 className="group"
                             >
@@ -95,4 +118,4 @@ const CollectionPage = async ({ params, searchParams }: CollectionPageProps) => 
     );
 };
 
-export default CollectionPage;
+export default DiscoverRoomsPage;

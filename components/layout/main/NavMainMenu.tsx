@@ -1,13 +1,22 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import NavIcons from '../../NavIcons';
+
+import Image from 'next/image';
 import NavMobile from '../NavMobile';
+import NavIcons from '../../NavIcons';
+import SearchInput from '../../SearchInput';
 import { CategoryDto } from '@/modals';
-import SearchInput from '@/components/SearchInput';
+import { usePathname } from 'next/navigation';
 import MegaMenu from '../MegaMenu';
 
-const NavHomeMenu = ({
+const categories = [
+    { name: 'Living rooms', slug: 'living-room', image: '/denver_cocktail_table.jpg' },
+    { name: 'Dining rooms', slug: 'dining-room', image: '/bed_2.jpg' },
+    { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
+];
+
+const NavMainMenu = ({
     region,
     lang,
     categoryDtos,
@@ -32,39 +41,25 @@ const NavHomeMenu = ({
     }, []);
 
     return (
-        <div className={`fixed top-0 w-full z-50 bg-transparent transition-all duration-300`}>
+        <div className={`sticky top-0 w-full z-50  transition-all duration-300 `}>
             {/* MOBILE */}
             <div
-                className={`h-[60px] px-4 flex items-center justify-between md:hidden
-                ${
-                    visible
-                        ? 'translate-y-0 text-neutral-200'
-                        : 'boxShadown backDropFilter backGround text-neutral-700'
-                }
-                `}
+                className={`h-[60px] px-4 flex items-center backDropFilter backGround justify-between md:hidden ${
+                    visible ? '' : 'boxShadown'
+                }`}
             >
                 <NavMobile color="black" region={region} categoryDtos={categoryDtos} />
             </div>
             {/* BIGGER Screen */}
             <nav
-                className={`hidden md:flex h-full px-4 md:px-8 lg:px-12 transition-colors duration-300 relative group/nav bg-transparent hover:bg-neutral-100 py-4
-                ${
-                    visible
-                        ? 'translate-y-0 text-neutral-200'
-                        : 'boxShadown backDropFilter backGround text-neutral-700'
-                }
-                `}
+                className={`hidden md:flex h-full px-4 md:px-8 lg:px-12  backDropFilter backGround relative group/nav py-4 ${
+                    visible ? ' ' : 'boxShadown'
+                }`}
             >
                 {/* Navbar container */}
                 <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
                     <div className="w-full flex ">
-                        <div
-                            className={`w-1/3 group-hover/nav:text-neutral-700  ${
-                                visible
-                                    ? 'text-neutral-50 placeholder-neutral-50'
-                                    : 'text-neutral-900 placeholder-neutral-900'
-                            } `}
-                        >
+                        <div className={`w-1/3 text-neutral-700`}>
                             <div className="w-max border-b">
                                 <SearchInput
                                     isShowDialog={true}
@@ -74,24 +69,22 @@ const NavHomeMenu = ({
                             </div>
                         </div>
                         {/* Logo */}
-                        <div className="w-1/3 text-2xl flex justify-center group-hover/nav:text-neutral-700 transition-colors duration-300">
+                        <div className="w-1/3 text-2xl flex justify-center transition-colors duration-300">
                             <Link
                                 href={'/'}
-                                className="focus-visible:outline-none tracking-widest uppercase font-semibold font-basker"
+                                className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
                             >
-                                WORLDCASA
+                                Worldcasa
                             </Link>
                         </div>
 
                         {/* RIGHT */}
-                        <div className="w-1/3 flex justify-end items-center  group-hover/nav:text-neutral-700 transition-colors duration-300 gap-3">
-                            {/* <SearchBar /> */}
-
+                        <div className="w-1/3 flex justify-end items-center text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
                             <NavIcons lang={lang} region={region} />
                         </div>
                     </div>
 
-                    <div className="w-full h-full pt-5 text-neutral-200">
+                    <div className="w-full h-full pt-5 text-neutral-700">
                         {/* Menu Items */}
                         <MegaMenu lang={lang} region={region} categoryDtos={categoryDtos} />
                     </div>
@@ -101,4 +94,4 @@ const NavHomeMenu = ({
     );
 };
 
-export default NavHomeMenu;
+export default NavMainMenu;

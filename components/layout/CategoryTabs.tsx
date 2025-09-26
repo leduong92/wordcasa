@@ -1,7 +1,7 @@
 'use client';
 import { ItemCategoryDto } from '@/modals';
 import React, { useEffect, useState } from 'react';
-import ItemCarousel from '../../ItemCarousel';
+import ItemCarousel from '../ItemCarousel';
 import { apiClient } from '@/lib/apiClient';
 
 const tabs = [

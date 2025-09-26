@@ -1,10 +1,9 @@
 'use client';
-// import { useCartStore } from '@/store/useCartStore';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
-import { Search, ShoppingCart, TextAlignJustify, UserRound } from 'lucide-react';
+import { TextAlignJustify } from 'lucide-react';
 import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
 import { useCartStore } from '@/hook/useCartStore';
@@ -20,7 +19,6 @@ const NavMobile = (params: {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const { cart } = useCartStore();
-    const [searchOpen, setSearchOpen] = useState(false);
 
     const { color, region, categoryDtos } = params;
 
@@ -64,10 +62,7 @@ const NavMobile = (params: {
                                 <li>
                                     <Link
                                         href={{
-                                            pathname: `/${region}/category`,
-                                            query: {
-                                                q: 'flag--Newcategory',
-                                            },
+                                            pathname: `/${region}/shop/new-arrivals`,
                                         }}
                                         prefetch={true}
                                     >
@@ -84,7 +79,13 @@ const NavMobile = (params: {
                                     <li key={item.id || idx}>
                                         <div>
                                             <div className="">
-                                                <div>{item.displayName}</div>
+                                                <div onClick={() => setIsOpen(false)}>
+                                                    <Link
+                                                        href={`/${region}/discover/categories/${item.slug}`}
+                                                    >
+                                                        {item.displayName}
+                                                    </Link>
+                                                </div>
                                                 {item.categoryDetailDtos.map((itm, idx) => (
                                                     <div key={itm.id || idx} className="px-5">
                                                         <Link

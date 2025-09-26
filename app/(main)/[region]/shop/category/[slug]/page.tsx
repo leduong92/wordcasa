@@ -6,6 +6,7 @@ import ActiveFilters from '@/components/product/Filter/ActiveFilters';
 import { getMenus, loadProducts } from '@/lib/apiService';
 import ProductGrid from '@/components/product/ProductGrid';
 import { capitalizeWords } from '@/lib/utils';
+import ShopLeftBanner from '@/components/ShopLeftBanner';
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { page } = await searchParams;
@@ -53,21 +54,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
     return (
         <div className="pt-5">
             {/* Banner */}
-            <div className="flex border-b">
-                <div className="flex-1 py-8 lg:py-14">
-                    <h1 className="text-5xl font-basker font-basker text-neutral-700">
-                        {capitalizeWords(slug)}
-                    </h1>
-                    <p className="text-xl text-neutral-700 basker mt-8">
-                        {/* Explore our latest designs – crafted for modern living. */}
-                    </p>
-                </div>
-
-                {/* Categories */}
-                <div className="flex-1">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12"></div>
-                </div>
-            </div>
+            <ShopLeftBanner region={region} title={slug} />
 
             {/* <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
