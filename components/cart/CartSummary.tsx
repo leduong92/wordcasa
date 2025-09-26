@@ -3,10 +3,22 @@
 import { useCartStore } from '@/hook/useCartStore';
 import { formatCurrency } from '@/lib/utils';
 import CheckoutButton from '../checkout/CheckoutButton';
+import { useEffect, useState } from 'react';
+import SkeletonCartSummary from './SkeletonCartSummary';
 
 export default function CartSummary({ region }: { region: string }) {
+    const [isMounted, setIsMounted] = useState(false);
+
     const items = useCartStore((state) => state.cart);
     const totalQuantity = useCartStore((state) => state.totalQuantity());
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return <SkeletonCartSummary />;
+    }
 
     return (
         <div className="flex flex-col gap-6">
@@ -50,23 +62,10 @@ export default function CartSummary({ region }: { region: string }) {
                         )}
                     </span>
                 </div>
-                {/* <button className="w-full bg-black text-white py-3 mt-4 rounded">Check out</button> */}
                 <div className="py-4">
                     <CheckoutButton region={region} />
                 </div>
             </div>
-
-            {/* <div className="bg-neutral-100 p-6 rounded shadow-sm">
-                <h2 className="text-xl font-bold mb-4">Discount code</h2>
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        placeholder="Discount code *"
-                        className="border flex-1 px-3 py-2 rounded w-full"
-                    />
-                    <button className="bg-black text-white px-4 py-2 rounded">Apply</button>
-                </div>
-            </div> */}
         </div>
     );
 }

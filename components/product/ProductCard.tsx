@@ -3,6 +3,7 @@ import { ItemDto } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import SkeletonProductCard from './SkeletonProductCard';
 
 interface ProductCardProps {
     region: string;
@@ -27,7 +28,8 @@ const ProductCard = ({ region, product }: ProductCardProps) => {
         setActiveImage(img);
     };
 
-    if (!isMounted) return;
+    if (!isMounted)
+        return Array.from({ length: 8 }).map((_, idx) => <SkeletonProductCard key={idx} />);
     return (
         <div className="flex flex-col h-full overflow-hidden ">
             <Link

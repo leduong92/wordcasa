@@ -44,7 +44,6 @@ const ProductDetailPage = async ({ params }: { params: { region: string; slug: s
     if (!product) {
         return <div>Product not found.</div>;
     }
-    console.log(product.relatedItems);
 
     return (
         <div className="pt-5">

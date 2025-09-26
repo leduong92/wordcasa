@@ -89,7 +89,7 @@ const NavMobile = (params: {
                                                 {item.categoryDetailDtos.map((itm, idx) => (
                                                     <div key={itm.id || idx} className="px-5">
                                                         <Link
-                                                            href={`/${region}/category/${itm.slug}`}
+                                                            href={`/${region}/shop/category/${itm.slug}`}
                                                             className="text-neutral-700 text-sm tracking-wide"
                                                         >
                                                             {itm.displayName}

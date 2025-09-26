@@ -24,32 +24,31 @@ export async function generateMetadata(
 
 const CartPage = async ({ params, searchParams }: PageProps) => {
     const { region } = await params;
-    const isCart = false;
+    const isCartEmpty = false;
+
+    if (isCartEmpty) {
+        return <CartEmpty region={region} />;
+    }
+
     return (
-        <>
-            {isCart ? (
-                <CartEmpty region={region} />
-            ) : (
-                <main className="min-h-screen py-4">
-                    <CartQuantity />
+        <main className="min-h-screen py-4">
+            <CartQuantity />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-                        {/* LEFT: Product list */}
-                        <div className="lg:col-span-2 flex flex-col gap-2">
-                            {/* Product card */}
-                            <CartItems region={region} />
-                        </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+                {/* LEFT: Product list */}
+                <div className="lg:col-span-2 flex flex-col gap-2">
+                    {/* Product card */}
+                    <CartItems region={region} />
+                </div>
 
-                        {/* RIGHT: Order summary */}
-                        <div className="lg:col-span-1 space-y-6">
-                            <div className="sticky top-28">
-                                <CartSummary region={region} />
-                            </div>
-                        </div>
+                {/* RIGHT: Order summary */}
+                <div className="lg:col-span-1 space-y-6">
+                    <div className="sticky top-28">
+                        <CartSummary region={region} />
                     </div>
-                </main>
-            )}
-        </>
+                </div>
+            </div>
+        </main>
     );
 };
 

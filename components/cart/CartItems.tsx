@@ -2,21 +2,30 @@
 import { useCartStore } from '@/hook/useCartStore';
 import { Trash, Trash2 } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CartEmpty from './CartEmpty';
 import { formatCurrency } from '@/lib/utils';
+import SkeletonCartItem from './SkeletonCartItem';
 
 const CartItems = ({ region }: { region: string }) => {
     const cartItems = useCartStore((state) => state.cart);
+    const [isMounted, setIsMounted] = useState(false);
 
     const updateQuantity = useCartStore((s) => s.updateQuantity);
     const removeItem = useCartStore((s) => s.removeFromCart);
     const totalQuantity = useCartStore((s) => s.totalQuantity());
 
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return <SkeletonCartItem />;
+    }
+
     if (cartItems.length === 0) {
         return <CartEmpty region={region} />;
     }
-
     return (
         <div>
             {cartItems.map((ci) => {

@@ -1,7 +1,7 @@
 import VideoPlayer from '@/components/VideoPlayer';
 import { translations } from '@/i18n';
 import { apiClient } from '@/lib/apiClient';
-import { CategoryLandingPageDto, CollectionDto } from '@/modals';
+import { CategoryLandingPageDto } from '@/modals';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -90,7 +90,7 @@ const DiscoverRoomsPage = async ({ params, searchParams }: CollectionPageProps) 
                         {item?.collectionDtos.map((c) => (
                             <Link
                                 href={`/${region}/discover/rooms/${item.slug}/${c.slug}`}
-                                key={c.name}
+                                key={c.id || c.slug}
                                 className="group"
                             >
                                 {/* Image */}
