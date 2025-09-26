@@ -4,6 +4,7 @@ import ShopByCategory from '@/components/ShopByCategory';
 import { cookies } from 'next/headers';
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
+import UserModal from '@/components/auth/AuthModal';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -135,9 +136,10 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
 
                 {/* <section className="px-4 md:px-8 py-8">
                 <ShopTheLook />
-            </section> */}
+                </section> */}
             </HomeLayout>
             <Footer lang={lang} region={region} />
+            <UserModal region={region} />
         </>
     );
 }

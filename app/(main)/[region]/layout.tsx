@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import MainLayout from '@/components/layout/main/MainLayout';
 import Footer from '@/components/Footer';
+import UserModal from '@/components/auth/AuthModal';
 
 export default async function RegionLayout({
     children,
@@ -19,6 +20,8 @@ export default async function RegionLayout({
                 {children}
             </MainLayout>
             <Footer region={region} lang={lang} />
+
+            <UserModal region={region} />
         </>
     );
 }

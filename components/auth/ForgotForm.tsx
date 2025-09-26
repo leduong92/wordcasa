@@ -33,9 +33,12 @@ export default function ForgotForm() {
                 </button>
             </div>
 
-            <p className="text-sm text-center mt-3">
+            <p className="text-sm text-center mt-3 text-muted-foreground">
                 Back to{' '}
-                <button onClick={() => setView('login')} className="underline cursor-pointer">
+                <button
+                    onClick={() => setView('login')}
+                    className="underline font-medium cursor-pointer"
+                >
                     Log in
                 </button>
             </p>

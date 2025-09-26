@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { Apple, Facebook, Mail } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 import { useAuthModal } from '@/hook/useAuthModal';
 
 export default function LoginForm() {
@@ -70,7 +70,7 @@ export default function LoginForm() {
                 </div>
 
                 <Button className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2 cursor-pointer">
-                    <Mail size={16} /> {isLoading ? 'Processing...' : 'Log in'}
+                    {isLoading ? 'Processing...' : 'Log in'} <MoveRight size={16} />
                 </Button>
             </form>
 

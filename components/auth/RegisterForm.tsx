@@ -2,10 +2,11 @@ import { useAuthModal } from '@/hook/useAuthModal';
 import React, { useState } from 'react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { Mail } from 'lucide-react';
+import { Mail, MoveRight } from 'lucide-react';
 import { Checkbox } from '../ui/checkbox';
+import Link from 'next/link';
 
-const RegisterForm = () => {
+const RegisterForm = ({ region }: { region: string }) => {
     const { open, setView, setOpen } = useAuthModal();
     const [acceptTerms, setAcceptTerms] = useState(false);
     const [subscribe, setSubscribe] = useState(true);
@@ -25,7 +26,7 @@ const RegisterForm = () => {
                     <Input placeholder="Confirm Password" type="password" required />
 
                     <Button className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2">
-                        <Mail size={16} /> Sign up
+                        Sign up <MoveRight size={16} />
                     </Button>
                 </form>
 
@@ -34,7 +35,7 @@ const RegisterForm = () => {
                     <button
                         type="button"
                         onClick={() => setView('login')}
-                        className="underline font-medium"
+                        className="underline font-medium cursor-pointer"
                     >
                         Log in
                     </button>
@@ -46,8 +47,12 @@ const RegisterForm = () => {
                         checked={acceptTerms}
                         onCheckedChange={(val) => setAcceptTerms(!!val)}
                     />
-                    I agree to Worldcasa{' '}
-                    <span className="text-[#8B572A] underline cursor-pointer">Terms of Use</span>
+                    I agree
+                    <Link href={`/${region}/terms-of-use`}>
+                        <span className="text-[#8B572A] underline cursor-pointer">
+                            Terms of Use
+                        </span>
+                    </Link>
                 </label>
 
                 <label className="flex items-center gap-2 text-sm text-muted-foreground">

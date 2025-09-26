@@ -59,16 +59,14 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
     const menus = await getMenus();
 
     return (
-        <div className="pt-5">
-            {/* Breadcrumb */}
-            <div className="flex mb-5 gap-3 text-sm"></div>
+        <div className="pt-2">
             {/* Banner */}
-            <div className="flex flex-col md:flex-row border-b">
+            <div className="flex flex-col md:flex-row items-center border-b py-5">
                 <ShopLeftBanner region={region} title={'New arrivals'} />
 
                 {/* Categories */}
-                <div className="flex-1">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+                <div className="flex-1 items-center">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                         {categories.map((cat) => (
                             <Link
                                 href={`/${region}/shop/rooms/${cat.slug}`}
