@@ -1,12 +1,11 @@
-import { apiClient } from '@/lib/apiClient';
 import { ItemCategoryDto } from '@/modals/itemDto';
 import CategoryTabs from './layout/CategoryTabs';
+import { serverApi } from '@/lib/serverApi';
 
-async function getCategories(roomId: number) {
+async function getCategories(region: string, roomId: number) {
     try {
-        const response = await apiClient.get<ItemCategoryDto[]>(
-            `/api/item/categories/us/${roomId}`,
-            { cache: 'no-store' }
+        const response = await serverApi.get<ItemCategoryDto[]>(
+            `/api/item/categories/${region}/${roomId}`
         );
         return response.data ?? [];
     } catch (error) {
@@ -17,7 +16,7 @@ async function getCategories(roomId: number) {
 
 export default async function ShopByCategory({ region }: { region: string }) {
     const initialRoomId = 1;
-    const initialData = await getCategories(initialRoomId);
+    const initialData = await getCategories(region, initialRoomId);
 
     return (
         <section aria-label="Shop by Category" className="py-4">

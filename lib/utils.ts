@@ -1,4 +1,4 @@
-import { ItemRequest } from '@/modals/getManageItemPagingRequest';
+import { ItemRequest } from '@/modals';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

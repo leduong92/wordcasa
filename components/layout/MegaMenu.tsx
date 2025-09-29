@@ -91,7 +91,7 @@ const MegaMenu = ({
                                                         alt="New In"
                                                         width={350}
                                                         height={350}
-                                                        className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                        className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                                     />
                                                     <p className="text-sm mt-2 text-neutral-700">
                                                         {cat.name} designs
@@ -166,7 +166,7 @@ const MegaMenu = ({
                                                 alt="New In"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">New In</p>
                                         </div>
@@ -176,7 +176,7 @@ const MegaMenu = ({
                                                 alt="Sectional Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Sectional Sofas
@@ -188,7 +188,7 @@ const MegaMenu = ({
                                                 alt="Spill Resistant Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Spill Resistant Sofas
@@ -243,7 +243,7 @@ const MegaMenu = ({
                                                 alt="New In"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">New In</p>
                                         </div>
@@ -253,7 +253,7 @@ const MegaMenu = ({
                                                 alt="Sectional Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Sectional Sofas
@@ -265,7 +265,7 @@ const MegaMenu = ({
                                                 alt="Spill Resistant Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Spill Resistant Sofas
@@ -320,7 +320,7 @@ const MegaMenu = ({
                                                 alt="New In"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">New In</p>
                                         </div>
@@ -330,7 +330,7 @@ const MegaMenu = ({
                                                 alt="Sectional Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Sectional Sofas
@@ -342,7 +342,7 @@ const MegaMenu = ({
                                                 alt="Spill Resistant Sofas"
                                                 width={350}
                                                 height={350}
-                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105"
+                                                className="rounded-md transform transition duration-300 ease-in-out hover:scale-105 w-full h-auto"
                                             />
                                             <p className="text-sm mt-2 text-neutral-700">
                                                 Spill Resistant Sofas

@@ -2,7 +2,7 @@
 import { ItemCategoryDto } from '@/modals';
 import React, { useEffect, useState } from 'react';
 import ItemCarousel from '../ItemCarousel';
-import { apiClient } from '@/lib/apiClient';
+import { clientApi } from '@/lib/clientApi';
 
 const tabs = [
     { id: 1, label: 'Living' },
@@ -26,7 +26,7 @@ const CategoryTabs = ({
     const loadData = async (roomId: number) => {
         try {
             setLoading(true);
-            const response = await apiClient.get<ItemCategoryDto[]>(
+            const response = await clientApi.get<ItemCategoryDto[]>(
                 `/api/item/categories/us/${roomId}`,
                 { cache: 'no-store' }
             );

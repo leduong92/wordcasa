@@ -1,11 +1,10 @@
-import { CategoryDto } from '@/modals';
-import { GetManageItemPagingRequest } from '@/modals/getManageItemPagingRequest';
-import { apiClient, PagedResult } from '@/lib/apiClient';
+import { CategoryDto, GetManageItemPagingRequest, PagedResult } from '@/modals';
 import { ItemDto } from '@/modals';
 import { parseQ } from '@/lib/utils';
+import { serverApi } from './serverApi';
 
 export async function getMenus() {
-    const response = await apiClient.get<CategoryDto[]>(`/api/category`);
+    const response = await serverApi.get<CategoryDto[]>(`/api/category`);
     return response.data;
 }
 
@@ -30,7 +29,7 @@ export async function loadProducts(
         searchKey: sp.searchKey as string,
         obj,
     };
-    const response = await apiClient.post<PagedResult<ItemDto>>(`/api/item/paging`, request);
+    const response = await serverApi.post<PagedResult<ItemDto>>(`/api/item/paging`, request);
 
     return {
         products: response.data?.items ?? [],

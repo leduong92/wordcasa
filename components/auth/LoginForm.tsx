@@ -7,12 +7,15 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { MoveRight } from 'lucide-react';
 import { useAuthModal } from '@/hook/useAuthModal';
+import { useCartStore } from '@/hook/useCartStore';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { setView, setOpen } = useAuthModal();
+
+    const { fetchCart } = useCartStore();
 
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -22,16 +25,23 @@ export default function LoginForm() {
         e.preventDefault();
 
         setIsLoading(true);
+
+        const fetchAnonymousId = await fetch('/api/anonymous');
+        const data = await fetchAnonymousId.json();
+        const anonymousId = data.anonymousId;
         const res = await signIn('credentials', {
             email,
             password,
             redirect: false,
             callbackUrl,
+            anonymousId,
         });
 
         if (res?.ok) {
-            const redirectUrl = callbackUrl ? decodeURIComponent(callbackUrl as string) : '/';
-            router.push(`/${redirectUrl.slice(1)}`);
+            // const redirectUrl = callbackUrl ? decodeURIComponent(callbackUrl as string) : '/';
+            // router.push(`/${redirectUrl.slice(1)}`);
+
+            await fetchCart();
         } else {
             console.log('Invalid credentials');
         }

@@ -6,7 +6,6 @@ import { UserRound } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useSession } from 'next-auth/react';
 import LogoutButton from './auth/LogoutButton.';
-import CheckoutButton from './checkout/CheckoutButton';
 import LoginButton from './auth/LoginButton';
 
 const NavIcons = ({ lang, region }: { lang: string; region: string }) => {

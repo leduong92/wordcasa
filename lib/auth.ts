@@ -10,6 +10,7 @@ export const authOptions: NextAuthOptions = {
             credentials: {
                 email: { label: 'Email', type: 'email' },
                 password: { label: 'Password', type: 'password' },
+                anonymousId: { label: 'AnonymousId', type: 'text' },
             },
             async authorize(credentials) {
                 if (!credentials?.email || !credentials.password) return null;
@@ -23,6 +24,7 @@ export const authOptions: NextAuthOptions = {
                         body: JSON.stringify({
                             username: credentials.email,
                             password: credentials.password,
+                            anonymousId: credentials.anonymousId,
                         }),
                     }
                 );
@@ -46,6 +48,20 @@ export const authOptions: NextAuthOptions = {
     },
     session: {
         strategy: 'jwt',
+    },
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.accessToken = (user as any).accessToken;
+                token.id = user.id;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            session.accessToken = token.accessToken as string;
+            session.user.id = token.id as string;
+            return session;
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
 };

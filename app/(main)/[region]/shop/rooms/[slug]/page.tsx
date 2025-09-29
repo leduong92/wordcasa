@@ -3,7 +3,7 @@ import { translations } from '@/i18n';
 import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
-import { getMenus, loadProducts } from '@/lib/apiService';
+import { getMenus, loadProducts } from '@/lib/commonService';
 import ProductGrid from '@/components/product/ProductGrid';
 import { capitalizeWords } from '@/lib/utils';
 import ShopLeftBanner from '@/components/ShopLeftBanner';

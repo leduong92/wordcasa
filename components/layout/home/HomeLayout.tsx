@@ -1,5 +1,5 @@
 import NavHomeMenu from './NavHomeMenu';
-import { getMenus } from '@/lib/apiService';
+import { getMenus } from '@/lib/commonService';
 
 export default async function HomeLayout({
     children,

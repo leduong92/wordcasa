@@ -1,10 +1,8 @@
 import ProductGrid from '@/components/product/ProductGrid';
 import ShopLeftBanner from '@/components/ShopLeftBanner';
 import { translations } from '@/i18n';
-import { apiClient } from '@/lib/apiClient';
-import { loadProducts } from '@/lib/apiService';
+import { loadProducts } from '@/lib/commonService';
 import { capitalizeWords } from '@/lib/utils';
-import { Metadata, ResolvingMetadata } from 'next';
 import { cookies } from 'next/headers';
 
 interface PageProps {

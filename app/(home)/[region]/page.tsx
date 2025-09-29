@@ -42,6 +42,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                     src="/bed_1.jpg"
                                     alt="Paris"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     priority
                                     className="object-cover"
                                 />
@@ -68,6 +69,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                     src="/bed_2.jpg"
                                     alt="Seoul"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     priority
                                     className="object-cover"
                                 />

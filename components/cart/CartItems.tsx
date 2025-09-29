@@ -26,20 +26,21 @@ const CartItems = ({ region }: { region: string }) => {
     if (cartItems.length === 0) {
         return <CartEmpty region={region} />;
     }
+
     return (
         <div>
             {cartItems.map((ci) => {
-                const img = ci.variant.itemImageDtos?.[0].imageUrl ?? '/placeholder.png';
-                const price = ci.variant.itemPriceDtos?.[0]?.price ?? 0;
+                const img = ci.imageUrl ?? '/placeholder.png';
+                const price = ci.price ?? 0;
                 return (
                     <div
-                        key={ci.variant.id}
+                        key={ci.id}
                         className="bg-neutral-200/10 border-b p-4 md:p-6 rounded-lg flex flex-col items-center md:flex-row gap-4"
                     >
                         <div className="relative w-full md:w-60 h-48 md:h-60 flex-shrink-0">
                             <Image
                                 src={`${img}?profile=basic&w=300`}
-                                alt={ci.item.productName ?? 'Product'}
+                                alt={ci.productName ?? 'Product'}
                                 fill
                                 className="object-contain p-4"
                                 sizes="(max-width: 768px) 100vw, 288px"
@@ -50,14 +51,14 @@ const CartItems = ({ region }: { region: string }) => {
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between mt-4">
                                     <div>
-                                        <h2 className="text-xl font-bold">{ci.item.productName}</h2>
-                                        <p className="text-neutral-600">{ci.variant.sku}</p>
+                                        <h2 className="text-xl font-bold">{ci.productName}</h2>
+                                        <p className="text-neutral-600">{ci.sku}</p>
                                     </div>
                                     <div>
                                         <div className="flex items-center gap-3 mt-3">
                                             <button
                                                 onClick={() =>
-                                                    updateQuantity(ci.variant.id, ci.quantity - 1)
+                                                    updateQuantity(ci.variantId, ci.quantity - 1)
                                                 }
                                                 disabled={ci.quantity <= 1}
                                                 className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200
@@ -69,7 +70,7 @@ const CartItems = ({ region }: { region: string }) => {
                                             <span>{ci.quantity}</span>
                                             <button
                                                 onClick={() =>
-                                                    updateQuantity(ci.variant.id, ci.quantity + 1)
+                                                    updateQuantity(ci.variantId, ci.quantity + 1)
                                                 }
                                                 className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200"
                                             >
@@ -91,16 +92,16 @@ const CartItems = ({ region }: { region: string }) => {
                                             <div className="flex justify-between text-neutral-600 mb-2">
                                                 <span className="w-1/3">Size </span>
                                                 <span className="font-medium">
-                                                    <p className="text-neutral-600 w-max px-3">
-                                                        {ci.variant.dimensionsCM} cm
-                                                    </p>
+                                                    <p
+                                                        className="text-neutral-600 w-max px-3"
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: `${ci.dimensionsCM} cm`,
+                                                        }}
+                                                    />
                                                 </span>
                                             </div>
                                             <div>
-                                                {
-                                                    ci.variant.itemVariantOptionDtos?.[0]
-                                                        .optionValueDto.value
-                                                }
+                                                {ci.itemVariantOptionDtos?.[0].optionValueDto.value}
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +109,7 @@ const CartItems = ({ region }: { region: string }) => {
                                         <div className="h-full flex items-end">
                                             <button
                                                 className="text-sm text-neutral-500 hover:text-neutral-800 items-center flex gap-1 cursor-pointer"
-                                                onClick={() => removeItem(ci.variant.id)}
+                                                onClick={() => removeItem(ci.id)}
                                             >
                                                 <span>Remove</span>
                                                 <span>

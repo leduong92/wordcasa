@@ -18,7 +18,7 @@ const AddToCartButton = ({ item, variant }: AddToCartButtonProps) => {
     const handleAdd = () => {
         if (variant) {
             setIsAdding(true);
-            addItem(item, variant, quantity);
+            addItem(item.id, variant.id, quantity);
             setTimeout(() => {
                 setIsAdding(false);
             }, 700);

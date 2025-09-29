@@ -28,8 +28,6 @@ const NavMobile = (params: {
 
     if (!isMounted) return <div></div>;
 
-    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-
     return (
         <div className={`flex md:hidden items-center justify-between w-full text-${color}`}>
             {/* Left */}

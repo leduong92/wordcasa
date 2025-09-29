@@ -1,3 +1,18 @@
+export type ApiResponse<T> = {
+    data?: T;
+    isSuccess: boolean;
+    message: string;
+    statusCode?: number;
+};
+
+export type PagedResult<T> = {
+    items: [T];
+    totalRecords: number;
+    pageIndex: number;
+    pageSize: number;
+    pageCount: number;
+};
+
 export type GetManageItemPagingRequest = {
     sortKey?: string;
     searchKey?: string;

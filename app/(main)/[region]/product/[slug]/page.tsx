@@ -1,12 +1,12 @@
 import ShopByCategory from '@/components/ShopByCategory';
 import ProductVariantClient from '@/components/product/ProductDetailClient';
-import { apiClient } from '@/lib/apiClient';
 import { ItemDto } from '@/modals';
 import Script from 'next/script';
 import React from 'react';
 
 import type { Metadata, ResolvingMetadata } from 'next';
 import ProductRelated from '@/components/product/ProductRelated';
+import { serverApi } from '@/lib/serverApi';
 
 type PageProps = {
     params: Promise<{ region: string; slug: string }>;
@@ -19,7 +19,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { slug, region } = await params;
 
-    const response = await apiClient.get<ItemDto>(`/api/item/${region}/${slug}`, {
+    const response = await serverApi.get<ItemDto>(`/api/item/${region}/${slug}`, {
         next: { revalidate: 60 },
     });
 
@@ -30,7 +30,7 @@ export async function generateMetadata(
 }
 
 async function getProductDetail(region: string, slug: string) {
-    const response = await apiClient.get<ItemDto>(`/api/item/${region}/${slug}`, {
+    const response = await serverApi.get<ItemDto>(`/api/item/${region}/${slug}`, {
         next: { revalidate: 60 },
     });
     if (!response.isSuccess) return null;

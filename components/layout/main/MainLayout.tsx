@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import NavMainMenu from './NavMainMenu';
-import { getMenus } from '@/lib/apiService';
+import { getMenus } from '@/lib/commonService';
 
 export default async function MainLayout({
     region,

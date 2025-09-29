@@ -1,6 +1,5 @@
 import VideoPlayer from '@/components/VideoPlayer';
 import { translations } from '@/i18n';
-import { apiClient } from '@/lib/apiClient';
 import { CategoryLandingPageDto, CollectionDto } from '@/modals';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
@@ -8,6 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { capitalizeWords } from '@/lib/utils';
+import { serverApi } from '@/lib/serverApi';
 
 interface CollectionPageProps {
     params: Promise<{ region: string; slug: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { slug, region } = await params;
 
-    const response = await apiClient.get<CategoryLandingPageDto>(
+    const response = await serverApi.get<CategoryLandingPageDto>(
         `/api/item/category/${region}/${slug}`
     );
 
@@ -40,7 +40,7 @@ const DiscoverCategoryPage = async ({ params, searchParams }: CollectionPageProp
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
     const t = translations[lang];
 
-    const response = await apiClient.get<CategoryLandingPageDto>(
+    const response = await serverApi.get<CategoryLandingPageDto>(
         `/api/item/category/${region}/${slug}`
     );
 

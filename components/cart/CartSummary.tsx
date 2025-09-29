@@ -30,11 +30,7 @@ export default function CartSummary({ region }: { region: string }) {
                     <span>Subtotal</span>
                     <span className="font-medium">
                         {formatCurrency(
-                            items.reduce(
-                                (sum, ci) =>
-                                    sum + (ci.variant.itemPriceDtos?.[0]?.price ?? 0) * ci.quantity,
-                                0
-                            )
+                            items.reduce((sum, ci) => sum + (ci.price ?? 0) * ci.quantity, 0)
                         )}
                     </span>
                 </div>
@@ -54,11 +50,7 @@ export default function CartSummary({ region }: { region: string }) {
                     <span>Total price (incl taxes & shipping)</span>
                     <span>
                         {formatCurrency(
-                            items.reduce(
-                                (sum, ci) =>
-                                    sum + (ci.variant.itemPriceDtos?.[0]?.price ?? 0) * ci.quantity,
-                                0
-                            )
+                            items.reduce((sum, ci) => sum + (ci.price ?? 0) * ci.quantity, 0)
                         )}
                     </span>
                 </div>

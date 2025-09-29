@@ -7,13 +7,23 @@ import { Skeleton } from '../ui/skeleton';
 
 const CartIcon = () => {
     const [isMounted, setIsMounted] = useState(false);
-    const { cart } = useCartStore();
+    const { cart, fetchCart } = useCartStore();
 
     const totalQuantity = useCartStore((s) => s.totalQuantity());
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    useEffect(() => {
+        if (isMounted) {
+            const fetch = async () => {
+                const res = await fetchCart();
+                return res;
+            };
+            fetch();
+        }
+    }, [isMounted]);
 
     if (!isMounted)
         return (

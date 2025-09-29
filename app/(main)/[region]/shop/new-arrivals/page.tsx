@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import FilterMenu from '@/components/product/Filter/FilterMenu';
 import ActiveFilters from '@/components/product/Filter/ActiveFilters';
-import { getMenus, loadProducts } from '@/lib/apiService';
+import { getMenus, loadProducts } from '@/lib/commonService';
 import ProductGrid from '@/components/product/ProductGrid';
 import ShopLeftBanner from '@/components/ShopLeftBanner';
 
