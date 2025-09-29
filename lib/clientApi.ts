@@ -1,4 +1,5 @@
 // lib/clientApi.ts
+import { ApiResponse } from '@/modals';
 import axios, { AxiosRequestHeaders } from 'axios';
 import { getSession } from 'next-auth/react';
 
@@ -15,6 +16,7 @@ const axiosInstance = axios.create({
 // Add request interceptor for auth
 axiosInstance.interceptors.request.use(async (config) => {
     const session = await getSession();
+
     const token = (session as any)?.accessToken;
 
     if (token) {
@@ -45,11 +47,4 @@ export const clientApi = {
         const res = await axiosInstance.patch<ApiResponse<T>>(path, body);
         return res.data;
     },
-};
-
-export type ApiResponse<T> = {
-    data?: T;
-    isSuccess: boolean;
-    message: string;
-    statusCode?: number;
 };

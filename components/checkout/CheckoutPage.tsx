@@ -27,8 +27,7 @@ export default function CheckoutPage({ region }: { region: string }) {
                 <div className="lg:col-span-2 space-y-6">
                     {currentStep === 1 && <CartItems region={region} />}
                     {currentStep === 2 && (
-                        <div className="bg-neutral-200/10 p-6 rounded-lg">
-                            <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
+                        <div className="bg-neutral-200/10 rounded-lg">
                             <ShippingAddressStep
                                 onSubmit={(addr) => {
                                     console.log('Selected shipping address:', addr);
@@ -39,18 +38,18 @@ export default function CheckoutPage({ region }: { region: string }) {
                         </div>
                     )}
                     {currentStep === 3 && (
-                        <div className="bg-neutral-200/10 p-6 rounded-lg">
+                        <div className="bg-neutral-200/10 rounded-lg">
                             <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
                             <div className="space-y-4">
-                                <label className="flex items-center gap-2">
+                                <label className="flex items-center gap-2 cursor-pointer">
                                     <input type="radio" name="payment" defaultChecked />
                                     Credit / Debit Card
                                 </label>
-                                <label className="flex items-center gap-2">
+                                <label className="flex items-center gap-2 cursor-pointer">
                                     <input type="radio" name="payment" />
                                     PayPal
                                 </label>
-                                <label className="flex items-center gap-2">
+                                <label className="flex items-center gap-2 cursor-pointer">
                                     <input type="radio" name="payment" />
                                     Cash on Delivery
                                 </label>
@@ -58,9 +57,9 @@ export default function CheckoutPage({ region }: { region: string }) {
                         </div>
                     )}
                     {currentStep === 4 && (
-                        <div className="bg-neutral-200/10 p-6 rounded-md">
+                        <div className="bg-neutral-200/10 rounded-md">
                             <h2 className="text-xl font-semibold mb-4">Review Order</h2>
-                            <p>👉 Tóm tắt thông tin giỏ hàng, địa chỉ, phương thức thanh toán...</p>
+                            <p>Comming soon...</p>
                         </div>
                     )}
 

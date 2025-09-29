@@ -22,5 +22,5 @@ export interface ShippingAddressDto {
     shippingPhoneNumber: string;
     shippingFloorNumber?: number;
     isRuralArea?: boolean;
-    isActive: boolean;
+    isActive?: boolean;
 }

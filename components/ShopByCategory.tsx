@@ -22,7 +22,7 @@ export default async function ShopByCategory({ region }: { region: string }) {
         <section aria-label="Shop by Category" className="py-4">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-semibold text-neutral-700 mb-8">
-                    Shop by Categories
+                    Shop by Rooms
                 </h2>
 
                 <CategoryTabs

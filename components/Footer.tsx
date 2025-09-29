@@ -40,27 +40,27 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 {/* Left links */}
                 <div className="space-y-2 text-base text-gray-700">
                     <div>
-                        <Link href={'#'}>
+                        <Link href={`/${region}/customer-service`}>
                             <p>Customer Service</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={'#'}>
+                        <Link href={`/${region}/store`}>
                             <p>Find store</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={'#'}>
+                        <Link href={`/${region}/about`}>
                             <p>About Worldcasa</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={'#'}>
+                        <Link href={`/${region}/delivery-policy`}>
                             <p>Delivery Policy</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={'#'}>
+                        <Link href={`/${region}/return-policy`}>
                             <p>Sale & Return Policy</p>
                         </Link>
                     </div>
@@ -96,9 +96,9 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 </Link>
 
                 <div className="flex gap-6">
-                    <a href="#">Cookie information</a>
-                    <a href="#">Terms &amp; conditions</a>
-                    <a href="#">Privacy policy</a>
+                    <Link href={`/${region}/cookie-information`}>Cookie information</Link>
+                    <Link href={`/${region}/terms-of-use`}>Terms &amp; conditions</Link>
+                    <Link href={`/${region}/privacy-policy`}>Privacy policy</Link>
                 </div>
 
                 <div className="flex items-center gap-6">

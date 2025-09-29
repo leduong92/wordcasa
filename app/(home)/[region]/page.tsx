@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
+import CookieConsentPopup from '@/components/CookieConsentPopup';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -26,7 +27,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                     <div className="flex flex-col md:flex-row gap-5 w-full h-full">
                         {/* Text content */}
                         <div className="w-full md:w-1/2 flex flex-col justify-center lg:px-16">
-                            <span className="text-4xl font-bold text-center">Paris</span>
+                            <span className="text-4xl font-bold text-center">Living rooms</span>
                             <p className="mt-4 text-gray-700 leading-8 text-justify">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
                                 unde odio quaerat corrupti modi eveniet aspernatur, ratione tenetur
@@ -53,7 +54,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                     <div className="flex flex-col md:flex-row-reverse gap-5 w-full h-full pt-8">
                         {/* Text content */}
                         <div className="w-full md:w-1/2 flex flex-col justify-center lg:p-16">
-                            <span className="text-4xl font-bold text-center">Seoul</span>
+                            <span className="text-4xl font-bold text-center">Dining rooms</span>
                             <p className="mt-4 text-gray-700 leading-8 text-justify">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
                                 unde odio quaerat corrupti modi eveniet aspernatur, ratione tenetur
@@ -68,6 +69,33 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                 <Image
                                     src="/bed_2.jpg"
                                     alt="Seoul"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    priority
+                                    className="object-cover"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row gap-5 w-full h-full">
+                        {/* Text content */}
+                        <div className="w-full md:w-1/2 flex flex-col justify-center lg:px-16">
+                            <span className="text-4xl font-bold text-center">Beds rooms</span>
+                            <p className="mt-4 text-gray-700 leading-8 text-justify">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
+                                unde odio quaerat corrupti modi eveniet aspernatur, ratione tenetur
+                                dicta consequuntur reiciendis, ullam atque cupiditate, aliquam non
+                                molestias. Voluptatum, maxime qui?
+                            </p>
+                        </div>
+
+                        {/* Image with fill */}
+                        <div className="w-full md:w-1/2 flex items-center justify-center ">
+                            <div className="w-full aspect-video relative overflow-hidden rounded-md">
+                                <Image
+                                    src="/bed_1.jpg"
+                                    alt="Paris"
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     priority

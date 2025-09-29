@@ -27,8 +27,7 @@ const CategoryTabs = ({
         try {
             setLoading(true);
             const response = await clientApi.get<ItemCategoryDto[]>(
-                `/api/item/categories/us/${roomId}`,
-                { cache: 'no-store' }
+                `/api/item/categories/us/${roomId}`
             );
             setData(response.data ?? []);
         } catch (error) {

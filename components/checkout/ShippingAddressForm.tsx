@@ -99,7 +99,7 @@ const ShippingAddressForm = ({
                 onChange={handleChange}
                 className="border p-2 rounded"
             />
-            <label className="flex items-center gap-2 col-span-2">
+            <label className="flex items-center gap-2">
                 <input
                     type="checkbox"
                     name="isRuralArea"
@@ -108,7 +108,7 @@ const ShippingAddressForm = ({
                 />
                 Rural Area
             </label>
-            <label className="flex items-center gap-2 col-span-2">
+            <label className="flex items-center gap-2">
                 <input
                     type="checkbox"
                     name="isActive"
@@ -119,10 +119,17 @@ const ShippingAddressForm = ({
             </label>
 
             <div className="col-span-2 flex gap-2">
-                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white  hover:bg-blue-400 px-4 py-2 rounded cursor-pointer"
+                >
                     Save
                 </button>
-                <button type="button" className="bg-gray-300 px-4 py-2 rounded" onClick={onCancel}>
+                <button
+                    type="button"
+                    className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded cursor-pointer"
+                    onClick={onCancel}
+                >
                     Cancel
                 </button>
             </div>

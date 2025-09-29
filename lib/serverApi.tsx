@@ -36,12 +36,8 @@ async function serverFetch<T>(
         ...(options.headers || {}),
     };
 
-    let token = options.token;
-
-    if (options.withAuth) {
-        const session = await getServerSession(authOptions);
-        token = token ?? (session as any)?.accessToken;
-    }
+    const session = await getServerSession(authOptions);
+    let token = (session as any)?.accessToken;
 
     if (token) headers['Authorization'] = `Bearer ${token}`;
 

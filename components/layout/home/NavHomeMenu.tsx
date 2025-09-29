@@ -91,7 +91,13 @@ const NavHomeMenu = ({
                         </div>
                     </div>
 
-                    <div className="w-full h-full pt-5 text-neutral-200">
+                    <div
+                        className={`w-full h-full pt-5 text-neutral-200 ${
+                            visible
+                                ? 'text-neutral-200 placeholder-neutral-20'
+                                : 'text-neutral-800 placeholder-neutral-800'
+                        } `}
+                    >
                         {/* Menu Items */}
                         <MegaMenu lang={lang} region={region} categoryDtos={categoryDtos} />
                     </div>
