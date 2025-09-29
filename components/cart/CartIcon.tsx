@@ -40,7 +40,7 @@ const CartIcon = () => {
             <div className="relative cursor-pointer">
                 <Link href={`/cart`} className="cursor-pointer">
                     <ShoppingCart size={18} />
-                    {cart.length > 0 && (
+                    {cart && cart.length > 0 && (
                         <div
                             className="absolute -top-4 -right-3 w-6 h-6 bg-neutral-900
                     rounded-full text-neutral-100  text-sm flex items-center justify-center"
