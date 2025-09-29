@@ -1,4 +1,4 @@
-export const regions = ['us', 'id'] as const;
+export const regions = ['us', 'id', 'vn'] as const;
 export type Region = (typeof regions)[number];
 
 export const languages = ['en', 'id'] as const;
