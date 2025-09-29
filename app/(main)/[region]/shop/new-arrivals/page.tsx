@@ -65,20 +65,21 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
                 <ShopLeftBanner region={region} title={'New arrivals'} />
 
                 {/* Categories */}
-                <div className="flex-1 items-center">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="flex-1 w-full">
+                    <div className="grid grid-cols-2  md:grid-cols-3 gap-6">
                         {categories.map((cat) => (
                             <Link
                                 href={`/${region}/shop/rooms/${cat.slug}`}
                                 key={cat.name}
                                 className="cursor-pointer group"
                             >
-                                <div className="relative w-full h-40 overflow-hidden">
+                                <div className="relative w-full h-40 overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
                                     <Image
                                         src={cat.image}
                                         alt={cat.name}
                                         fill
-                                        className="object-cover group-hover:scale-105 transition-transform"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                                     />
                                 </div>
                                 <p className="mt-2 text-center">{cat.name}</p>
