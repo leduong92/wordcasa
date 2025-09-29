@@ -97,7 +97,7 @@ export default function CheckoutPage({ region }: { region: string }) {
                 {/* Cart Summary */}
                 <div className="lg:col-span-1">
                     <div className="lg:sticky lg:top-24">
-                        <CartSummary region={region} />
+                        <CartSummary region={region} isShowCheckout={false} />
                     </div>
                 </div>
             </div>

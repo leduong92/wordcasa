@@ -1,8 +1,7 @@
 'use client';
 import { useAuthModal } from '@/hook/useAuthModal';
-import { signIn, useSession } from 'next-auth/react';
-import Link from 'next/link';
-import { redirect, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 import React from 'react';
 

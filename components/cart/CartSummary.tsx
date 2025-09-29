@@ -6,7 +6,13 @@ import CheckoutButton from '../checkout/CheckoutButton';
 import { useEffect, useState } from 'react';
 import SkeletonCartSummary from './SkeletonCartSummary';
 
-export default function CartSummary({ region }: { region: string }) {
+export default function CartSummary({
+    region,
+    isShowCheckout,
+}: {
+    region: string;
+    isShowCheckout: boolean;
+}) {
     const [isMounted, setIsMounted] = useState(false);
 
     const items = useCartStore((state) => state.cart);
@@ -54,9 +60,11 @@ export default function CartSummary({ region }: { region: string }) {
                         )}
                     </span>
                 </div>
-                <div className="py-4">
-                    <CheckoutButton region={region} />
-                </div>
+                {isShowCheckout && (
+                    <div className="py-4">
+                        <CheckoutButton region={region} />
+                    </div>
+                )}
             </div>
         </div>
     );

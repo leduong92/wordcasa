@@ -109,7 +109,7 @@ const CartItems = ({ region }: { region: string }) => {
                                         <div className="h-full flex items-end">
                                             <button
                                                 className="text-sm text-neutral-500 hover:text-neutral-800 items-center flex gap-1 cursor-pointer"
-                                                onClick={() => removeItem(ci.id)}
+                                                onClick={() => removeItem(ci.variantId)}
                                             >
                                                 <span>Remove</span>
                                                 <span>

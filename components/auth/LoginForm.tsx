@@ -40,7 +40,6 @@ export default function LoginForm() {
         if (res?.ok) {
             // const redirectUrl = callbackUrl ? decodeURIComponent(callbackUrl as string) : '/';
             // router.push(`/${redirectUrl.slice(1)}`);
-
             await fetchCart();
         } else {
             console.log('Invalid credentials');
@@ -80,7 +79,7 @@ export default function LoginForm() {
                 </div>
 
                 <Button className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2 cursor-pointer">
-                    {isLoading ? 'Processing...' : 'Log in'} <MoveRight size={16} />
+                    {isLoading ? 'Processing...' : 'Log in'}
                 </Button>
             </form>
 
