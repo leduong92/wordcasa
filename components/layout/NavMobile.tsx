@@ -100,14 +100,14 @@ const NavMobile = (params: {
                                 ))}
 
                                 <li className="border-t pt-5 text-sm">
-                                    <Link href="/about" prefetch={true}>
+                                    <Link href={`/${region}/about`} prefetch={true}>
                                         <span onClick={() => setIsOpen(false)} className="">
                                             About
                                         </span>
                                     </Link>
                                 </li>
                                 <li className="text-sm">
-                                    <Link href="/contact" prefetch={true}>
+                                    <Link href={`/${region}/contact`} prefetch={true}>
                                         <span onClick={() => setIsOpen(false)} className="">
                                             Contact
                                         </span>

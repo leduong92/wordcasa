@@ -74,6 +74,7 @@ export default async function ShopePages({ params, searchParams }: PageProps) {
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    url={`/shop/room/${slug}`}
                 />
             </div>
         </div>

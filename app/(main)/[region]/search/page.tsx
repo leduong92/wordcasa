@@ -102,6 +102,7 @@ export default async function SearchPage({ params, searchParams }: PageProps) {
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    url={`/search`}
                 />
             </div>
         </div>

@@ -43,7 +43,7 @@ export default function ItemCarousel({
                             className="block flex-shrink-0 relative"
                         >
                             <div>
-                                <div className="relative w-full h-[200px] bg-neutral-500/5">
+                                <div className="relative w-full h-[200px] bg-neutral-500/1">
                                     <Image
                                         src={`${
                                             item.itemVariantDtos?.[0]?.itemImageDtos?.[0]

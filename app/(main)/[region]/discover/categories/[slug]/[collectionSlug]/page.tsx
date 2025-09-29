@@ -43,6 +43,7 @@ export default async function CollectionDetail({ params, searchParams }: PagePro
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    url={`/discover/categories/${slug}/${collectionSlug}`}
                 />
             </div>
         </div>

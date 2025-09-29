@@ -37,7 +37,7 @@ const ProductRelated = ({ region, items }: { region: string; items: ItemRelatedD
                             className="block flex-shrink-0 relative"
                         >
                             <div>
-                                <div className="relative w-full h-[200px] bg-neutral-500/5">
+                                <div className="relative w-full h-[200px] bg-neutral-500/1">
                                     <Image
                                         src={`${item.imageUrl ?? ''}?profile=basic&w=400`}
                                         alt={item.productName ?? ''}

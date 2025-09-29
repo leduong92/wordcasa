@@ -70,6 +70,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    url={`/shop/category/${slug}`}
                 />
             </div>
         </div>

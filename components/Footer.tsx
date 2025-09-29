@@ -10,7 +10,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 <div className="hidden md:block w-1/3 border-b h-32"></div>
                 <div className="md:col-span-2 flex gap-6 p-4 md:p-12 bg-neutral-200 rounded-xl w-full md:w-2/3">
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Link href={`/${region}/help`}>
+                        <Link href={`/${region}/fabric`}>
                             <Image
                                 src="/bed_3.jpg"
                                 alt="Get free fabric samples"
@@ -22,7 +22,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                         </Link>
                     </div>
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Link href={`/${region}/fabric`}>
+                        <Link href={`/${region}/web/help`}>
                             <Image
                                 src="/bed_4.jpg"
                                 alt="Need help? Let's talk"
@@ -40,7 +40,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 {/* Left links */}
                 <div className="space-y-2 text-base text-gray-700">
                     <div>
-                        <Link href={`/${region}/customer-service`}>
+                        <Link href={`/${region}/web/customer-service`}>
                             <p>Customer Service</p>
                         </Link>
                     </div>
@@ -55,12 +55,12 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/delivery-policy`}>
+                        <Link href={`/${region}/web/delivery-policy`}>
                             <p>Delivery Policy</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/return-policy`}>
+                        <Link href={`/${region}/web/return-policy`}>
                             <p>Sale & Return Policy</p>
                         </Link>
                     </div>
@@ -96,9 +96,9 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 </Link>
 
                 <div className="flex gap-6">
-                    <Link href={`/${region}/cookie-information`}>Cookie information</Link>
-                    <Link href={`/${region}/terms-of-use`}>Terms &amp; conditions</Link>
-                    <Link href={`/${region}/privacy-policy`}>Privacy policy</Link>
+                    <Link href={`/${region}/web/cookie-information`}>Cookie information</Link>
+                    <Link href={`/${region}/web/terms-of-use`}>Terms &amp; conditions</Link>
+                    <Link href={`/${region}/web/privacy-policy`}>Privacy policy</Link>
                 </div>
 
                 <div className="flex items-center gap-6">

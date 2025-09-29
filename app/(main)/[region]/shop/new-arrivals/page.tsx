@@ -104,6 +104,7 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    url="/shop/new-arrivals"
                 />
             </div>
         </div>
