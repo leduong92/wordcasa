@@ -25,7 +25,7 @@ export default function CheckoutPage({ region }: { region: string }) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Main content */}
                 <div className="lg:col-span-2 space-y-6">
-                    {currentStep === 1 && <CartItems region={region} />}
+                    {currentStep === 1 && <CartItems region={region} isCheckout={true} />}
                     {currentStep === 2 && (
                         <div className="bg-neutral-200/10 rounded-lg">
                             <ShippingAddressStep
@@ -97,7 +97,7 @@ export default function CheckoutPage({ region }: { region: string }) {
                 {/* Cart Summary */}
                 <div className="lg:col-span-1">
                     <div className="lg:sticky lg:top-24">
-                        <CartSummary region={region} isShowCheckout={false} />
+                        <CartSummary region={region} isCheckout={true} />
                     </div>
                 </div>
             </div>

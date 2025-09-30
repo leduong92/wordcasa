@@ -6,16 +6,22 @@ declare module 'next-auth' {
         user: {
             id: string;
         } & DefaultSession['user'];
-        accessToken?: string; // 👈 thêm vào đây
+        accessToken?: string;
+        expires?: string;
+        refreshToken?: string;
     }
 
     interface User extends DefaultUser {
         id: string;
+        refreshToken?: string;
+        accessTokenExpires?: number;
     }
 }
 
 declare module 'next-auth/jwt' {
     interface JWT extends DefaultJWT {
-        accessToken?: string; // 👈 thêm vào JWT
+        accessToken?: string;
+        refreshToken?: string;
+        accessTokenExpires?: number;
     }
 }

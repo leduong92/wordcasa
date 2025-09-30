@@ -61,7 +61,7 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
     return (
         <div className="pt-2">
             {/* Banner */}
-            <div className="flex flex-col md:flex-row items-center border-b py-5">
+            <div className="flex flex-col md:flex-row border-b py-5">
                 <ShopLeftBanner region={region} title={'New arrivals'} />
 
                 {/* Categories */}

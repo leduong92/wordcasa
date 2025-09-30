@@ -8,10 +8,10 @@ import SkeletonCartSummary from './SkeletonCartSummary';
 
 export default function CartSummary({
     region,
-    isShowCheckout,
+    isCheckout,
 }: {
     region: string;
-    isShowCheckout: boolean;
+    isCheckout: boolean;
 }) {
     const [isMounted, setIsMounted] = useState(false);
 
@@ -60,7 +60,7 @@ export default function CartSummary({
                         )}
                     </span>
                 </div>
-                {isShowCheckout && (
+                {!isCheckout && (
                     <div className="py-4">
                         <CheckoutButton region={region} />
                     </div>

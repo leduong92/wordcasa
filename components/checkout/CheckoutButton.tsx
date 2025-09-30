@@ -16,9 +16,13 @@ const CheckoutButton = ({ region }: { region: string }) => {
             // router.push(`/${region}/auth/login?callbackUrl=/${region}/checkout`);
             setView('login');
             return;
-        } else {
-            router.push(`/${region}/checkout`);
         }
+
+        if ((session as any)?.error === 'RefreshAccessTokenError') {
+            setView('login');
+            return;
+        }
+        router.push(`/${region}/checkout`);
     };
     return (
         <button

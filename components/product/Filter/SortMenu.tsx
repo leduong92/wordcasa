@@ -2,6 +2,13 @@
 'use client';
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 
 export default function SortMenu() {
     const router = useRouter();
@@ -16,22 +23,20 @@ export default function SortMenu() {
     };
 
     return (
-        <div className="">
+        <div className="flex items-center">
             <label htmlFor="sort-by" className="mr-2">
                 Sort by:
             </label>
-            <select
-                id="sort-by"
-                className="p-1 focus-visible:outline-none"
-                onChange={(e) => handleSortChange(e.target.value)}
-                value={searchParams.get('sortKey') || ''}
-            >
-                <option value="">Default</option>
-                <option value="price-asc">Price: Low - High</option>
-                <option value="price-desc">Price: High - Low</option>
-                <option value="name-asc">Product: A-Z</option>
-                <option value="name-desc">Product: Z-A</option>
-            </select>
+            <Select onValueChange={(val) => handleSortChange(val)}>
+                <SelectTrigger className="w-[150px] border-none focus-visible:border-none">
+                    <SelectValue placeholder="Default" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="default">Default</SelectItem>
+                    <SelectItem value="name-asc">Product: A-Z</SelectItem>
+                    <SelectItem value="name-desc">Product: Z-A</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
     );
 }

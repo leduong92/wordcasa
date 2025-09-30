@@ -35,7 +35,9 @@ export const authOptions: NextAuthOptions = {
                         id: user.data.userDto.id,
                         name: user.data.userDto.userName,
                         email: user.data.userDto.email,
-                        accessToken: user.data.token,
+                        accessToken: user.data.accessToken,
+                        refreshToken: user.data.refreshToken,
+                        accessTokenExpires: new Date(user.data.expiresAt).getTime(),
                     };
                     return response;
                 }
@@ -52,16 +54,61 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.accessToken = (user as any).accessToken;
                 token.id = user.id;
+                token.accessToken = (user as any).accessToken;
+                token.refreshToken = user?.refreshToken;
+                token.accessTokenExpires = user?.accessTokenExpires;
             }
-            return token;
+
+            if (Date.now() < (token.accessTokenExpires as number)) {
+                return token;
+            }
+
+            return await refreshAccessToken(token);
         },
         async session({ session, token }) {
-            session.accessToken = token.accessToken as string;
             session.user.id = token.id as string;
+            session.accessToken = token.accessToken as string;
+            session.refreshToken = token.refreshToken as string;
+
+            if (token.accessTokenExpires) {
+                session.expires = new Date(token.accessTokenExpires).toISOString();
+            }
+            console.log(session);
             return session;
         },
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
+
+async function refreshAccessToken(token: any) {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/account/refresh`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                refreshToken: token.refreshToken,
+            }),
+        });
+
+        const refreshed = await res.json();
+
+        if (!res.ok || !refreshed.data) {
+            throw refreshed;
+        }
+
+        return {
+            ...token,
+            accessToken: refreshed.data.accessToken,
+            accessTokenExpires: new Date(refreshed.data.expiresAt).getTime(),
+            refreshToken: refreshed.data.refreshToken ?? token.refreshToken, // có thể rotate
+        };
+    } catch (error) {
+        console.error('Refresh token error', error);
+
+        return {
+            ...token,
+            error: 'RefreshAccessTokenError',
+        };
+    }
+}

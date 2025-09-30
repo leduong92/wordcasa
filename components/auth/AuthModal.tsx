@@ -8,9 +8,16 @@ import Image from 'next/image';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import ForgotForm from './ForgotForm';
+import { useEffect } from 'react';
 
 export default function UserModal({ region }: { region: string }) {
     const { open, view, setOpen } = useAuthModal();
+
+    useEffect(() => {
+        const handler = () => setOpen(true);
+        window.addEventListener('open-login-popup', handler);
+        return () => window.removeEventListener('open-login-popup', handler);
+    }, []);
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>

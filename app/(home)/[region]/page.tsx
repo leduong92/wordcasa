@@ -6,6 +6,7 @@ import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
 import CookieConsentPopup from '@/components/CookieConsentPopup';
+import JoinMailList from '@/components/JoinMailList';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -170,6 +171,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
             </HomeLayout>
             <Footer lang={lang} region={region} />
             <UserModal region={region} />
+            <CookieConsentPopup />
         </>
     );
 }

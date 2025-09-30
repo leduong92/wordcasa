@@ -38,13 +38,13 @@ const CartPage = async ({ params, searchParams }: PageProps) => {
                 {/* LEFT: Product list */}
                 <div className="lg:col-span-2 flex flex-col gap-2">
                     {/* Product card */}
-                    <CartItems region={region} />
+                    <CartItems region={region} isCheckout={false} />
                 </div>
 
                 {/* RIGHT: Order summary */}
                 <div className="lg:col-span-1 space-y-6">
                     <div className="sticky top-28">
-                        <CartSummary region={region} isShowCheckout={true} />
+                        <CartSummary region={region} isCheckout={false} />
                     </div>
                 </div>
             </div>

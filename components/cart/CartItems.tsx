@@ -7,7 +7,7 @@ import CartEmpty from './CartEmpty';
 import { formatCurrency } from '@/lib/utils';
 import SkeletonCartItem from './SkeletonCartItem';
 
-const CartItems = ({ region }: { region: string }) => {
+const CartItems = ({ region, isCheckout }: { region: string; isCheckout: boolean }) => {
     const cartItems = useCartStore((state) => state.cart);
     const [isMounted, setIsMounted] = useState(false);
 
@@ -35,19 +35,19 @@ const CartItems = ({ region }: { region: string }) => {
                 return (
                     <div
                         key={ci.id}
-                        className="bg-neutral-200/10 border-b p-4 md:p-6 rounded-lg flex flex-col items-center md:flex-row gap-4"
+                        className="bg-neutral-200/10 border-b p-2 rounded-lg flex flex-col items-center md:flex-row gap-4"
                     >
-                        <div className="relative w-full md:w-60 h-48 md:h-60 flex-shrink-0">
+                        <div className="relative w-full md:w-52 h-48 md:h-52 flex-shrink-0">
                             <Image
-                                src={`${img}?profile=basic&w=300`}
+                                src={`${img}?profile=basic&w=200`}
                                 alt={ci.productName ?? 'Product'}
                                 fill
-                                className="object-contain p-4"
+                                className="object-contain p-2"
                                 sizes="(max-width: 768px) 100vw, 288px"
                                 priority
                             />
                         </div>
-                        <div className="flex-1 flex flex-col justify-between w-full px-2">
+                        <div className="flex-1 flex flex-col justify-between w-full p-2">
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between mt-4">
                                     <div>
@@ -56,26 +56,39 @@ const CartItems = ({ region }: { region: string }) => {
                                     </div>
                                     <div>
                                         <div className="flex items-center gap-3 mt-3">
-                                            <button
-                                                onClick={() =>
-                                                    updateQuantity(ci.variantId, ci.quantity - 1)
-                                                }
-                                                disabled={ci.quantity <= 1}
-                                                className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200
+                                            {!isCheckout && (
+                                                <button
+                                                    onClick={() =>
+                                                        updateQuantity(
+                                                            ci.variantId,
+                                                            ci.quantity - 1
+                                                        )
+                                                    }
+                                                    disabled={ci.quantity <= 1}
+                                                    className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200
                                                 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-transparent
                                                 "
-                                            >
-                                                -
-                                            </button>
-                                            <span>{ci.quantity}</span>
-                                            <button
-                                                onClick={() =>
-                                                    updateQuantity(ci.variantId, ci.quantity + 1)
-                                                }
-                                                className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200"
-                                            >
-                                                +
-                                            </button>
+                                                >
+                                                    -
+                                                </button>
+                                            )}
+                                            <span className="flex gap-1 text-neutral-500">
+                                                <p>{isCheckout ? 'x' : ''}</p>
+                                                <p>{ci.quantity}</p>
+                                            </span>
+                                            {!isCheckout && (
+                                                <button
+                                                    onClick={() =>
+                                                        updateQuantity(
+                                                            ci.variantId,
+                                                            ci.quantity + 1
+                                                        )
+                                                    }
+                                                    className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200"
+                                                >
+                                                    +
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -105,19 +118,21 @@ const CartItems = ({ region }: { region: string }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col ">
-                                        <div className="h-full flex items-end">
-                                            <button
-                                                className="text-sm text-neutral-500 hover:text-neutral-800 items-center flex gap-1 cursor-pointer"
-                                                onClick={() => removeItem(ci.variantId)}
-                                            >
-                                                <span>Remove</span>
-                                                <span>
-                                                    <Trash size={14} />
-                                                </span>
-                                            </button>
+                                    {!isCheckout && (
+                                        <div className="flex flex-col ">
+                                            <div className="h-full flex items-end">
+                                                <button
+                                                    className="text-sm text-neutral-500 hover:text-neutral-800 items-center flex gap-1 cursor-pointer"
+                                                    onClick={() => removeItem(ci.variantId)}
+                                                >
+                                                    <span>Remove</span>
+                                                    <span>
+                                                        <Trash size={14} />
+                                                    </span>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
