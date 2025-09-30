@@ -5,7 +5,6 @@ export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
     const geo = (req as any).geo; // ép kiểu any
 
-    // geo chứa { city, country, region, latitude, longitude }
     let region = geo?.country?.toLowerCase() || 'us';
     if (!regions.includes(region as any)) {
         region = 'us';

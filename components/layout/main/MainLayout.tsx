@@ -16,7 +16,9 @@ export default async function MainLayout({
     return (
         <div className="">
             <NavMainMenu region={region} lang={lang} categoryDtos={menus} />
-            <main className="px-4 md:px-8 lg:px-12 font-helve text-neutral-700">{children}</main>
+            <main className="px-4 md:px-8 lg:px-12 font-helve text-neutral-700 tracking-wide">
+                {children}
+            </main>
         </div>
     );
 }

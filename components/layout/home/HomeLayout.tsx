@@ -15,7 +15,7 @@ export default async function HomeLayout({
     return (
         <div className="">
             <NavHomeMenu region={region} lang={lang} categoryDtos={menus} />
-            <main className="flex-1 font-helve">{children}</main>
+            <main className="flex-1 font-helve tracking-wide">{children}</main>
         </div>
     );
 }
