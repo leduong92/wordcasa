@@ -48,7 +48,7 @@ const RegisterForm = ({ region }: { region: string }) => {
                         onCheckedChange={(val) => setAcceptTerms(!!val)}
                     />
                     I agree
-                    <Link href={`/${region}/terms-of-use`}>
+                    <Link href={`/${region}/web/terms-of-use`}>
                         <span className="text-[#8B572A] underline cursor-pointer">
                             Terms of Use
                         </span>
