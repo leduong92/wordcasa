@@ -21,6 +21,7 @@ export interface CartItemDto {
     currency: string | null;
     price: number;
     totalPrice: number;
+    slug: string | null;
     dimensionsCM: string | null;
     itemVariantOptionDtos: ItemVariantOptionDto[] | null;
 }

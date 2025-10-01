@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { regions } from '@/i18n';
+
+const regions = ['us', 'id', 'vn'] as const;
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
     const geo = (req as any).geo; // ép kiểu any
+
+    console.log('Vercel Geo Object:', geo);
+
+    console.log('Vercel Country Header:', req.headers.get('x-vercel-ip-country'));
 
     let region = geo?.country?.toLowerCase() || 'us';
     if (!regions.includes(region as any)) {

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import CartEmpty from './CartEmpty';
 import { formatCurrency } from '@/lib/utils';
 import SkeletonCartItem from './SkeletonCartItem';
+import Link from 'next/link';
 
 const CartItems = ({ region, isCheckout }: { region: string; isCheckout: boolean }) => {
     const cartItems = useCartStore((state) => state.cart);
@@ -38,14 +39,16 @@ const CartItems = ({ region, isCheckout }: { region: string; isCheckout: boolean
                         className="bg-neutral-200/10 border-b p-2 rounded-lg flex flex-col items-center md:flex-row gap-4"
                     >
                         <div className="relative w-full md:w-52 h-48 md:h-52 flex-shrink-0">
-                            <Image
-                                src={`${img}?profile=basic&w=200`}
-                                alt={ci.productName ?? 'Product'}
-                                fill
-                                className="object-contain p-2"
-                                sizes="(max-width: 768px) 100vw, 288px"
-                                priority
-                            />
+                            <Link href={`/${region}/product/${ci.slug}`}>
+                                <Image
+                                    src={`${img}?profile=basic&w=200`}
+                                    alt={ci.productName ?? 'Product'}
+                                    fill
+                                    className="object-contain p-2"
+                                    sizes="(max-width: 768px) 100vw, 288px"
+                                    priority
+                                />
+                            </Link>
                         </div>
                         <div className="flex-1 flex flex-col justify-between w-full p-2">
                             <div className="space-y-4">

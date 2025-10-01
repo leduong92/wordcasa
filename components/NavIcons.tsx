@@ -45,7 +45,7 @@ const NavIcons = ({ lang, region }: { lang: string; region: string }) => {
                 </div>
             )}
 
-            <CartIcon />
+            <CartIcon region={region} />
         </div>
     );
 };

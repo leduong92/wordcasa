@@ -16,12 +16,7 @@ const CartEmpty = ({ region }: { region: string }) => {
                 {/* CTA Button */}
                 <div className="mt-6">
                     <Link
-                        href={{
-                            pathname: `/${region}/category`,
-                            query: {
-                                q: 'flag--Newcategory',
-                            },
-                        }}
+                        href={`/${region}/shop/new-arrivals`}
                         className="inline-block rounded-md border bg-neutral-100 px-6 py-2 text-base font-medium text-gray-700 hover:bg-neutral-300 transition"
                     >
                         See all products here

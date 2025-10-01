@@ -5,7 +5,7 @@ import { ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/hook/useCartStore';
 import { Skeleton } from '../ui/skeleton';
 
-const CartIcon = () => {
+const CartIcon = ({ region }: { region: string }) => {
     const [isMounted, setIsMounted] = useState(false);
     const { cart, fetchCart } = useCartStore();
 
@@ -38,7 +38,7 @@ const CartIcon = () => {
     return (
         <>
             <div className="relative cursor-pointer">
-                <Link href={`/cart`} className="cursor-pointer">
+                <Link href={`/${region}/cart`} className="cursor-pointer">
                     <ShoppingCart size={18} />
                     {cart && cart.length > 0 && (
                         <div
