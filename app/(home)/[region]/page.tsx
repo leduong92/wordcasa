@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
 import CookieConsentPopup from '@/components/CookieConsentPopup';
 import JoinMailList from '@/components/JoinMailList';
+import Link from 'next/link';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -20,7 +21,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 <section className="relative h-screen w-full">
                     <VideoPlayer
                         videoClass="absolute top-0 left-0 w-full h-full object-cover"
-                        src="/videos/home_01.mp4"
+                        src="/videos/home_1.mp4"
                     />
                 </section>
 
@@ -144,7 +145,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                         </h1>
                     </div>
                     <div className="grid grid-cols-2 gap-8 py-8">
-                        <div className="">
+                        <div className="space-y-3">
                             <Image
                                 src={`/bed_1.jpg`}
                                 alt="bed"
@@ -152,8 +153,20 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                 height={550}
                                 className="w-full h-auto rounded-lg"
                             />
+                            <div>
+                                <span className="font-semibold">Seoul Beds </span>
+                                <p className="text-sm text-neutral-600 py-1">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
+                                    nulla officiis optio. Possimus omnis officia qui, odit natus
+                                    adipisci laborum earum facilis perferendis corporis nostrum
+                                    voluptatem dolor! Debitis, natus ut.
+                                </p>
+                                <Link href={'/'} className="text-xs underline underline-offset-4">
+                                    Explore
+                                </Link>
+                            </div>
                         </div>
-                        <div className="">
+                        <div className="space-y-3">
                             <Image
                                 src={`/bed_2.jpg`}
                                 alt="bed"
@@ -161,6 +174,18 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                 height={550}
                                 className="w-full h-auto rounded-lg"
                             />
+                            <div>
+                                <span className="font-semibold">Seoul Beds </span>
+                                <p className="text-sm text-neutral-600 py-1">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
+                                    nulla officiis optio. Possimus omnis officia qui, odit natus
+                                    adipisci laborum earum facilis perferendis corporis nostrum
+                                    voluptatem dolor! Debitis, natus ut.
+                                </p>
+                                <Link href={'/'} className="text-xs underline underline-offset-4">
+                                    Explore
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </section>
