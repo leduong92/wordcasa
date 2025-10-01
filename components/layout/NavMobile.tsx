@@ -134,7 +134,7 @@ const NavMobile = (params: {
             {/* Right */}
             <div className="flex items-center justify-end gap-3 w-1/3">
                 <LoginButton region={region} />
-                <CartIcon />
+                <CartIcon region={region} />
             </div>
         </div>
     );
