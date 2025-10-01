@@ -8,9 +8,9 @@ export async function middleware(req: NextRequest) {
 
     console.log('Vercel Geo Object:', geo);
 
-    console.log('Vercel Country Header:', req.headers.get('x-vercel-ip-country'));
+    // console.log('Vercel Country Header:', req.headers.get('x-vercel-ip-country'));
 
-    let region = geo?.country?.toLowerCase() || 'us';
+    let region = geo?.toLowerCase() || 'us';
     if (!regions.includes(region as any)) {
         region = 'us';
     }
