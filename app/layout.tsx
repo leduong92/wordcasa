@@ -4,13 +4,10 @@ import './globals.css';
 
 import localFont from 'next/font/local';
 import GoToTopButton from '@/components/GoToTopButton';
-import Footer from '@/components/Footer';
 import { cookies } from 'next/headers';
 import { languages, translations } from '@/i18n';
 import NextAuthProvider from '@/components/NextAuthProvider';
-import UserModal from '@/components/auth/AuthModal';
 import WhatsAppButton from '@/components/WhatsAppButton';
-
 export const baskerville = localFont({
     src: [
         {

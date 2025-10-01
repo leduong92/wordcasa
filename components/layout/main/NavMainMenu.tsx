@@ -2,19 +2,11 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import Image from 'next/image';
 import NavMobile from '../NavMobile';
 import NavIcons from '../../NavIcons';
 import SearchInput from '../../SearchInput';
 import { CategoryDto } from '@/modals';
-import { usePathname } from 'next/navigation';
 import MegaMenu from '../MegaMenu';
-
-const categories = [
-    { name: 'Living rooms', slug: 'living-room', image: '/denver_cocktail_table.jpg' },
-    { name: 'Dining rooms', slug: 'dining-room', image: '/bed_2.jpg' },
-    { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
-];
 
 const NavMainMenu = ({
     region,

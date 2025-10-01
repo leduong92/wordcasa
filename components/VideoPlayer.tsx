@@ -37,7 +37,7 @@ const VideoPlayer = ({ src, videoClass }: VidepPlayerProps) => {
 
             <button
                 onClick={togglePlay}
-                className="absolute bottom-3 right-3 bg-black/70 hover:bg-black/50 rounded-full p-2 shadow-lg transition z-10 cursor-pointer"
+                className="absolute bottom-3 right-7 bg-black/70 hover:bg-black/50 rounded-full p-2 shadow-lg transition z-10 cursor-pointer"
             >
                 {isPlaying ? (
                     <Pause className="w-5 h-5 text-neutral-200" />

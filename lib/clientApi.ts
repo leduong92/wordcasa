@@ -37,75 +37,30 @@ const axiosInstance = axios.create({
 // Add request interceptor for auth
 axiosInstance.interceptors.request.use(async (config) => {
     const session = await getSession();
-
     const token = (session as any)?.accessToken;
-
     if (token) {
         (config.headers as AxiosRequestHeaders)['Authorization'] = `Bearer ${token}`;
     }
 
+    if (session?.error === 'RefreshAccessTokenError') {
+        console.warn('Refresh token expired → forcing logout');
+
+        // clear session not redirect
+        signOut({ redirect: false }).then(() => {
+            // window.dispatchEvent(new Event('open-login-popup'));
+        });
+    }
+
     return config;
 });
+
 axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error.response?.status === 401) {
+            await signOut({ redirect: false });
             // window.dispatchEvent(new Event('open-login-popup'));
-
-            const originalRequest = error.config!;
-            if (isRefreshing) {
-                // Nếu đang refresh, chờ kết quả
-                return new Promise((resolve, reject) => {
-                    failedQueue.push({ resolve, reject, config: originalRequest });
-                });
-            }
-
-            originalRequest._retry = true;
-            isRefreshing = true;
-
-            try {
-                // Lấy refreshToken từ next-auth session
-                const session = await getSession();
-                const refreshToken = (session as any)?.refreshToken;
-
-                if (!refreshToken) {
-                    signOut(); // không có refreshToken → logout
-                    return Promise.reject(error);
-                }
-
-                // gọi API refresh
-                const response = await axios.post(
-                    `${process.env.NEXT_PUBLIC_API_URL}/api/account/refresh`,
-                    {
-                        refreshToken,
-                    }
-                );
-                console.log('After refresh:', response);
-                const newToken = response.data.accessToken;
-                const newRefresh = response.data.refreshToken;
-
-                // cập nhật session trong Next-Auth
-                // bạn cần implement updateSession API riêng (Next.js route handler)
-                await fetch('/api/auth/update-session', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ accessToken: newToken, refreshToken: newRefresh }),
-                });
-
-                processQueue(null, newToken);
-                if (originalRequest.headers) {
-                    originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
-                }
-                return axios(originalRequest);
-            } catch (err) {
-                processQueue(err, null);
-                signOut(); // refresh fail → logout
-                return Promise.reject(err);
-            } finally {
-                isRefreshing = false;
-            }
         }
-
         return Promise.reject(error);
     }
 );

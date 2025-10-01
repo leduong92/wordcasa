@@ -67,14 +67,24 @@ export const authOptions: NextAuthOptions = {
             return await refreshAccessToken(token);
         },
         async session({ session, token }) {
+            if (token.error === 'RefreshAccessTokenError') {
+                return {
+                    user: undefined,
+                    accessToken: undefined,
+                    refreshToken: undefined,
+                    error: 'RefreshAccessTokenError',
+                    expires: new Date(0).toISOString(),
+                };
+            }
             session.user.id = token.id as string;
             session.accessToken = token.accessToken as string;
             session.refreshToken = token.refreshToken as string;
+            session.error = token.error;
 
             if (token.accessTokenExpires) {
                 session.expires = new Date(token.accessTokenExpires).toISOString();
             }
-            console.log(session);
+
             return session;
         },
     },
@@ -90,10 +100,9 @@ async function refreshAccessToken(token: any) {
                 refreshToken: token.refreshToken,
             }),
         });
-
         const refreshed = await res.json();
 
-        if (!res.ok || !refreshed.data) {
+        if (!refreshed.isSuccess) {
             throw refreshed;
         }
 
@@ -101,11 +110,10 @@ async function refreshAccessToken(token: any) {
             ...token,
             accessToken: refreshed.data.accessToken,
             accessTokenExpires: new Date(refreshed.data.expiresAt).getTime(),
-            refreshToken: refreshed.data.refreshToken ?? token.refreshToken, // có thể rotate
+            refreshToken: refreshed.data.refreshToken ?? token.refreshToken,
         };
     } catch (error) {
-        console.error('Refresh token error', error);
-
+        // console.error('Refresh token error', error);
         return {
             ...token,
             error: 'RefreshAccessTokenError',
