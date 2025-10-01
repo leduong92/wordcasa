@@ -1,20 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const regions = ['us', 'id', 'vn'] as const;
+import { ALL_COUNTRY_CODES } from './lib/countryCodes';
+
+const ALL_REGIONS = ALL_COUNTRY_CODES;
 
 export async function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
-    const geo = (req as any).geo; // ép kiểu any
-
-    console.log('Vercel Geo Object:', geo);
-
     // console.log('Vercel Country Header:', req.headers.get('x-vercel-ip-country'));
+    const geoRegion = req.headers.get('x-vercel-ip-country');
 
-    let region = geo?.toLowerCase() || 'us';
-    if (!regions.includes(region as any)) {
+    let region = geoRegion?.toLowerCase() || 'us';
+    if (!ALL_REGIONS.includes(region as any)) {
         region = 'us';
     }
-    // Bỏ qua static files / API
+    // Ignore static files / API
     if (
         pathname.startsWith('/_next') ||
         pathname.startsWith('/api') ||
@@ -30,7 +29,7 @@ export async function middleware(req: NextRequest) {
 
     const firstPart = pathname.split('/')[1];
 
-    if (!regions.includes(firstPart as any)) {
+    if (!ALL_REGIONS.includes(firstPart as any)) {
         const redirectUrl = new URL(`/${region}${pathname}`, req.url);
         const res = NextResponse.redirect(redirectUrl);
         res.cookies.set('region', region, {
