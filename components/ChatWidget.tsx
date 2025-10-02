@@ -20,14 +20,14 @@ export default function ChatWidget() {
             setMessages((prev) => [...prev, { sender: 'bot', text: '' + input }]);
         }, 600);
 
-        const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: input }),
-        });
+        // const res = await fetch('/api/chat', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ message: input }),
+        // });
 
-        const data = await res.json();
-        setMessages((prev) => [...prev, { sender: 'bot', text: data.reply.content }]);
+        // const data = await res.json();
+        // setMessages((prev) => [...prev, { sender: 'bot', text: data.reply.content }]);
     };
 
     return (
