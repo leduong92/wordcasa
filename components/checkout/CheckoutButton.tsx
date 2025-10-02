@@ -29,6 +29,7 @@ const CheckoutButton = ({ region, t }: CommonPageProps) => {
         <button
             onClick={handleCheckout}
             className="block w-full py-3 text-center bg-black text-white rounded-md hover:bg-neutral-700 cursor-pointer"
+            aria-label="Check out"
         >
             Checkout
         </button>

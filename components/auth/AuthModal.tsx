@@ -47,6 +47,7 @@ export default function UserModal({ region }: Props) {
                             <Button
                                 variant="outline"
                                 className="flex items-center justify-center gap-2 bg-[#1877F2] text-neutral-100 hover:bg-[#166FE0]/80 hover:text-neutral-100 cursor-pointer"
+                                aria-label="Facebook"
                             >
                                 <Facebook size={18} />
                                 <span>{`Continue with Facebook`}</span>
@@ -54,6 +55,7 @@ export default function UserModal({ region }: Props) {
                             <Button
                                 variant="outline"
                                 className="flex items-center justify-center gap-2 bg-neutral-800 text-neutral-100  hover:bg-neutral-700 hover:text-neutral-100 cursor-pointer"
+                                aria-label="Apple"
                             >
                                 <Apple size={18} />
                                 <span>{`Continue with Apple`}</span>
@@ -61,6 +63,7 @@ export default function UserModal({ region }: Props) {
                             <Button
                                 variant="outline"
                                 className="flex items-center justify-center gap-2 cursor-pointer hover:bg-neutral-200 hover:text-neutral-800"
+                                aria-label="Google"
                             >
                                 <div className="">
                                     <Image

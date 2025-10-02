@@ -39,6 +39,7 @@ export default function ItemCarousel({ region, t, items }: Props) {
                         <Link
                             href={`/${region}/product/${item.slug}`}
                             className="block flex-shrink-0 relative"
+                            aria-label={item.productName}
                         >
                             <div>
                                 <div className="relative w-full h-[200px] bg-neutral-500/1">
@@ -71,6 +72,7 @@ export default function ItemCarousel({ region, t, items }: Props) {
                                                 href={`/${region}/product/${item.slug}`}
                                                 key={idx}
                                                 className={`w-6 h-6 cursor-pointer overflow-hidden flex items-center justify-center`}
+                                                aria-label={variant.sku}
                                             >
                                                 <Image
                                                     src={`${imgUrl}?profile=basic&w=80`}
@@ -93,6 +95,7 @@ export default function ItemCarousel({ region, t, items }: Props) {
             <button
                 onClick={() => instanceRef.current?.prev()}
                 className="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 cursor-pointer"
+                aria-label="Scroll Left"
             >
                 <ChevronLeft className="w-6 h-6 text-gray-700" />
             </button>
@@ -101,6 +104,7 @@ export default function ItemCarousel({ region, t, items }: Props) {
             <button
                 onClick={() => instanceRef.current?.next()}
                 className="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 cursor-pointer"
+                aria-label="Scroll Right"
             >
                 <ChevronRight className="w-6 h-6 text-gray-700" />
             </button>

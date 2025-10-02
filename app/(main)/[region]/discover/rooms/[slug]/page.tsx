@@ -92,6 +92,7 @@ const DiscoverRoomsPage = async ({ params, searchParams }: CollectionPageProps) 
                                 href={`/${region}/discover/rooms/${item.slug}/${c.slug}`}
                                 key={c.id || c.slug}
                                 className="group"
+                                aria-label={c.displayName ?? ''}
                             >
                                 {/* Image */}
                                 <div className="relative w-full h-80 overflow-hidden">

@@ -38,6 +38,7 @@ export default function ChatWidget({ t }: CommonPageProps) {
                 <Button
                     onClick={() => setIsOpen(true)}
                     className="rounded-full w-12 h-12 shadow-lg bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center cursor-pointer"
+                    aria-label="AI Assistent"
                 >
                     <MessageCircleMore className="text-neutral-50" />
                 </Button>
@@ -81,6 +82,7 @@ export default function ChatWidget({ t }: CommonPageProps) {
                         <Button
                             onClick={handleSend}
                             className="bg-neutral-500 hover:bg-neutral-600 cursor-pointer text-neutral-100"
+                            aria-label="Send message"
                         >
                             <Send size={8} />
                             Send

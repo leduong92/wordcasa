@@ -15,12 +15,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
         title: `Search | Page ${pageIndex} | Worldcasa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
-            canonical: `/${region}/product?page=${pageIndex}`,
+            canonical: `/${region}/search?page=${pageIndex}`,
         },
         openGraph: {
             title: `Worldcasa Products - Page ${pageIndex}`,
             description: `Browse furniture collection - Page ${pageIndex}.`,
-            url: `/${region}/product?page=${pageIndex}`,
+            url: `/${region}/search?page=${pageIndex}`,
             siteName: 'Worldcasa',
             type: 'website',
         },

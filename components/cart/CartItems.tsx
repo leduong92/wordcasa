@@ -44,7 +44,10 @@ const CartItems = ({ region, isCheckout, t }: CartItemProps) => {
                         className="bg-neutral-200/10 border-b p-2 rounded-lg flex flex-col items-center md:flex-row gap-4"
                     >
                         <div className="relative w-full md:w-52 h-48 md:h-52 flex-shrink-0">
-                            <Link href={`/${region}/product/${ci.slug}`}>
+                            <Link
+                                href={`/${region}/product/${ci.slug}`}
+                                aria-label={ci.productName ?? 'Product'}
+                            >
                                 <Image
                                     src={`${img}?profile=basic&w=200`}
                                     alt={ci.productName ?? 'Product'}
@@ -76,6 +79,7 @@ const CartItems = ({ region, isCheckout, t }: CartItemProps) => {
                                                     className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200
                                                 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-transparent
                                                 "
+                                                    aria-label="Minus Cart Quantity"
                                                 >
                                                     -
                                                 </button>
@@ -93,6 +97,7 @@ const CartItems = ({ region, isCheckout, t }: CartItemProps) => {
                                                         )
                                                     }
                                                     className="px-3 py-1 border rounded cursor-pointer hover:bg-neutral-200"
+                                                    aria-label="Plus Cart Quantity"
                                                 >
                                                     +
                                                 </button>
@@ -132,6 +137,7 @@ const CartItems = ({ region, isCheckout, t }: CartItemProps) => {
                                                 <button
                                                     className="text-sm text-neutral-500 hover:text-neutral-800 items-center flex gap-1 cursor-pointer"
                                                     onClick={() => removeItem(ci.variantId)}
+                                                    aria-label="Remove Item From Cart"
                                                 >
                                                     <span>Remove</span>
                                                     <span>

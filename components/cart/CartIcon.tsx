@@ -39,7 +39,11 @@ const CartIcon = ({ region }: CommonPageProps) => {
     return (
         <>
             <div className="relative cursor-pointer">
-                <Link href={`/${region}/cart`} className="cursor-pointer">
+                <Link
+                    href={`/${region}/cart`}
+                    className="cursor-pointer"
+                    aria-label="Cart Quantity"
+                >
                     <ShoppingCart size={18} />
                     {cart && cart.length > 0 && (
                         <div

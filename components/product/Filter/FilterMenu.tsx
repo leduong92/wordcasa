@@ -87,6 +87,7 @@ export default function FilterMenu({ categoryDtos, t }: Props) {
                 <button
                     className="flex items-center gap-2 cursor-pointer"
                     onClick={() => setOpen(true)}
+                    aria-label="Filters"
                 >
                     <Funnel size={18} />
                     <span>{t?.filters}</span>

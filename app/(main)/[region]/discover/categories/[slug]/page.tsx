@@ -92,6 +92,7 @@ const DiscoverCategoryPage = async ({ params, searchParams }: CollectionPageProp
                                 href={`/${region}/discover/categories/${item.slug}/${c.slug}`}
                                 key={c.name}
                                 className="group"
+                                aria-label={c.displayName ?? ''}
                             >
                                 {/* Image */}
                                 <div className="relative w-full h-80 overflow-hidden">

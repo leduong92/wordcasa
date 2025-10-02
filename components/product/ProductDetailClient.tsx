@@ -124,6 +124,7 @@ export default function ProductVariantClient({ product, t, region }: Props) {
                                                 ? 'border-neutral-500'
                                                 : 'border-neutral-50'
                                         }`}
+                                        aria-label={`Selected Variant ${idx}`}
                                     >
                                         <Image
                                             src={`${imgUrl}?profile=basic&w=80`}

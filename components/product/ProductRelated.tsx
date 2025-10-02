@@ -39,6 +39,8 @@ const ProductRelated = ({ region, items }: Props) => {
                         <Link
                             href={`/${region}/product/${item.slug}`}
                             className="block flex-shrink-0 relative"
+                            aria-label={item.productName ?? ''}
+                            title={item.productName ?? ''}
                         >
                             <div>
                                 <div className="relative w-full h-[200px] bg-neutral-500/1">
@@ -68,6 +70,8 @@ const ProductRelated = ({ region, items }: Props) => {
                                                 href={`/${region}/product/${item.slug}`}
                                                 key={idx}
                                                 className={`w-8 h-8 cursor-pointer overflow-hidden flex items-center justify-center`}
+                                                aria-label={variant.sku ?? ''}
+                                                title={variant.sku ?? ''}
                                             >
                                                 <Image
                                                     src={`${imgUrl}?profile=basic&w=80`}

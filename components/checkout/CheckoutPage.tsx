@@ -70,6 +70,7 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                             <Button
                                 onClick={prevStep}
                                 className="px-6 py-2 border bg-neutral-100 text-neutral-600 hover:bg-neutral-200 cursor-pointer flex items-center gap-2"
+                                aria-label="Back"
                             >
                                 <MoveLeft /> Back
                             </Button>
@@ -88,6 +89,7 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                                     nextStep();
                                 }}
                                 className="px-6  text-neutral-300 hover:bg-neutral-600 flex items-center gap-2 cursor-pointer"
+                                aria-label="Next"
                             >
                                 <span>Next</span> <MoveRight size={12} />
                             </Button>
@@ -95,6 +97,7 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                             <Button
                                 onClick={() => alert('Order placed!')}
                                 className="px-6 py-2 bg-green-600 text-neutral-100 hover:bg-green-700 cursor-pointer"
+                                aria-label="Place Order"
                             >
                                 Place Order
                             </Button>

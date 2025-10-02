@@ -80,6 +80,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                                 href={`/${region}/discover/rooms/${cat.slug}`}
                                                 key={cat.name}
                                                 className="cursor-pointer group"
+                                                aria-label={cat.name}
                                             >
                                                 <div className="">
                                                     <Image
@@ -113,6 +114,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                                 after:content-[''] after:absolute after:left-0 after:bottom-0
                                                 after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
                                                 group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300tracking-wide font-helve"
+                            aria-label={item.displayName ?? ''}
                         >
                             {item.displayName}
                         </button>
@@ -136,6 +138,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                         <Link
                                             href={`/${region}/discover/categories/${item.slug}`}
                                             className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
+                                            aria-label="Table collections"
                                         >
                                             Table collections
                                         </Link>
@@ -146,6 +149,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                                         key={itm.id}
                                                         href={`/${region}/shop/category/${itm.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
+                                                        aria-label={itm.displayName ?? ''}
                                                     >
                                                         {itm.displayName}
                                                     </Link>
@@ -212,6 +216,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                         <Link
                                             href={`/${region}/discover/categories/${item.slug}`}
                                             className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
+                                            aria-label="Beds collections"
                                         >
                                             Beds collections
                                         </Link>
@@ -223,6 +228,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                                         key={itm.id}
                                                         href={`/${region}/shop/category/${itm.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
+                                                        aria-label={itm.displayName ?? ''}
                                                     >
                                                         {itm.displayName}
                                                     </Link>
@@ -289,9 +295,8 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                         <Link
                                             href={`/${region}/discover/categories/${item.slug}`}
                                             className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide py-3"
-                                        >
-                                            Storage collections
-                                        </Link>
+                                            aria-label="Storage collections"
+                                        ></Link>
 
                                         <div className="flex gap-20 w-100">
                                             <div className="space-y-2">
@@ -300,6 +305,7 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                                                         key={itm.id}
                                                         href={`/${region}/shop/category/${itm.slug}`}
                                                         className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
+                                                        aria-label={itm.displayName ?? ''}
                                                     >
                                                         {itm.displayName}
                                                     </Link>

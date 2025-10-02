@@ -180,11 +180,16 @@ function SearchBox({
                     type="button"
                     onClick={() => onChange('')}
                     className="absolute right-10 text-gray-400 hover:text-gray-600 cursor-pointer"
+                    aria-label="Times"
                 >
                     <X size={16} />
                 </button>
             )}
-            <button onClick={onSearch} className="absolute right-4 cursor-pointer">
+            <button
+                onClick={onSearch}
+                className="absolute right-4 cursor-pointer w-8 h-8"
+                aria-label="Search"
+            >
                 <Search size={18} />
             </button>
         </div>

@@ -152,6 +152,7 @@ export default function ShippingAddressStep({ onSubmit, onCancel, t }: ShippingA
                         })
                     }
                     className="px-4 py-1 bg-blue-400 text-neutral-100 hover:bg-blue-500 rounded-md cursor-pointer flex items-center gap-1"
+                    aria-label="Add new address"
                 >
                     <Plus size={15} /> <span className="">New Address</span>
                 </button>
@@ -191,12 +192,14 @@ export default function ShippingAddressStep({ onSubmit, onCancel, t }: ShippingA
                             <button
                                 className="text-blue-400 text-sm cursor-pointer"
                                 onClick={() => handleOpen(addr)}
+                                aria-label="Edit Address"
                             >
                                 <Pencil size={15} />
                             </button>
                             <button
                                 className="text-red-600 text-sm cursor-pointer"
                                 onClick={() => handleDelete(addr.id)}
+                                aria-label="Remove Address"
                             >
                                 <Trash size={15} />
                             </button>

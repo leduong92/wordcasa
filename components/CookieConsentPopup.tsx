@@ -45,11 +45,16 @@ export default function CookieConsentPopup({ region, t }: CommonPageProps) {
                     Policy.
                 </div>
                 <DrawerFooter>
-                    <Button variant="default" onClick={handleAccept} className="cursor-pointer">
+                    <Button
+                        variant="default"
+                        onClick={handleAccept}
+                        className="cursor-pointer"
+                        aria-label="Accept"
+                    >
                         Accept
                     </Button>
                     <DrawerClose asChild>
-                        <Button variant="outline" className="cursor-pointer">
+                        <Button variant="outline" className="cursor-pointer" aria-label="Reject">
                             Reject
                         </Button>
                     </DrawerClose>

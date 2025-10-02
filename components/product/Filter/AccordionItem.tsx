@@ -25,6 +25,7 @@ export default function AccordionItem({
             <button
                 className="w-full flex justify-between items-center py-2 font-semibold cursor-pointer "
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Add more"
             >
                 {title}
                 <span>{isOpen ? '−' : '+'}</span>

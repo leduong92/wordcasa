@@ -67,6 +67,7 @@ const JoinMailList = ({ region, t }: CommonPageProps) => {
                             <button
                                 className="bg-brown-600 text-neutral-100 py-3 rounded-md font-semibold hover:bg-brown-700 transition cursor-pointer"
                                 onClick={handleSend}
+                                aria-label="Subscribe mail"
                             >
                                 Subscribe
                             </button>
@@ -80,7 +81,7 @@ const JoinMailList = ({ region, t }: CommonPageProps) => {
                     </div>
                 </DialogHeader>
                 <DialogFooter>
-                    <Button variant="default" onClick={handleSend}>
+                    <Button variant="default" onClick={handleSend} aria-label="Subscribe">
                         Subscribe
                     </Button>
                 </DialogFooter>

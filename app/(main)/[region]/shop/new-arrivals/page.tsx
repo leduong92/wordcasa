@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { translations } from '@/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,12 +18,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
         title: `New Arrivals | Page ${pageIndex} | Worldcasa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
-            canonical: `/${region}/product?page=${pageIndex}`,
+            canonical: `/${region}/shop/new-arrivals?page=${pageIndex}`,
         },
         openGraph: {
             title: `Worldcasa New Products - Page ${pageIndex}`,
             description: `Browse furniture collection - Page ${pageIndex}.`,
-            url: `/${region}/product?page=${pageIndex}`,
+            url: `/${region}/shop/new-arrivals?page=${pageIndex}`,
             siteName: 'Worldcasa',
             type: 'website',
         },
@@ -72,6 +72,7 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
                                 href={`/${region}/shop/rooms/${cat.slug}`}
                                 key={cat.name}
                                 className="cursor-pointer group"
+                                aria-label={cat.slug ?? ''}
                             >
                                 <div className="relative w-full h-40 overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
                                     <Image

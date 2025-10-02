@@ -62,6 +62,7 @@ const NavMainMenu = ({ region, lang, categoryDtos, t }: Props) => {
                             <Link
                                 href={'/'}
                                 className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
+                                aria-label="WorldCasa"
                             >
                                 Worldcasa
                             </Link>

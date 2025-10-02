@@ -61,6 +61,7 @@ export default function ShopTheLook({ region, t }: CommonPageProps) {
                             transform: 'translate(-50%, -50%)',
                         }}
                         onClick={() => setSelected(product)}
+                        aria-label="Add Marker"
                     >
                         +
                     </button>
@@ -85,7 +86,9 @@ export default function ShopTheLook({ region, t }: CommonPageProps) {
                                 />
                                 <div className="flex flex-col justify-between">
                                     <p className="text-gray-700">{selected.price}</p>
-                                    <Button className="mt-4">Add to Cart</Button>
+                                    <Button className="mt-4" aria-label="Add to cart">
+                                        Add to Cart
+                                    </Button>
                                 </div>
                             </div>
                         </>

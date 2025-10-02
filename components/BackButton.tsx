@@ -9,6 +9,7 @@ export function BackButton({ t }: CommonPageProps) {
             variant="ghost"
             onClick={() => window.history.back()}
             className="flex items-center gap-2 cursor-pointer"
+            aria-label="Back button"
         >
             <MoveLeft className="w-4 h-4" />
             {t?.back}

@@ -26,7 +26,10 @@ const RegisterForm = ({ region, t }: CommonPageProps) => {
                     <Input placeholder="Password" type="password" required />
                     <Input placeholder="Confirm Password" type="password" required />
 
-                    <Button className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2">
+                    <Button
+                        className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2"
+                        aria-label="Sign up"
+                    >
                         Sign up <MoveRight size={16} />
                     </Button>
                 </form>
@@ -37,6 +40,7 @@ const RegisterForm = ({ region, t }: CommonPageProps) => {
                         type="button"
                         onClick={() => setView('login')}
                         className="underline font-medium cursor-pointer"
+                        aria-label="Login"
                     >
                         Log in
                     </button>
@@ -49,7 +53,7 @@ const RegisterForm = ({ region, t }: CommonPageProps) => {
                         onCheckedChange={(val) => setAcceptTerms(!!val)}
                     />
                     I agree
-                    <Link href={`/${region}/web/terms-of-use`}>
+                    <Link href={`/${region}/web/terms-of-use`} aria-label="terms-of-use">
                         <span className="text-[#8B572A] underline cursor-pointer">
                             Terms of Use
                         </span>

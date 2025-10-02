@@ -29,6 +29,7 @@ export default function ForgotForm({ region, t }: CommonPageProps) {
                 <button
                     className="w-full bg-brown-600 text-white py-2 rounded"
                     onClick={handleReset}
+                    aria-label="Send Reset Link"
                 >
                     Send Reset Link
                 </button>
@@ -39,6 +40,7 @@ export default function ForgotForm({ region, t }: CommonPageProps) {
                 <button
                     onClick={() => setView('login')}
                     className="underline font-medium cursor-pointer"
+                    aria-label="Login"
                 >
                     Log in
                 </button>

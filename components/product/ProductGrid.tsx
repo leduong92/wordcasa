@@ -40,6 +40,7 @@ export default function ProductGrid({
                                 query: { ...sp, page: String(pageIndex - 1) },
                             }}
                             className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
+                            aria-label="Pre Page"
                         >
                             Prev
                         </Link>
@@ -60,6 +61,7 @@ export default function ProductGrid({
                                         ? 'bg-black text-white border-black'
                                         : 'bg-white text-gray-700 hover:bg-gray-100'
                                 }`}
+                                aria-label={`Page ${pageNum}`}
                             >
                                 {pageNum}
                             </Link>
@@ -73,6 +75,7 @@ export default function ProductGrid({
                                 query: { ...sp, page: String(pageIndex + 1) },
                             }}
                             className="px-3 py-2 border rounded bg-white text-gray-700 hover:bg-gray-100"
+                            aria-label="Next Page"
                         >
                             Next
                         </Link>

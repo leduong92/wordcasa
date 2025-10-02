@@ -121,12 +121,14 @@ const ShippingAddressForm = ({ initialData, onSave, onCancel, t }: ShippingAddre
                 <Button
                     type="submit"
                     className="bg-blue-400 text-white  hover:bg-blue-500 px-4 py-2 rounded cursor-pointer"
+                    aria-label="Save"
                 >
                     Save
                 </Button>
                 <Button
                     type="button"
                     className="bg-gray-400 hover:bg-gray-500 px-4 py-2 rounded cursor-pointer"
+                    aria-label="Cancel"
                     onClick={onCancel}
                 >
                     Cancel

@@ -126,13 +126,26 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                         </div>
                         <div className="w-full md:w-2/3">
                             <div className="columns-2 gap-8 ">
-                                <img className="aspect-3/2 rounded-2xl p-2" src="/bed_2.jpg" />
-                                <img className="aspect-square rounded-2xl p-2" src="/chair.jpg" />
+                                <img
+                                    className="aspect-3/2 rounded-2xl p-2"
+                                    src="/bed_2.jpg"
+                                    alt=""
+                                />
+                                <img
+                                    className="aspect-square rounded-2xl p-2"
+                                    src="/chair.jpg"
+                                    alt=""
+                                />
                                 <img
                                     className="aspect-square rounded-2xl p-2"
                                     src="/nighstand.jpg"
+                                    alt=""
                                 />
-                                <img className="aspect-3/2 rounded-2xl p-2" src="/bed_3.jpg" />
+                                <img
+                                    className="aspect-3/2 rounded-2xl p-2"
+                                    src="/bed_3.jpg"
+                                    alt=""
+                                />
                             </div>
                         </div>
                     </div>
@@ -162,7 +175,11 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                     adipisci laborum earum facilis perferendis corporis nostrum
                                     voluptatem dolor! Debitis, natus ut.
                                 </p>
-                                <Link href={'/'} className="text-xs underline underline-offset-4">
+                                <Link
+                                    href={'/'}
+                                    className="text-xs underline underline-offset-4"
+                                    aria-label="Explore"
+                                >
                                     Explore
                                 </Link>
                             </div>
@@ -183,7 +200,11 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                     adipisci laborum earum facilis perferendis corporis nostrum
                                     voluptatem dolor! Debitis, natus ut.
                                 </p>
-                                <Link href={'/'} className="text-xs underline underline-offset-4">
+                                <Link
+                                    href={'/'}
+                                    className="text-xs underline underline-offset-4"
+                                    aria-label="Explore"
+                                >
                                     Explore
                                 </Link>
                             </div>

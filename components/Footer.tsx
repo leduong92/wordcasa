@@ -11,7 +11,7 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                 <div className="hidden md:block w-1/3 border-b h-32"></div>
                 <div className="md:col-span-2 flex gap-6 p-4 md:p-12 bg-neutral-200 rounded-xl w-full md:w-2/3">
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Link href={`/${region}/fabric`}>
+                        <Link href={`/${region}/fabric`} aria-label="Get fabrics samples">
                             <Image
                                 src="/bed_3.jpg"
                                 alt="Get free fabric samples"
@@ -23,7 +23,7 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                         </Link>
                     </div>
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Link href={`/${region}/web/help`}>
+                        <Link href={`/${region}/web/help`} aria-label="Need help? Let's talk">
                             <Image
                                 src="/bed_4.jpg"
                                 alt="Need help? Let's talk"
@@ -41,27 +41,36 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                 {/* Left links */}
                 <div className="space-y-2 text-base text-gray-700">
                     <div>
-                        <Link href={`/${region}/web/customer-service`}>
+                        <Link
+                            href={`/${region}/web/customer-service`}
+                            aria-label={t?.customerService}
+                        >
                             <p>{t?.customerService}</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/store`}>
+                        <Link href={`/${region}/store`} aria-label={t?.findStore}>
                             <p>{t?.findStore}</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/about`}>
+                        <Link href={`/${region}/about`} aria-label={t?.aboutUs}>
                             <p>{t?.aboutUs}</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/web/delivery-policy`}>
+                        <Link
+                            href={`/${region}/web/delivery-policy`}
+                            aria-label={t?.deliveryPolicy}
+                        >
                             <p>{t?.deliveryPolicy}</p>
                         </Link>
                     </div>
                     <div>
-                        <Link href={`/${region}/web/return-policy`}>
+                        <Link
+                            href={`/${region}/web/return-policy`}
+                            aria-label={t?.saleReturnPilicy}
+                        >
                             <p>{t?.saleReturnPilicy}</p>
                         </Link>
                     </div>
@@ -69,19 +78,39 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                 <div></div>
                 {/* Social icons */}
                 <div className="flex items-center justify-center gap-6 py-6">
-                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Facebook"
+                    >
                         <Image src="/facebook.png" alt="" width={25} height={25} />
                     </a>
-                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Instagram"
+                    >
                         <Image src="/instagram.png" alt="" width={25} height={25} />
                     </a>
-                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                    {/* <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Pinterest"
+                    >
                         <Image src="/pinterest?.png" alt="" width={25} height={25} />
-                    </a>
-                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                    </a> */}
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Youtube"
+                    >
                         <Image src="/youtube.png" alt="" width={25} height={25} />
                     </a>
-                    <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="X"
+                    >
                         <Image src="/x.png" alt="" width={25} height={25} />
                     </a>
                 </div>
@@ -89,7 +118,7 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
 
             {/* Bottom bar */}
             <div className="border-t px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-                <Link href={'/'}>
+                <Link href={'/'} aria-label="Worldcasa">
                     <p className="text-center md:text-left text-neutral-500">
                         {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT?. */}
                         © 2025 <span className="tracking-wider text-xs uppercase">WorldCasa</span>
@@ -97,9 +126,18 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                 </Link>
 
                 <div className="flex gap-6">
-                    <Link href={`/${region}/web/cookie-information`}>{t?.cookieInformation}</Link>
-                    <Link href={`/${region}/web/terms-of-use`}>{t?.termsOfUse}</Link>
-                    <Link href={`/${region}/web/privacy-policy`}>{t?.privacyPolicy}</Link>
+                    <Link
+                        href={`/${region}/web/cookie-information`}
+                        aria-label="cookie-information"
+                    >
+                        {t?.cookieInformation}
+                    </Link>
+                    <Link href={`/${region}/web/terms-of-use`} aria-label="terms-of-use">
+                        {t?.termsOfUse}
+                    </Link>
+                    <Link href={`/${region}/web/privacy-policy`} aria-label="privacy-policy">
+                        {t?.privacyPolicy}
+                    </Link>
                 </div>
 
                 <div className="flex items-center gap-6">

@@ -75,12 +75,16 @@ export default function LoginForm({ region, t }: CommonPageProps) {
                         type="button"
                         onClick={() => setView('forgot')}
                         className="text-sm text-muted-foreground hover:underline cursor-pointer"
+                        aria-label="Forgot Password"
                     >
                         Forgot Password?
                     </button>
                 </div>
 
-                <Button className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2 cursor-pointer">
+                <Button
+                    className="bg-[#8B572A] hover:bg-[#734522] text-white flex items-center justify-center gap-2 cursor-pointer"
+                    aria-label="Login"
+                >
                     {isLoading ? 'Processing...' : 'Log in'}
                 </Button>
             </form>
@@ -91,6 +95,7 @@ export default function LoginForm({ region, t }: CommonPageProps) {
                     type="button"
                     onClick={() => setView('signup')}
                     className="underline font-medium cursor-pointer"
+                    aria-label="Sign up"
                 >
                     Sign up
                 </button>

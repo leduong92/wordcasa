@@ -38,7 +38,12 @@ const NavIcons = ({ lang, region, t }: CommonPageProps) => {
 
             {isProfileOpen && (
                 <div className="absolute bg-neutral-100 text-neutral-800 p-6 rounded-md top-8 -left-5 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-10 w-max">
-                    <Link href="#" prefetch={true} className="flex justify-between items-center">
+                    <Link
+                        href="#"
+                        prefetch={true}
+                        className="flex justify-between items-center"
+                        aria-label="Profile"
+                    >
                         <UserRound size={16} />
                         <span className="w-2/3 px-2">Profile</span>
                     </Link>

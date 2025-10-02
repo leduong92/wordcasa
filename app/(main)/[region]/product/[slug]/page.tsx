@@ -28,6 +28,16 @@ export async function generateMetadata(
     return {
         title: response.data?.productName + ' | Worldcasa',
         description: response.data?.description,
+        alternates: {
+            canonical: `/${region}/product/${slug}`,
+        },
+        openGraph: {
+            title: response.data?.productName ?? '',
+            description: response.data?.marketingDescription ?? '',
+            url: `/${region}/product/${slug}`,
+            siteName: 'Worldcasa',
+            type: 'website',
+        },
     };
 }
 

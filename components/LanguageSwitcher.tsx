@@ -19,6 +19,7 @@ export default function LanguageSwitcher({ lang }: CommonPageProps) {
                 value={lang}
                 onChange={handleChange}
                 className="md:hidden rounded focus-visible:outline-none cursor-pointer border-0"
+                aria-label="Choose a language"
             >
                 <option value="en">En</option>
                 <option value="id">Id</option>
@@ -29,6 +30,7 @@ export default function LanguageSwitcher({ lang }: CommonPageProps) {
                 value={lang}
                 onChange={handleChange}
                 className="hidden md:block rounded focus-visible:outline-none cursor-pointer border-0"
+                aria-label="Choose a language"
             >
                 <option value="en">English</option>
                 <option value="id">Bahasa</option>

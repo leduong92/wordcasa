@@ -31,6 +31,7 @@ const AddToCartButton = ({ item, variant, t }: AddToCartButtonProps) => {
             className="w-full bg-neutral-800 hover:bg-neutral-600 text-neutral-100 py-3 rounded-md text-lg flex justify-center items-center cursor-pointer gap-3"
             onClick={handleAdd}
             disabled={isAdding}
+            aria-label="Add to cart"
         >
             <ShoppingBag size={18} />
             <span className="text-sm">{isAdding ? 'Processing...' : 'Add to Cart'}</span>

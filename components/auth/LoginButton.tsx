@@ -21,7 +21,7 @@ const LoginButton = ({ region }: Props) => {
         // <Link href={`/${region}/login?callbackUrl=${callbackUrl}`} className="p-2">
         //     <UserRound size={18} />
         // </Link>
-        <button onClick={() => setView('login')} className="cursor-pointer">
+        <button onClick={() => setView('login')} className="cursor-pointer" aria-label="Login">
             <UserRound size={18} />
         </button>
     );

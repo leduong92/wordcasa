@@ -19,6 +19,7 @@ const CartEmpty = ({ region, t }: CommonPageProps) => {
                     <Link
                         href={`/${region}/shop/new-arrivals`}
                         className="inline-block rounded-md border bg-neutral-100 px-6 py-2 text-base font-medium text-gray-700 hover:bg-neutral-300 transition"
+                        aria-label="See all products here"
                     >
                         See all products here
                     </Link>

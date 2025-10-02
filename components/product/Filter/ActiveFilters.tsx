@@ -54,6 +54,7 @@ export default function ActiveFilters({ t }: CommonPageProps) {
             <button
                 onClick={clearAll}
                 className="px-3 py-1 cursor-pointer flex items-center gap-2  bg-neutral-100 rounded-xl text-sm"
+                aria-label="Clear filters"
             >
                 {t?.filters}{' '}
                 <span className="bg-slate-300 rounded-full w-6 h-6 flex items-center justify-center">
@@ -72,6 +73,7 @@ export default function ActiveFilters({ t }: CommonPageProps) {
                         <button
                             onClick={() => removeFilter(field, value)}
                             className="ml-1 text-gray-600 hover:text-black cursor-pointer"
+                            aria-label="Clear filter"
                         >
                             <X size={16} />
                         </button>

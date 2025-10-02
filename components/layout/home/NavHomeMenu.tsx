@@ -75,6 +75,7 @@ const NavHomeMenu = ({ region, lang, t, categoryDtos }: Props) => {
                             <Link
                                 href={'/'}
                                 className="focus-visible:outline-none tracking-widest uppercase font-semibold font-basker"
+                                aria-label="WorldCasa"
                             >
                                 WORLDCASA
                             </Link>

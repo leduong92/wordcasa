@@ -66,10 +66,15 @@ const ProductCard = ({ region, product, t }: Props) => {
 
             <div className="flex-1 flex flex-col pt-2">
                 {/* Tên */}
-                <Link href={`/${region}/product/${product.slug}`} className="">
-                    <h3 className="text-sm font-medium tracking-wide hover:text-neutral-500">
+                <Link
+                    href={`/${region}/product/${product.slug}`}
+                    className=""
+                    title={product.productName ?? ''}
+                    aria-label={product.productName ?? ''}
+                >
+                    <h1 className="text-sm font-medium tracking-wide hover:text-neutral-500">
                         {product.productName}
-                    </h3>
+                    </h1>
                 </Link>
 
                 {/* SKU */}
@@ -95,6 +100,7 @@ const ProductCard = ({ region, product, t }: Props) => {
                                             ? 'border-neutral-500'
                                             : 'border-neutral-50'
                                     }`}
+                                    aria-label={`Selected Variant ${idx}`}
                                 >
                                     <Image
                                         src={`${imgUrl}?profile=basic&w=80`}

@@ -43,6 +43,7 @@ const NavMobile = (params: Props) => {
                             <Link
                                 href={'/'}
                                 className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
+                                aria-label="Worldcasa"
                             >
                                 Worldcasa
                             </Link>
@@ -62,6 +63,7 @@ const NavMobile = (params: Props) => {
                                             pathname: `/${region}/shop/new-arrivals`,
                                         }}
                                         prefetch={true}
+                                        aria-label={`/${region}/shop/new-arrivals`}
                                     >
                                         <span
                                             onClick={() => setIsOpen(false)}
@@ -79,6 +81,7 @@ const NavMobile = (params: Props) => {
                                                 <div onClick={() => setIsOpen(false)}>
                                                     <Link
                                                         href={`/${region}/discover/categories/${item.slug}`}
+                                                        aria-label={item.displayName ?? ''}
                                                     >
                                                         {item.displayName}
                                                     </Link>
@@ -88,6 +91,7 @@ const NavMobile = (params: Props) => {
                                                         <Link
                                                             href={`/${region}/shop/category/${itm.slug}`}
                                                             className="text-neutral-700 text-sm tracking-wide"
+                                                            aria-label={item.displayName ?? ''}
                                                         >
                                                             {itm.displayName}
                                                         </Link>
@@ -99,14 +103,22 @@ const NavMobile = (params: Props) => {
                                 ))}
 
                                 <li className="border-t pt-5 text-sm">
-                                    <Link href={`/${region}/about`} prefetch={true}>
+                                    <Link
+                                        href={`/${region}/about`}
+                                        prefetch={true}
+                                        aria-label="About"
+                                    >
                                         <span onClick={() => setIsOpen(false)} className="">
                                             About
                                         </span>
                                     </Link>
                                 </li>
                                 <li className="text-sm">
-                                    <Link href={`/${region}/contact`} prefetch={true}>
+                                    <Link
+                                        href={`/${region}/contact`}
+                                        prefetch={true}
+                                        aria-label="contact"
+                                    >
                                         <span onClick={() => setIsOpen(false)} className="">
                                             Contact
                                         </span>
@@ -121,7 +133,7 @@ const NavMobile = (params: Props) => {
 
             {/* Middle */}
             <div className="w-1/3 text-xl flex justify-center transition-colors duration-300">
-                <Link href="/">
+                <Link href="/" title="WorldCasa" aria-label="WorldCasa">
                     <div
                         className={`text-${color} tracking-widest uppercase font-semibold font-basker`}
                     >
