@@ -29,6 +29,7 @@ export default function LoginForm() {
         const fetchAnonymousId = await fetch('/api/anonymous');
         const data = await fetchAnonymousId.json();
         const anonymousId = data.anonymousId;
+
         const res = await signIn('credentials', {
             email,
             password,
