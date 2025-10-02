@@ -9,8 +9,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { CommonPageProps } from '@/modals';
 
-export default function SortMenu() {
+export default function SortMenu({ region, t }: CommonPageProps) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -25,7 +26,7 @@ export default function SortMenu() {
     return (
         <div className="flex items-center">
             <label htmlFor="sort-by" className="mr-2">
-                Sort by:
+                {t?.sortBy}:
             </label>
             <Select onValueChange={(val) => handleSortChange(val)}>
                 <SelectTrigger className="w-[150px] border-none focus-visible:border-none">

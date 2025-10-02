@@ -4,15 +4,14 @@ import {
     Drawer,
     DrawerClose,
     DrawerContent,
-    DrawerDescription,
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
-    DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
+import { CommonPageProps } from '@/modals';
 
-export default function CookieConsentPopup() {
+export default function CookieConsentPopup({ region, t }: CommonPageProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {

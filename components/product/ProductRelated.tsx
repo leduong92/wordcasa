@@ -1,13 +1,17 @@
 'use client';
 
-import { ItemRelatedDto } from '@/modals';
+import { CommonPageProps, ItemRelatedDto } from '@/modals';
 import React from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductRelated = ({ region, items }: { region: string; items: ItemRelatedDto[] }) => {
+interface Props extends CommonPageProps {
+    items: ItemRelatedDto[];
+}
+
+const ProductRelated = ({ region, items }: Props) => {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 5,

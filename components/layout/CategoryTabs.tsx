@@ -1,5 +1,5 @@
 'use client';
-import { ItemCategoryDto } from '@/modals';
+import { CommonPageProps, ItemCategoryDto } from '@/modals';
 import React, { useEffect, useState } from 'react';
 import ItemCarousel from '../ItemCarousel';
 import { clientApi } from '@/lib/clientApi';
@@ -10,15 +10,12 @@ const tabs = [
     { id: 3, label: 'Bed' },
 ];
 
-const CategoryTabs = ({
-    initialRoomId,
-    initialData,
-    region,
-}: {
+interface Props extends CommonPageProps {
     initialRoomId: number;
     initialData: ItemCategoryDto[];
-    region: string;
-}) => {
+}
+
+const CategoryTabs = ({ initialRoomId, initialData, region, t }: Props) => {
     const [activeTab, setActiveTab] = useState<number>(initialRoomId);
     const [data, setData] = useState<ItemCategoryDto[]>(initialData);
     const [loading, setLoading] = useState<boolean>(false);
@@ -69,7 +66,14 @@ const CategoryTabs = ({
 
 export default CategoryTabs;
 
-export function ItemList({ region, items }: { region: string; items: ItemCategoryDto[] }) {
+interface ItemListProps {
+    region?: string;
+    lang?: 'en' | 'id';
+    t?: Record<string, string>;
+    items: ItemCategoryDto[];
+}
+
+export function ItemList({ region, items }: ItemListProps) {
     if (!items || items.length === 0) {
         return <div>No items found</div>;
     }

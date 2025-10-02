@@ -7,8 +7,9 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useSession } from 'next-auth/react';
 import LogoutButton from './auth/LogoutButton.';
 import LoginButton from './auth/LoginButton';
+import { CommonPageProps } from '@/modals';
 
-const NavIcons = ({ lang, region }: { lang: string; region: string }) => {
+const NavIcons = ({ lang, region, t }: CommonPageProps) => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const { data: session } = useSession();
 
@@ -20,7 +21,7 @@ const NavIcons = ({ lang, region }: { lang: string; region: string }) => {
 
     return (
         <div className="flex items-center gap-3 xl:gap-4 relative">
-            <LanguageSwitcher currentLang={lang} />
+            <LanguageSwitcher lang={lang} />
 
             {session?.user?.email ? (
                 <>

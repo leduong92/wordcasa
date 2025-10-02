@@ -4,16 +4,14 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ItemCategoryDto } from '@/modals';
+import { CommonPageProps, ItemCategoryDto } from '@/modals';
 import Link from 'next/link';
 
-export default function ItemCarousel({
-    region,
-    items,
-}: {
-    region: string;
+interface Props extends CommonPageProps {
     items: ItemCategoryDto[];
-}) {
+}
+
+export default function ItemCarousel({ region, t, items }: Props) {
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
         slides: {
             perView: 5,

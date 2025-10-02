@@ -1,8 +1,9 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { CommonPageProps } from '@/modals';
 import { ArrowLeft, MoveLeft } from 'lucide-react';
 
-export function BackButton() {
+export function BackButton({ t }: CommonPageProps) {
     return (
         <Button
             variant="ghost"
@@ -10,7 +11,7 @@ export function BackButton() {
             className="flex items-center gap-2 cursor-pointer"
         >
             <MoveLeft className="w-4 h-4" />
-            Back
+            {t?.back}
         </Button>
     );
 }

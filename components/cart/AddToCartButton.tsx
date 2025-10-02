@@ -1,15 +1,15 @@
 'use client';
 import { useCartStore } from '@/hook/useCartStore';
-import { ItemDto, ItemVariantDto } from '@/modals';
+import { CommonPageProps, ItemDto, ItemVariantDto } from '@/modals';
 import { ShoppingBag } from 'lucide-react';
 import React, { useState } from 'react';
 
-interface AddToCartButtonProps {
+interface AddToCartButtonProps extends CommonPageProps {
     item: ItemDto;
     variant: ItemVariantDto;
 }
 
-const AddToCartButton = ({ item, variant }: AddToCartButtonProps) => {
+const AddToCartButton = ({ item, variant, t }: AddToCartButtonProps) => {
     const [isAdding, setIsAdding] = useState<boolean>(false);
     const [quantity, setQuantity] = useState<number>(1);
 

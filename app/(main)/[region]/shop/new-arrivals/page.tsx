@@ -62,7 +62,7 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
         <div className="pt-2">
             {/* Banner */}
             <div className="flex flex-col md:flex-row border-b py-5">
-                <ShopLeftBanner region={region} title={'New arrivals'} />
+                <ShopLeftBanner region={region} title={'New arrivals'} t={t} />
 
                 {/* Categories */}
                 <div className="flex-1 w-full">
@@ -91,8 +91,8 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
 
             <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
-                    <FilterMenu categoryDtos={menus} />
-                    <ActiveFilters />
+                    <FilterMenu categoryDtos={menus} t={t} />
+                    <ActiveFilters t={t} />
                 </div>
             </div>
 
@@ -105,6 +105,7 @@ export default async function NewArrivalsPage({ params, searchParams }: PageProp
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    t={t}
                     url="/shop/new-arrivals"
                 />
             </div>

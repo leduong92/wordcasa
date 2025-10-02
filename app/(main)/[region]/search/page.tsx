@@ -88,8 +88,8 @@ export default async function SearchPage({ params, searchParams }: PageProps) {
 
             <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
-                    <FilterMenu categoryDtos={menus} />
-                    <ActiveFilters />
+                    <FilterMenu categoryDtos={menus} t={t} />
+                    <ActiveFilters t={t} />
                 </div>
             </div>
 
@@ -102,6 +102,7 @@ export default async function SearchPage({ params, searchParams }: PageProps) {
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    t={t}
                     url={`/search`}
                 />
             </div>

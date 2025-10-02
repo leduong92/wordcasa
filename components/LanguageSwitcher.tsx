@@ -1,8 +1,9 @@
 'use client';
 
+import { CommonPageProps } from '@/modals';
 import { useRouter } from 'next/navigation';
 
-export default function LanguageSwitcher({ currentLang }: { currentLang: string }) {
+export default function LanguageSwitcher({ lang }: CommonPageProps) {
     const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -15,7 +16,7 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
         <div className="">
             {/* Mobile */}
             <select
-                value={currentLang}
+                value={lang}
                 onChange={handleChange}
                 className="md:hidden rounded focus-visible:outline-none cursor-pointer border-0"
             >
@@ -25,7 +26,7 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
 
             {/* Desktop */}
             <select
-                value={currentLang}
+                value={lang}
                 onChange={handleChange}
                 className="hidden md:block rounded focus-visible:outline-none cursor-pointer border-0"
             >

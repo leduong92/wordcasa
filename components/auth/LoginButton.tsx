@@ -5,7 +5,13 @@ import Link from 'next/link';
 import { UserRound } from 'lucide-react';
 import { useAuthModal } from '@/hook/useAuthModal';
 
-const LoginButton = ({ region }: { region: string }) => {
+interface Props {
+    region?: string;
+    lang?: 'en' | 'id';
+    t?: Record<string, string>;
+}
+
+const LoginButton = ({ region }: Props) => {
     const pathname = usePathname();
     const callbackUrl = encodeURIComponent(pathname);
 

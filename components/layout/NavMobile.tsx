@@ -6,21 +6,20 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { TextAlignJustify } from 'lucide-react';
 import LanguageSwitcher from '../LanguageSwitcher';
 import SearchInput from '../SearchInput';
-import { useCartStore } from '@/hook/useCartStore';
 import CartIcon from '../cart/CartIcon';
-import { CategoryDto } from '@/modals';
+import { CategoryDto, CommonPageProps } from '@/modals';
 import LoginButton from '../auth/LoginButton';
 
-const NavMobile = (params: {
+interface Props extends CommonPageProps {
     color: string;
-    region: string;
     categoryDtos: CategoryDto[] | undefined;
-}) => {
+}
+
+const NavMobile = (params: Props) => {
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const { cart } = useCartStore();
 
-    const { color, region, categoryDtos } = params;
+    const { color, region, lang, t, categoryDtos } = params;
 
     useEffect(() => {
         setIsMounted(true);
@@ -117,7 +116,7 @@ const NavMobile = (params: {
                         </div>
                     </SheetContent>
                 </Sheet>
-                <LanguageSwitcher currentLang={'en'} />
+                <LanguageSwitcher lang={lang} />
             </div>
 
             {/* Middle */}

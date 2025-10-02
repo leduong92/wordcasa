@@ -1,16 +1,15 @@
 'use client';
-import { ItemDto } from '@/modals';
+import { CommonPageProps, ItemDto } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import SkeletonProductCard from './SkeletonProductCard';
 
-interface ProductCardProps {
-    region: string;
+interface Props extends CommonPageProps {
     product: ItemDto;
 }
 
-const ProductCard = ({ region, product }: ProductCardProps) => {
+const ProductCard = ({ region, product, t }: Props) => {
     const [activeImage, setActiveImage] = useState<string | null>(
         product?.itemVariantDtos[0]?.itemImageDtos?.[0]?.imageUrl ?? null
     );

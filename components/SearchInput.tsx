@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogTitle } from './ui/dialog';
+import { CommonPageProps } from '@/modals';
 
 const popularTerms = [
     'marid',
@@ -27,15 +28,12 @@ const categories = [
     { name: 'Storage', image: '/bed_4.jpg' },
 ];
 
-export default function SearchInput({
-    isShowDialog,
-    region,
-    isSidebar,
-}: {
+interface Props extends CommonPageProps {
     isShowDialog: boolean;
-    region: string;
     isSidebar: boolean;
-}) {
+}
+
+export default function SearchInput({ isShowDialog, region, isSidebar, t }: Props) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -74,7 +72,12 @@ export default function SearchInput({
     if (isSidebar) {
         return (
             <div>
-                <SearchBox value={searchQuery} onChange={setSearchQuery} onSearch={handleSearch} />
+                <SearchBox
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    onSearch={handleSearch}
+                    t={t}
+                />
             </div>
         );
     }
@@ -82,7 +85,12 @@ export default function SearchInput({
     if (!isShowDialog) {
         return (
             <div>
-                <SearchBox value={searchQuery} onChange={setSearchQuery} onSearch={handleSearch} />
+                <SearchBox
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                    onSearch={handleSearch}
+                    t={t}
+                />
                 <PopularTermsList />
                 <CategoryGrid />
             </div>
@@ -98,6 +106,7 @@ export default function SearchInput({
                 onSearch={handleSearch}
                 onFocus={() => setOpen(true)}
                 readonly={true}
+                t={t}
                 className="border-b"
             />
 
@@ -141,6 +150,7 @@ function SearchBox({
     autoFocus = false,
     readonly = false,
     className = '',
+    t,
 }: {
     value: string;
     onChange: (v: string) => void;
@@ -149,12 +159,13 @@ function SearchBox({
     autoFocus?: boolean;
     readonly?: boolean;
     className?: string;
+    t?: Record<string, string>;
 }) {
     return (
         <div className={`flex items-center space-x-2 relative ${className}`}>
             <input
                 type="text"
-                placeholder="Search..."
+                placeholder={`${t?.search ?? 'Search...'}`}
                 value={value}
                 autoFocus={autoFocus}
                 onChange={(e) => onChange(e.target.value)}

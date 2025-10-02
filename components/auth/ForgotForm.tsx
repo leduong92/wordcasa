@@ -2,8 +2,9 @@
 'use client';
 
 import { useAuthModal } from '@/hook/useAuthModal';
+import { CommonPageProps } from '@/modals';
 
-export default function ForgotForm() {
+export default function ForgotForm({ region, t }: CommonPageProps) {
     const { setView, setOpen } = useAuthModal();
 
     const handleReset = (e: React.FormEvent) => {

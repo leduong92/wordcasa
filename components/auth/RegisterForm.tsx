@@ -5,8 +5,9 @@ import { Button } from '../ui/button';
 import { Mail, MoveRight } from 'lucide-react';
 import { Checkbox } from '../ui/checkbox';
 import Link from 'next/link';
+import { CommonPageProps } from '@/modals';
 
-const RegisterForm = ({ region }: { region: string }) => {
+const RegisterForm = ({ region, t }: CommonPageProps) => {
     const { open, setView, setOpen } = useAuthModal();
     const [acceptTerms, setAcceptTerms] = useState(false);
     const [subscribe, setSubscribe] = useState(true);

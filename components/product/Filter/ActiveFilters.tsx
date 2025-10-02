@@ -1,9 +1,10 @@
 'use client';
 
+import { CommonPageProps } from '@/modals';
 import { X } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-export default function ActiveFilters() {
+export default function ActiveFilters({ t }: CommonPageProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -54,7 +55,7 @@ export default function ActiveFilters() {
                 onClick={clearAll}
                 className="px-3 py-1 cursor-pointer flex items-center gap-2  bg-neutral-100 rounded-xl text-sm"
             >
-                Filters{' '}
+                {t?.filters}{' '}
                 <span className="bg-slate-300 rounded-full w-6 h-6 flex items-center justify-center">
                     {totalCount}
                 </span>{' '}

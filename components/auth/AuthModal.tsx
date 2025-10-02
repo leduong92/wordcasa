@@ -10,7 +10,13 @@ import RegisterForm from './RegisterForm';
 import ForgotForm from './ForgotForm';
 import { useEffect } from 'react';
 
-export default function UserModal({ region }: { region: string }) {
+interface Props {
+    region: string;
+    lang?: 'en' | 'id';
+    t?: Record<string, string>;
+}
+
+export default function UserModal({ region }: Props) {
     const { open, view, setOpen } = useAuthModal();
 
     useEffect(() => {

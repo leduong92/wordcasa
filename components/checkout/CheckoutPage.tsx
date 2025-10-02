@@ -6,18 +6,18 @@ import CartSummary from '@/components/cart/CartSummary';
 import CheckoutSteps from '@/components/checkout/CheckoutSteps';
 import { MoveLeft, MoveRight } from 'lucide-react';
 import { Button } from '../ui/button';
-import ShippingAddressStep from './ShippingAddressStep';
+import ShippingAddressStep, { ShippingAddressDto } from './ShippingAddressStep';
+import { CommonPageProps } from '@/modals';
 
-export default function CheckoutPage({ region }: { region: string }) {
+export default function CheckoutPage({ region, t }: CommonPageProps) {
     const [currentStep, setCurrentStep] = useState(1);
+    const [selectedAddress, setSelectedAddress] = useState<ShippingAddressDto | null>(null);
 
     const nextStep = () => setCurrentStep((s) => Math.min(s + 1, 4));
     const prevStep = () => setCurrentStep((s) => Math.max(s - 1, 1));
-    const haneldeAddressFormSubmit = () => {};
-    const handleCancel = () => {};
 
     return (
-        <div className="  py-10">
+        <div className="py-5">
             <h1 className="text-3Xxl md:text-4xl font-bold mb-10">Checkout</h1>
             {/* Progress bar */}
             <CheckoutSteps currentStep={currentStep} />
@@ -31,7 +31,8 @@ export default function CheckoutPage({ region }: { region: string }) {
                             <ShippingAddressStep
                                 onSubmit={(addr) => {
                                     console.log('Selected shipping address:', addr);
-                                    nextStep(); // qua bước Payment
+                                    setSelectedAddress(addr);
+                                    nextStep(); // Payment step
                                 }}
                                 onCancel={prevStep}
                             />
@@ -68,7 +69,7 @@ export default function CheckoutPage({ region }: { region: string }) {
                         {currentStep > 1 ? (
                             <Button
                                 onClick={prevStep}
-                                className="px-6 py-2 border rounded-md bg-neutral-100 text-neutral-800 hover:bg-neutral-200 cursor-pointer flex items-center gap-2"
+                                className="px-6 py-2 border bg-neutral-100 text-neutral-600 hover:bg-neutral-200 cursor-pointer flex items-center gap-2"
                             >
                                 <MoveLeft /> Back
                             </Button>
@@ -78,15 +79,22 @@ export default function CheckoutPage({ region }: { region: string }) {
 
                         {currentStep < 4 ? (
                             <Button
-                                onClick={nextStep}
-                                className="px-6  text-neutral-100 rounded-mdcursor-pointer hover:bg-neutral-700 flex items-center gap-2 cursor-pointer"
+                                onClick={() => {
+                                    if (currentStep === 2) {
+                                        if (!selectedAddress) {
+                                            return;
+                                        }
+                                    }
+                                    nextStep();
+                                }}
+                                className="px-6  text-neutral-300 hover:bg-neutral-600 flex items-center gap-2 cursor-pointer"
                             >
                                 <span>Next</span> <MoveRight size={12} />
                             </Button>
                         ) : (
                             <Button
                                 onClick={() => alert('Order placed!')}
-                                className="px-6 py-2 bg-green-600 text-neutral-100 rounded-md hover:bg-green-700 cursor-pointer"
+                                className="px-6 py-2 bg-green-600 text-neutral-100 hover:bg-green-700 cursor-pointer"
                             >
                                 Place Order
                             </Button>
@@ -97,7 +105,7 @@ export default function CheckoutPage({ region }: { region: string }) {
                 {/* Cart Summary */}
                 <div className="lg:col-span-1">
                     <div className="lg:sticky lg:top-24">
-                        <CartSummary region={region} isCheckout={true} />
+                        <CartSummary region={region} isCheckout={true} t={t} />
                     </div>
                 </div>
             </div>

@@ -2,10 +2,11 @@
 'use client';
 
 import { useState } from 'react';
-import { MessageCircle, Send, X } from 'lucide-react';
+import { MessageCircleMore, Send, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { CommonPageProps } from '@/modals';
 
-export default function ChatWidget() {
+export default function ChatWidget({ t }: CommonPageProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<{ sender: 'user' | 'bot'; text: string }[]>([]);
     const [input, setInput] = useState('');
@@ -36,17 +37,17 @@ export default function ChatWidget() {
             {!isOpen && (
                 <Button
                     onClick={() => setIsOpen(true)}
-                    className="rounded-full w-12 h-12 shadow-lg bg-blue-500 hover:bg-blue-600 flex items-center justify-center cursor-pointer"
+                    className="rounded-full w-12 h-12 shadow-lg bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center cursor-pointer"
                 >
-                    <MessageCircle className="text-neutral-50" size={18} />
+                    <MessageCircleMore className="text-neutral-50" />
                 </Button>
             )}
 
             {/* Chatbox */}
             {isOpen && (
-                <div className="w-80 h-96 bg-blue-50   rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                <div className="w-80 h-96 bg-blue-50 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
                     {/* Header */}
-                    <div className="bg-blue-500 text-neutral-50 p-3 flex justify-between items-center">
+                    <div className="bg-neutral-500 text-neutral-100 p-3 flex justify-between items-center">
                         <span className="font-semibold">Worldcasa Assistant</span>
                         <X className="cursor-pointer w-5 h-5" onClick={() => setIsOpen(false)} />
                     </div>
@@ -58,11 +59,11 @@ export default function ChatWidget() {
                                 key={i}
                                 className={`p-2 rounded-lg max-w-[75%] ${
                                     m.sender === 'user'
-                                        ? 'bg-blue-100 ml-auto text-right'
-                                        : 'bg-blue-100 mr-auto text-left'
+                                        ? 'bg-slate-200 ml-auto text-right'
+                                        : 'bg-slate-200 mr-auto text-left'
                                 }`}
                             >
-                                {m.text}
+                                <span className="text-neutral-700">{m.text}</span>
                             </div>
                         ))}
                     </div>
@@ -71,7 +72,7 @@ export default function ChatWidget() {
                     <div className="p-2 border-t flex gap-2">
                         <input
                             type="text"
-                            className="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none"
+                            className="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none text-neutral-700"
                             placeholder="Enter message..."
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
@@ -79,7 +80,7 @@ export default function ChatWidget() {
                         />
                         <Button
                             onClick={handleSend}
-                            className="bg-blue-500 hover:bg-blue-600 cursor-pointer"
+                            className="bg-neutral-500 hover:bg-neutral-600 cursor-pointer text-neutral-100"
                         >
                             <Send size={8} />
                             Send

@@ -29,3 +29,9 @@ export type ItemRequest = {
     room?: string;
     collection?: string;
 };
+
+export interface CommonPageProps {
+    region?: string;
+    lang?: 'en' | 'id';
+    t?: Record<string, string>;
+}

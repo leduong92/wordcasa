@@ -1,11 +1,12 @@
 'use client';
 import { useAuthModal } from '@/hook/useAuthModal';
+import { CommonPageProps } from '@/modals';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 import React from 'react';
 
-const CheckoutButton = ({ region }: { region: string }) => {
+const CheckoutButton = ({ region, t }: CommonPageProps) => {
     const { data: session, status } = useSession();
     const router = useRouter();
 

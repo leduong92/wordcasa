@@ -1,14 +1,14 @@
 'use client';
-import { CategoryDetailDto, CategoryDto } from '@/modals';
+import { CategoryDetailDto, CategoryDto, CommonPageProps } from '@/modals';
 import { useState } from 'react';
 
-type AccordionItemProps = {
+interface Props extends CommonPageProps {
     title: string;
     options: CategoryDetailDto[] | undefined;
     field: string;
     isSelected: (field: string, value: string) => boolean;
     toggleFilter: (field: string, value: string) => void;
-};
+}
 
 export default function AccordionItem({
     title,
@@ -16,7 +16,8 @@ export default function AccordionItem({
     options,
     isSelected,
     toggleFilter,
-}: AccordionItemProps) {
+    t,
+}: Props) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (

@@ -1,17 +1,17 @@
 import { capitalizeWords } from '@/lib/utils';
 import React from 'react';
 import { BackButton } from './BackButton';
+import { CommonPageProps } from '@/modals';
 
-interface ShopBannerProps {
-    region: string;
+interface Props extends CommonPageProps {
     title: string;
 }
 
-const ShopLeftBanner = ({ region, title }: ShopBannerProps) => {
+const ShopLeftBanner = ({ region, t, title }: Props) => {
     return (
         <>
             <div className="flex-1">
-                <BackButton />
+                <BackButton t={t} />
                 <div className="flex-1 py-8">
                     <h1 className="text-5xl md:text-7xl font-serif font-basker mb-4">
                         {capitalizeWords(title)}

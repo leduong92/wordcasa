@@ -1,5 +1,5 @@
 'use client';
-import { CategoryDto } from '@/modals';
+import { CategoryDto, CommonPageProps } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,15 +11,11 @@ const categories = [
     { name: 'Bedrooms', slug: 'bedroom', image: '/bed_3.jpg' },
 ];
 
-const MegaMenu = ({
-    region,
-    lang,
-    categoryDtos,
-}: {
-    region: string;
-    lang: string;
+interface Props extends CommonPageProps {
     categoryDtos: CategoryDto[] | undefined;
-}) => {
+}
+
+const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const pathname = usePathname();
 
@@ -71,7 +67,7 @@ const MegaMenu = ({
                                                     className="block hover:text-[#e5ae49] transition-colors duration-200 text-neutral-700 tracking-wide"
                                                     aria-label="Side Tables"
                                                 >
-                                                    New Arrivals
+                                                    {t?.newArrivals}
                                                 </Link>
                                             </div>
                                         </div>

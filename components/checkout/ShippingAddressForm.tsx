@@ -1,16 +1,15 @@
 'use client';
-import { ShippingAddressDto } from '@/modals';
+import { CommonPageProps, ShippingAddressDto } from '@/modals';
 import React, { useState } from 'react';
+import { Button } from '../ui/button';
 
-const ShippingAddressForm = ({
-    initialData,
-    onSave,
-    onCancel,
-}: {
+interface ShippingAddressFormProps extends CommonPageProps {
     initialData: ShippingAddressDto;
     onSave: (data: ShippingAddressDto) => void;
     onCancel: () => void;
-}) => {
+}
+
+const ShippingAddressForm = ({ initialData, onSave, onCancel, t }: ShippingAddressFormProps) => {
     const [formData, setFormData] = useState<ShippingAddressDto>(initialData);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -99,7 +98,7 @@ const ShippingAddressForm = ({
                 onChange={handleChange}
                 className="border p-2 rounded"
             />
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-sm">
                 <input
                     type="checkbox"
                     name="isRuralArea"
@@ -108,7 +107,7 @@ const ShippingAddressForm = ({
                 />
                 Rural Area
             </label>
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-sm">
                 <input
                     type="checkbox"
                     name="isActive"
@@ -119,19 +118,19 @@ const ShippingAddressForm = ({
             </label>
 
             <div className="col-span-2 flex gap-2">
-                <button
+                <Button
                     type="submit"
-                    className="bg-blue-500 text-white  hover:bg-blue-400 px-4 py-2 rounded cursor-pointer"
+                    className="bg-blue-400 text-white  hover:bg-blue-500 px-4 py-2 rounded cursor-pointer"
                 >
                     Save
-                </button>
-                <button
+                </Button>
+                <Button
                     type="button"
-                    className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded cursor-pointer"
+                    className="bg-gray-400 hover:bg-gray-500 px-4 py-2 rounded cursor-pointer"
                     onClick={onCancel}
                 >
                     Cancel
-                </button>
+                </Button>
             </div>
         </form>
     );

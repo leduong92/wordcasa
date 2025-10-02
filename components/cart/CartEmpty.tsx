@@ -1,7 +1,8 @@
+import { CommonPageProps } from '@/modals';
 import Link from 'next/link';
 import React from 'react';
 
-const CartEmpty = ({ region }: { region: string }) => {
+const CartEmpty = ({ region, t }: CommonPageProps) => {
     return (
         <div className="flex h-[calc(100vh-90px)] items-center justify-center bg-gray-50 px-4">
             <div className="text-center">

@@ -1,8 +1,9 @@
+import { CommonPageProps } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Footer = ({ lang, region }: { lang: string; region: string }) => {
+const Footer = ({ lang, region, t }: CommonPageProps) => {
     return (
         <footer className="mt-24 px-4 md:px-8 lg:px-12">
             {/* Top section */}
@@ -18,7 +19,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                                 height={150}
                                 className="w-full h-32 md:h-48 object-cover"
                             />
-                            <p className="p-2 font-medium text-base">Get free fabric samples</p>
+                            <p className="p-2 font-medium text-base">{t?.getSample}</p>
                         </Link>
                     </div>
                     <div className="flex-1 rounded-md overflow-hidden">
@@ -30,7 +31,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                                 height={150}
                                 className="w-full h-32 md:h-48 object-cover"
                             />
-                            <p className="p-2 font-medium text-base">Need help? Let&apos;s talk</p>
+                            <p className="p-2 font-medium text-base">{t?.help}</p>
                         </Link>
                     </div>
                 </div>
@@ -41,27 +42,27 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                 <div className="space-y-2 text-base text-gray-700">
                     <div>
                         <Link href={`/${region}/web/customer-service`}>
-                            <p>Customer Service</p>
+                            <p>{t?.customerService}</p>
                         </Link>
                     </div>
                     <div>
                         <Link href={`/${region}/store`}>
-                            <p>Find store</p>
+                            <p>{t?.findStore}</p>
                         </Link>
                     </div>
                     <div>
                         <Link href={`/${region}/about`}>
-                            <p>About Worldcasa</p>
+                            <p>{t?.aboutUs}</p>
                         </Link>
                     </div>
                     <div>
                         <Link href={`/${region}/web/delivery-policy`}>
-                            <p>Delivery Policy</p>
+                            <p>{t?.deliveryPolicy}</p>
                         </Link>
                     </div>
                     <div>
                         <Link href={`/${region}/web/return-policy`}>
-                            <p>Sale & Return Policy</p>
+                            <p>{t?.saleReturnPilicy}</p>
                         </Link>
                     </div>
                 </div>
@@ -75,7 +76,7 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
                         <Image src="/instagram.png" alt="" width={25} height={25} />
                     </a>
                     <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
-                        <Image src="/pinterest.png" alt="" width={25} height={25} />
+                        <Image src="/pinterest?.png" alt="" width={25} height={25} />
                     </a>
                     <a href="#" className="p-2 border rounded-full hover:bg-gray-200">
                         <Image src="/youtube.png" alt="" width={25} height={25} />
@@ -89,16 +90,16 @@ const Footer = ({ lang, region }: { lang: string; region: string }) => {
             {/* Bottom bar */}
             <div className="border-t px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
                 <Link href={'/'}>
-                    <p className="text-center md:text-left">
-                        {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT. */}
-                        © 2025 World Casa
+                    <p className="text-center md:text-left text-neutral-500">
+                        {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT?. */}
+                        © 2025 <span className="tracking-wider text-xs uppercase">WorldCasa</span>
                     </p>
                 </Link>
 
                 <div className="flex gap-6">
-                    <Link href={`/${region}/web/cookie-information`}>Cookie information</Link>
-                    <Link href={`/${region}/web/terms-of-use`}>Terms &amp; conditions</Link>
-                    <Link href={`/${region}/web/privacy-policy`}>Privacy policy</Link>
+                    <Link href={`/${region}/web/cookie-information`}>{t?.cookieInformation}</Link>
+                    <Link href={`/${region}/web/terms-of-use`}>{t?.termsOfUse}</Link>
+                    <Link href={`/${region}/web/privacy-policy`}>{t?.privacyPolicy}</Link>
                 </div>
 
                 <div className="flex items-center gap-6">

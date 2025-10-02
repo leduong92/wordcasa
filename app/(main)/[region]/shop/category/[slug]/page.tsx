@@ -47,19 +47,12 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
         sp
     );
 
-    const menus = await getMenus();
+    // const menus = await getMenus();
 
     return (
         <div className="pt-5">
             {/* Banner */}
-            <ShopLeftBanner region={region} title={slug} />
-
-            {/* <div className="flex w-full items-center justify-between py-4">
-                <div className="w-full">
-                    <FilterMenu categoryDtos={menus} />
-                    <ActiveFilters />
-                </div>
-            </div> */}
+            <ShopLeftBanner region={region} title={slug} t={t} />
 
             {/* Layout */}
             <div className="pt-3 flex flex-col md:flex-row">

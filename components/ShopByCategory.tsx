@@ -1,8 +1,9 @@
 import { ItemCategoryDto } from '@/modals/itemDto';
 import CategoryTabs from './layout/CategoryTabs';
 import { serverApi } from '@/lib/serverApi';
+import { CommonPageProps } from '@/modals';
 
-async function getCategories(region: string, roomId: number) {
+async function getCategories(region?: string, roomId?: number) {
     try {
         const response = await serverApi.get<ItemCategoryDto[]>(
             `/api/item/categories/${region}/${roomId}`
@@ -14,7 +15,7 @@ async function getCategories(region: string, roomId: number) {
     }
 }
 
-export default async function ShopByCategory({ region }: { region: string }) {
+export default async function ShopByCategory({ region, t }: CommonPageProps) {
     const initialRoomId = 1;
     const initialData = await getCategories(region, initialRoomId);
 
@@ -29,6 +30,7 @@ export default async function ShopByCategory({ region }: { region: string }) {
                     initialRoomId={initialRoomId}
                     initialData={initialData}
                     region={region}
+                    t={t}
                 />
             </div>
         </section>

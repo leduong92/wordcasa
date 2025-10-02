@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/hook/useCartStore';
 import { Skeleton } from '../ui/skeleton';
+import { CommonPageProps } from '@/modals';
 
-const CartIcon = ({ region }: { region: string }) => {
+const CartIcon = ({ region }: CommonPageProps) => {
     const [isMounted, setIsMounted] = useState(false);
     const { cart, fetchCart } = useCartStore();
 

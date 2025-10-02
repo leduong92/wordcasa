@@ -8,8 +8,9 @@ import { Button } from '../ui/button';
 import { MoveRight } from 'lucide-react';
 import { useAuthModal } from '@/hook/useAuthModal';
 import { useCartStore } from '@/hook/useCartStore';
+import { CommonPageProps } from '@/modals';
 
-export default function LoginForm() {
+export default function LoginForm({ region, t }: CommonPageProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ItemDto, ItemVariantDto } from '@/modals';
+import { CommonPageProps, ItemDto, ItemVariantDto } from '@/modals';
 
 import {
     Accordion,
@@ -17,7 +17,11 @@ import Link from 'next/link';
 
 declare var Sirv: any;
 
-export default function ProductVariantClient({ product }: { product: ItemDto }) {
+interface Props extends CommonPageProps {
+    product: ItemDto;
+}
+
+export default function ProductVariantClient({ product, t, region }: Props) {
     const [selectedVariant, setSelectedVariant] = useState<ItemVariantDto>(
         product.itemVariantDtos[0]
     );

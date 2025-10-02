@@ -5,18 +5,14 @@ import React, { useEffect, useState } from 'react';
 import NavMobile from '../NavMobile';
 import NavIcons from '../../NavIcons';
 import SearchInput from '../../SearchInput';
-import { CategoryDto } from '@/modals';
+import { CategoryDto, CommonPageProps } from '@/modals';
 import MegaMenu from '../MegaMenu';
 
-const NavMainMenu = ({
-    region,
-    lang,
-    categoryDtos,
-}: {
-    region: string;
-    lang: string;
+interface Props extends CommonPageProps {
     categoryDtos: CategoryDto[] | undefined;
-}) => {
+}
+
+const NavMainMenu = ({ region, lang, categoryDtos, t }: Props) => {
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
@@ -40,7 +36,7 @@ const NavMainMenu = ({
                     visible ? '' : 'boxShadown'
                 }`}
             >
-                <NavMobile color="black" region={region} categoryDtos={categoryDtos} />
+                <NavMobile color="black" region={region} categoryDtos={categoryDtos} t={t} />
             </div>
             {/* BIGGER Screen */}
             <nav
@@ -57,6 +53,7 @@ const NavMainMenu = ({
                                     isShowDialog={true}
                                     region={region}
                                     isSidebar={false}
+                                    t={t}
                                 />
                             </div>
                         </div>
@@ -72,13 +69,13 @@ const NavMainMenu = ({
 
                         {/* RIGHT */}
                         <div className="w-1/3 flex justify-end items-center text-neutral-700 tracking-wide transition-colors duration-300 gap-3">
-                            <NavIcons lang={lang} region={region} />
+                            <NavIcons lang={lang} region={region} t={t} />
                         </div>
                     </div>
 
                     <div className="w-full h-full pt-5 text-neutral-700">
                         {/* Menu Items */}
-                        <MegaMenu lang={lang} region={region} categoryDtos={categoryDtos} />
+                        <MegaMenu lang={lang} region={region} categoryDtos={categoryDtos} t={t} />
                     </div>
                 </div>
             </nav>

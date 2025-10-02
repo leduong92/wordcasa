@@ -7,8 +7,13 @@ import CartEmpty from './CartEmpty';
 import { formatCurrency } from '@/lib/utils';
 import SkeletonCartItem from './SkeletonCartItem';
 import Link from 'next/link';
+import { CommonPageProps } from '@/modals';
 
-const CartItems = ({ region, isCheckout }: { region: string; isCheckout: boolean }) => {
+interface CartItemProps extends CommonPageProps {
+    isCheckout: boolean;
+}
+
+const CartItems = ({ region, isCheckout, t }: CartItemProps) => {
     const cartItems = useCartStore((state) => state.cart);
     const [isMounted, setIsMounted] = useState(false);
 
@@ -25,7 +30,7 @@ const CartItems = ({ region, isCheckout }: { region: string; isCheckout: boolean
     }
 
     if (cartItems.length === 0) {
-        return <CartEmpty region={region} />;
+        return <CartEmpty region={region} t={t} />;
     }
 
     return (

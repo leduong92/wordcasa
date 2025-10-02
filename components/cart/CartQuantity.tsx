@@ -1,8 +1,9 @@
 'use client';
 import { useCartStore } from '@/hook/useCartStore';
+import { CommonPageProps } from '@/modals';
 import React, { useEffect, useState } from 'react';
 
-const CartQuantity = () => {
+const CartQuantity = ({ t }: CommonPageProps) => {
     const [isMounted, setIsMounted] = useState(false);
     const totalQuantity = useCartStore((state) => state.totalQuantity());
 

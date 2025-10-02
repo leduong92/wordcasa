@@ -31,6 +31,7 @@ export default async function CollectionDetail({ params, searchParams }: PagePro
                 <ShopLeftBanner
                     region={region}
                     title={capitalizeWords(collectionSlug) + ' ' + capitalizeWords(slug)}
+                    t={t}
                 />
             </div>
 
@@ -42,6 +43,7 @@ export default async function CollectionDetail({ params, searchParams }: PagePro
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    t={t}
                     url={`/discover/rooms/${slug}/${collectionSlug}`}
                 />
             </div>

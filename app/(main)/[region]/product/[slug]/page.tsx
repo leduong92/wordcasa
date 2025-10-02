@@ -7,6 +7,8 @@ import React from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import ProductRelated from '@/components/product/ProductRelated';
 import { serverApi } from '@/lib/serverApi';
+import { cookies } from 'next/headers';
+import { translations } from '@/i18n';
 
 type PageProps = {
     params: Promise<{ region: string; slug: string }>;
@@ -40,6 +42,10 @@ async function getProductDetail(region: string, slug: string) {
 const ProductDetailPage = async ({ params }: { params: { region: string; slug: string } }) => {
     const { slug, region } = await params;
     const product = await getProductDetail(region, slug);
+
+    const cookieStore = await cookies();
+    const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
+    const t = translations[lang];
 
     if (!product) {
         return <div>Product not found.</div>;

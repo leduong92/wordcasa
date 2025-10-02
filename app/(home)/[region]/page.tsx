@@ -6,18 +6,19 @@ import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
 import CookieConsentPopup from '@/components/CookieConsentPopup';
-import JoinMailList from '@/components/JoinMailList';
 import Link from 'next/link';
+import { translations } from '@/i18n';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
 
     const cookieStore = await cookies();
     const lang = (cookieStore.get('lang')?.value || 'en') as 'en' | 'id';
+    const t = translations[lang];
 
     return (
         <>
-            <HomeLayout region={region} lang={lang}>
+            <HomeLayout region={region} lang={lang} t={t}>
                 <section className="relative h-screen w-full">
                     <VideoPlayer
                         videoClass="absolute top-0 left-0 w-full h-full object-cover"
@@ -109,7 +110,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 </section>
 
                 <section className="px-4 md:px-8 py-8">
-                    <ShopByCategory region={region} />
+                    <ShopByCategory region={region} t={t} />
                 </section>
 
                 <section className="px-4 md:px-8 py-8">
@@ -194,9 +195,10 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                 <ShopTheLook />
                 </section> */}
             </HomeLayout>
-            <Footer lang={lang} region={region} />
-            <UserModal region={region} />
-            <CookieConsentPopup />
+
+            <Footer lang={lang} region={region} t={t} />
+            <UserModal region={region} t={t} />
+            <CookieConsentPopup region={region} t={t} />
         </>
     );
 }

@@ -1,17 +1,13 @@
-import { CategoryDto } from '@/modals';
+import { CategoryDto, CommonPageProps } from '@/modals';
 import AccordionItem from './AccordionItem';
 
-type FilterContentProps = {
+interface Props extends CommonPageProps {
     isSelected: (field: string, value: string) => boolean;
     toggleFilter: (field: string, value: string) => void;
     categoryDtos: CategoryDto[] | undefined;
-};
+}
 
-export default function FilterContent({
-    isSelected,
-    toggleFilter,
-    categoryDtos,
-}: FilterContentProps) {
+export default function FilterContent({ isSelected, toggleFilter, categoryDtos, t }: Props) {
     return (
         <div className="px-4">
             {/* Category */}

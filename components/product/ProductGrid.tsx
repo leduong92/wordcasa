@@ -8,6 +8,7 @@ export default function ProductGrid({
     pageSize,
     sp,
     region,
+    t,
     url,
 }: {
     products: any[];
@@ -16,6 +17,7 @@ export default function ProductGrid({
     pageSize: number;
     sp: Record<string, string | string[] | undefined>;
     region: string;
+    t?: Record<string, string>;
     url: string;
 }) {
     const totalPages = Math.ceil(totalRecords / pageSize);

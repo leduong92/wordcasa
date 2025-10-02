@@ -2,14 +2,17 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useCallback, useState } from 'react';
-import AccordionItem from './AccordionItem';
 import { Funnel, X } from 'lucide-react';
 import SortMenu from './SortMenu';
 import FilterContent from './FilterContent';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { CategoryDto } from '@/modals';
+import { CategoryDto, CommonPageProps } from '@/modals';
 
-export default function FilterMenu({ categoryDtos }: { categoryDtos: CategoryDto[] | undefined }) {
+interface Props extends CommonPageProps {
+    categoryDtos: CategoryDto[] | undefined;
+}
+
+export default function FilterMenu({ categoryDtos, t }: Props) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -86,22 +89,23 @@ export default function FilterMenu({ categoryDtos }: { categoryDtos: CategoryDto
                     onClick={() => setOpen(true)}
                 >
                     <Funnel size={18} />
-                    <span>Filters</span>
+                    <span>{t?.filters}</span>
                 </button>
                 <div className="items-center justify-end">
-                    <SortMenu />
+                    <SortMenu t={t} />
                 </div>
             </div>
 
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetContent side="left" className="w-80">
                     <SheetHeader>
-                        <SheetTitle>Filters</SheetTitle>
+                        <SheetTitle>{t?.filters}</SheetTitle>
                     </SheetHeader>
                     <FilterContent
                         isSelected={isSelected}
                         toggleFilter={toggleFilter}
                         categoryDtos={categoryDtos}
+                        t={t}
                     />
                 </SheetContent>
             </Sheet>

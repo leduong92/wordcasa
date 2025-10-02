@@ -6,12 +6,12 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
-    DialogDescription,
     DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { CommonPageProps } from '@/modals';
 
-const JoinMailList = () => {
+const JoinMailList = ({ region, t }: CommonPageProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {

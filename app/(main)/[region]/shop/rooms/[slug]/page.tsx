@@ -55,13 +55,13 @@ export default async function ShopePages({ params, searchParams }: PageProps) {
         <div className="pt-5">
             {/* Banner */}
             <div className="flex border-b">
-                <ShopLeftBanner region={region} title={slug} />
+                <ShopLeftBanner region={region} title={slug} t={t} />
             </div>
 
             <div className="flex w-full items-center justify-between py-4">
                 <div className="w-full">
-                    <FilterMenu categoryDtos={menus} />
-                    <ActiveFilters />
+                    <FilterMenu categoryDtos={menus} t={t} />
+                    <ActiveFilters t={t} />
                 </div>
             </div>
 
@@ -74,6 +74,7 @@ export default async function ShopePages({ params, searchParams }: PageProps) {
                     pageSize={pageSize}
                     sp={sp}
                     region={region}
+                    t={t}
                     url={`/shop/room/${slug}`}
                 />
             </div>

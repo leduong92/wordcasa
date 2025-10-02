@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { CommonPageProps } from '@/modals';
 
 const products = [
     {
@@ -32,7 +33,7 @@ const products = [
     },
 ];
 
-export default function ShopTheLook() {
+export default function ShopTheLook({ region, t }: CommonPageProps) {
     const [selected, setSelected] = useState<(typeof products)[0] | null>(null);
 
     return (
