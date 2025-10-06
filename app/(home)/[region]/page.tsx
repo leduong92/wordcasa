@@ -8,6 +8,7 @@ import UserModal from '@/components/auth/AuthModal';
 import CookieConsentPopup from '@/components/CookieConsentPopup';
 import Link from 'next/link';
 import { translations } from '@/i18n';
+import InStoreInspiration from '@/components/InStoreInspiration';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -193,7 +194,7 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                                 className="w-full h-auto rounded-lg"
                             />
                             <div>
-                                <span className="font-semibold">Seoul Beds </span>
+                                <span className="font-semibold">Paris Beds </span>
                                 <p className="text-sm text-neutral-600 py-1">
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
                                     nulla officiis optio. Possimus omnis officia qui, odit natus
@@ -212,9 +213,9 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
                     </div>
                 </section>
 
-                {/* <section className="px-4 md:px-8 py-8">
-                <ShopTheLook />
-                </section> */}
+                <section className="px-4 md:px-8 py-8">
+                    <InStoreInspiration region={region} />
+                </section>
             </HomeLayout>
 
             <Footer lang={lang} region={region} t={t} />

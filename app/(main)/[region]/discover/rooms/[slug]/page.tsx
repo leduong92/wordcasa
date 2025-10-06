@@ -60,7 +60,7 @@ const DiscoverRoomsPage = async ({ params, searchParams }: CollectionPageProps) 
                             <span
                                 key={i}
                                 className="opacity-0 animate-fadeInChar"
-                                style={{ animationDelay: `${i * 0.1}s` }} // delay từng ký tự
+                                style={{ animationDelay: `${i * 0.1}s` }}
                             >
                                 {char === ' ' ? '\u00A0' : char}
                             </span>

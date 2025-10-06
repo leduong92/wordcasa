@@ -24,7 +24,7 @@ export default async function RegionLayout({
             </MainLayout>
             <Footer region={region} lang={lang} t={t} />
             <UserModal region={region} />
-            <JoinMailList />
+            <JoinMailList region={region} />
         </>
     );
 }
