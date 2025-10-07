@@ -1,4 +1,4 @@
-import ProjectForm from '@/components/ProjectForm';
+import ProjectForm from '@/components/interior-service/ProjectForm';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const TalkToExpert = () => {
                     {/* Header Section */}
                     <div className="max-w-4xl">
                         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-                            Article’s Interior Design Services
+                            WorldCasa's Interior Design Services
                         </h2>
                         <p className="text-gray-600 mb-6">
                             We offer complete design plans. Tell us about your home, your needs, and

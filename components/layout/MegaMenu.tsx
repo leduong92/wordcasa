@@ -379,6 +379,29 @@ const MegaMenu = ({ region, t, lang, categoryDtos }: Props) => {
                         {/* Mega menu */}
                     </li>
                 ))}
+                {['Make an appointment'].map((item) => (
+                    <li
+                        key={item}
+                        className="h-full flex group "
+                        onMouseEnter={() => setOpenMenu(item)}
+                        onMouseLeave={() => setOpenMenu(null)}
+                    >
+                        <Link
+                            href={{
+                                pathname: `/${region}/interior-design-service`,
+                            }}
+                            className="relative cursor-pointer border-b-1 border-transparent focus-visible:outline-0
+                                                after:content-[''] after:absolute after:left-0 after:bottom-0
+                                                after:w-0 after:h-[1px] after:bg-[#e5ae49] after:transition-all after:duration-300
+                                                group-hover:after:w-full  group-hover/nav:text-neutral-700 transition-colors duration-300 tracking-wide font-helve "
+                            aria-label={item}
+                        >
+                            {item}
+                        </Link>
+
+                        {/* Mega menu */}
+                    </li>
+                ))}
             </ul>
         </>
     );

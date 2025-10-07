@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import MainLayout from '@/components/layout/main/MainLayout';
 import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
-import JoinMailList from '@/components/JoinMailList';
+import JoinMailList from '@/components/layout/JoinMailList';
 import { translations } from '@/i18n';
 
 export default async function RegionLayout({

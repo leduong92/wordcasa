@@ -1,20 +1,27 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CartItems from '@/components/cart/CartItems';
 import CartSummary from '@/components/cart/CartSummary';
 import CheckoutSteps from '@/components/checkout/CheckoutSteps';
 import { MoveLeft, MoveRight } from 'lucide-react';
 import { Button } from '../ui/button';
-import ShippingAddressStep, { ShippingAddressDto } from './ShippingAddressStep';
+import ShippingAddressStep from './ShippingAddressStep';
 import { CommonPageProps } from '@/modals';
+import PaymentForm from './PaymentForm';
 
 export default function CheckoutPage({ region, t }: CommonPageProps) {
     const [currentStep, setCurrentStep] = useState(1);
-    const [selectedAddress, setSelectedAddress] = useState<ShippingAddressDto | null>(null);
 
-    const nextStep = () => setCurrentStep((s) => Math.min(s + 1, 4));
-    const prevStep = () => setCurrentStep((s) => Math.max(s - 1, 1));
+    const [shippingAddress, setShippingAddress] = useState<any>(null);
+    const [cartItems, setCartItems] = useState<any[]>([]);
+
+    const nextStep = () => {
+        setCurrentStep((s) => Math.min(s + 1, 3));
+    };
+    const prevStep = () => {
+        setCurrentStep((s) => Math.max(s - 1, 1));
+    };
 
     return (
         <div className="py-5">
@@ -30,8 +37,6 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                         <div className="bg-neutral-200/10 rounded-lg">
                             <ShippingAddressStep
                                 onSubmit={(addr) => {
-                                    console.log('Selected shipping address:', addr);
-                                    setSelectedAddress(addr);
                                     nextStep(); // Payment step
                                 }}
                                 onCancel={prevStep}
@@ -40,29 +45,15 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                     )}
                     {currentStep === 3 && (
                         <div className="bg-neutral-200/10 rounded-lg">
-                            <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
-                            <div className="space-y-4">
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="payment" defaultChecked />
-                                    Credit / Debit Card
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="payment" />
-                                    PayPal
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="payment" />
-                                    Cash on Delivery
-                                </label>
-                            </div>
+                            <PaymentForm items={cartItems} shippingAddress={shippingAddress} />
                         </div>
                     )}
-                    {currentStep === 4 && (
+                    {/* {currentStep === 4 && (
                         <div className="bg-neutral-200/10 rounded-md">
                             <h2 className="text-xl font-semibold mb-4">Review Order</h2>
                             <p>Comming soon...</p>
                         </div>
-                    )}
+                    )} */}
 
                     {/* Navigation buttons */}
                     <div className="flex justify-between pt-6">
@@ -78,14 +69,9 @@ export default function CheckoutPage({ region, t }: CommonPageProps) {
                             <div />
                         )}
 
-                        {currentStep < 4 ? (
+                        {currentStep < 3 ? (
                             <Button
                                 onClick={() => {
-                                    if (currentStep === 2) {
-                                        if (!selectedAddress) {
-                                            return;
-                                        }
-                                    }
                                     nextStep();
                                 }}
                                 className="px-6  text-neutral-300 hover:bg-neutral-600 flex items-center gap-2 cursor-pointer"

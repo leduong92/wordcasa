@@ -131,7 +131,7 @@ const IdeasAndInspiration = async ({ params, searchParams }: CollectionPageProps
                                     </p>
                                 </div>
                                 <Link
-                                    href={`/${region}/web/talk-to-expert`}
+                                    href={`/${region}/interior-design-service#form-section`}
                                     className="self-start mt-6 bg-white text-neutral-800 text-sm font-semibold px-5 py-2 rounded-full shadow hover:bg-gray-100 transition cursor-pointer"
                                 >
                                     TALK TO AN EXPERT

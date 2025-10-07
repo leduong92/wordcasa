@@ -7,7 +7,7 @@ const steps = [
     { id: 1, name: 'Cart' },
     { id: 2, name: 'Address' },
     { id: 3, name: 'Payment' },
-    { id: 4, name: 'Review' },
+    // { id: 4, name: 'Review' },
 ];
 
 interface CheckoutStepProps extends CommonPageProps {

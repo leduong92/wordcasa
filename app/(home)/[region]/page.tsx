@@ -5,10 +5,11 @@ import { cookies } from 'next/headers';
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import UserModal from '@/components/auth/AuthModal';
-import CookieConsentPopup from '@/components/CookieConsentPopup';
+import CookieConsentPopup from '@/components/layout/CookieConsentPopup';
 import Link from 'next/link';
 import { translations } from '@/i18n';
-import InStoreInspiration from '@/components/InStoreInspiration';
+import InStoreInspiration from '@/components/layout/InStoreInspiration';
+import CustomerSupportPage from '@/components/layout/CustomerSupportPage';
 
 export default async function HomePage({ params }: { params: Promise<{ region: string }> }) {
     const { region } = await params;
@@ -215,6 +216,9 @@ export default async function HomePage({ params }: { params: Promise<{ region: s
 
                 <section className="px-4 md:px-8 py-8">
                     <InStoreInspiration region={region} />
+                </section>
+                <section className="px-4 md:px-8 py-8">
+                    <CustomerSupportPage region={region} />
                 </section>
             </HomeLayout>
 
