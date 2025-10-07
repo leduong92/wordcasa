@@ -50,7 +50,7 @@ const InteriorDesignService = async ({ params }: { params: Promise<{ region: str
                     </div>
                 </section>
                 {/* Information */}
-                <section className="px-16 md:px-32 lg:px-64 py-12 text-gray-800">
+                <section className="px-8 md:px-32 lg:px-64 py-12 text-gray-800">
                     {/* Header Section */}
                     <div className="max-w-4xl">
                         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
@@ -103,7 +103,7 @@ const InteriorDesignService = async ({ params }: { params: Promise<{ region: str
                     </div>
                 </section>
                 {/* Step */}
-                <section className="px-16 md:px-32 lg:px-64 py-12 text-gray-800">
+                <section className="px-8 md:px-32 lg:px-64 py-12 text-gray-800">
                     {/* Process Section */}
                     <div className="">
                         <h3 className="text-2xl font-semibold mb-6">3 Steps</h3>
@@ -167,8 +167,8 @@ const InteriorDesignService = async ({ params }: { params: Promise<{ region: str
                     </div>
                 </section>
                 {/* 3D */}
-                <section className="px-16 md:px-32 lg:px-64 py-12 text-gray-800">
-                    <section className="px-4 md:px-8 py-8">
+                <section className="px-8 md:px-32 lg:px-64 py-12 text-gray-800">
+                    <section className="">
                         <div className="flex flex-col md:flex-row gap-5 w-full h-full">
                             {/* Text content */}
                             <div className="w-full md:w-1/2 flex flex-col justify-center lg:px-16">
@@ -240,7 +240,7 @@ const InteriorDesignService = async ({ params }: { params: Promise<{ region: str
                 <section>
                     <div className="w-full">
                         {/* Section 1 – Hero */}
-                        <section className="px-16 md:px-32 lg:px-64 py-12 text-gray-800">
+                        <section className="px-8 md:px-32 lg:px-64 py-12 text-gray-800">
                             <h2 className="text-4xl font-semibold leading-tight mb-2">
                                 Your design journey begins... wherever you like
                             </h2>

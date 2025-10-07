@@ -31,10 +31,10 @@ export default function ProjectForm() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50 py-2 px-4">
+        <div className="flex justify-center items-center min-h-screen bg-gray-50 py-2">
             <form
                 onSubmit={handleSubmit}
-                className="w-full max-w-xl bg-white rounded-2xl shadow-md p-8 space-y-5 border border-gray-100"
+                className="w-full md:max-w-xl bg-white rounded-2xl shadow-md p-8 space-y-5 border border-gray-100"
             >
                 <h2 className="text-center text-xl font-semibold mb-6">
                     Tell Us About Your Project

@@ -50,7 +50,7 @@ const IdeasAndInspiration = async ({ params, searchParams }: CollectionPageProps
                     videoClass="w-full h-[450px] object-cover"
                 />
                 <div className="absolute inset-0 bg-neutral-900/30 flex flex-col justify-center items-center text-center text-neutral-200 px-6 rounded-md">
-                    <h1 className="text-5xl font-semibold mb-4 flex tracking-wide">
+                    <h1 className="text-2xl md:text-5xl font-semibold mb-4 flex tracking-wide">
                         {text?.map((char, i) => (
                             <span
                                 key={i}
@@ -70,8 +70,8 @@ const IdeasAndInspiration = async ({ params, searchParams }: CollectionPageProps
             </div>
 
             <div className="py-8 md:py-16">
-                <div className="flex gap-6">
-                    <div className="w-1/3">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-1/3">
                         <h1 className="text-4xl font-bold mb-4">Inspire Room Designs</h1>
                         <p className="py-4 text-justify leading-8">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem soluta
@@ -80,8 +80,8 @@ const IdeasAndInspiration = async ({ params, searchParams }: CollectionPageProps
                             vitae quibusdam blanditiis?
                         </p>
                     </div>
-                    <div className="w-2/3 flex justify-end">
-                        <div className="flex space-x-8 w-2/3">
+                    <div className="md:w-2/3 flex md:justify-end">
+                        <div className="flex space-x-8 md:w-2/3">
                             {categories.map((cat) => (
                                 <Link
                                     href={`/${region}/discover/rooms/${cat.slug}`}
