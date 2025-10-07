@@ -1,11 +1,8 @@
-import { loadStripe } from '@stripe/stripe-js';
 import { clientApi } from '@/lib/clientApi';
 import { ShippingAddressDto } from '@/modals';
 import React, { useEffect, useState } from 'react';
 import AddressCardSkeleton from './AddressCardSkeleton';
 import { Button } from '../ui/button';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface CheckoutItem {
     name: string;
@@ -49,21 +46,21 @@ export default function PaymentForm({ items, shippingAddress }: PaymentFormProps
         try {
             setIsLoading(true);
 
-            const response = await fetch('/api/checkout', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    items,
-                    shippingAddress,
-                }),
-            });
+            // const response = await fetch('/api/checkout', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         items,
+            //         shippingAddress,
+            //     }),
+            // });
 
-            if (!response.ok) throw new Error('Failed to create checkout session');
+            // if (!response.ok) throw new Error('Failed to create checkout session');
 
-            const { id } = await response.json();
+            // const { id } = await response.json();
 
-            const stripe = await stripePromise;
-            if (!stripe) throw new Error('Stripe failed to load');
+            // const stripe = await stripePromise;
+            // if (!stripe) throw new Error('Stripe failed to load');
 
             // const { error } = await stripe.redirectToCheckout({
             //     sessionId: session.id,
