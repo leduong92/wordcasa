@@ -23,7 +23,10 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                         </Link>
                     </div>
                     <div className="flex-1 rounded-md overflow-hidden">
-                        <Link href={`/${region}/web/help`} aria-label="Need help? Let's talk">
+                        <Link
+                            href={`/${region}/interior-design-service`}
+                            aria-label="Need help? Let's talk"
+                        >
                             <Image
                                 src="/bed_4.jpg"
                                 alt="Need help? Let's talk"

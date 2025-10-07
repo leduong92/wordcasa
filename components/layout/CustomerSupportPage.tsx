@@ -8,6 +8,7 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import { CommonPageProps } from '@/modals';
+import Link from 'next/link';
 
 export default function CustomerSupportPage({ region }: CommonPageProps) {
     return (
@@ -28,70 +29,70 @@ export default function CustomerSupportPage({ region }: CommonPageProps) {
             <div>
                 <Accordion type="single" collapsible className="w-full space-y-6">
                     {/* 1. Chat with designers */}
-                    <AccordionItem value="designers" className="border-t border-gray-200 pt-4">
+                    <AccordionItem value="designers" className="border-gray-200 pt-4">
                         <AccordionTrigger className="text-lg font-medium">
                             Chat with our Interior Designers
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600">
-                            <p className="mb-4">
+                            <p className="mb-4 py-2">
                                 Speak directly with one of our Interior Designers to bring your
                                 vision to life. Our experts are ready to offer personalized advice,
                                 creative solutions, and guidance tailored to your unique style and
                                 space.
                             </p>
-                            <Button
-                                variant="default"
-                                className="bg-black text-white hover:bg-gray-800"
+                            <Link
+                                href={`/${region}/interior-design-service`}
+                                className="bg-neutral-800 text-neutral-100 hover:bg-gray-800 cursor-pointer p-3"
                             >
                                 Learn more about our Interior Design Service →
-                            </Button>
+                            </Link>
                         </AccordionContent>
                     </AccordionItem>
 
                     {/* 2. Find a store */}
-                    <AccordionItem value="store" className="border-t border-gray-200 pt-4">
+                    <AccordionItem value="store" className="border-gray-200 pt-4">
                         <AccordionTrigger className="text-lg font-medium">
                             Find a store near you
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600">
-                            <p className="mb-4">
+                            <p className="mb-4 py-2">
                                 Discover BoConcept stores closest to you and come and get a feel for
                                 our products, chat about your living space, and how to achieve your
                                 desired look and functionality.
                             </p>
-                            <Button
-                                variant="default"
-                                className="bg-black text-white hover:bg-gray-800"
+                            <Link
+                                href={`/${region}/store`}
+                                className="bg-neutral-800 text-neutral-100 hover:bg-gray-800 cursor-pointer p-3"
                             >
                                 Go to store locator →
-                            </Button>
+                            </Link>
                         </AccordionContent>
                     </AccordionItem>
 
                     {/* 3. Customer services */}
-                    <AccordionItem value="customer" className="border-t border-gray-200 pt-4">
+                    <AccordionItem value="customer" className="border-gray-200 pt-4">
                         <AccordionTrigger className="text-lg font-medium">
                             Customer services
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600">
-                            <p className="mb-4">
+                            <p className="mb-4 py-2">
                                 Explore our customer services page for detailed information about
                                 assembly, delivery, sampling, warranties, and a variety of other
                                 helpful services.
                             </p>
-                            <Button
-                                variant="default"
-                                className="bg-black text-white hover:bg-gray-800"
+                            <Link
+                                href={`/${region}/web/customer-service`}
+                                className="bg-neutral-800 text-neutral-100 hover:bg-gray-800 cursor-pointer p-3"
                             >
                                 Go to customer services →
-                            </Button>
+                            </Link>
                         </AccordionContent>
                     </AccordionItem>
 
                     {/* 4. Careers */}
-                    <AccordionItem
+                    {/* <AccordionItem
                         value="career"
-                        className="border-t border-b border-gray-200 pt-4"
+                        className="border-b border-gray-200 pt-4"
                     >
                         <AccordionTrigger className="text-lg font-medium">
                             Looking for a career with us?
@@ -102,7 +103,7 @@ export default function CustomerSupportPage({ region }: CommonPageProps) {
                                 for design, innovation, and customer experience.
                             </p>
                         </AccordionContent>
-                    </AccordionItem>
+                    </AccordionItem> */}
                 </Accordion>
             </div>
         </div>

@@ -101,7 +101,12 @@ const JoinMailList = ({ region, t }: CommonPageProps) => {
                     </div>
                 </DialogHeader>
                 <DialogFooter>
-                    <Button variant="default" onClick={handleSend} aria-label="Subscribe">
+                    <Button
+                        variant="default"
+                        onClick={handleSend}
+                        aria-label="Subscribe"
+                        className="cursor-pointer"
+                    >
                         Subscribe
                     </Button>
                 </DialogFooter>

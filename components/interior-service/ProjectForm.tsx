@@ -196,14 +196,14 @@ export default function ProjectForm() {
                         className="w-4 h-4 accent-orange-500"
                     />
                     <label className="text-sm">
-                        I understand Article will email me (*Required)
+                        I understand WorldCasa will email me (*Required)
                     </label>
                 </div>
 
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full transition"
+                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full transition cursor-pointer"
                 >
                     SUBMIT
                 </button>

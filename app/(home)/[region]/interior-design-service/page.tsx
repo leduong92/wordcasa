@@ -1,5 +1,4 @@
 import HomeLayout from '@/components/layout/home/HomeLayout';
-import { Button } from '@/components/ui/button';
 import VideoPlayer from '@/components/VideoPlayer';
 import { translations } from '@/i18n';
 import { Metadata, ResolvingMetadata } from 'next';
