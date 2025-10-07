@@ -39,7 +39,7 @@ const NavHomeMenu = ({ region, lang, t, categoryDtos }: Props) => {
                 }
                 `}
             >
-                <NavMobile color="black" region={region} categoryDtos={categoryDtos} t={t} />
+                <NavMobile color="neutral" region={region} categoryDtos={categoryDtos} t={t} />
             </div>
             {/* BIGGER Screen */}
             <nav
@@ -52,12 +52,12 @@ const NavHomeMenu = ({ region, lang, t, categoryDtos }: Props) => {
                 `}
             >
                 {/* Navbar container */}
-                <div className="max-w-screen flex flex-col justify-between items-center h-full w-full">
+                <div className="max-w-screen flex flex-col justify-between items-center h-full w-full ">
                     <div className="w-full flex ">
                         <div
                             className={`w-1/3 group-hover/nav:text-neutral-700  ${
                                 visible
-                                    ? 'text-neutral-50 placeholder-neutral-50'
+                                    ? 'text-neutral-100 placeholder-neutral-100'
                                     : 'text-neutral-900 placeholder-neutral-900'
                             } `}
                         >

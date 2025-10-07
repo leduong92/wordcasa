@@ -2,6 +2,7 @@ import { CommonPageProps } from '@/modals';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Pinterest from './ui/pinterest';
 
 const Footer = ({ lang, region, t }: CommonPageProps) => {
     return (
@@ -95,13 +96,14 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                     >
                         <Image src="/instagram.png" alt="" width={25} height={25} />
                     </a>
-                    {/* <a
+                    <a
                         href="#"
                         className="p-2 border rounded-full hover:bg-gray-200"
                         aria-label="Pinterest"
                     >
-                        <Image src="/pinterest?.png" alt="" width={25} height={25} />
-                    </a> */}
+                        {/* <Image src="/pinterest?.png" alt="" width={25} height={25} /> */}
+                        <Pinterest />
+                    </a>
                     <a
                         href="#"
                         className="p-2 border rounded-full hover:bg-gray-200"

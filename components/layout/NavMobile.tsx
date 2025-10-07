@@ -28,7 +28,7 @@ const NavMobile = (params: Props) => {
     if (!isMounted) return <div></div>;
 
     return (
-        <div className={`flex md:hidden items-center justify-between w-full text-${color}`}>
+        <div className={`flex md:hidden items-center justify-between w-full `}>
             {/* Left */}
             <div className="flex items-center gap-3 w-1/3">
                 {/* Menu Hambeger */}
