@@ -27,7 +27,7 @@ export async function generateMetadata(
     const item = response.data;
 
     return {
-        title: item?.displayName + ' | Worldcasa',
+        title: item?.displayName + ' | World Casa',
         description: item?.description,
     };
 }

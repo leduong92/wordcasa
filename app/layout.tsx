@@ -49,9 +49,9 @@ export const helveticaNeue = localFont({
 });
 
 export const metadata: Metadata = {
-    title: 'Official Website | WorldCasa',
+    title: 'Official Website | World Casa',
     description:
-        'Luxury design furniture by Worldcasa. Shop designer furniture from a worldwide brand. Worldcasa provides interior solutions for living, dining, bedroom, home office and commercial spaces no matter the type or size of space you’re workingwith.',
+        'Luxury design furniture by World Casa. Shop designer furniture from a worldwide brand. World Casa provides interior solutions for living, dining, bedroom, home office and commercial spaces no matter the type or size of space you’re workingwith.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

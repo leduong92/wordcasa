@@ -15,7 +15,7 @@ import { MoveRight } from 'lucide-react';
 
 export async function generateMetadata(parent: ResolvingMetadata): Promise<Metadata> {
     return {
-        title: 'Free interior design service | Worldcasa',
+        title: 'Free interior design service | World Casa',
         description: `Free interior design service`,
     };
 }
@@ -53,7 +53,7 @@ const InteriorDesignService = async ({ params }: { params: Promise<{ region: str
                     {/* Header Section */}
                     <div className="max-w-4xl">
                         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-                            WorldCasa's Interior Design Services
+                            World Casa's Interior Design Services
                         </h2>
                         <p className="text-gray-600 mb-6">
                             We offer complete design plans. Tell us about your home, your needs, and

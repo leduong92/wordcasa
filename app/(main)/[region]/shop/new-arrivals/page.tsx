@@ -15,16 +15,16 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
 
     return {
-        title: `New Arrivals | Page ${pageIndex} | Worldcasa`,
+        title: `New Arrivals | Page ${pageIndex} | World Casa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
             canonical: `/${region}/shop/new-arrivals?page=${pageIndex}`,
         },
         openGraph: {
-            title: `Worldcasa New Products - Page ${pageIndex}`,
+            title: `World Casa New Products - Page ${pageIndex}`,
             description: `Browse furniture collection - Page ${pageIndex}.`,
             url: `/${region}/shop/new-arrivals?page=${pageIndex}`,
-            siteName: 'Worldcasa',
+            siteName: 'World Casa',
             type: 'website',
         },
     };

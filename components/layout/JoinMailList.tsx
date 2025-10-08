@@ -61,7 +61,7 @@ const JoinMailList = ({ region, t }: CommonPageProps) => {
                                     ENTER FOR YOUR CHANCE TO WIN A
                                 </h1>
                                 <span className="text-xl font-bold tracking-wide text-neutral-800">
-                                    $50 <span>WORLDCASA</span> GIFT CARD
+                                    $50 <span>World Casa</span> GIFT CARD
                                 </span>
                                 <p className="text-sm text-neutral-600 mb-4 py-2">
                                     Be the first to be notified of our exclusive deals, new

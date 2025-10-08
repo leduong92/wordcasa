@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Pinterest = () => {
+const Pinterest = ({ width, height }: { width: number; height: number }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="19"
-            height="18"
+            width={width}
+            height={height}
             className="icon"
-            viewBox="0 0 19 18"
+            viewBox={`0 0 ${width} ${height}`}
             fill="none"
         >
             <path

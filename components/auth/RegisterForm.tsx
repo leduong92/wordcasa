@@ -62,7 +62,8 @@ const RegisterForm = ({ region, t }: CommonPageProps) => {
 
                 <label className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Checkbox checked={subscribe} onCheckedChange={(val) => setSubscribe(!!val)} />
-                    Yes, I would like to receive marketing emails and special offers from Worldcasa.
+                    Yes, I would like to receive marketing emails and special offers from World
+                    Casa.
                 </label>
             </div>
         </>

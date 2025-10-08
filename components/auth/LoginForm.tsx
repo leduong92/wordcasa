@@ -90,7 +90,7 @@ export default function LoginForm({ region, t }: CommonPageProps) {
             </form>
 
             <p className="text-sm text-center text-muted-foreground">
-                New to Worldcasa?{' '}
+                New to World Casa?{' '}
                 <button
                     type="button"
                     onClick={() => setView('signup')}

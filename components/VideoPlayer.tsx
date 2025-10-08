@@ -50,7 +50,7 @@ const VideoPlayer = ({ src, videoClass }: VidepPlayerProps) => {
             <div className="absolute inset-0 bg-neutral-900/30 flex items-center justify-center px-4 text-center">
                 {/* <div>
                     <h1 className="text-white bg-transparent font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
-                        Welcome to Worldcasa
+                        Welcome to World Casa
                     </h1>
                     <p className="mt-4 text-white text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                         Luxury furniture & timeless designs for your living space.

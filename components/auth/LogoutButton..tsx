@@ -8,11 +8,11 @@ export default function LogoutButton({ region, t }: CommonPageProps) {
     return (
         <button
             onClick={() => signOut({ callbackUrl: '/' })}
-            className="pt-4 flex justify-between items-center cursor-pointer"
+            className="py-2 flex  items-center cursor-pointer"
             aria-label="Logout"
         >
             <LogOut size={16} />
-            <span className="w-2/3 px-2">Logout</span>
+            <span className="px-5">Logout</span>
         </button>
     );
 }

@@ -12,16 +12,16 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     const pageIndex = Number(page) > 0 ? Number(page) : 1;
 
     return {
-        title: `Search | Page ${pageIndex} | Worldcasa`,
+        title: `Search | Page ${pageIndex} | World Casa`,
         description: `Browse our catalog - Page ${pageIndex}. Find sofas, chairs, tables and more.`,
         alternates: {
             canonical: `/${region}/search?page=${pageIndex}`,
         },
         openGraph: {
-            title: `Worldcasa Products - Page ${pageIndex}`,
+            title: `World Casa Products - Page ${pageIndex}`,
             description: `Browse furniture collection - Page ${pageIndex}.`,
             url: `/${region}/search?page=${pageIndex}`,
-            siteName: 'Worldcasa',
+            siteName: 'World Casa',
             type: 'website',
         },
     };

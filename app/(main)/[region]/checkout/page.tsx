@@ -14,7 +14,7 @@ export async function generateMetadata(
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     return {
-        title: 'Checkout | Worldcasa',
+        title: 'Checkout | World Casa',
         description: ``,
     };
 }

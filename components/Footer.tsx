@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import Pinterest from './ui/pinterest';
+import Instagram from './ui/instagram';
 
 const Footer = ({ lang, region, t }: CommonPageProps) => {
     return (
@@ -81,52 +82,51 @@ const Footer = ({ lang, region, t }: CommonPageProps) => {
                 </div>
                 <div></div>
                 {/* Social icons */}
-                <div className="flex items-center justify-center gap-6 py-6">
+                <div className="flex items-center justify-center gap-3 py-6">
                     <a
                         href="#"
                         className="p-2 border rounded-full hover:bg-gray-200"
                         aria-label="Facebook"
                     >
-                        <Image src="/facebook.png" alt="" width={25} height={25} />
-                    </a>
-                    <a
-                        href="#"
-                        className="p-2 border rounded-full hover:bg-gray-200"
-                        aria-label="Instagram"
-                    >
-                        <Image src="/instagram.png" alt="" width={25} height={25} />
-                    </a>
-                    <a
-                        href="#"
-                        className="p-2 border rounded-full hover:bg-gray-200"
-                        aria-label="Pinterest"
-                    >
-                        {/* <Image src="/pinterest?.png" alt="" width={25} height={25} /> */}
-                        <Pinterest />
-                    </a>
-                    <a
-                        href="#"
-                        className="p-2 border rounded-full hover:bg-gray-200"
-                        aria-label="Youtube"
-                    >
-                        <Image src="/youtube.png" alt="" width={25} height={25} />
+                        <Image src="/facebook.png" alt="" width={20} height={20} />
                     </a>
                     <a
                         href="#"
                         className="p-2 border rounded-full hover:bg-gray-200"
                         aria-label="X"
                     >
-                        <Image src="/x.png" alt="" width={25} height={25} />
+                        <Image src="/x.png" alt="" width={20} height={20} />
+                    </a>
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Instagram"
+                    >
+                        <Instagram width={20} height={20} />
+                    </a>
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Pinterest"
+                    >
+                        <Pinterest width={20} height={20} />
+                    </a>
+                    <a
+                        href="#"
+                        className="p-2 border rounded-full hover:bg-gray-200"
+                        aria-label="Youtube"
+                    >
+                        <Image src="/youtube.png" alt="" width={20} height={20} />
                     </a>
                 </div>
             </div>
 
             {/* Bottom bar */}
             <div className="border-t px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-                <Link href={'/'} aria-label="Worldcasa">
+                <Link href={'/'} aria-label="World Casa">
                     <p className="text-center md:text-left text-neutral-500">
                         {/* All prices are recommended retail prices in Vietnamese DONG (₫) and include VAT?. */}
-                        © 2025 <span className="tracking-wider text-xs uppercase">WorldCasa</span>
+                        © 2025 <span className="tracking-wider text-xs uppercase">World Casa</span>
                     </p>
                 </Link>
 

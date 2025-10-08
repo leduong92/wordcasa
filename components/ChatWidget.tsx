@@ -49,7 +49,7 @@ export default function ChatWidget({ t }: CommonPageProps) {
                 <div className="w-80 h-96 bg-blue-50 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
                     {/* Header */}
                     <div className="bg-neutral-500 text-neutral-100 p-3 flex justify-between items-center">
-                        <span className="font-semibold">Worldcasa Assistant</span>
+                        <span className="font-semibold">World Casa Assistant</span>
                         <X className="cursor-pointer w-5 h-5" onClick={() => setIsOpen(false)} />
                     </div>
 

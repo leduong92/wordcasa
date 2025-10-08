@@ -26,7 +26,7 @@ export async function generateMetadata(
     });
 
     return {
-        title: response.data?.productName + ' | Worldcasa',
+        title: response.data?.productName + ' | World Casa',
         description: response.data?.description,
         alternates: {
             canonical: `/${region}/product/${slug}`,
@@ -35,7 +35,7 @@ export async function generateMetadata(
             title: response.data?.productName ?? '',
             description: response.data?.marketingDescription ?? '',
             url: `/${region}/product/${slug}`,
-            siteName: 'Worldcasa',
+            siteName: 'World Casa',
             type: 'website',
         },
     };

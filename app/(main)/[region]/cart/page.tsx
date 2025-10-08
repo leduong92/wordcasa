@@ -19,7 +19,7 @@ export async function generateMetadata(
     const { slug, region } = await params;
 
     return {
-        title: 'Cart | Worldcasa',
+        title: 'Cart | World Casa',
         description: 'Cart',
     };
 }

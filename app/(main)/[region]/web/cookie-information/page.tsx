@@ -11,7 +11,7 @@ export async function generateMetadata(
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     return {
-        title: 'Cookie Information | Worldcasa',
+        title: 'Cookie Information | World Casa',
         description: ``,
     };
 }

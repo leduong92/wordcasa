@@ -30,7 +30,7 @@ const NavMobile = (params: Props) => {
     return (
         <div className={`flex md:hidden items-center justify-between w-full `}>
             {/* Left */}
-            <div className="flex items-center gap-3 w-1/3">
+            <div className="flex items-center gap-3">
                 {/* Menu Hambeger */}
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                     <SheetTrigger>
@@ -43,9 +43,9 @@ const NavMobile = (params: Props) => {
                             <Link
                                 href={'/'}
                                 className="tracking-widest uppercase font-semibold font-basker text-neutral-700"
-                                aria-label="Worldcasa"
+                                aria-label="World Casa"
                             >
-                                Worldcasa
+                                World Casa
                             </Link>
                         </SheetTitle>
                         <div>
@@ -132,18 +132,18 @@ const NavMobile = (params: Props) => {
             </div>
 
             {/* Middle */}
-            <div className="w-1/3 text-xl flex justify-center transition-colors duration-300">
-                <Link href="/" title="WorldCasa" aria-label="WorldCasa">
-                    <div
-                        className={`text-${color} tracking-widest uppercase font-semibold font-basker`}
+            <div className="flex-1 flex justify-center transition-colors duration-300">
+                <Link href="/" title="World Casa" aria-label="World Casa">
+                    <span
+                        className={`text-${color} text-lg tracking-widest uppercase font-semibold font-basker`}
                     >
-                        WORLDCASA
-                    </div>
+                        World Casa
+                    </span>
                 </Link>
             </div>
 
             {/* Right */}
-            <div className="flex items-center justify-end gap-3 w-1/3">
+            <div className="flex items-center justify-end gap-3">
                 <LoginButton region={region} />
                 <CartIcon region={region} />
             </div>

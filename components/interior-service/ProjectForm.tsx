@@ -196,7 +196,7 @@ export default function ProjectForm() {
                         className="w-4 h-4 accent-orange-500"
                     />
                     <label className="text-sm">
-                        I understand WorldCasa will email me (*Required)
+                        I understand World Casa will email me (*Required)
                     </label>
                 </div>
 

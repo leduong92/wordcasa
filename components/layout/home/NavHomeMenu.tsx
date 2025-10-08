@@ -6,6 +6,7 @@ import NavMobile from '../NavMobile';
 import { CategoryDto, CommonPageProps } from '@/modals';
 import SearchInput from '@/components/SearchInput';
 import MegaMenu from '../MegaMenu';
+import Image from 'next/image';
 
 interface Props extends CommonPageProps {
     categoryDtos: CategoryDto[] | undefined;
@@ -75,9 +76,15 @@ const NavHomeMenu = ({ region, lang, t, categoryDtos }: Props) => {
                             <Link
                                 href={'/'}
                                 className="focus-visible:outline-none tracking-widest uppercase font-semibold font-basker"
-                                aria-label="WorldCasa"
+                                aria-label="World Casa"
                             >
-                                WORLDCASA
+                                World Casa
+                                {/* <Image
+                                    src={`/World_Casa_logo_White.png`}
+                                    width={200}
+                                    height={80}
+                                    alt="World Casa logo"
+                                /> */}
                             </Link>
                         </div>
 

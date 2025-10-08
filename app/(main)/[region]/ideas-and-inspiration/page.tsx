@@ -27,7 +27,7 @@ export async function generateMetadata(
     const { slug, region } = await params;
 
     return {
-        title: 'Ideas and Inspiration | Worldcasa',
+        title: 'Ideas and Inspiration | World Casa',
         description: 'Ideas and Inspiration',
     };
 }
